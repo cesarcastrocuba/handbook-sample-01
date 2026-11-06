@@ -19,9 +19,16 @@
 
 ## Explicitly not approved
 
-- Gate 3, the pilot content, chapter expansion, merge or release.
-- Hub profile `0.2.0` as a merged profile. The owner approved this book's direction; the hub branch remains proposed.
+- Gate 3 and the pilot content.
+- Chapter expansion beyond the pilot.
+- Any release or publication.
 - Public attribution. It remains pending before release.
+
+## Integration authorization
+
+The owner authorized integrating the reviewed foundation and integration branches in the same instruction. That authorization covers integration only. It does not approve a pilot, chapter expansion or a release, and root integration does not by itself authorize those steps.
+
+The hub profile direction is separately limited: the owner approved this book's standard `0.2.0` direction, while the hub branch itself remains proposed.
 
 ## Limitations
 
