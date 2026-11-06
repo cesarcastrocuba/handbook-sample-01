@@ -16,4 +16,4 @@ publication:
     - "docx"
     - "source-bundle"
   generated_artifacts_committed: false
-  build_status: "not configured"
+  build_status: "configuration prototype; no artifacts published"

@@ -1,28 +1,23 @@
 # Publishing
 
-This directory holds publication metadata and, later, the pinned build configuration. **No build is configured or claimed during bootstrap.** Quarto is not installed in the bootstrap environment.
+This directory holds the book-side Quarto configuration and publication metadata. Generated artifacts are never committed. Shared staging, packaging, manifest and checksum logic belongs to the Hub toolkit.
 
 ## Current state
 
-- `metadata.yaml` records the working title, version and licensing intent.
-- No `_quarto.yml`, reading order or style bundle exists yet.
-- No HTML, PDF, DOCX, source bundle, manifest or checksum has been produced.
-- No deployment, GitHub Pages site, catalog entry or release exists.
+- [`_quarto.yml`](_quarto.yml) is the book-side config consumed by the Hub build in an isolated staged workspace. It is not rendered directly from the repository root.
+- [`metadata.yaml`](metadata.yaml) records provisional publication metadata.
+- The full render contract, pinned toolchain, artifact names and current layout findings are in [`docs/build/pipeline-spec.md`](../docs/build/pipeline-spec.md).
+- No release, Pages deployment, catalog entry, manifest or checksum file exists.
 
-## Planned pipeline
+## Render boundary
 
-1. Pin the hub toolkit version and record it here.
-2. Declare the reading order from `manuscript/`.
-3. Build once from an owner-approved commit with a fixed source epoch.
-4. Verify structure, links, profile conformance and artifact identity.
-5. Publish HTML for reading and attach PDF, DOCX, source bundle, manifest and checksums to a release.
-6. Reference the approved release from the hub catalog only after owner approval.
+The book repository owns book metadata, format selection, theme and numbering policy. The Hub toolkit owns staging, `index.qmd` and chapter-wrapper generation, one render invocation, packaging, the manifest and checksums.
+
+Quarto `1.11.9` renders HTML, Typst PDF and DOCX from the staged workspace. The source bundle, manifest and `SHA256SUMS.txt` are Hub outputs, not book scripts.
 
 ## Constraints
 
 - Generated artifacts are never committed; see [`.gitignore`](../.gitignore).
-- The toolkit is installed from the hub at a pinned version. Shared scripts are not copied into this repository.
+- The toolkit is installed from the Hub at a pinned version. Shared scripts are not copied into this repository.
 - A release must identify the exact commit and the checksums of every artifact.
 - Publication requires owner approval and a confirmed licensing/attribution record.
-
-Build configuration is intentionally deferred until Gate 3 approves the pilot, so that the first configuration can be tested against reviewed content rather than an empty book.

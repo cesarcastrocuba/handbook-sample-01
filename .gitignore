@@ -1,6 +1,7 @@
 # Generated and local artifacts
 _site/
 _build/
+_output/
 .quarto/
 *.html
 *.pdf
