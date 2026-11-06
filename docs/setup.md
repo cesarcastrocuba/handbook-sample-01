@@ -77,8 +77,8 @@ A fast pass is not a publication or full-manuscript pass.
 
 - The complete draft exists. `make full` validates chapter and appendix structure and references; it does not judge editorial quality.
 - `make full` runs descriptor, reading-order, cross-reference and chapter-profile validation and passes. It does not build artifacts.
-- Toolkit `0.3.0` provides `validate-references`, `validate-manuscript` and `build-book`; artifact verification is part of `build-book`.
-- The book references hub `standard` `0.2.0`, approved and integrated on hub main `8ee28a0`. The fast check does not validate profile `0.2.0`.
+- Toolkit `0.4.0` provides `validate-references`, `validate-manuscript` and `build-book`; artifact verification is part of `build-book`.
+- The book references hub `standard` `1.0.0`, the current packaged profile that preserves the approved `0.2.0` rules. `make full` resolves the profile from `book.yaml`; the fast check does not validate profile conformance.
 - A local `0.1.0-rc.1` build exists outside the repository. No artifact is committed and no release, tag or Pages deployment exists.
 
 ## 6. Artifact build

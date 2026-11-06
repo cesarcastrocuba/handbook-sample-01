@@ -7,7 +7,7 @@
 | Date | 2026-11-06 |
 | Approval evidence | [Owner approval record](approval-record.md) |
 | Depends on | [Editorial brief](brief.md) approval (Gate 1) |
-| Profile | `standard` `0.2.0` — approved and integrated on hub `main` at `8ee28a0` |
+| Profile | `standard` `1.0.0` — current packaged release; preserves the approved `0.2.0` rules |
 | Pilot | Chapter 2, section 2.2 — **written, Gate 3 pending** |
 | Related | [Content profile](profile.md) · [`AGENTS.md`](../../AGENTS.md) |
 

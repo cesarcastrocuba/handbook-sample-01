@@ -6,8 +6,8 @@
 | Scope | Platform phase 4; publication remains owner-gated |
 | Book config | [`publishing/_quarto.yml`](../../publishing/_quarto.yml) |
 | Release workflow | [`.github/workflows/release.yml`](../../.github/workflows/release.yml) |
-| Toolkit | `0.3.0`, pinned from public hub `66d0581689e1e9c91913da25b5cb4a7723f3ec5c` |
-| Profile | `standard` `0.2.0` |
+| Toolkit | `0.4.0`, pinned from public hub `7820172c8810ececc550d5a3604ea4045687fefd` |
+| Profile | `standard` `1.0.0` |
 | Quarto | `1.11.9` |
 | Pandoc | `3.10` (bundled) |
 | Typst | `0.15.1` (bundled) |
@@ -41,10 +41,10 @@ No manifest, checksum, zip or packaging script is added to this repository.
 The toolkit is installed from `requirements.txt` as a non-editable package:
 
 ```text
-handbook-toolkit @ git+https://github.com/cesarcastrocuba/handbooks-hub.git@66d0581689e1e9c91913da25b5cb4a7723f3ec5c#subdirectory=tools
+handbook-toolkit @ git+https://github.com/cesarcastrocuba/handbooks-hub.git@7820172c8810ececc550d5a3604ea4045687fefd#subdirectory=tools
 ```
 
-`book.yaml` declares toolkit `0.3.0` and profile `standard` `0.2.0`. The toolkit resolves the packaged profile and stages its render resources: the table-layout filter, the task-checkbox filter and the breakable-callout Typst include.
+`book.yaml` declares toolkit `0.4.0` and profile `standard` `1.0.0`. Toolkit `0.4.0` packages both the `0.2.0` and `1.0.0` snapshots; `1.0.0` preserves every approved `0.2.0` rule and adds the validation classification. The toolkit resolves the packaged profile and stages its render resources: the table-layout filter, the task-checkbox filter and the breakable-callout Typst include.
 
 Quarto supplies its bundled Pandoc and Typst. The repository validators do not require Quarto; only `build-book` does.
 
@@ -58,6 +58,7 @@ handbook-toolkit build-book \
   --commit <full-commit-sha> \
   --output /outside/repo/release-<version> \
   --version <version> \
+  --mode chapter \
   --quarto "$(command -v quarto)"
 ```
 
@@ -104,14 +105,13 @@ Prerequisites outside the repository: GitHub Pages must use the GitHub Actions s
 
 ## 6. Release-candidate inspection
 
-A local `0.1.0-rc.1` build from commit `bb87b71`, repeated from the final branch HEAD, produced a 57-page PDF and the six-file set outside the repository. Inspection found and fixed:
+A local `0.1.0-rc.1` chapter-mode build with toolkit `0.4.0` and profile `1.0.0` produced a 57-page PDF and the six-file set outside the repository. The earlier layout fixes remain in place:
 
-- a duplicate title page: the Quarto title page and the front-matter H1 repeated the title; the front matter now starts with an unnumbered document-control page;
-- a duplicated subtitle on the document-control page: the subtitle now comes only from the book configuration;
-- a position-based `Table 5.1` caption in Chapter 2: the table now renders as `Table 2.1`;
-- numbered appendices rendering as chapters 9–11: appendices are now unnumbered, with `A.1`/`B.1`/`C.1` headings preserved.
+- the front matter starts with an unnumbered document-control page, with no duplicate title or subtitle;
+- the Chapter 2 brief renders as `Table 2.1`;
+- appendices render unnumbered with `A.1`/`B.1`/`C.1` headings.
 
-Known renderer limit: the toolkit's breakable callouts can leave a callout header at the bottom of a page and move an embedded table to the next page. The shared render resources own that behavior; fixing it belongs in the toolkit, not in book prose. Table rows and callouts were otherwise readable in PDF, DOCX and HTML, and relative HTML links resolved.
+Toolkit `0.4.0` removes the overflowing orange-book chapter-title block by setting the Typst brand primary to white. The same change makes primary-colored text and borders white: section numbers are present in the PDF text layer but invisible on the page, and the note-callout border disappears. HTML and DOCX keep visible section numbers. This is a renderer-side defect to fix in the toolkit before publication; it is not a manuscript or profile failure. The breakable-callout page split also remains. Table rows and callouts are otherwise readable, and relative HTML links resolve.
 
 ## 7. Reproducibility
 

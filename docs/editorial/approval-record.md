@@ -28,7 +28,7 @@
 
 The owner authorized integrating the reviewed foundation and integration branches in the same instruction. That authorization covers integration only. It does not approve a pilot, chapter expansion or a release, and root integration does not by itself authorize those steps.
 
-The hub profile is approved and integrated at hub `main` `8ee28a0`; this book's `0.2.0` direction was approved at Gate 2.
+The hub profile is approved and integrated at hub `main` `8ee28a0`; this book's `0.2.0` direction was approved at Gate 2. The current descriptor pins `standard` `1.0.0` at hub `7820172`, which preserves every approved `0.2.0` rule and adds the validation classification.
 
 ## Limitations
 
