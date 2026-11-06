@@ -1,9 +1,12 @@
-# Reading order for Part I. Every listed file is canonical and present.
+# Reading order through Part II. Every listed file is canonical and present.
 front: []
 chapters:
   - chapters/ch01-why-handbooks-fail.qmd
   - chapters/ch02-editorial-contract.qmd
   - chapters/ch03-profiles-and-exceptions.qmd
+  - chapters/ch04-research-and-source-discipline.qmd
+  - chapters/ch05-writing-a-section.qmd
+  - chapters/ch06-review-as-evidence.qmd
 back: []
 appendices: []
 references: []

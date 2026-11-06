@@ -1,0 +1,139 @@
+---
+title: "6. Review as Evidence"
+profile: standard
+---
+
+# 6. Review as Evidence {#sec-review}
+
+A review that says "looks good to me" records an opinion, not evidence. A useful review is tied to an exact commit, a known set of checks and a verdict that another person can reproduce. This chapter makes review a durable artifact: separate duties, classified findings, re-runs and closure.
+
+::: {.callout-note appearance="simple" icon=false title="When to Use This Chapter"}
+- A change is ready for independent review and needs a defensible verdict.
+- An author wants to self-review because it is faster.
+- Review findings are being argued by severity without a shared rule.
+- A merged change cannot be traced back to the reviewed commit.
+:::
+
+::: {.callout-tip appearance="simple" icon=false title="Key Takeaway"}
+Review is evidence only when it names the exact HEAD, the commands that were re-run, the findings by severity and the reviewer's verdict. The implementer cannot supply that evidence for their own work.
+:::
+
+## 6.1 Separation of Duties and the Limits of Self-Review
+
+**Definition.** Separation of duties means the person who implements a change is not the person who accepts it. A reviewer is a different person or agent who examines the exact reviewed commit and records an independent verdict. Self-review is an author's pre-flight check, not the approval.
+
+**Purpose.** Separation protects the reader from the author's blind spots. The author knows what they intended, which makes it hard to notice what the text actually says. An independent reviewer approaches the artifact without that intention and can ask the question the author has stopped seeing: does this evidence support this claim?
+
+**What it includes.** A review assignment names the exact commit, the applicable gates, the checks to run and the reviewer's authority. The reviewer has access to the source, the change record and the evidence, but does not rewrite the work silently. The author remains available to answer questions; the reviewer remains responsible for the verdict. For a small change, one reviewer is enough; for a release, the owner still makes the release decision.
+
+**Why it is needed.** Self-review tends to confirm the author's model. It checks whether the change matches the intention, not whether the intention is right. The failure is subtle: a well-written section can still omit the decision, and an author who knows the missing context may read it as present. Separation creates a second reading, not a second author. The second reading is also a check on the evidence itself: a reviewer who does not share the author's assumptions is more likely to notice a missing source or a conclusion that the cited material does not support.
+
+**Example.** *Illustrative only: a two-person documentation team.* An author writes a migration section and runs the checks. A different reviewer reads the exact commit, opens the linked sources, checks the claim that the old endpoint is deprecated and tries the described rollback in a sandbox. The reviewer finds that the rollback command uses a removed flag. The author fixes it; the reviewer re-runs the check on the new commit. The approval is recorded against the new commit, not the original.
+
+
+::: {.callout-warning appearance="simple" icon=false title="Common Pitfall"}
+A passing pipeline is not an editorial verdict. The symptom is a merged change with no record of who read it or what they checked. Record the review separately from CI and tie both to the same exact commit.
+:::
+
+::: {.callout-important appearance="simple" icon=false title="Decision & Trade-off"}
+Independent review costs time; skipping it transfers risk to the reader.
+
+| Review model | Choose when | Consequences |
+| :--- | :--- | :--- |
+| Different person reviews exact HEAD | Any change that affects published content | Independent evidence; scheduling cost and reviewer availability. |
+| Same person reviews with a checklist | A tiny, reversible internal note | Lower latency; confirmation bias and weak evidence. |
+| Automated checks only | Mechanical or generated changes with no editorial claim | Fast; cannot judge meaning, sources or layout. |
+
+Use independent review for content and release decisions. Automated checks can support the reviewer but cannot replace the verdict.
+:::
+
+## 6.2 Finding Severity and Merge-Blocking Verdicts
+
+**Definition.** A finding is a specific observation about the reviewed commit. Severity is the consequence if the finding is not addressed before merge. A merge-blocking verdict is a decision that the change must not be accepted until the blocking findings are resolved or explicitly waived by the owner.
+
+**Purpose.** Severity turns a list of opinions into a decision. It tells the author what must change now, what can become a follow-up and what is optional. It also protects the reviewer from escalating every preference into a veto, and protects the reader from a change that is accepted because the critical issue was buried among minor ones.
+
+**What it includes.** Critical findings break correctness, safety, licensing or the release evidence. Major findings defeat the section's reader outcome or a required gate. Minor findings are clarity, consistency or maintainability issues that do not block the change. Optional findings are suggestions. Each finding names the location, the evidence, the consequence and the requested action. The reviewer states a verdict: approved, approved with follow-ups, or changes requested.
+
+**Why it is needed.** Without severity, review becomes negotiation by volume. The author fixes the easy comments and ignores the structural one; the reviewer keeps adding preferences until the change is abandoned. A severity rule makes the blocking threshold explicit and gives the owner a consistent basis for accepting a follow-up.
+
+**Example.** *Illustrative only: a chapter review.* A reviewer finds a missing source for a compatibility claim (Major), a heading that duplicates the chapter title (Minor), and a phrasing preference (Optional). The author fixes the major and minor findings, records the optional one as a follow-up and pushes a new commit. The reviewer re-checks the exact new HEAD. The verdict becomes approved with one documented follow-up, not "approved" while the evidence gap remains.
+
+
+::: {.callout-warning appearance="simple" icon=false title="Common Pitfall"}
+Severity is about consequence, not the reviewer's confidence or the author's effort. A missing source for a load-bearing claim can be Major while a wording preference is Optional. State the consequence and let the label follow.
+:::
+
+::: {.callout-important appearance="simple" icon=false title="Decision & Trade-off"}
+A strict merge gate improves trust but can slow delivery.
+
+| Gate policy | Choose when | Consequences |
+| :--- | :--- | :--- |
+| Block Critical and Major findings | Content, release or trust-bearing changes | Clear quality floor; some changes wait for evidence. |
+| Block only Critical findings | Low-risk internal changes with a follow-up owner | Faster merge; Major issues can become hidden debt. |
+| Advisory review only | Exploratory drafts not presented as approved content | Low friction; weak evidence for readers and owners. |
+
+Block Critical and Major findings for published content. Allow Minor and Optional items only when they have an owner and a recorded follow-up.
+:::
+
+## 6.3 Re-Checks, Review Records and Closure
+
+**Definition.** A re-check is a fresh execution of the applicable checks on the reviewed commit after a change. A review record is the durable evidence of the reviewed commit, findings, commands and verdict. Closure is the explicit state in which each blocking finding is fixed, waived by the owner or converted to an owned follow-up.
+
+**Purpose.** A review record lets a later reader answer a simple question: what exactly was approved, by whom, with what evidence? Re-checks prevent a fix from introducing a new defect. Closure prevents a finding from disappearing because the conversation moved on.
+
+**What it includes.** Record the repository, branch and full commit SHA; the reviewer and date; the commands actually run and their results; findings with severity and location; the verdict; and the disposition of every blocking finding. If the author pushes after review, the old verdict applies only to the old commit. Re-review or explicitly scope the delta before accepting the new HEAD.
+
+**Why it is needed.** Review evidence decays quickly when it is stored only in chat. A later audit cannot tell which commit was approved or whether a finding was fixed. Re-checks catch the common failure where a last-minute edit changes a checked file. Closure turns a review from a conversation into a record the owner can rely on.
+
+A lightweight review record can be a single structured comment: commit, commands, findings, verdict and follow-ups. The format matters less than the invariants. Any later reader should be able to tell which tree was reviewed, whether the reviewer actually ran the checks and what remains open. When those facts are missing, the review may still have been useful, but it is not durable evidence.
+
+**Example.** *Illustrative only: a release review.* A reviewer approves a chapter at commit A. The author then fixes a broken link, creating commit B. The reviewer does not reuse the approval. They re-run the reference check at commit B, verify that only the link changed and record a delta verdict. The release record points to B, the exact commit whose bytes were reviewed. If a check cannot be run, the record says "not run" and the verdict reflects that gap.
+
+
+::: {.callout-warning appearance="simple" icon=false title="Common Pitfall"}
+A branch is a moving name. An approval attached to a branch cannot tell a later release which bytes were reviewed. Record the full commit SHA, re-run the checks on that commit and refuse to carry the verdict to a different tree.
+:::
+
+::: {.callout-important appearance="simple" icon=false title="Decision & Trade-off"}
+Review records can be lightweight or formal; the required evidence should match the risk.
+
+| Record depth | Choose when | Consequences |
+| :--- | :--- | :--- |
+| Comment with commit, commands and verdict | Routine chapter or small change | Fast; easy to miss when the conversation is long. |
+| Structured review file in the repository | Release-bearing or contested changes | Durable and auditable; more writing and maintenance. |
+| External approval system only | Organization already has a controlled review system | Central audit trail; may not travel with the book repository. |
+
+Match the record to the risk, but always name the exact commit and the commands actually run.
+:::
+
+## 6.4 Worked Example — A Review That Changes the Verdict
+
+*In practice:* a reviewer receives a chapter at a full commit SHA and a claim that all checks pass. The reviewer independently runs the checks and reads the diff.
+
+1. Confirm the reviewed commit and the branch have the same HEAD; record the SHA.
+2. Re-run the fast and full checks; compare the results with the author's evidence.
+3. Read the changed section against its reader outcome, not only the diff.
+4. Check the difficult claim against the cited source and its version.
+5. Classify each finding by consequence.
+6. Post the findings with location and requested action; state the verdict.
+7. After fixes, re-run on the new commit and record closure or a follow-up owner.
+
+The reviewer finds that the checks pass but the section's central claim is supported only by a link that has moved. The verdict is changes requested, not approved with a note, because the claim is load-bearing. After the author adds a stable citation and a retrieval date, the reviewer re-runs the checks and approves the new commit.
+
+::: {.callout-note appearance="simple" icon=false title="Review Checklist"}
+- Is the reviewed full commit SHA recorded?
+- Did a different agent or person perform the review?
+- Were the applicable checks actually re-run, with results?
+- Is every finding classified by consequence and given a location?
+- Does the verdict distinguish blocking from follow-up findings?
+- Are all blocking findings closed, waived by the owner or owned?
+- Does the release point to the exact reviewed commit?
+:::
+
+## 6.5 Further Reading
+
+- Google, *Code Review Developer Guide*: <https://google.github.io/eng-practices/review/> — practical guidance on review scope, findings and reviewer/author responsibilities.
+- GitHub Docs, *About protected branches*: <https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches> — repository controls for required review and merge checks.
+- Diátaxis, *A systematic framework for technical documentation authoring*: <https://diataxis.fr/> — reader-need framework for the content under review.
+- Write the Docs, *Documentation Guide*: <https://www.writethedocs.org/guide/> — practitioner guidance on documentation review and maintenance.

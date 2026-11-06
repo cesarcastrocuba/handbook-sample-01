@@ -1,0 +1,141 @@
+---
+title: "4. Research and Source Discipline"
+profile: standard
+---
+
+# 4. Research and Source Discipline {#sec-research}
+
+A handbook becomes trustworthy when a reader can follow a claim back to evidence. Research discipline is the difference between a confident paragraph and a checkable one. This chapter defines a source hierarchy, a claim vocabulary and a rights check that keep the handbook honest without turning every page into an academic paper.
+
+::: {.callout-note appearance="simple" icon=false title="When to Use This Chapter"}
+- A section makes a factual claim about a product, standard or measured result.
+- Two sources disagree about the same behavior or terminology.
+- An author wants to use a quotation, table or screenshot from another source.
+- A reviewer cannot tell whether a claim is evidence, recommendation or assumption.
+:::
+
+::: {.callout-tip appearance="simple" icon=false title="Key Takeaway"}
+Cite the strongest source that a reader can actually check, label what kind of claim you are making, and record the rights before reproducing someone else's work. A source list is evidence, not decoration.
+:::
+
+## 4.1 Source Hierarchy
+
+**Definition.** A source hierarchy is an ordered preference for evidence: primary sources and standards first, authoritative practitioner documentation second, individual experience third and unsourced memory last. The hierarchy is a starting point for judgment, not a claim that a lower tier is always wrong.
+
+**Purpose.** The hierarchy helps an author choose what to cite and helps a reviewer see why one claim is stronger than another. It also prevents a common failure in technical writing: treating a popular blog post and a normative specification as interchangeable because both are online.
+
+**What it includes.** Primary sources include specifications, standards, official product documentation, source code and reproducible measurements. Authoritative practitioner sources include maintained guides and engineering handbooks with named authors and review. Individual experience can illustrate a practice but rarely establishes a general fact. Internal evidence includes logs, tickets, incident records and code at a named revision; it can be strong for a local claim and weak for a universal one.
+
+**Why it is needed.** Without a hierarchy, the loudest or most recent source wins. A vendor blog can outrank a standard because it is easier to read; an anecdote can outrank a measurement because it is more vivid. The reader then receives confidence without traceability. The hierarchy makes the trade-off visible and gives the reviewer a basis for asking for better evidence.
+
+**Example.** *Illustrative only: a retry-policy section.* The author cites the HTTP specification for idempotency semantics, the payment provider's official API documentation for its retry headers, and an internal incident review for the team's observed duplicate-charge failure. A practitioner blog post is used only to illustrate a common implementation pattern, not to define the provider's behavior.
+
+
+::: {.callout-warning appearance="simple" icon=false title="Common Pitfall"}
+A secondary summary is convenient but can flatten exceptions and change normative language. If the claim depends on a standard's requirement, cite the standard and name the clause; use the summary only to help the reader understand it.
+:::
+
+::: {.callout-important appearance="simple" icon=false title="Decision & Trade-off"}
+Choosing a source is a trade-off between authority, accessibility and freshness.
+
+| Source tier | Choose when | Consequences |
+| :--- | :--- | :--- |
+| Primary standard or specification | The claim is normative or defines a term | Highest authority; may be paywalled, dense or slow to read. |
+| Official product documentation | Behavior is product-specific | Checkable and current for the documented version; may omit edge cases. |
+| Maintained practitioner guide | The reader needs a synthesis or method | Useful context; may lag the primary source or encode one team's practice. |
+| Internal evidence | The claim is about this organization's behavior | Strong locally; not generalizable without context. |
+
+Use the strongest source the claim needs. Do not dress an internal observation as a universal rule, and do not make a normative claim from a blog post when the specification is available.
+:::
+
+## 4.2 Claims, Citations and Assumptions
+
+**Definition.** A claim is a statement the reader is asked to believe. A citation identifies the evidence for that claim. An assumption is a statement accepted without current evidence because the work cannot proceed otherwise. The three are different obligations and should not share the same confident tone.
+
+**Purpose.** Separating claims from assumptions prevents a draft from presenting uncertainty as fact. It also makes review possible: a reviewer can accept a well-evidenced claim, challenge a weak citation and require a test for an assumption. The distinction is especially important when a product or standard changes between the time of writing and the time of reading.
+
+**What it includes.** A checkable claim names the subject, the condition and the evidence. "The endpoint accepts an idempotency key for 24 hours" is checkable against provider documentation; "the endpoint is reliable" is not. A citation gives the source, version or date and a locator precise enough to find the support. An assumption states what is being taken for granted, why, and what would invalidate it. Unverified material is labeled as unverified rather than buried in declarative prose.
+
+**Why it is needed.** Handbooks age. A citation without a version becomes ambiguous; an assumption without a trigger becomes invisible. When the underlying behavior changes, the author and reviewer cannot tell which paragraphs must be revisited. The result is a document that looks authoritative while being quietly wrong. Claim vocabulary gives maintenance a starting point.
+
+A practical source ledger makes the distinction visible without forcing the reader through the research process. It records the claim, the confidence level, the source and the review trigger in one place. The ledger can live beside the outline or in a change record; its location matters less than the habit of updating it when a source changes. Reviewers can then check the evidence that supports a decision instead of reconstructing the author's browser history.
+
+**Example.** *Illustrative only: an observability guide.* The author writes: "The collector retries failed exports for up to five minutes." The citation points to the provider's configuration reference for version 2.4 and names the retry setting. The same section marks "we assume the collector remains in the same network zone as the backend" as an assumption, with the trigger "revisit if the deployment topology changes". A separate note says the team's observed retry latency was not independently measured.
+
+
+::: {.callout-warning appearance="simple" icon=false title="Common Pitfall"}
+Link density is not evidence density. A reader who follows five links and finds none of them supports the sentence learns to distrust the whole section. Cite the exact support or label the claim as unverified.
+:::
+
+::: {.callout-important appearance="simple" icon=false title="Decision & Trade-off"}
+Every claim needs enough evidence to change a reader's decision; more evidence has diminishing value.
+
+| Evidence choice | Choose when | Consequences |
+| :--- | :--- | :--- |
+| One strong primary source | The claim is narrow and normative | Clear provenance; may need a version/date qualifier. |
+| Multiple independent sources | Sources disagree or the claim is contested | Stronger confidence; longer source notes and more maintenance. |
+| Internal measurement | The claim concerns local behavior | Direct relevance; limited generalizability and reproducibility. |
+| Explicit assumption | Evidence is unavailable but the work must proceed | Transparent uncertainty; needs a validation trigger. |
+
+Stop adding sources when another source would not change the decision. Label the remaining uncertainty rather than hiding it under more links.
+:::
+
+## 4.3 Rights Review and Attribution
+
+**Definition.** A rights review is the check that the handbook may reproduce a source's text, table, figure, screenshot or dataset, and under what conditions. Attribution is the credit and license statement that accompanies permitted reuse. Neither is a substitute for the other.
+
+**Purpose.** Technical sources are not automatically reusable because they are public. A rights review protects the book, its readers and the original authors. It also prevents a subtle failure: a copied table that looks authoritative but has lost its context, version or permission.
+
+**What it includes.** Record the source, owner, license or permission, the exact material to be reused, any required notice, whether modification is allowed and the reviewer who checked it. Prefer summarizing and linking over reproducing. When a table or figure is essential, reproduce only what is needed, preserve attribution and keep the source's terms with the artifact. For quotations, keep them short and necessary.
+
+**Why it is needed.** A handbook that copies first and asks later creates legal and editorial debt. The copied material may be outdated, may carry a different license or may be withdrawn. A rights record lets a later maintainer find and remove or renegotiate the material without auditing every sentence.
+
+**Example.** *Illustrative only: a compatibility table from a vendor.* The author wants to reproduce a large support matrix. The rights review finds that the vendor permits quotation with attribution but not modification. The team instead summarizes the decision rule, links to the current matrix and reproduces only two rows that are necessary for the local migration decision, with the source and retrieval date recorded.
+
+
+::: {.callout-warning appearance="simple" icon=false title="Common Pitfall"}
+"Publicly accessible" does not mean "free to reproduce". A missing license record is a rights gap, not a neutral default. Record the terms or remove the copied material.
+:::
+
+::: {.callout-important appearance="simple" icon=false title="Decision & Trade-off"}
+Reuse can improve fidelity but transfers maintenance and rights obligations.
+
+| Option | Choose when | Consequences |
+| :--- | :--- | :--- |
+| Link to the source | The reader can use the original in context | Low rights risk; link rot and dependence on the source's availability. |
+| Summarize in original prose | The decision matters more than the exact artifact | Clear ownership; possible loss of nuance. |
+| Reproduce a small excerpt | Exact wording or a small table is essential | Higher fidelity; requires rights, attribution and a maintenance trigger. |
+| Reproduce a full table or figure | The artifact is the decision and permission is clear | Highest fidelity; highest rights and update burden. |
+
+Prefer a link or a summary. Reproduce only the part the reader needs, and keep the rights record with the book.
+:::
+
+## 4.4 Worked Example — Building a Source Ledger
+
+*In practice:* an author prepares a section on webhook verification and builds a ledger before drafting.
+
+1. Write each consequential claim in one sentence.
+2. Mark the claim as fact, recommendation or assumption.
+3. Attach the strongest checkable source and a locator.
+4. Record the source version or retrieval date.
+5. Mark any claim that cannot be verified and decide whether to remove it or label it.
+6. For copied material, record the owner, license, permission and attribution before inclusion.
+7. Re-read the draft and remove links that do not support a claim.
+
+In the illustrative ledger, the signature algorithm is supported by the provider's official documentation, the replay-window recommendation is an author recommendation based on the provider's documented nonce behavior, and the team's observed delivery latency is marked as internal and unverified. No table is copied. The section is reviewed against the ledger, not against the author's confidence.
+
+::: {.callout-note appearance="simple" icon=false title="Review Checklist"}
+- Is every consequential claim classified as fact, recommendation or assumption?
+- Does each citation support the exact sentence and name a version or date?
+- Is at least one claim marked unverified, or is the evidence genuinely complete?
+- Are copied excerpts within a recorded rights position?
+- Are external links preserved without being treated as citations by themselves?
+- Can a maintainer find every source again from the ledger?
+:::
+
+## 4.5 Further Reading
+
+- ISO/IEC/IEEE 29148:2018, *Systems and software engineering — Life cycle processes — Requirements engineering*: <https://www.iso.org/standard/72089.html> — primary standard for stakeholder needs, requirements quality and traceability.
+- Creative Commons, *Attribution-ShareAlike 4.0 International*: <https://creativecommons.org/licenses/by-sa/4.0/> — license terms used for this book's content.
+- SPDX, *License List*: <https://spdx.org/licenses/> — canonical license identifiers and terms for software and content.
+- Diátaxis, *A systematic framework for technical documentation authoring*: <https://diataxis.fr/> — reader-need framework used to choose explanation, reference and how-to material.

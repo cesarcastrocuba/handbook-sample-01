@@ -1,0 +1,138 @@
+---
+title: "5. Writing a Section"
+profile: standard
+---
+
+# 5. Writing a Section {#sec-writing}
+
+A section is the smallest unit a reader can use, review or maintain. If it cannot stand on its own without the surrounding chapter, it is probably an outline note rather than a section. This chapter turns research into prose that teaches a decision, exposes a failure and gives the reader a way to act.
+
+::: {.callout-note appearance="simple" icon=false title="When to Use This Chapter"}
+- A draft has facts but no clear reader outcome.
+- A section reads like a definition but never helps the reader decide.
+- An example is too abstract to show the consequences of a choice.
+- A reviewer asks for more detail without naming the decision it should support.
+:::
+
+::: {.callout-tip appearance="simple" icon=false title="Key Takeaway"}
+Write the decision before the explanation. A section earns its place when the reader can state what changed, what it costs and what to do next; the supporting definition, example and trade-off exist to make that decision trustworthy.
+:::
+
+## 5.1 Definition, Purpose and What the Section Includes
+
+**Definition.** A section is a self-contained argument about one reader decision, bounded by a heading and supported by definition, purpose, scope, evidence and a closing choice. It is not a container for every fact the author knows about the heading.
+
+**Purpose.** The opening of a section tells the reader whether to keep reading. A precise definition removes ambiguity; a purpose statement connects the concept to a decision; a scope statement says what the section will not cover. Together they let a reader with a different need leave early instead of carrying irrelevant detail.
+
+**What it includes.** A concept or practice unit starts with Definition, Purpose, What it includes and Why it is needed, in that order. The definition states the category and the boundary. The purpose names the decision or action it enables. What it includes names the minimum useful contents. Why it is needed describes the failure that follows when the element is missing. The section then closes with an Example, a Common Pitfall and a Decision & Trade-off.
+
+**Why it is needed.** Readers scan before they commit. A section that opens with history or caveats hides its value; a section that opens with a vague definition forces the reader to infer the boundary. The four opening labels give the reader a fast contract: this is what the idea is, this is why it matters, this is what it contains and this is the cost of ignoring it.
+
+**Example.** *Illustrative only: a section on deployment freezes.* The definition distinguishes a freeze from a rollback window. The purpose is to decide when a change may bypass the normal release train. What it includes names the change classes, approvers, evidence and exception path. Why it is needed describes the incident that follows when a schema migration lands during a freeze with no rollback. The reader can now decide whether a proposed change belongs in the exception.
+
+
+::: {.callout-warning appearance="simple" icon=false title="Common Pitfall"}
+A section that only defines terms leaves the reader with vocabulary and no decision. If the reader cannot act differently, merge the material into a reference section or add the missing purpose, failure and choice.
+:::
+
+::: {.callout-important appearance="simple" icon=false title="Decision & Trade-off"}
+A short section is easier to use; a long one may carry more context.
+
+| Choice | Choose when | Consequences |
+| :--- | :--- | :--- |
+| One tight decision per section | The reader has a clear recurring choice | Easy to review and link; related context may need a separate section. |
+| One broad topic per section | The topic is new and the reader needs orientation | More context; higher risk of hiding the decision. |
+| Split into several sections | Several independent decisions share a topic | Clear navigation; more headings and cross-references to maintain. |
+
+Prefer one decision per section. Split when the reader would otherwise need two different actions under one heading.
+:::
+
+## 5.2 Worked Examples and Common Pitfalls
+
+**Definition.** A worked example is a concrete, labeled case that shows the section's decision in motion. A common pitfall is a specific failure mode with a symptom, a consequence and a correction. Neither is a second definition, and neither should be presented as a universal rule without evidence.
+
+**Purpose.** Examples make an abstract trade-off testable. Pitfalls make the cost of a wrong choice visible before the reader repeats it. Together they turn a claim into a rehearsal: the reader can compare the example with their situation and recognize the failure in time.
+
+**What it includes.** An example names the setting, the choice, the evidence and the outcome. Fictional details are labeled illustrative; measurements are labeled with their source and conditions. A pitfall names one failure, its observable symptom and the correction. A second example is justified only when it tests a different condition, not when it repeats the first with different nouns.
+
+**Why it is needed.** Readers do not adopt a principle because it is stated clearly. They adopt it when they can see it survive a concrete case and when they recognize the failure it prevents. Examples also expose gaps: a principle that cannot be illustrated in a realistic setting may be too vague to use. Pitfalls keep the section from becoming a sales pitch.
+
+A useful test is to remove the section and ask what the reader would do differently. If the answer is nothing, the section is probably reference material or a note rather than a decision argument. If the answer is clear but the section does not show the evidence, the example is doing too little work. That test keeps the prose proportional: the section carries only the context needed to make the decision, not every fact the author discovered.
+
+**Example.** *Illustrative only: an idempotency section.* The example describes a partner retrying a payment after a timeout. The first attempt succeeded but the response was lost. The retry reuses the same idempotency key and returns the original result. The pitfall is a new key on every retry, which creates a duplicate charge; the symptom is two orders for one customer action; the correction is to persist the key with the request. The example is fictional, but the behavior it illustrates is checkable against the provider's documentation.
+
+
+::: {.callout-warning appearance="simple" icon=false title="Common Pitfall"}
+An example with no cost is a demonstration of the author's conclusion, not evidence for the reader's decision. Add the constraint that could make the choice fail, then show how the decision responds.
+:::
+
+::: {.callout-important appearance="simple" icon=false title="Decision & Trade-off"}
+Examples can be minimal or rich; each has a review cost.
+
+| Form | Choose when | Consequences |
+| :--- | :--- | :--- |
+| One compact case | The decision is simple and the failure is obvious | Fast to read; may hide contextual constraints. |
+| One detailed case with a failure | The trade-off depends on timing, ownership or data | Strong teaching value; more prose and more details to verify. |
+| Two contrasting cases | The same rule behaves differently under two conditions | Reveals the boundary; longer section and more maintenance. |
+
+Use the smallest case that exposes the decision's cost. Add a second case only when it changes the reader's choice.
+:::
+
+## 5.3 Decisions, Trade-offs and Action Checklists
+
+**Definition.** A decision statement names the choice the reader must make. A trade-off explains what the choice buys, what it costs and when the alternative is reasonable. An action checklist turns the decision into observable steps without pretending that judgment has disappeared.
+
+**Purpose.** The closing of a section is where the reader changes from understanding to action. A decision without a trade-off becomes advocacy; a trade-off without a decision leaves the reader suspended; a checklist without a decision becomes ritual. The three together make the section usable in a real review.
+
+**What it includes.** State the default choice, the conditions that favor it and the conditions that favor an alternative. Use a table only when readers must compare the same dimensions across options. A checklist item should be observable: "name the owner" is checkable; "ensure quality" is not. Keep the list short enough to use during the task.
+
+**Why it is needed.** Technical prose often stops at explanation. The reader understands the concept but cannot tell what to do on Monday. A decision and trade-off make the recommendation falsifiable; a checklist makes the first action concrete. If the section cannot produce any of these, it may be reference material rather than a decision section.
+
+**Example.** *Illustrative only: choosing a review depth.* The default is a one-page decision review. The trade-off is speed versus traceability. A regulated change or a multi-team dependency justifies a fuller evidence review; a reversible internal note does not. The checklist asks for the reader, the decision, the evidence and the approver, and stops there. It does not ask the reviewer to "check quality" without saying what evidence would satisfy that request.
+
+
+::: {.callout-warning appearance="simple" icon=false title="Common Pitfall"}
+"Use good judgment" is not a decision and "review carefully" is not a checklist. A reader cannot act on either. Name the default, the exception condition and the evidence that proves the step happened.
+:::
+
+::: {.callout-important appearance="simple" icon=false title="Decision & Trade-off"}
+A strong recommendation can be decisive or conditional.
+
+| Style | Choose when | Consequences |
+| :--- | :--- | :--- |
+| Strong default with exceptions | The evidence supports one choice for most readers | Clear action; exceptions must be named and reviewed. |
+| Conditional guidance | The right choice depends on context the author cannot see | Honest; the reader must do more judgment and may prefer a default. |
+| Options only | The decision belongs to a local owner and evidence is incomplete | Preserves autonomy; risks leaving the reader without a starting point. |
+
+Give a default when the evidence supports one. Make the conditions explicit rather than hiding them in a long list of options.
+:::
+
+## 5.4 Worked Example — Rewriting a Weak Section
+
+*In practice:* an editor receives a section titled "Caching" that defines a cache, lists three products and recommends "use caching for performance". The rewrite proceeds in five passes.
+
+1. Name the reader decision: whether to add a cache in front of a read-heavy endpoint.
+2. Write the definition boundary: a cache is a copy with an invalidation contract, not a database.
+3. State the purpose: reduce repeated reads without serving stale authorization data.
+4. Replace the product list with the decision dimensions: consistency, invalidation, failure mode and ownership.
+5. Add one illustrative case with a stale-permission failure, then a trade-off between latency and correctness.
+6. Close with a checklist that asks for the data owner, the acceptable staleness and the invalidation test.
+7. Remove every product claim that cannot be supported by a checkable source.
+
+The result is shorter than the original and more useful. It does not claim that caching is always faster; it names the condition under which the cache is the wrong choice. The reviewer can now reject a draft that omits the invalidation owner or the stale-data test.
+
+::: {.callout-note appearance="simple" icon=false title="Review Checklist"}
+- Can the section's reader outcome be stated in one sentence?
+- Are the four opening labels distinct and non-repetitive?
+- Does the example expose a real cost or constraint?
+- Is the pitfall specific enough to recognize in practice?
+- Does the Decision & Trade-off name a default and an alternative condition?
+- Are checklist items observable artifacts or tests rather than aspirations?
+:::
+
+## 5.5 Further Reading
+
+- Google, *Developer Documentation Style Guide*: <https://developers.google.com/style> — practical guidance for audience, terminology, lists and technical clarity.
+- Diátaxis, *A systematic framework for technical documentation authoring*: <https://diataxis.fr/> — distinguishes explanation, reference, tutorials and how-to guidance.
+- CommonMark, *CommonMark Spec*: <https://spec.commonmark.org/> — normative Markdown syntax referenced by the manuscript format.
+- Write the Docs, *Documentation Guide*: <https://www.writethedocs.org/guide/> — practitioner guidance on structure, examples and review.
