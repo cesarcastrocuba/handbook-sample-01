@@ -4,23 +4,23 @@ This file is the only source of current status. Decisions live in [`DECISIONS.md
 
 ## Phase
 
-Sample book bootstrap (platform phase 3). The repository scaffold, editorial brief and proposed outline are ready for independent review. No manuscript prose exists.
+Sample book bootstrap (platform phase 3). Gates 1 and 2 are approved; Gate 3 is pending. The root review and integration of the approval record are next. No manuscript prose exists.
 
 ## Gates
 
 | Gate | State | Evidence |
 | --- | --- | --- |
-| 1 — editorial brief | **Proposed**, awaiting owner approval | [`docs/editorial/brief.md`](docs/editorial/brief.md) |
-| 2 — outline | **Proposed**, awaiting owner approval | [`docs/editorial/outline.md`](docs/editorial/outline.md) |
-| 3 — pilot section | **Blocked**, not started | After Gates 1 and 2 are approved, exactly the pilot file at `pilot.path` may be committed and reviewed while Gate 3 is pending. The check enforces that file boundary; a reviewer confirms the file contains only section 2.2. Gate 3 approval then authorizes expansion. |
+| 1 — editorial brief | **Approved**, 2026-11-06 | [`docs/editorial/brief.md`](docs/editorial/brief.md) |
+| 2 — outline | **Approved**, 2026-11-06 | [`docs/editorial/outline.md`](docs/editorial/outline.md) |
+| 3 — pilot section | **Pending**, not approved; pilot not written | Gate 3 becomes approvable only after the pilot exists and is independently reviewed. Writing waits for root integration of the [approval record](docs/editorial/approval-record.md). |
 
-Gate state is machine-readable in [`docs/editorial/gates.json`](docs/editorial/gates.json) and explained in [`docs/editorial/gates.md`](docs/editorial/gates.md). Gate 3 approves written work; it is not a precondition for writing the pilot. Gate values are a recorded assertion kept in step with owner decisions, not proof of authorization.
+Gate state is machine-readable in [`docs/editorial/gates.json`](docs/editorial/gates.json) and explained in [`docs/editorial/gates.md`](docs/editorial/gates.md). The owner statement and approved scope are in the [approval record](docs/editorial/approval-record.md). Gate 3 approves written work; it is not a precondition for writing the pilot. Gate values are a recorded assertion kept in step with owner decisions, not proof of authorization.
 
 ## Completed in this bootstrap
 
 - Local Git repository initialized on `main`.
 - Agent-neutral roles and workflow defined in [`AGENTS.md`](AGENTS.md).
-- Editorial brief, proposed outline and content profile drafted.
+- Editorial brief and outline approved at Gates 1 and 2 on 2026-11-06, including the broad technical/software audience, full eight-chapter goal and standard `0.2.0` direction.
 - Manuscript and publishing layouts reserved without prose or build claims.
 - Lightweight SDD proposal and task record created.
 - Dependency-free repository check, gate-state policy and state-machine tests added and documented.
@@ -34,12 +34,12 @@ Gate state is machine-readable in [`docs/editorial/gates.json`](docs/editorial/g
 - No Quarto configuration or build; Quarto is not installed in the bootstrap environment.
 - No full manuscript or artifact validation yet. `make full` is a current-scope incomplete gate: it passes the fast descriptor check, then fails because no pilot exists for `validate-book --full` and no artifact manifest exists. This is not a descriptor failure.
 - No HTML, PDF, DOCX, site output or release.
-- No GitHub repository, deployment, catalog entry or release.
+- GitHub repository exists and the integration branch is pushed; no merge to `main`, deployment, catalog entry or release has occurred.
 - No change to the hub or to the existing handbook.
 
 ## Next step
 
-The owner reviews the [brief](docs/editorial/brief.md) and [outline](docs/editorial/outline.md). On approval, both gates are recorded here and in `gates.json`; Gate 2 sets `gate_3_pilot` to `pending`. A separate scoped task then writes only the pilot file, and a reviewer confirms it contains only section 2.2. Gate 3 is decided after that independent review, and only then may expansion begin.
+The root independently reviews the [approval record](docs/editorial/approval-record.md) at the exact HEAD and integrates the branch. Only after that integration may a separate scoped task write the pilot file; a reviewer then confirms it contains only section 2.2. Gate 3 remains pending until that review is complete. Expansion is not authorized.
 
 ## Verification
 

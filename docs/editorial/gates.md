@@ -2,8 +2,9 @@
 
 | Field | Value |
 | --- | --- |
-| Status | **Proposed** — owner approvals pending |
+| Status | Gates 1 and 2 approved 2026-11-06; Gate 3 pending |
 | Date | 2026-11-06 |
+| Approval evidence | [Owner approval record](approval-record.md) |
 | Machine-readable state | [`gates.json`](gates.json) |
 | File-level checks | `scripts/check_repo.py` using `scripts/gate_policy.py` |
 
@@ -45,7 +46,7 @@ The pilot is deliberately the only manuscript file written before the gate that 
 5. **Owner decides Gate 3.** Update `PROJECT_STATUS.md` and `gates.json`: `gate_3_pilot` becomes `approved`. Expansion is now allowed.
 6. **Chapter-by-chapter expansion.** Each chapter is reviewed independently; the owner still approves each chapter.
 
-Gate approvals are recorded by the owner, never by an implementer or reviewer. This bootstrap records none of them.
+Gate approvals are recorded by the owner, never by an implementer or reviewer. Gates 1 and 2 are recorded in the [owner approval record](approval-record.md); Gate 3 is not approved.
 
 ## 4. What the check does and does not prove
 

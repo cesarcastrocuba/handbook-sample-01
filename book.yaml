@@ -6,8 +6,9 @@
 # Profile source: standard 0.2.0 is proposed on hub branch
 # feat/topic-neutral-profile. The hub revision pinned below contains profile
 # 0.1.0. Profiles are hub repository resources, not files in the installed
-# toolkit package, so this 0.2.0 reference is contingent on the hub branch
-# being approved and merged. It does not make 0.2.0 available or approved here.
+# toolkit package. The owner approved this book's 0.2.0 direction at Gate 2 on
+# 2026-11-06; adoption remains contingent on the hub branch being approved and
+# merged. This file does not make 0.2.0 available or merged.
 schema_version: "1.0"
 id: handbook-authoring-and-publishing
 title: "Handbook Authoring and Publishing"

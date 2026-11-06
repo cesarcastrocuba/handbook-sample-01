@@ -2,16 +2,17 @@
 
 | Field | Value |
 | --- | --- |
-| Status | **Proposed** — owner approval pending (Gate 1) |
+| Status | **Approved** — Gate 1, 2026-11-06 |
 | Version | 0.1 |
 | Date | 2026-11-06 |
+| Approval evidence | [Owner approval record](approval-record.md) |
 | Repository | `handbook-sample-01` |
 | Decision owner | Project owner |
 | Related documents | [Outline](outline.md) · [Content profile](profile.md) · [`AGENTS.md`](../../AGENTS.md) |
 
-## 1. Decision requested
+## 1. Approval status
 
-Approve this brief as the editorial contract for the sample handbook. Approval confirms the audience, reader promise, scope, non-goals, quality bar and licensing. It does not approve the outline or any chapter text; the outline remains proposed until Gate 2.
+This brief was approved at Gate 1 on 2026-11-06. The approval also records the broad technical/software audience, the full eight-chapter goal and the standard `0.2.0` direction. See the [owner approval record](approval-record.md). It does not approve Gate 3, the pilot or any chapter text.
 
 ## 2. Purpose
 
@@ -136,16 +137,17 @@ Gate 3 is an approval of written work, not a precondition for writing it. Gates 
 - English is the publication language.
 - The owner supplies or confirms the public attribution before release.
 
-**Open questions for the owner at Gate 1**
+**Remaining owner item before release**
 
 1. Is the proposed attribution "Handbook Sample Contributors" acceptable, or should a named person or organization hold copyright?
-2. Are the proposed chapter length bounds acceptable for a sample book?
+
+Chapter-length bounds remain planning bounds and are confirmed after the pilot.
 
 ## Approval
 
 | Field | Value |
 | --- | --- |
-| Owner | *Pending* |
-| Decision | *Pending* |
-| Date | *Pending* |
-| Notes | *Pending* |
+| Owner | Project owner |
+| Decision | Approved — Gate 1 |
+| Date | 2026-11-06 |
+| Notes | Broad technical/software audience, full eight-chapter goal and standard `0.2.0` direction recorded in the [approval record](approval-record.md). Gate 3 remains pending; public attribution remains pending before release. |

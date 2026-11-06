@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "gate_1_brief": "proposed",
-  "gate_2_outline": "proposed",
-  "gate_3_pilot": "blocked",
+  "gate_1_brief": "approved",
+  "gate_2_outline": "approved",
+  "gate_3_pilot": "pending",
   "pilot": {
     "section": "2.2",
     "title": "The Brief as a Decision Record",

@@ -2,13 +2,14 @@
 
 | Field | Value |
 | --- | --- |
-| Status | **Proposed** — owner approval pending with the outline (Gate 2) |
+| Status | **Approved direction** — standard `0.2.0`, 2026-11-06; hub profile still **Proposed** |
 | Document revision | 0.2 |
 | Date | 2026-11-06 |
-| Hub profile reference | `standard` `0.2.0` — **Proposed** on hub branch `feat/topic-neutral-profile`; contingent on hub branch approval |
+| Approval evidence | [Owner approval record](approval-record.md) |
+| Hub profile reference | `standard` `0.2.0` — **Proposed** on hub branch `feat/topic-neutral-profile`; adoption contingent on hub branch merge |
 | Applies to | Every chapter and appendix in this book |
 
-This profile defines the reusable shape of a section. It is deliberately small: enough structure to make chapters consistent and reviewable without turning every page into a form. It is not an approved hub profile and does not make `0.2.0` available.
+This profile defines the reusable shape of a section. It is deliberately small: enough structure to make chapters consistent and reviewable without turning every page into a form. The owner approved this book's `0.2.0` direction at Gate 2; it is still not a merged hub profile and does not make `0.2.0` available.
 
 ## 1. Chapter-level elements
 

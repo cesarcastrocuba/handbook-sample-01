@@ -43,6 +43,7 @@ REQUIRED_FILES = (
     "docs/editorial/profile.md",
     "docs/editorial/gates.md",
     "docs/editorial/gates.json",
+    "docs/editorial/approval-record.md",
     "docs/integration/pinned-toolkit.md",
     "manuscript/README.md",
     "manuscript/book.yml",

@@ -1,16 +1,17 @@
-# Proposed outline — *Handbook Authoring and Publishing*
+# Outline — *Handbook Authoring and Publishing*
 
 | Field | Value |
 | --- | --- |
-| Status | **Proposed** — owner approval pending (Gate 2) |
+| Status | **Approved** — Gate 2, 2026-11-06 |
 | Version | 0.1 |
 | Date | 2026-11-06 |
+| Approval evidence | [Owner approval record](approval-record.md) |
 | Depends on | [Editorial brief](brief.md) approval (Gate 1) |
-| Profile | `standard` `0.2.0` — **Proposed** on hub branch `feat/topic-neutral-profile`; contingent on hub branch approval |
+| Profile | `standard` `0.2.0` — direction approved at Gate 2, 2026-11-06; hub profile still proposed on `feat/topic-neutral-profile` |
 | Pilot | Chapter 2, section 2.2 — **not written** |
 | Related | [Content profile](profile.md) · [`AGENTS.md`](../../AGENTS.md) |
 
-Approving this outline confirms the chapter structure, the profile coverage, the pilot candidate and its exact file path. It does not approve any chapter text. No `.qmd` may be added until Gate 2 is approved. Once it is approved, **exactly the pilot file may be committed and reviewed while Gate 3 is pending**; the check enforces that file boundary, while editorial review confirms the file contains only section 2.2. Gate 3 approval then authorizes expansion. No other chapter file is allowed before Gate 3.
+This outline was approved at Gate 2 on 2026-11-06. Approval confirms the chapter structure, the profile coverage, the pilot candidate and its exact file path. It does not approve any chapter text or Gate 3. While Gate 3 is pending, exactly the pilot file at `pilot.path` may be written and reviewed; no other `.qmd` may be added. Writing waits for the root review and integration recorded in the [approval record](approval-record.md). The check enforces the file boundary only; editorial review confirms the file contains only section 2.2. Gate 3 approval then authorizes expansion.
 
 The machine-readable gate state is [`gates.json`](gates.json); the sequence is defined in [`gates.md`](gates.md).
 
@@ -185,7 +186,7 @@ Appendix A may reproduce the templates used in the book. It must not reproduce t
 5. Sources are real and checkable; none are invented.
 6. A different agent or person reviews the exact commit and posts a verdict.
 
-**Writing authorization.** Gate 2 approval sets `gate_3_pilot` to `pending` and authorizes exactly the pilot file path. The pilot is then written and reviewed while Gate 3 remains pending. The check enforces the file boundary only; the reviewer confirms the file contains only section 2.2. Gate 3 is the owner's approval of that reviewed work; it is not a precondition for writing it.
+**Writing authorization.** Gate 2 approval sets `gate_3_pilot` to `pending` and authorizes exactly the pilot file path. Writing starts only after the root review and integration recorded in the [approval record](approval-record.md); the pilot is then written and reviewed while Gate 3 remains pending. The check enforces the file boundary only; the reviewer confirms the file contains only section 2.2. Gate 3 is the owner's approval of that reviewed work; it is not a precondition for writing it.
 
 **Not included:** the rest of Chapter 2, any other chapter, Quarto configuration, a build or a release.
 
@@ -213,7 +214,7 @@ Appendix A may reproduce the templates used in the book. It must not reproduce t
 
 | Field | Value |
 | --- | --- |
-| Owner | *Pending* |
-| Decision | *Pending* |
-| Date | *Pending* |
-| Notes | *Pending* |
+| Owner | Project owner |
+| Decision | Approved — Gate 2 |
+| Date | 2026-11-06 |
+| Notes | Eight-chapter structure, profile coverage and pilot candidate approved. Gate 3 remains pending; pilot not written. See the [approval record](approval-record.md). |

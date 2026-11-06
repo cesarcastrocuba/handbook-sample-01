@@ -2,22 +2,22 @@
 
 A sample handbook that demonstrates how to plan, write, review and publish a maintainable technical handbook. It is the reference book for the handbook platform and is written in public so the workflow itself can be inspected.
 
-**Status: bootstrap.** The editorial brief and outline are proposed. No chapter prose exists, and the pilot section is intentionally not written. Owner approval is the next step.
+**Status: Gates 1 and 2 approved; Gate 3 pending.** No chapter prose exists, and the pilot is not written. Root review and integration of the approval record are next.
 
 ## Current gate
 
 | Gate | State |
 | --- | --- |
-| 1 — editorial brief | Proposed, awaiting owner approval |
-| 2 — proposed outline | Proposed, awaiting owner approval |
-| 3 — pilot section | Blocked until Gates 1 and 2 are approved; then exactly the pilot file may be committed and reviewed |
+| 1 — editorial brief | Approved, 2026-11-06 |
+| 2 — outline | Approved, 2026-11-06 |
+| 3 — pilot section | Pending, not approved; pilot not written |
 
-Gate 3 is an approval of written work, not a precondition for writing it. Once Gates 1 and 2 are approved, the pilot file is written while Gate 3 is pending; Gate 3 approval then authorizes expansion. The check enforces the file boundary only: it cannot tell whether the file contains only section 2.2, and gate values are a recorded assertion rather than proof of owner authorization. Editorial review covers both. The exact sequence is in [`docs/editorial/gates.md`](docs/editorial/gates.md). Gate evidence is recorded in [`PROJECT_STATUS.md`](PROJECT_STATUS.md) and [`docs/editorial/gates.json`](docs/editorial/gates.json).
+Gate 3 is an approval of written work, not a precondition for writing it. After root integration of the approval record, the pilot file is written while Gate 3 is pending; Gate 3 approval then authorizes expansion. The exact sequence is in [`docs/editorial/gates.md`](docs/editorial/gates.md). Gate evidence is recorded in [`docs/editorial/approval-record.md`](docs/editorial/approval-record.md), [`PROJECT_STATUS.md`](PROJECT_STATUS.md) and [`docs/editorial/gates.json`](docs/editorial/gates.json).
 
 ## What this repository contains
 
 - [`docs/editorial/brief.md`](docs/editorial/brief.md) — purpose, audience, scope, non-goals, quality bar and licensing.
-- [`docs/editorial/outline.md`](docs/editorial/outline.md) — proposed parts, chapters, pilot candidate and approval criteria.
+- [`docs/editorial/outline.md`](docs/editorial/outline.md) — approved parts, chapters, pilot candidate and approval criteria.
 - [`docs/editorial/profile.md`](docs/editorial/profile.md) — the standard section profile and its allowed exceptions.
 - [`docs/editorial/gates.md`](docs/editorial/gates.md) — the gate sequence, state transitions and what each gate authorizes.
 - [`docs/editorial/gates.json`](docs/editorial/gates.json) — machine-readable gate state and the authorized pilot path.

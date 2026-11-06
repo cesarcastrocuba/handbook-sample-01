@@ -22,7 +22,7 @@ No toolkit scripts, schemas or profile files are copied into this repository. In
 
 `book.yaml` references `standard` `0.2.0` because that version makes figures, tables and the review checklist topic-neutral. The pinned hub revision contains `standard` `0.1.0`. Profiles are hub repository resources, not files in the installed `handbook-toolkit` package; the package contains schemas only. Version `0.2.0` exists on the hub branch `feat/topic-neutral-profile` and is still **Proposed**.
 
-The reference is deliberately forward-looking and **contingent on hub branch approval**. Until that approval and merge happen:
+The reference is forward-looking. The owner approved this book's direction at Gate 2 on 2026-11-06; the hub profile itself is still **Proposed**. Until the hub branch is approved and merged:
 
 - this book remains `status: draft`;
 - no claim is made that the toolkit can validate profile `0.2.0`;
