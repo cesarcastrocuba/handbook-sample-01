@@ -1,13 +1,17 @@
 """Gate-sequence policy for the sample handbook.
 
 The sequence has one deliberate asymmetry: Gates 1 and 2 authorize *writing*
-exactly one pilot section; Gate 3 approves that written, reviewed pilot and
+exactly one pilot file; Gate 3 approves that written, reviewed pilot and
 authorizes expansion. Gate 3 therefore cannot be a precondition for writing
 the pilot.
 
 This module is pure and dependency-free so the policy can be tested without a
 repository or a build toolchain. `scripts/check_repo.py` applies it to the real
 working tree; `scripts/tests/test_gate_policy.py` covers every state.
+
+The policy is file-level only. It cannot verify that the pilot file contains
+only section 2.2, and it does not authenticate gate approvals; both remain
+editorial-review responsibilities.
 """
 
 from __future__ import annotations
@@ -83,8 +87,11 @@ def validate_manuscript_prose(
     """Return the gate violations for the manuscript files present.
 
     - Gate 1 or 2 not approved, or Gate 3 blocked: no prose at all.
-    - Gates 1 and 2 approved, Gate 3 pending: exactly `pilot.path` may exist.
+    - Gates 1 and 2 approved, Gate 3 pending: exactly the pilot file may exist.
     - Gate 3 approved: expansion is allowed; the pilot must still be present.
+
+    This is a file-boundary check only. It does not read file contents, confirm
+    that the pilot is limited to section 2.2, or authenticate gate approvals.
     """
     errors = validate_gate_state(state)
     if errors:
@@ -115,7 +122,7 @@ def validate_manuscript_prose(
     extras = [path for path in prose if path != pilot]
     if extras:
         errors.append(
-            "While Gate 3 is pending, only the authorized pilot may exist: "
+            "While Gate 3 is pending, only the authorized pilot file may exist: "
             f"{pilot}. Found extra prose: " + ", ".join(extras)
         )
     return errors

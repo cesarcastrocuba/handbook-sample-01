@@ -4,7 +4,7 @@ This is a sample book repository. Contributions follow the same rules as the pla
 
 ## Before you start
 
-Read [`AGENTS.md`](AGENTS.md), [`PROJECT_STATUS.md`](PROJECT_STATUS.md), [`docs/editorial/gates.md`](docs/editorial/gates.md) and the [editorial brief](docs/editorial/brief.md). Do not write manuscript prose before Gates 1 and 2 are approved. Once they are approved, only the pilot at `pilot.path` in [`docs/editorial/gates.json`](docs/editorial/gates.json) may be written while Gate 3 is pending. Every other chapter stays blocked until Gate 3 approval. The current gates are listed in `PROJECT_STATUS.md`.
+Read [`AGENTS.md`](AGENTS.md), [`PROJECT_STATUS.md`](PROJECT_STATUS.md), [`docs/editorial/gates.md`](docs/editorial/gates.md) and the [editorial brief](docs/editorial/brief.md). Do not add manuscript `.qmd` files before Gates 1 and 2 are approved. Once they are approved, only the pilot file at `pilot.path` in [`docs/editorial/gates.json`](docs/editorial/gates.json) may be added while Gate 3 is pending. The check enforces that file boundary only; reviewers confirm the file contains only section 2.2 and that the gate approval record is real. Every other chapter stays blocked until Gate 3 approval. The current gates are listed in `PROJECT_STATUS.md`.
 
 ## Branches and commits
 

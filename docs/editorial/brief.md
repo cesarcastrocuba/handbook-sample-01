@@ -116,12 +116,12 @@ The attribution line and final licensing confirmation are owner decisions. See [
 | Gate | Success criterion | Evidence |
 | --- | --- | --- |
 | 1 — brief | Owner approves audience, scope, non-goals, quality bar and licensing | Signed decision in this file, `PROJECT_STATUS.md` and `gates.json` |
-| 2 — outline | Owner approves chapter structure, profile coverage, pilot candidate and pilot path | Approved `outline.md` and a recorded decision; `gate_3_pilot` becomes `pending` |
-| 3 — pilot | Owner approves the pilot that was written after Gate 2 and independently reviewed | Reviewed section at an exact commit; review verdict; `gate_3_pilot` becomes `approved` |
+| 2 — outline | Owner approves chapter structure, profile coverage, pilot candidate and pilot file path | Approved `outline.md` and a recorded decision; `gate_3_pilot` becomes `pending` |
+| 3 — pilot | Owner approves the pilot file that was written after Gate 2 and independently reviewed for section scope and quality | Reviewed section at an exact commit; review verdict; `gate_3_pilot` becomes `approved` |
 | Expansion | Each chapter meets the quality bar and is independently reviewed | Chapter review records and owner approval |
 | Release | Artifacts are reproducible from an approved commit and licensing is confirmed | Manifest, checksums and release approval |
 
-Gate 3 is an approval of written work, not a precondition for writing it. Gates 1 and 2 authorize exactly one pilot section; Gate 3 authorizes expansion. The state machine is defined in [`gates.md`](gates.md).
+Gate 3 is an approval of written work, not a precondition for writing it. Gates 1 and 2 authorize the pilot file; the check enforces the file boundary, while the reviewer confirms the file contains only section 2.2. Gate 3 authorizes expansion. Gate values are recorded assertions, not proof of authorization. The state machine is defined in [`gates.md`](gates.md).
 
 ## 11. Assumptions and open questions
 

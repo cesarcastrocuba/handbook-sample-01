@@ -22,7 +22,7 @@ Create a minimal, independently reviewable book repository containing:
 - a dependency-free book-local consistency check;
 - decision, status and change records.
 
-The pilot section is deliberately not written. The outline names it, defines its approval criteria and provides its exact path, but Gate 3 remains blocked until Gates 1 and 2 are approved. Gate 2 opens the pilot window; Gate 3 approves the written, reviewed pilot and authorizes expansion.
+The pilot section is deliberately not written. The outline names it, defines its approval criteria and provides its exact path. Gate 3 is blocked before Gate 2; Gate 2 sets `gate_3_pilot` to `pending` and opens the pilot window. Gate 3 approves the written, reviewed pilot and authorizes expansion.
 
 ## Scope
 
@@ -61,4 +61,4 @@ Remove this change's files and revert the bootstrap commit. No external system, 
 
 ## Next step
 
-Independent review of the commit. The owner then decides Gate 1 (brief) and Gate 2 (outline). Gate 2 approval sets `gate_3_pilot` to `pending`; a separate change may then write exactly the pilot. Gate 3 is decided after independent review, and expansion waits for it.
+Independent review of the commit. The owner then decides Gate 1 (brief) and Gate 2 (outline). Gate 2 approval sets `gate_3_pilot` to `pending`; a separate change may then write exactly the pilot file. Gate 3 is decided after independent review, and expansion waits for it.

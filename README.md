@@ -10,9 +10,9 @@ A sample handbook that demonstrates how to plan, write, review and publish a mai
 | --- | --- |
 | 1 — editorial brief | Proposed, awaiting owner approval |
 | 2 — proposed outline | Proposed, awaiting owner approval |
-| 3 — pilot section | Blocked until Gates 1 and 2 are approved; then exactly the pilot may be written and reviewed |
+| 3 — pilot section | Blocked until Gates 1 and 2 are approved; then exactly the pilot file may be committed and reviewed |
 
-Gate 3 is an approval of written work, not a precondition for writing it. Once Gates 1 and 2 are approved, the pilot section is written while Gate 3 is pending; Gate 3 approval then authorizes expansion. The exact sequence is in [`docs/editorial/gates.md`](docs/editorial/gates.md). Gate evidence is recorded in [`PROJECT_STATUS.md`](PROJECT_STATUS.md) and [`docs/editorial/gates.json`](docs/editorial/gates.json).
+Gate 3 is an approval of written work, not a precondition for writing it. Once Gates 1 and 2 are approved, the pilot file is written while Gate 3 is pending; Gate 3 approval then authorizes expansion. The check enforces the file boundary only: it cannot tell whether the file contains only section 2.2, and gate values are a recorded assertion rather than proof of owner authorization. Editorial review covers both. The exact sequence is in [`docs/editorial/gates.md`](docs/editorial/gates.md). Gate evidence is recorded in [`PROJECT_STATUS.md`](PROJECT_STATUS.md) and [`docs/editorial/gates.json`](docs/editorial/gates.json).
 
 ## What this repository contains
 
@@ -36,7 +36,7 @@ The repository check is book-local and uses only the Python standard library:
 make check
 ```
 
-It verifies required files, relative Markdown links, the absence of generated artifacts and environment-specific paths, the agent-neutral role names, and the gate sequence. The gate check allows no prose before Gate 2, exactly the authorized pilot while Gate 3 is pending, and expansion only after Gate 3 approval. Its state-machine tests run as part of `make check`. Shared platform checks belong to the hub toolkit and are not vendored here.
+It verifies required files, relative Markdown links, the absence of generated artifacts and environment-specific paths, the agent-neutral role names, and the gate sequence at file level. The gate check allows no `.qmd` before Gate 2, exactly the authorized pilot file while Gate 3 is pending, and expansion only after Gate 3 approval. It does not inspect `.qmd` contents or authenticate gate approvals. Its state-machine tests run as part of `make check`. Shared platform checks belong to the hub toolkit and are not vendored here.
 
 ## Workflow
 

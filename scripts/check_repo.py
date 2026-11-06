@@ -6,9 +6,11 @@ intentionally not vendored here. This check uses only the Python standard
 library so it can run on a clean clone.
 
 The gate check enforces the sequence, not a blanket "no prose" rule: Gates 1
-and 2 authorize exactly the pilot; Gate 3 approves the written, reviewed pilot
-and authorizes expansion. When the pinned toolkit provides content validation,
-keep the gate policy and replace only the content checks.
+and 2 authorize exactly one pilot file; Gate 3 approves the written, reviewed
+pilot and authorizes expansion. This is a file-boundary check: it does not read
+`.qmd` contents, verify that the pilot is limited to section 2.2, or
+authenticate gate approvals. When the pinned toolkit provides content
+validation, keep the gate policy and replace only the content checks.
 """
 
 from __future__ import annotations
@@ -229,8 +231,9 @@ def main() -> int:
         print(f"FAIL  {error}", file=sys.stderr)
         return 1
 
-    print("\nRepository is consistent with the gate sequence.")
-    print("Pilot window: Gates 1-2 authorize exactly pilot.path; Gate 3 authorizes expansion.")
+    print("\nRepository is consistent with the gate sequence at file level.")
+    print("Pilot window: only the pilot file at pilot.path is allowed; section scope is reviewed.")
+    print("Gate values are recorded assertions; owner authorization is reviewed separately.")
     return 0
 
 

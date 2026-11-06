@@ -1,8 +1,8 @@
 """Tests for the gate-sequence policy.
 
 The regression under test: Gate 3 approves a written pilot, so it must not
-block writing the pilot. Gates 1 and 2 authorize exactly the pilot; Gate 3
-authorizes expansion.
+block writing the pilot. Gates 1 and 2 authorize exactly the pilot file; Gate 3
+authorizes expansion. The tests cover file boundaries only, not section scope.
 """
 
 from __future__ import annotations
@@ -76,7 +76,7 @@ class ProseTests(unittest.TestCase):
         errors = validate_manuscript_prose(blocked, [PILOT])
         self.assertTrue(any("No manuscript prose" in error for error in errors))
 
-    def test_pending_gate_three_allows_exactly_the_pilot(self) -> None:
+    def test_pending_gate_three_allows_exactly_the_pilot_file(self) -> None:
         pending = state(gate_3="pending")
         self.assertEqual(validate_manuscript_prose(pending, []), [])
         self.assertEqual(validate_manuscript_prose(pending, [PILOT]), [])

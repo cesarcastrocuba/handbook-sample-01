@@ -33,12 +33,12 @@ The order is mandatory, but Gate 3 is an approval of written work, not a precond
 
 1. **Gate 1 — brief.** The owner approves the audience, scope, non-goals, quality bar and licensing.
 2. **Gate 2 — outline.** The owner approves chapter structure, profile coverage, the pilot candidate and its exact path. Approval opens the pilot window.
-3. **Gate 3 — pilot.** While Gate 3 is pending, exactly the pilot section at `pilot.path` in [`gates.json`](docs/editorial/gates.json) may be written, committed and reviewed. The owner then approves the reviewed pilot.
+3. **Gate 3 — pilot.** While Gate 3 is pending, exactly the pilot **file** at `pilot.path` in [`gates.json`](docs/editorial/gates.json) may be committed. `make check` enforces that file boundary only; a reviewer confirms that the file contains only section 2.2. The owner then approves the reviewed pilot.
 4. **Expansion.** Gate 3 approval authorizes the remaining chapters, written and reviewed chapter by chapter.
 
-While Gate 1 or Gate 2 is pending, `manuscript/` must contain no prose. Once both are approved, the pilot may be written **while Gate 3 is pending**; that is exactly how Gate 3 gets something to review. No other chapter prose is allowed until Gate 3 is approved.
+While Gate 1 or Gate 2 is pending, `manuscript/` must contain no `.qmd` file. Once both are approved, the pilot file may be written **while Gate 3 is pending**; that is exactly how Gate 3 gets something to review. No other chapter file is allowed until Gate 3 is approved.
 
-The sequence and state transitions are defined in [`docs/editorial/gates.md`](docs/editorial/gates.md). `make check` enforces them.
+The sequence and state transitions are defined in [`docs/editorial/gates.md`](docs/editorial/gates.md). `make check` enforces file boundaries and gate ordering; it does not inspect pilot contents or prove that the owner authorized a gate. Gate values are a recorded assertion reviewed against the approval record.
 
 ## Content rules
 

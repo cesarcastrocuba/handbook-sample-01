@@ -9,7 +9,7 @@
 | Pilot | Chapter 2, section 2.2 — **not written** |
 | Related | [Content profile](profile.md) · [`AGENTS.md`](../../AGENTS.md) |
 
-Approving this outline confirms the chapter structure, the profile coverage, the pilot candidate and its exact path. It does not approve any chapter text. No chapter prose may be written until Gate 2 is approved. Once it is approved, **exactly the pilot may be written and reviewed while Gate 3 is pending**; Gate 3 approval then authorizes expansion. No other chapter prose is allowed before Gate 3.
+Approving this outline confirms the chapter structure, the profile coverage, the pilot candidate and its exact file path. It does not approve any chapter text. No `.qmd` may be added until Gate 2 is approved. Once it is approved, **exactly the pilot file may be committed and reviewed while Gate 3 is pending**; the check enforces that file boundary, while editorial review confirms the file contains only section 2.2. Gate 3 approval then authorizes expansion. No other chapter file is allowed before Gate 3.
 
 The machine-readable gate state is [`gates.json`](gates.json); the sequence is defined in [`gates.md`](gates.md).
 
@@ -182,15 +182,15 @@ Appendix A may reproduce the templates used in the book. It must not reproduce t
 5. Sources are real and checkable; none are invented.
 6. A different agent or person reviews the exact commit and posts a verdict.
 
-**Writing authorization.** Gate 2 approval sets `gate_3_pilot` to `pending` and opens exactly this pilot path. The pilot is then written and reviewed while Gate 3 remains pending. Gate 3 is the owner's approval of that reviewed work; it is not a precondition for writing it.
+**Writing authorization.** Gate 2 approval sets `gate_3_pilot` to `pending` and authorizes exactly the pilot file path. The pilot is then written and reviewed while Gate 3 remains pending. The check enforces the file boundary only; the reviewer confirms the file contains only section 2.2. Gate 3 is the owner's approval of that reviewed work; it is not a precondition for writing it.
 
 **Not included:** the rest of Chapter 2, any other chapter, Quarto configuration, a build or a release.
 
 ## 8. Sequence after approval
 
-1. **Gate 2 approval** sets `gate_3_pilot` to `pending` and authorizes exactly `pilot.path`.
-2. Write only the pilot section. No other chapter prose may exist.
-3. A different agent or person reviews the pilot at an exact commit.
+1. **Gate 2 approval** sets `gate_3_pilot` to `pending` and authorizes exactly the pilot file at `pilot.path`.
+2. Write only section 2.2 in that file. No other `.qmd` may exist.
+3. A different agent or person reviews the pilot at an exact commit and confirms its section scope.
 4. **Gate 3 approval** accepts the reviewed pilot and sets `gate_3_pilot` to `approved`.
 5. Revise this outline if the pilot exposes a structural problem; record the change.
 6. Write Chapters 1 and 3 to complete Part I.

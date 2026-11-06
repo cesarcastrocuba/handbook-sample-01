@@ -25,20 +25,20 @@ Separate **writing authority** from **approval authority**:
 | Gate | Authorizes |
 | --- | --- |
 | Gate 1 — brief | Constrains audience, scope, non-goals, quality bar and licensing |
-| Gate 2 — outline | Writes exactly the pilot at `pilot.path` while Gate 3 is `pending` |
+| Gate 2 — outline | Authorizes the pilot file at `pilot.path` while Gate 3 is `pending` |
 | Gate 3 — pilot | Approves the written, reviewed pilot and authorizes expansion |
 
 The sequence is:
 
 ```text
-Gate 2 approved -> Gate 3 pending -> write exactly the pilot -> independent review
+Gate 2 approved -> Gate 3 pending -> write exactly the pilot file -> independent review
 -> Gate 3 approved -> expansion
 ```
 
 ## Changes
 
 - `AGENTS.md`, `docs/editorial/brief.md`, `docs/editorial/outline.md`, `PROJECT_STATUS.md`, `CONTRIBUTING.md`, `README.md`, `manuscript/README.md` and `publishing/README.md` now describe the same sequence.
-- `docs/editorial/gates.json` is the machine-readable gate state and names the authorized pilot path.
+- `docs/editorial/gates.json` is the machine-readable gate state and names the authorized pilot path. The check enforces the file boundary and gate ordering only; section 2.2 scope and owner authorization are verified in review.
 - `docs/editorial/gates.md` defines the sequence, transitions and check behavior.
 - `scripts/gate_policy.py` implements the state machine; `scripts/check_repo.py` applies it.
 - `scripts/tests/test_gate_policy.py` covers every state, including the regression that a pending Gate 3 must allow the pilot.
