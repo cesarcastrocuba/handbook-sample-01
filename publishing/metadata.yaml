@@ -1,0 +1,19 @@
+# Publication metadata for the sample handbook.
+# Values are provisional until the owner approves Gate 1 and Gate 2.
+title: "Handbook Authoring and Publishing"
+subtitle: "A practical guide to planning, writing, reviewing and sustaining a technical handbook"
+version: "0.1.0-draft"
+status: "Bootstrap — editorial brief and outline proposed"
+language: "en"
+author: "Handbook Sample Contributors (pending owner confirmation)"
+license:
+  content: "CC BY-SA 4.0"
+  code: "MIT"
+publication:
+  target_reading_format: "html"
+  target_download_formats:
+    - "pdf"
+    - "docx"
+    - "source-bundle"
+  generated_artifacts_committed: false
+  build_status: "not configured"
