@@ -2,7 +2,7 @@
 
 A sample handbook that demonstrates how to plan, write, review and publish a maintainable technical handbook. It is the reference book for the handbook platform and is written in public so the workflow itself can be inspected.
 
-**Status: Gates 1–3 approved; complete draft manuscript.** Chapters 1–8, front matter, references and appendices are drafted; no artifacts or release exist yet.
+**Status: Gates 1–3 approved; complete draft; local release candidate verified.** Chapters 1–8, front matter, references and appendices are drafted, and a six-file `0.1.0-rc.1` directory was built outside the repository. No release, tag or Pages deployment exists.
 
 ## Current gate
 
@@ -22,13 +22,15 @@ Gate 3 is an approval of written work and authorizes expansion. The draft now co
 - [`docs/editorial/gates.md`](docs/editorial/gates.md) — the gate sequence, state transitions and what each gate authorizes.
 - [`docs/editorial/gates.json`](docs/editorial/gates.json) — machine-readable gate state and the authorized pilot path.
 - [`docs/setup.md`](docs/setup.md) — contributor setup, pinned install, fast checks and current limits.
+- [`docs/build/pipeline-spec.md`](docs/build/pipeline-spec.md) — build and release contract, toolchain pins and release-candidate findings.
+- [`.github/workflows/release.yml`](.github/workflows/release.yml) — manual six-asset release and Pages workflow; not executed.
 - [`AGENTS.md`](AGENTS.md) — agent-neutral roles, workflow and editorial gates.
 - [`DECISIONS.md`](DECISIONS.md) — decisions with explicit status.
 - [`sdd/changes/0001-sample-bootstrap/`](sdd/changes/0001-sample-bootstrap/proposal.md) — bootstrap proposal and task record.
 - [`sdd/changes/0002-pilot-gate-window/`](sdd/changes/0002-pilot-gate-window/proposal.md) — correction that separates pilot writing authority from Gate 3 approval.
 - [`sdd/changes/0003-pilot-2-2/`](sdd/changes/0003-pilot-2-2/scope.md) — proposed scoped interpretation for the single-section pilot.
-- `manuscript/` — canonical sources; currently contains only the pilot section 2.2.
-- `publishing/` — metadata and publication plan; build configuration is deferred until the publication build setup lands.
+- `manuscript/` — canonical sources for the complete draft, including the approved pilot section 2.2 inside Chapter 2.
+- `publishing/` — book-side Quarto configuration and provisional publication metadata.
 
 ## Quickstart for contributors
 
@@ -64,9 +66,9 @@ handbook-toolkit validate-book book.yaml
 
 `make check` covers gate-policy tests, repository consistency and the fast `validate-book` descriptor check. It does not validate chapter content or profile conformance.
 
-`make full` runs the fast checks, full descriptor/reading-order validation, cross-reference validation and chapter-profile validation. It passes for Part I. No Quarto artifact build, manifest or checksums are produced yet.
+`make full` runs the fast checks, full descriptor/reading-order validation, cross-reference validation and chapter-profile validation for all eight chapters and the three appendices. It does not build artifacts.
 
-Quarto and the render toolchain are future build setup; they are not required or installed now. Full prerequisites, limits and troubleshooting are in [`docs/setup.md`](docs/setup.md).
+Artifact builds use the pinned `handbook-toolkit` `0.3.0` and Quarto `1.11.9`. A build writes the six-file release directory outside the repository; artifacts are never committed. The command, release workflow, verification steps and known renderer limits are in [`docs/build/pipeline-spec.md`](docs/build/pipeline-spec.md). Full prerequisites and troubleshooting are in [`docs/setup.md`](docs/setup.md).
 
 ## Workflow
 

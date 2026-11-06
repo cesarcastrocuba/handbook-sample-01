@@ -1,0 +1,195 @@
+name: release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Book version, for example 0.1.0 or 0.1.0-rc.1"
+        required: true
+        type: string
+      tag:
+        description: "Release tag, for example v0.1.0"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Build, verify and release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the exact commit
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Record and check the source identity
+        env:
+          TAG: ${{ inputs.tag }}
+        run: |
+          set -euo pipefail
+          SOURCE_COMMIT="$(git rev-parse HEAD)"
+          test "$SOURCE_COMMIT" = "$GITHUB_SHA"
+          test -z "$(git status --porcelain)"
+          if git rev-parse -q --verify "refs/tags/$TAG" >/dev/null; then
+            echo "tag already exists: $TAG" >&2
+            exit 1
+          fi
+          echo "SOURCE_COMMIT=$SOURCE_COMMIT" >> "$GITHUB_ENV"
+
+      - name: Install pinned Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: "1.11.9"
+
+      - name: Verify the Quarto version
+        run: |
+          set -euo pipefail
+          test "$(quarto --version)" = "1.11.9"
+
+      - name: Install the pinned toolkit
+        run: |
+          set -euo pipefail
+          python3 -m venv "$RUNNER_TEMP/toolkit-venv"
+          "$RUNNER_TEMP/toolkit-venv/bin/pip" install --upgrade pip
+          "$RUNNER_TEMP/toolkit-venv/bin/pip" install -r requirements.txt
+          "$RUNNER_TEMP/toolkit-venv/bin/handbook-toolkit" version
+
+      - name: Run repository gates
+        run: |
+          set -euo pipefail
+          export PATH="$RUNNER_TEMP/toolkit-venv/bin:$PATH"
+          make full
+
+      - name: Build the release once
+        env:
+          VERSION: ${{ inputs.version }}
+        run: |
+          set -euo pipefail
+          test -z "$(git status --porcelain)"
+          "$RUNNER_TEMP/toolkit-venv/bin/handbook-toolkit" build-book \
+            --repo "$GITHUB_WORKSPACE" \
+            --commit "$SOURCE_COMMIT" \
+            --output "$RUNNER_TEMP/release" \
+            --version "$VERSION" \
+            --quarto "$(command -v quarto)"
+
+      - name: Verify the six-file release directory
+        env:
+          VERSION: ${{ inputs.version }}
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP/release"
+          sha256sum --check SHA256SUMS.txt
+          python3 - <<'PY'
+          import json
+          import os
+          import zipfile
+          from pathlib import Path
+
+          root = Path.cwd()
+          expected = {
+              "book-html.zip",
+              "book.pdf",
+              "book.docx",
+              "book-source.zip",
+              "publication-manifest.json",
+              "SHA256SUMS.txt",
+          }
+          actual = {path.name for path in root.iterdir()}
+          if actual != expected:
+              raise SystemExit(f"release files differ: expected {sorted(expected)}, found {sorted(actual)}")
+
+          manifest = json.loads((root / "publication-manifest.json").read_text(encoding="utf-8"))
+          if manifest["book"]["commit"] != os.environ["SOURCE_COMMIT"]:
+              raise SystemExit("manifest commit does not match the checked-out commit")
+          if manifest["book"]["version"] != os.environ["VERSION"]:
+              raise SystemExit("manifest version does not match the requested version")
+
+          with zipfile.ZipFile(root / "book-html.zip") as archive:
+              names = set(archive.namelist())
+              if "index.html" not in names:
+                  raise SystemExit("HTML ZIP has no index.html")
+              if any(name.startswith("/") or ".." in Path(name).parts for name in names):
+                  raise SystemExit("HTML ZIP contains an unsafe member")
+
+          with zipfile.ZipFile(root / "book-source.zip") as archive:
+              if archive.comment.decode("ascii", errors="replace") != os.environ["SOURCE_COMMIT"]:
+                  raise SystemExit("source ZIP does not record the checked-out commit")
+
+          with zipfile.ZipFile(root / "book.docx") as archive:
+              if "word/document.xml" not in archive.namelist():
+                  raise SystemExit("DOCX has no Word document part")
+          print("six-file release verification: OK")
+          PY
+          pdfinfo book.pdf | grep -E '^Pages:[[:space:]]+[1-9][0-9]*$'
+
+      - name: Create the GitHub Release with exactly six files
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ inputs.version }}
+          TAG: ${{ inputs.tag }}
+        run: |
+          set -euo pipefail
+          notes="$RUNNER_TEMP/release-notes.md"
+          cat > "$notes" <<EOF
+          Handbook Authoring and Publishing $VERSION.
+
+          - Source commit: $SOURCE_COMMIT
+          - Toolkit build: recorded in publication-manifest.json
+          - Assets: HTML ZIP, PDF, DOCX, source ZIP, publication manifest, SHA256SUMS.txt
+          - The same verified HTML ZIP bytes are deployed to GitHub Pages.
+
+          This release was built once from the listed commit and verified before publication.
+          EOF
+          prerelease=()
+          if [[ "$VERSION" == *-* ]]; then
+            prerelease+=(--prerelease)
+          fi
+          gh release create "$TAG" \
+            --target "$SOURCE_COMMIT" \
+            --title "Handbook Authoring and Publishing $VERSION" \
+            --notes-file "$notes" \
+            "${prerelease[@]}" \
+            "$RUNNER_TEMP/release/book-html.zip" \
+            "$RUNNER_TEMP/release/book.pdf" \
+            "$RUNNER_TEMP/release/book.docx" \
+            "$RUNNER_TEMP/release/book-source.zip" \
+            "$RUNNER_TEMP/release/publication-manifest.json" \
+            "$RUNNER_TEMP/release/SHA256SUMS.txt"
+
+      - name: Extract the verified HTML bytes for Pages
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/pages"
+          unzip -q "$RUNNER_TEMP/release/book-html.zip" -d "$RUNNER_TEMP/pages"
+          test -f "$RUNNER_TEMP/pages/index.html"
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload the Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ${{ runner.temp }}/pages
+
+  deploy:
+    name: Deploy the verified HTML
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,167 +1,131 @@
-# Phase 4 build and render contract
+# Build and release contract
 
 | Field | Value |
 | --- | --- |
-| Status | Technical preparation — no publication |
-| Scope | Platform phases 1–4; phases 5–6 deferred by owner |
+| Status | Technical preparation — local release candidate verified; no publication |
+| Scope | Platform phase 4; publication remains owner-gated |
 | Book config | [`publishing/_quarto.yml`](../../publishing/_quarto.yml) |
+| Release workflow | [`.github/workflows/release.yml`](../../.github/workflows/release.yml) |
+| Toolkit | `0.3.0`, pinned from public hub `66d0581689e1e9c91913da25b5cb4a7723f3ec5c` |
+| Profile | `standard` `0.2.0` |
 | Quarto | `1.11.9` |
-| Pandoc | `3.10.0` (bundled) |
+| Pandoc | `3.10` (bundled) |
 | Typst | `0.15.1` (bundled) |
-| Dart Sass | `1.101.0` (bundled) |
-| Deno | `2.9.8` (bundled) |
 | Python | `3.12` |
-| Toolkit | `0.1.0`, pinned from public hub |
 
-This document defines the minimal book-side contract and the Hub-side render steps. It does not claim a published release. Shared staging, packaging, manifest and checksum code belongs to the Hub toolkit, not this repository.
+This document defines the book-side contract and the Hub-side build and release flow. It does not claim a published release. Shared staging, packaging, manifest and checksum code belongs to the Hub toolkit, not this repository.
 
 ## 1. Ownership boundary
 
 **Book repository owns**
 
-- `publishing/_quarto.yml`: book metadata, format selection, theme and numbering policy.
+- `publishing/_quarto.yml`: book metadata, format selection and theme.
 - `manuscript/` sources, `manuscript/book.yml` reading order and `book.yaml` descriptor.
+- The manual release workflow that invokes the pinned toolkit.
 - Any book-specific style or reference document added later.
 
 **Hub toolkit owns**
 
-- staging a temporary build workspace;
-- generating `index.qmd` and chapter wrappers from the descriptor and reading order;
+- staging a temporary build workspace from the exact commit;
+- generating `index.qmd`, chapter wrappers and explicit table captions;
 - copying the book config and sources without copying shared scripts;
-- invoking Quarto once for all formats;
-- normalizing the source bundle, manifest and checksums;
-- verifying artifact presence, captions, links and checksums;
-- release and catalog publication, which remain owner-gated.
+- invoking Quarto once for HTML, Typst PDF and DOCX;
+- inspecting each payload and normalizing the source bundle;
+- writing and verifying the manifest and checksums;
+- atomically exposing the complete output directory.
 
 No manifest, checksum, zip or packaging script is added to this repository.
 
-## 2. Verified toolchain
+## 2. Toolchain
 
-Installed and verified locally:
+The toolkit is installed from `requirements.txt` as a non-editable package:
 
 ```text
-quarto 1.11.9
-pandoc 3.10.0
-typst 0.15.1
-Dart Sass 1.101.0
-Deno 2.9.8
-python 3.12
+handbook-toolkit @ git+https://github.com/cesarcastrocuba/handbooks-hub.git@66d0581689e1e9c91913da25b5cb4a7723f3ec5c#subdirectory=tools
 ```
 
-Official references:
+`book.yaml` declares toolkit `0.3.0` and profile `standard` `0.2.0`. The toolkit resolves the packaged profile and stages its render resources: the table-layout filter, the task-checkbox filter and the breakable-callout Typst include.
 
-- Quarto 1.11.9 release: <https://github.com/quarto-dev/quarto-cli/releases/tag/v1.11.9>
-- Book structure and required `index.qmd`: <https://quarto.org/docs/books/book-structure.html>
-- Render command and `--output-dir`/`--to`: <https://quarto.org/docs/cli/render.html>
-- PDF and Typst options: <https://quarto.org/docs/reference/formats/pdf.html>
-- DOCX options: <https://quarto.org/docs/reference/formats/docx.html>
+Quarto supplies its bundled Pandoc and Typst. The repository validators do not require Quarto; only `build-book` does.
 
-Install the pinned Linux arm64 package and verify it before use:
+## 3. Build command
+
+Run from a clean checkout of the exact commit, with the output outside the repository:
 
 ```sh
-curl -fLO https://github.com/quarto-dev/quarto-cli/releases/download/v1.11.9/quarto-1.11.9-linux-arm64.deb
-curl -fLO https://github.com/quarto-dev/quarto-cli/releases/download/v1.11.9/quarto-1.11.9-checksums.txt
-# Verify the arm64.deb line before installing.
-grep 'quarto-1.11.9-linux-arm64.deb' quarto-1.11.9-checksums.txt
-sha256sum --check --ignore-missing quarto-1.11.9-checksums.txt
-sudo dpkg -i quarto-1.11.9-linux-arm64.deb
-quarto --version
-quarto check
+handbook-toolkit build-book \
+  --repo . \
+  --commit <full-commit-sha> \
+  --output /outside/repo/release-<version> \
+  --version <version> \
+  --quarto "$(command -v quarto)"
 ```
 
-Do not use a floating latest Quarto. CI should install the same pinned release and verify its checksum.
+The build refuses a dirty tree, a commit that is not the requested `HEAD`, an existing output directory and an output inside the repository. It performs one render and then inspects the produced bytes.
 
-## 3. Staged workspace
-
-The Hub build creates a temporary directory, for example:
+The verified directory contains exactly six files:
 
 ```text
-build/
-  _quarto.yml          # copied from publishing/_quarto.yml
-  index.qmd            # generated title page, no chapter prose
-  chapters/
-    02-editorial-contract.qmd
-  manuscript/          # copied sources as needed
-```
-
-Rules:
-
-- `index.qmd` is generated from `book.yaml` title metadata because Quarto books require a home page.
-- Chapter wrappers provide the chapter heading and assembly boundary; source section files remain unchanged.
-- For standalone pilot preview, the staged copy replaces front-matter `title` with `pagetitle` so the visible H2 is not duplicated by a metadata title block.
-- For the assembled book, the chapter wrapper owns the chapter title; section headings keep their manual `N.M` numbers.
-- `number-sections: false` is intentional. Manual numbers are the only numbering source; the renderer must not add a second chapter or section number.
-- If a chapter wrapper is used, mark its H1 `.unnumbered` until the numbering policy is proven in all three formats.
-
-## 4. Render commands
-
-From the staged workspace, with the approved commit timestamp:
-
-```sh
-export SOURCE_DATE_EPOCH="$(git -C /path/to/book show -s --format=%ct <approved-commit>)"
-quarto check
-quarto render --no-execute
-```
-
-`quarto render` uses all formats in `_quarto.yml`, producing:
-
-| Artifact | Source |
-| --- | --- |
-| HTML book site | `_output/index.html` and assets |
-| PDF | `_output/Handbook-Authoring-and-Publishing.pdf` via Typst |
-| DOCX | `_output/Handbook-Authoring-and-Publishing.docx` |
-| Source bundle | Hub-generated archive of the approved commit and build inputs |
-| Manifest | Hub-generated `publication-manifest.json` |
-| Checksums | Hub-generated `SHA256SUMS.txt` |
-
-Individual formats may be checked with `quarto render --no-execute --to html`, `--to typst` and `--to docx`. `--to typst` is the PDF path; `format: pdf` with a bare `pdf-engine: typst` failed locally because the bundled Typst binary is not on `PATH`.
-
-## 5. Artifact naming and manifest
-
-Proposed release asset names:
-
-```text
-handbook-authoring-and-publishing-<version>-html.zip
-handbook-authoring-and-publishing-<version>.pdf
-handbook-authoring-and-publishing-<version>.docx
-handbook-authoring-and-publishing-<version>-source.zip
+book-html.zip
+book.pdf
+book.docx
+book-source.zip
 publication-manifest.json
 SHA256SUMS.txt
 ```
 
-The manifest follows the Hub publication contract and records:
+`publication-manifest.json` records the book id, version, commit, toolchain versions, source epoch, normalized build command and every payload hash. `SHA256SUMS.txt` covers the four payloads plus the manifest.
 
-- book id, version and approved commit SHA;
-- toolkit `0.1.0`, profile `standard` `0.2.0`;
-- Quarto `1.11.9`, Pandoc `3.10.0`, Typst `0.15.1`, Dart Sass `1.101.0`, Deno `2.9.8`, Python `3.12`;
-- `SOURCE_DATE_EPOCH` and exact render command;
-- every artifact path, byte size, media type and SHA-256;
-- which artifacts are bit-identical across rebuilds and which are semantically verified only.
+## 4. Numbering and captions
 
-`SHA256SUMS.txt` covers the four artifacts plus `publication-manifest.json`. The manifest does not hash itself.
+- Front matter and appendices use unnumbered H1 headings; Quarto does not add chapter numbers to them.
+- Chapters are numbered by the renderer after the toolkit strips manual `N.` prefixes from staged headings.
+- Table captions use Pandoc's `Table:` caption form so Quarto numbers them against the rendered chapter. The Chapter 2 brief renders as `Table 2.1`, not a position-based number.
+- The toolkit converts legacy `: caption` lines into explicit bold captions for compatibility. New tables should use the Pandoc form and an explicit `{#tbl-...}` label when cross-referencing is needed.
 
-## 6. Reproducibility
+## 5. Release workflow
 
-- Pin Quarto and toolkit versions; never use ranges or floating latest.
-- Use the approved commit timestamp for `SOURCE_DATE_EPOCH`.
-- Build once; package and publish the same bytes.
-- Normalize archive entry order and timestamps in the Hub source-bundle step.
-- PDF and DOCX may contain generator metadata; run a second build and record bit-identical versus semantic equivalence. Do not claim bit-for-bit identity without evidence.
+[`.github/workflows/release.yml`](../../.github/workflows/release.yml) is manual (`workflow_dispatch`) and takes two inputs: `version` and `tag`. It has not been executed; no tag, release or Pages deployment exists.
 
-## 7. Layout findings from the pilot preview
+The build job:
 
-These are render-contract findings, not Gate 3 text rejection:
+1. checks out `github.sha` with full history and verifies the tree is clean;
+2. refuses an existing tag and records the exact source commit;
+3. installs Quarto `1.11.9` and verifies the version;
+4. installs the pinned toolkit, then runs `make full`;
+5. runs `build-book` once against the recorded commit;
+6. verifies the exact six-file membership, checksums, manifest identity, HTML and source archives, DOCX document part and PDF page count;
+7. creates a GitHub Release at the recorded commit with exactly those six files;
+8. extracts `book-html.zip` and uploads the result as the Pages artifact.
 
-1. **Duplicate visible title.** A section source with front-matter `title` plus an H2 duplicates the title in standalone/book renders. Staging must map the section title to `pagetitle` for preview, or let the chapter wrapper own the title. No pilot prose change is required.
-2. **Manual plus automatic numbering.** Quarto book defaults add chapter/section numbers even when headings already contain `N.M`. The renderer must enforce one numbering source; `number-sections: false` plus unnumbered chapter H1 is the candidate policy and must be tested in HTML/PDF/DOCX.
-3. **Table widths.** The brief table renders 50/50, cramping the decision column. The shared renderer should apply content-aware widths, for example an explicit `[20, 80]` policy for two-column key/value tables, or a documented per-table width attribute. No per-book filter is added here.
-4. **Table caption.** The caption exists in HTML but is absent in the Typst PDF text extraction. The shared renderer must verify the actual PDF caption and provide a workaround if Typst continues to drop it.
-5. **Callout pagination.** Common Pitfall and Decision & Trade-off blocks leave large blank areas because a callout is unbreakable. The shared renderer must configure or test breakable callouts; do not accept half-empty pages.
-6. **Checkbox glyphs.** The PDF preview shows a boxed mark rather than a clearly empty checkbox for `- [ ]` items. The shared renderer must verify readable empty-box glyphs or substitute an accessible marker.
+The deploy job uses `actions/deploy-pages` with the `github-pages` environment. The deployed HTML is extracted from the same ZIP bytes attached to the release; no second render occurs.
 
-## 8. Limits
+Prerequisites outside the repository: GitHub Pages must use the GitHub Actions source, and the owner must dispatch the workflow. The workflow does not approve editorial scope or licensing.
 
-- No semantic manuscript validator or profile-conformance validator exists in toolkit `0.1.0`.
-- No artifact manifest, checksum file or source bundle is produced by this branch.
-- No publication, Pages deployment, release or catalog entry is authorized.
-- No chapter beyond the reviewed pilot is written.
+## 6. Release-candidate inspection
+
+A local `0.1.0-rc.1` build from commit `bb87b71` produced a 57-page PDF and the six-file set outside the repository. Inspection found and fixed:
+
+- a duplicate title page: the Quarto title page and the front-matter H1 repeated the title; the front matter now starts with an unnumbered document-control page;
+- a duplicated subtitle on the document-control page: the subtitle now comes only from the book configuration;
+- a position-based `Table 5.1` caption in Chapter 2: the table now renders as `Table 2.1`;
+- numbered appendices rendering as chapters 9–11: appendices are now unnumbered, with `A.1`/`B.1`/`C.1` headings preserved.
+
+Known renderer limit: the toolkit's breakable callouts can leave a callout header at the bottom of a page and move an embedded table to the next page. The shared render resources own that behavior; fixing it belongs in the toolkit, not in book prose. Table rows and callouts were otherwise readable in PDF, DOCX and HTML, and relative HTML links resolved.
+
+## 7. Reproducibility
+
+- Pin Quarto, the toolkit and the profile; never use ranges or floating latest.
+- Use the exact commit timestamp as `SOURCE_DATE_EPOCH`.
+- Build once; publish the verified bytes without a second render.
+- PDF and DOCX may contain generator metadata. Do not claim bit-identical rebuilds without a recorded second build and comparison.
+
+## 8. Local verification
+
+```sh
+python3 -m pip install -r requirements.txt
+make full
+git diff --check
+```
+
+`make full` validates the descriptor, reading order, references and every chapter and appendix. It does not build artifacts. The release workflow repeats the full gates before `build-book`.

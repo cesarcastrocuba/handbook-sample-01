@@ -2,10 +2,10 @@
 
 | Field | Value |
 | --- | --- |
-| Status | Current — Gates 1–3 approved; complete draft; toolkit pin below |
+| Status | Current — Gates 1–3 approved; complete draft; local release candidate verified; toolkit pin below |
 | Toolkit source | `https://github.com/cesarcastrocuba/handbooks-hub.git` |
-| Full commit SHA | `477d7042faa385eee677ad2db5198ebcf5dd1fee` (hub `main` toolkit pin) |
-| Toolkit version | `0.2.0` |
+| Full commit SHA | `66d0581689e1e9c91913da25b5cb4a7723f3ec5c` (hub `main` toolkit pin) |
+| Toolkit version | `0.3.0` |
 | Install mode | Direct Git requirement, non-editable, `#subdirectory=tools` |
 | Profile reference | `standard` `0.2.0` — approved and integrated on hub `main` at `8ee28a081399155a250ea8bc45d8492245ab2377` |
 
@@ -20,9 +20,9 @@ No toolkit scripts, schemas or profile files are copied into this repository. In
 
 ## 2. Profile dependency
 
-`book.yaml` references approved hub `standard` `0.2.0`. The pinned toolkit source (`477d704`) includes the approved profile and its packaged snapshot. Profiles remain hub repository resources; this book does not copy them. Profile `0.2.0` is approved and integrated on hub `main` at `8ee28a0`.
+`book.yaml` references approved hub `standard` `0.2.0`. The pinned toolkit source (`66d0581`) includes the approved profile and its packaged snapshot. Profiles remain hub repository resources; this book does not copy them. Profile `0.2.0` is approved and integrated on hub `main` at `8ee28a0`.
 
-The installed toolkit comes from `477d704`; the editorial reference is the approved `0.2.0` profile at `8ee28a0`. This book remains `status: draft`.
+The installed toolkit comes from `66d0581` and provides `build-book` with staged render resources, manifest and checksum verification. The editorial reference is the approved `0.2.0` profile at `8ee28a0`. This book remains `status: draft`.
 
 - The fast check validates only the descriptor and reading order; full checks validate chapters against an explicit packaged profile.
 - The fast check does not validate profile conformance by itself.
@@ -47,8 +47,8 @@ The fast `handbook-toolkit validate-book book.yaml` check verifies the descripto
 
 ## 4. Limits
 
-- All eight chapters are present. `make full` passes descriptor, reading order, references and chapter validation.
-- No Quarto build, artifact manifest or checksums are produced by this repository yet.
+- All eight chapters and three appendices are present. `make full` passes descriptor, reading order, references and chapter validation.
+- A local `0.1.0-rc.1` six-file build exists outside the repository. No artifact is committed and no release or Pages deployment exists.
 - Profile `0.2.0` is approved and integrated at hub `main` `8ee28a0`; the pinned toolkit includes its packaged snapshot, while validation still uses an explicit profile path in `make full`.
 - CI proves installation and the fast check from a clean GitHub runner. It does not prove publication readiness.
 

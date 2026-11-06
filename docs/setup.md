@@ -14,7 +14,7 @@ The setup below installs the pinned shared toolkit from the public hub. It does 
 | Network access | Needed only for the first package install |
 | `make` | Optional. GNU Make runs the same checks; a no-make path is below |
 
-Quarto, Graphviz and render tooling are **not required** for the current fast checks. They belong to a future build-setup change and are not installed or claimed here.
+Quarto and the render toolchain are **not required** for `make check` or `make full`. Quarto `1.11.9` is required only for an artifact build with the pinned toolkit.
 
 ## 2. Quickstart
 
@@ -75,15 +75,26 @@ A fast pass is not a publication or full-manuscript pass.
 
 ## 5. Current limits
 
-- The complete draft exists. `make full` validates chapter structure and references; it does not judge editorial quality.
+- The complete draft exists. `make full` validates chapter and appendix structure and references; it does not judge editorial quality.
 - `make full` runs descriptor, reading-order, cross-reference and chapter-profile validation and passes. It does not build artifacts.
-- Toolkit `0.2.0` provides `validate-references` and `validate-manuscript`; artifact manifest/checksum validation remains separate.
+- Toolkit `0.3.0` provides `validate-references`, `validate-manuscript` and `build-book`; artifact verification is part of `build-book`.
 - The book references hub `standard` `0.2.0`, approved and integrated on hub main `8ee28a0`. The fast check does not validate profile `0.2.0`.
-- No HTML, PDF, DOCX, source bundle, manifest or release is produced.
+- A local `0.1.0-rc.1` build exists outside the repository. No artifact is committed and no release, tag or Pages deployment exists.
 
-## 6. Future build setup
+## 6. Artifact build
 
-Quarto and the render toolchain are intentionally deferred. A later build-setup change will pin those versions and add the build commands. Until then, do not install or claim a Quarto render, and do not expect `make check` to build the book.
+Artifact builds are optional for contributors and require Quarto `1.11.9`. Run them from a clean checkout at the exact commit, with the output outside the repository:
+
+```sh
+handbook-toolkit build-book \
+  --repo . \
+  --commit "$(git rev-parse HEAD)" \
+  --output /outside/repo/release-<version> \
+  --version <version> \
+  --quarto "$(command -v quarto)"
+```
+
+The toolkit writes and verifies exactly six files: `book-html.zip`, `book.pdf`, `book.docx`, `book-source.zip`, `publication-manifest.json` and `SHA256SUMS.txt`. The build does not publish. Release creation and Pages deployment are manual workflow steps in [`.github/workflows/release.yml`](../.github/workflows/release.yml); see [`docs/build/pipeline-spec.md`](build/pipeline-spec.md).
 
 ## 7. Troubleshooting
 
