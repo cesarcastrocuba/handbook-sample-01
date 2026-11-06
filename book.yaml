@@ -1,0 +1,45 @@
+# Draft book descriptor. This file does not approve a gate or a profile.
+#
+# Toolkit source: public hub main, full SHA
+# 0e8d897acae67d55eb09bf06a6e890d07d187779, installed from requirements.txt.
+#
+# Profile source: standard 0.2.0 is proposed on hub branch
+# feat/topic-neutral-profile. The hub revision pinned below contains profile
+# 0.1.0. Profiles are hub repository resources, not files in the installed
+# toolkit package, so this 0.2.0 reference is contingent on the hub branch
+# being approved and merged. It does not make 0.2.0 available or approved here.
+schema_version: "1.0"
+id: handbook-authoring-and-publishing
+title: "Handbook Authoring and Publishing"
+status: draft
+
+profile:
+  id: standard
+  version: "0.2.0"
+
+toolkit: "0.1.0"
+
+license:
+  content: CC-BY-SA-4.0
+  code: MIT
+
+manuscript:
+  root: manuscript
+  reading_order: manuscript/book.yml
+
+publication:
+  formats:
+    - html
+    - pdf
+    - docx
+  manifest: publication-manifest.json
+
+catalog:
+  slug: handbook-authoring-and-publishing
+  categories:
+    - authoring
+  summary: "A practical guide to planning, writing, reviewing and sustaining a technical handbook."
+
+repository:
+  url: "https://github.com/cesarcastrocuba/handbook-sample-01"
+  default_branch: main

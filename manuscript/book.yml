@@ -1,0 +1,9 @@
+# Reading order is intentionally empty.
+# Gates 1 and 2 permit the pilot to be written while Gate 3 is pending. Once
+# the pilot file exists, validate-book --full may run; it is not claimed before
+# that file exists.
+front: []
+chapters: []
+back: []
+appendices: []
+references: []

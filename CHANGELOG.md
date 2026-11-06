@@ -18,3 +18,6 @@ All notable changes to this sample handbook are recorded here. The format follow
 - The check enforces only the pilot file boundary and gate ordering; section 2.2 scope and owner authorization remain review responsibilities.
 - Corrected documentation and check output that overstated file-level enforcement as section-level or proof of owner authorization.
 - Gate state is machine-readable in `docs/editorial/gates.json`, explained in `docs/editorial/gates.md`, and enforced by state-machine tests.
+- Pinned public-hub toolkit integration via direct Git requirement at full SHA `0e8d897acae67d55eb09bf06a6e890d07d187779` with `#subdirectory=tools`.
+- Draft `book.yaml` and empty `manuscript/book.yml`; profile reference is `standard` `0.2.0`, contingent on hub branch approval.
+- CI installs the pinned toolkit and runs the fast `validate-book` check; `make full` fails explicitly until pilot, content validation and artifacts exist.

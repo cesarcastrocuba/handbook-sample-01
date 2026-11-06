@@ -24,12 +24,15 @@ Gate state is machine-readable in [`docs/editorial/gates.json`](docs/editorial/g
 - Manuscript and publishing layouts reserved without prose or build claims.
 - Lightweight SDD proposal and task record created.
 - Dependency-free repository check, gate-state policy and state-machine tests added and documented.
+- Pinned public-hub toolkit integration: `requirements.txt` uses a direct Git requirement at full SHA `0e8d897acae67d55eb09bf06a6e890d07d187779` with `#subdirectory=tools`; `book.yaml` and the empty `manuscript/book.yml` reading order are draft metadata only.
+- CI installs the pinned toolkit and runs the fast `validate-book` check on `main`, `feat/**`, pull requests and `workflow_dispatch`.
 - Content and code licensing recorded as a proposal.
 
 ## Not done, by design
 
 - No pilot section and no chapter prose.
 - No Quarto configuration or build; Quarto is not installed in the bootstrap environment.
+- No full manuscript or artifact validation yet. `make full` is a current-scope incomplete gate: it passes the fast descriptor check, then fails because no pilot exists for `validate-book --full` and no artifact manifest exists. This is not a descriptor failure.
 - No HTML, PDF, DOCX, site output or release.
 - No GitHub repository, deployment, catalog entry or release.
 - No change to the hub or to the existing handbook.
@@ -43,7 +46,8 @@ The owner reviews the [brief](docs/editorial/brief.md) and [outline](docs/editor
 Run from a clean checkout:
 
 ```sh
+python3 -m pip install -r requirements.txt
 make check
 ```
 
-The check is book-local and uses only the Python standard library. It runs the gate-policy tests before inspecting the repository. Shared platform checks are deferred to the pinned hub toolkit.
+`make full` intentionally fails and states which full-manuscript and artifact checks are unavailable. It is a current-scope incomplete gate, not a descriptor failure. The integration source and limits are in [`docs/integration/pinned-toolkit.md`](docs/integration/pinned-toolkit.md).

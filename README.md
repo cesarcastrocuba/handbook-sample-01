@@ -30,13 +30,18 @@ Gate 3 is an approval of written work, not a precondition for writing it. Once G
 
 ## Verify
 
-The repository check is book-local and uses only the Python standard library:
+Install the pinned toolkit from the public hub, then run the fast checks:
 
 ```sh
+python3 -m pip install -r requirements.txt
 make check
 ```
 
-It verifies required files, relative Markdown links, the absence of generated artifacts and environment-specific paths, the agent-neutral role names, and the gate sequence at file level. The gate check allows no `.qmd` before Gate 2, exactly the authorized pilot file while Gate 3 is pending, and expansion only after Gate 3 approval. It does not inspect `.qmd` contents or authenticate gate approvals. Its state-machine tests run as part of `make check`. Shared platform checks belong to the hub toolkit and are not vendored here.
+`make check` runs the local gate-policy tests, the repository checks and the toolkit's fast `validate-book` check. It requires network access only for the one-time install; the installed package is pinned to a full hub commit SHA and is not an editable parent checkout.
+
+`make full` is a **current-scope incomplete** full/artifact gate, not a descriptor failure. It runs the fast checks and then fails explicitly: no pilot or chapter `.qmd` exists yet, so `validate-book --full` is not run; no artifact manifest or checksums exist. Once the pilot exists, `validate-book --full` may run. Do not report `make full` as a passing full build.
+
+The integration source, metadata ownership and limits are documented in [`docs/integration/pinned-toolkit.md`](docs/integration/pinned-toolkit.md). Shared platform checks belong to the pinned hub toolkit and are not vendored here.
 
 ## Workflow
 
