@@ -2,7 +2,7 @@
 
 | Field | Value |
 | --- | --- |
-| Status | Current — Gates 1–3 approved; Part I drafted; toolkit pin below |
+| Status | Current — Gates 1–3 approved; complete draft; toolkit pin below |
 | Toolkit source | `https://github.com/cesarcastrocuba/handbooks-hub.git` |
 | Full commit SHA | `477d7042faa385eee677ad2db5198ebcf5dd1fee` (hub `main` toolkit pin) |
 | Toolkit version | `0.2.0` |
@@ -47,7 +47,7 @@ The fast `handbook-toolkit validate-book book.yaml` check verifies the descripto
 
 ## 4. Limits
 
-- Part I chapters are present. `make full` passes descriptor, reading order, references and chapter validation.
+- All eight chapters are present. `make full` passes descriptor, reading order, references and chapter validation.
 - No Quarto build, artifact manifest or checksums are produced by this repository yet.
 - Profile `0.2.0` is approved and integrated at hub `main` `8ee28a0`; the pinned toolkit includes its packaged snapshot, while validation still uses an explicit profile path in `make full`.
 - CI proves installation and the fast check from a clean GitHub runner. It does not prove publication readiness.

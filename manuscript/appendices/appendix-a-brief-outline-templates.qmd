@@ -1,0 +1,75 @@
+# Appendix A — Brief and Outline Templates {.unnumbered}
+
+These templates are starting points, not forms to fill without thought. Replace the illustrative text with decisions that a reviewer could use to reject out-of-scope work.
+
+## A.1 Brief template
+
+```markdown
+# Editorial brief — [working title]
+
+| Field | Value |
+| --- | --- |
+| Status | Proposed |
+| Owner | [one accountable person] |
+| Date | [YYYY-MM-DD] |
+
+## Reader
+[Role, situation and prior knowledge.]
+
+## Promise
+[Observable outcome and the evidence that shows the reader reached it.]
+
+## In scope
+- [Decision or task]
+
+## Non-goals
+- [Attractive adjacent subject] — owned by [artifact or team]
+
+## Evidence
+[How claims will be checked: source hierarchy, tests, measurements or review.]
+
+## Change rule
+[Release, standard or calendar trigger; what starts a new edition.]
+
+## Assumptions
+[What is accepted without evidence and what would invalidate it.]
+```
+
+## A.2 Outline template
+
+```markdown
+# Outline — [working title]
+
+## Reading path
+[What the reader should be able to do at the end.]
+
+## Part I — [question]
+### Chapter 1 — [title]
+- [Section]
+- Exit evidence: [what the reader can decide]
+
+## Part II — [question]
+### Chapter 2 — [title]
+- [Section]
+- Exit evidence: [what the reader can decide]
+
+## Part III — [question]
+### Chapter 3 — [title]
+- [Section]
+- Exit evidence: [what the reader can decide]
+
+## Pilot
+[One section, why it is representative and how it will be reviewed.]
+
+## Exclusions
+[What this outline deliberately does not cover.]
+```
+
+## A.3 Approval block
+
+| Field | Value |
+| --- | --- |
+| Owner | [name] |
+| Decision | [approved / changes requested] |
+| Date | [YYYY-MM-DD] |
+| Evidence | [review record or decision reference] |

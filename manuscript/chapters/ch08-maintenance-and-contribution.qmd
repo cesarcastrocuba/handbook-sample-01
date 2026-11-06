@@ -1,0 +1,138 @@
+---
+title: "8. Maintenance and Contribution"
+profile: standard
+---
+
+# 8. Maintenance and Contribution {#sec-maintenance}
+
+A handbook is maintained by the decisions made after it is published: which contributions are accepted, how a correction becomes a version, when an edition is withdrawn and when a handbook should be retired. Without those decisions, maintenance becomes an endless stream of local edits and the reader loses the ability to tell what changed.
+
+::: {.callout-note appearance="simple" icon=false title="When to Use This Chapter"}
+- A released handbook begins receiving external or cross-team contributions.
+- A correction changes a claim that readers may already have relied on.
+- A section is outdated but the rest of the handbook remains useful.
+- The owner needs a review cadence and a retirement route rather than indefinite maintenance.
+:::
+
+::: {.callout-tip appearance="simple" icon=false title="Key Takeaway"}
+Maintenance is a governed product decision, not a stream of edits. Name the owner, the contribution boundary, the version and changelog rules, and the trigger for review or retirement before the first release.
+:::
+
+## 8.1 Community Contributions and Scoped Review
+
+**Definition.** A contribution is a proposed change to the handbook from someone other than the current author or maintainer. Scoped review is the practice of accepting a contribution only within a declared boundary and with the evidence appropriate to its risk. A contribution is not automatically a commitment to maintain the contributor's preferred version.
+
+**Purpose.** Contributions keep a handbook useful when the original author moves on, but unmanaged contributions create a patchwork of local assumptions. A scoped review gives contributors a clear route and gives the owner a way to accept useful evidence without surrendering the reader promise.
+
+**What it includes.** A contribution guide names the supported change types, the evidence expected, the review route and the response expectation. Small corrections can use a lightweight path; a new section or a changed promise requires the brief and outline to be reopened. Contributors should know whether they are proposing an edit, a new section or a new edition. The reviewer checks scope first, then evidence, then prose.
+
+**Why it is needed.** Unscoped contribution turns the handbook into a negotiation with every reader. A support team adds an escalation section; a sales team adds a pricing section; each addition is reasonable from its own perspective and destructive to the shared promise. Scoping makes rejection legitimate and repeatable rather than personal.
+
+**Example.** *Illustrative only: a community-maintained operations guide.* A contributor proposes a new section on a third-party monitoring vendor. The guide's promise covers vendor-neutral recovery procedures. The maintainer thanks the contributor, explains the non-goal, and suggests a vendor-specific appendix outside the handbook. A second contribution fixes a broken command and is accepted through the lightweight path because it serves the existing reader outcome and includes the tested command.
+
+
+::: {.callout-warning appearance="simple" icon=false title="Common Pitfall"}
+"All contributions welcome" without a boundary invites scope drift. State the reader promise and the supported change types; redirect out-of-scope material to the artifact that owns it.
+:::
+
+::: {.callout-important appearance="simple" icon=false title="Decision & Trade-off"}
+Contribution review can be open or editorial.
+
+| Model | Choose when | Consequences |
+| :--- | :--- | :--- |
+| Lightweight fixes with maintainer review | Typographical or tested factual corrections | Low latency; maintainer remains accountable for scope. |
+| Proposal before drafting | A new section or changed reader promise is proposed | Protects coherence; slower for the contributor. |
+| Open wiki editing | The content is exploratory and not presented as verified | Fast; weak evidence and unstable reader experience. |
+
+Use lightweight review for scoped fixes and a proposal gate for changes to scope. Keep the owner accountable for the promise.
+:::
+
+## 8.2 Versioning, Errata and Deprecation
+
+**Definition.** Versioning is the rule that gives each released edition a distinct identity. Errata are corrections to an existing edition. Deprecation is an explicit statement that a section, feature or entire handbook should no longer be used for new work.
+
+**Purpose.** A reader who downloaded edition 1.2 needs to know whether a correction exists, whether the old bytes are still valid and whether a section has been superseded. Versioning and errata make those questions answerable without rereading the whole book. Deprecation prevents a stale section from continuing to look current. The record should also distinguish a correction that preserves the reader's citations from a new edition that changes the underlying recommendation. That distinction helps a reader decide whether to replace an existing download or only to update a reference.
+
+**What it includes.** Use a version scheme that distinguishes incompatible changes, compatible additions and corrections. Record the version in the release and the manifest. A changelog names the change, the affected sections and the evidence. An erratum points to the corrected edition rather than silently replacing the old release. A deprecation notice names the replacement, the effective date and the remaining support window.
+
+**Why it is needed.** Silent replacement destroys the meaning of a download and a checksum. A reader cannot tell whether the PDF changed because of a correction, a new edition or a different build. Deprecation without a replacement leaves the reader stuck; a changelog without evidence is a list of claims. The version and errata rules make maintenance visible. A correction should also state whether the reader must replace a downloaded file, revisit a cited section or simply note the new edition. That distinction turns a changelog from a list of edits into a decision aid for the reader.
+
+**Example.** *Illustrative only: correcting a command in edition 1.3.* A reader reports that a rollback command uses a removed flag. The maintainer verifies the report against the current release notes, fixes the command in source, adds a test and publishes edition 1.3.1. The changelog names the section, the old behavior and the corrected edition. The old release remains available for audit; the catalog points readers to 1.3.1.
+
+
+::: {.callout-warning appearance="simple" icon=false title="Common Pitfall"}
+Replacing a released PDF or DOCX in place breaks the identity of every checksum and every citation to that edition. Publish a new version, record the change and leave the old bytes available for audit.
+:::
+
+::: {.callout-important appearance="simple" icon=false title="Decision & Trade-off"}
+Versioning can be semantic or date-based; the reader needs a stable rule.
+
+| Scheme | Choose when | Consequences |
+| :--- | :--- | :--- |
+| Semantic versioning | Readers need to distinguish breaking, additive and corrective changes | Clear compatibility signal; requires judgment about what is breaking. |
+| Calendar versioning | The book is a periodic snapshot and compatibility is not the main question | Easy to locate by date; less informative about impact. |
+| Continuous unversioned edits | The artifact is explicitly a living draft | Low overhead; no stable identity for review, citation or audit. |
+
+Use a version scheme that matches how readers depend on the book. Never present an unversioned living draft as an approved release.
+:::
+
+## 8.3 Periodic Review and Retirement
+
+**Definition.** Periodic review is a scheduled check that the reader, evidence, sources and maintenance owner are still valid. Retirement is the deliberate end of maintenance with a redirect, an archive or a replacement record. Retirement is a successful lifecycle outcome when the handbook no longer serves a reader.
+
+**Purpose.** Review catches slow drift that no single correction reveals: a changed standard, a reorganized team, a product that no longer exists. Retirement prevents the organization from paying indefinitely for a document that no one should use. Both decisions need a trigger and an owner, or they never happen.
+
+**What it includes.** Set a review interval and event triggers such as a major product release, a standards revision, a support trend or an ownership change. At review, confirm the reader and promise, re-check load-bearing sources, inspect reported errors and decide whether to continue, narrow, replace or retire. A retirement record names the last edition, the reason, the replacement and where readers should go.
+
+**Why it is needed.** Documents do not become stale only when someone edits them; the world changes around them. A review cadence makes that change visible. Retirement protects trust: a reader who follows a confident but obsolete guide may act wrongly. Keeping a retired handbook online without a notice is worse than removing it. A retired edition should remain findable for audit without presenting itself as current guidance. A good review record names the evidence checked, the sections retained, the sections superseded and the next trigger, so the decision can be repeated even if the original owner has moved on. The record should be short enough to read at the next review and specific enough to show why the lifecycle state changed.
+
+**Example.** *Illustrative only: retiring a platform guide.* A handbook for an internal deployment platform is reviewed after the platform is replaced. The owner confirms that no supported team still uses the old workflow. The last edition remains archived for audit, the catalog entry is marked retired, and the reading site redirects to the replacement guide. The old source and release are retained, but new readers are routed away.
+
+
+::: {.callout-warning appearance="simple" icon=false title="Common Pitfall"}
+An unowned handbook left online is not neutral. Readers interpret availability as current support. Retire explicitly, redirect readers and preserve the historical record rather than letting the document drift.
+:::
+
+::: {.callout-important appearance="simple" icon=false title="Decision & Trade-off"}
+Retirement can remove, redirect or archive the old edition.
+
+| Option | Choose when | Consequences |
+| :--- | :--- | :--- |
+| Redirect to a replacement | A successor exists and readers should move | Preserves continuity; old links resolve to a clear new destination. |
+| Archive with a retired notice | The historical record matters but no successor exists | Auditable; readers must be told that the content is no longer maintained. |
+| Remove without replacement | The content is unsafe or legally must be withdrawn | Protects readers; link rot and a need to explain the withdrawal. |
+
+Prefer a redirect or a clear archive notice. Remove only when continuing availability would cause harm.
+:::
+
+## 8.4 Worked Example — A Maintenance Decision Record
+
+*In practice:* an owner reviews a handbook one year after release. The goal is not to edit every page but to decide the next lifecycle state.
+
+1. Confirm the current edition, owner and reader promise.
+2. Review reported corrections and unresolved issues.
+3. Re-check the load-bearing sources and the product versions they describe.
+4. Identify sections that are still valid, stale or superseded.
+5. Choose the smallest response: errata, new edition, narrow, replace or retire.
+6. Record the decision, the evidence and the next review trigger.
+7. If retiring, publish the redirect or retired notice and update the catalog.
+8. If continuing, update the changelog and schedule the next review.
+
+In the illustrative case, the source product has a new major version but the core decisions remain valid. The owner publishes a compatible edition, marks two vendor-specific sections as deprecated and links to their replacements. The next review trigger is the following major release, not an arbitrary calendar date.
+
+::: {.callout-note appearance="simple" icon=false title="Review Checklist"}
+- Is there a named maintenance owner and a review trigger?
+- Does the contribution guide state the supported change types and evidence?
+- Does the version identify corrective, additive and breaking changes?
+- Are errata published as a new edition rather than an in-place replacement?
+- Does every deprecation name a replacement and a support window?
+- Is retirement an explicit decision with a redirect or archive notice?
+- Are old approved releases retained for audit?
+:::
+
+## 8.5 Further Reading
+
+- Semantic Versioning, *SemVer 2.0.0*: <https://semver.org/> — a widely used rule for communicating compatibility through version numbers.
+- Keep a Changelog, *Keep a Changelog 1.1.0*: <https://keepachangelog.com/en/1.1.0/> — a practical changelog convention organized around human-readable changes.
+- GitHub Docs, *About pull requests*: <https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests> — contribution and review mechanics for repository-based collaboration.
+- Diátaxis, *A systematic framework for technical documentation authoring*: <https://diataxis.fr/> — reader-need framework for deciding whether to maintain, split or retire documentation.

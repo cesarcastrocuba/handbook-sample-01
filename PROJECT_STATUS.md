@@ -4,7 +4,7 @@ This file is the only source of current status. Decisions live in [`DECISIONS.md
 
 ## Phase
 
-Sample book expansion (platform phase 3). Gates 1, 2 and 3 are approved. Part I — Chapters 1–3 — is drafted; later parts remain separate reviewed batches.
+Sample book expansion (platform phase 3). Gates 1, 2 and 3 are approved. The complete draft — Chapters 1–8, front matter, references and appendices — is written; no release exists.
 
 ## Gates
 
@@ -21,17 +21,17 @@ Gate state is machine-readable in [`docs/editorial/gates.json`](docs/editorial/g
 - Local Git repository initialized on `main`.
 - Agent-neutral roles and workflow defined in [`AGENTS.md`](AGENTS.md).
 - Editorial brief and outline approved at Gates 1 and 2 on 2026-11-06, including the broad technical/software audience, full eight-chapter goal and standard `0.2.0` direction.
-- Part I manuscript drafted: Chapter 1, the full Chapter 2 around the approved 2.2 pilot, and Chapter 3. No artifact build is claimed.
+- Complete draft manuscript written: Chapters 1–8, front matter, references and appendices. No artifact build is claimed.
 - Lightweight SDD proposal and task record created.
 - Dependency-free repository check, gate-state policy and state-machine tests added and documented.
 - Toolkit repinned to public hub main `477d7042faa385eee677ad2db5198ebcf5dd1fee`; `make full` runs descriptor, reading order, references and all chapter validators.
-- Pilot 2.2 approved and retained inside Chapter 2; Chapters 1 and 3 complete Part I.
+- Pilot 2.2 approved and retained inside Chapter 2; Chapters 1–8 complete the draft.
 - CI installs the pinned toolkit and runs the fast `validate-book` check on `main`, `feat/**`, pull requests and `workflow_dispatch`.
 - Content and code licensing recorded as a proposal.
 
 ## Not done, by design
 
-- Part II and Part III are not written.
+- No independent review of Parts II–III; no release or artifact exists.
 - No Quarto configuration or build; Quarto is not installed in the bootstrap environment.
 - No artifact build or validation yet. `make full` passes descriptor, reading-order, reference and chapter validation; no artifact manifest or checksums exist.
 - No HTML, PDF, DOCX, site output or release.
@@ -40,7 +40,7 @@ Gate state is machine-readable in [`docs/editorial/gates.json`](docs/editorial/g
 
 ## Next step
 
-Part I is ready for independent review. Part II follows on a separate branch after review.
+Parts II and III are ready for independent review. No merge or release is authorized by this branch.
 
 ## Verification
 

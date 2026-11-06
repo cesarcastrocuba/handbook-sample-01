@@ -1,0 +1,140 @@
+---
+title: "7. Build, Verify, Release"
+profile: standard
+---
+
+# 7. Build, Verify, Release {#sec-build}
+
+A release is not the moment a document becomes true; it is the moment a specific set of bytes becomes available with a traceable identity. If the build is not repeatable and the artifact is not verifiable, a polished PDF is only a screenshot of an unverified working tree. This chapter describes the platform's build and release flow and the evidence it must produce.
+
+::: {.callout-note appearance="simple" icon=false title="When to Use This Chapter"}
+- A book is approaching its first release or a corrected edition.
+- A reviewer needs to know which commit produced an artifact.
+- A build works locally but cannot be reproduced in CI.
+- A catalog or download page is about to link to release assets.
+:::
+
+::: {.callout-tip appearance="simple" icon=false title="Key Takeaway"}
+Build once from an approved commit, verify the bytes you will publish, and make the release point to that exact verified directory. Never rebuild silently between review and publication.
+:::
+
+## 7.1 Pin the Toolchain and Declare the Source of Truth
+
+**Definition.** The build toolchain is the executable set that turns canonical sources into artifacts: the book toolkit, Quarto, Pandoc, Typst, Python and the supporting inspection tools. The source of truth is the exact commit from which those artifacts are built, not a branch, a working tree or a convenient latest download.
+
+**Purpose.** Pinning makes a build explainable. When a reader or maintainer asks why a PDF looks a certain way, the answer can point to a version, a configuration and a commit. An unpinned latest tool turns every rebuild into an uncontrolled variable.
+
+**What it includes.** Record the toolkit and profile versions in `book.yaml`, the Quarto/Pandoc/Typst versions in the build environment, the exact source commit, the source epoch and the command used. A book installs the toolkit at an exact version; the toolkit resolves the approved profile and bundles its schemas and packaged profile snapshot. Configuration belongs to the book; shared staging and packaging logic belongs to the toolkit.
+
+**Why it is needed.** A build that depends on a parent checkout, an editable install or a floating latest package cannot be reproduced by a reviewer on another machine. A branch name cannot identify which bytes were reviewed. Pinning the source and tools turns a successful local build into a claim that someone else can test.
+
+**Example.** *Illustrative only: a book repository release.* The repository pins `handbook-toolkit` to a full hub commit, records Quarto `1.11.9` in the manifest, and builds from commit `A` on a clean checkout. The build refuses a dirty tree and refuses a commit that is not the requested HEAD. The manifest names the commit and versions, so a later reader can identify exactly what produced the PDF.
+
+
+::: {.callout-warning appearance="simple" icon=false title="Common Pitfall"}
+A branch is not a release identity. If the build reads a working tree or a moving branch, the reviewed commit can differ from the published bytes. Build from the exact commit, in a clean environment, and record that identity.
+:::
+
+::: {.callout-important appearance="simple" icon=false title="Decision & Trade-off"}
+A pinned toolchain trades convenience for reproducibility.
+
+| Approach | Choose when | Consequences |
+| :--- | :--- | :--- |
+| Exact pins for toolkit, profile and renderer | Anything presented as an approved release | Reproducible evidence; upgrades require a deliberate review and migration. |
+| Floating latest renderer | Local exploration only, never a release | Convenient; output can change without a source change. |
+| Parent-checkout or editable install | Never for a book release | Fast for the platform author; unreproducible and hides packaging defects. |
+
+Pin everything that can change the artifact. Use a preview exception only when it is explicit, non-release and recorded in the manifest.
+:::
+
+## 7.2 Build Once, Verify Deterministically, Manifest and Checksums
+
+**Definition.** Build once means the artifact set is produced a single time from the approved source and then verified, packaged and published without a rebuild. Deterministic verification means the checks operate on those bytes, not on a reconstructed approximation. A manifest records identity and metadata; checksums record the bytes.
+
+**Purpose.** Building once makes the reviewed artifact and the published artifact the same object. Verification catches corruption, missing files and format failures before readers see them. A manifest and checksum file let a later auditor ask whether the downloadable bytes are still the bytes that were approved.
+
+**What it includes.** The build creates a private staging directory, extracts tracked files from the exact commit, validates the descriptor, metadata and reading order, runs the manuscript and reference gates, stages the render resources and renders HTML, Typst PDF and DOCX with execution disabled. It packages the HTML site and source, inspects every payload, writes `publication-manifest.json`, writes `SHA256SUMS.txt`, runs the integrity verifier and only then atomically exposes the final directory. The resulting set contains exactly the HTML ZIP, PDF, DOCX, source ZIP, manifest and checksums.
+
+**Why it is needed.** A build that writes directly to the final output can expose a partial site after a failure. A build that re-renders between verification and upload can publish unreviewed bytes. Separate identity files without exact membership and hashes are only decoration. The sequence — stage, verify, manifest, checksum, atomically expose — makes each failure stop before publication. A useful release check also records what was not run, so a later reviewer does not mistake an omitted visual inspection or platform test for a pass. That record is part of the evidence, not a caveat added after publication.
+
+**Example.** *Illustrative only: the platform's current local build.* A book commit is checked out cleanly. The toolkit creates a private staging directory beside the requested output, extracts the commit with `git archive`, validates the source bundle, then renders with the pinned Quarto toolchain. It inspects the PDF with `pdfinfo`, the DOCX package and text, the HTML archive links and the source bundle's commit comment. It writes the manifest and checksum file, verifies their exact membership and hashes, then renames the complete directory into place. No upload or release is performed.
+
+
+::: {.callout-warning appearance="simple" icon=false title="Common Pitfall"}
+"Quarto exited zero" is not a release check. A render can produce a structurally invalid PDF, a DOCX without the Word document part or an HTML archive with missing assets. Inspect the payloads and verify the manifest, checksums and exact six-file membership.
+:::
+
+::: {.callout-important appearance="simple" icon=false title="Decision & Trade-off"}
+Reproducibility can be pursued as byte identity or semantic identity.
+
+| Level | Choose when | Consequences |
+| :--- | :--- | :--- |
+| Bit-identical artifacts | The toolchain and environment are fully pinned and tested | Strongest audit; brittle across operating systems, fonts and compression libraries. |
+| Semantic identity plus recorded differences | PDF/DOCX metadata or renderer versions vary | Practical across environments; manifest must state which bytes differ and why. |
+| No reproducibility claim | Exploratory preview only | Fast; unsuitable for a reviewed release. |
+
+Claim only the level the evidence supports. Record the toolchain versions and the build command in the manifest, and do not call a semantically verified rebuild bit-identical.
+:::
+
+## 7.3 Release Gates, Catalog Integration and Artifact Retention
+
+**Definition.** A release gate is the owner decision that authorizes publishing a verified artifact set. Catalog integration is the addition of an approved release to the discovery layer. Retention is the rule for keeping, withdrawing and replacing release assets without mutating history.
+
+**Purpose.** A verified directory is not yet a publication. The owner must confirm that the content, licensing and release evidence are acceptable. The catalog must point to immutable assets, not to a branch or a working tree. Retention protects readers who downloaded an earlier edition and auditors who need to reconstruct what was published.
+
+**What it includes.** The release gate checks the approved commit, manifest identity, six assets, checksums, format inspection, licensing and editorial approval. The release tag is immutable and matches the book version. The catalog entry references the release, the manifest and the checksum file, and never a mutable branch. A correction creates a new version; withdrawal updates the catalog and records the reason. The source bundle remains available with the release so the published book can be rebuilt or audited.
+
+**Why it is needed.** Publication without a gate turns a build convenience into an unowned promise. A catalog that links to a branch can show content that was never released; an in-place asset replacement destroys the meaning of a checksum. Retention rules make a correction auditable instead of a silent overwrite.
+
+**Example.** *Illustrative only: a catalog entry decision.* A verified release is proposed for the catalog. The reviewer compares the manifest commit with the owner-approved commit, checks that the release tag matches the version, and confirms that the six assets and checksums are attached to that tag. Only then does the catalog change link to the release. This book has not reached that state: there is no release, catalog entry or Pages deployment yet.
+
+
+::: {.callout-warning appearance="simple" icon=false title="Common Pitfall"}
+A preview is not a release candidate. If the artifact came from a feature branch, a dirty tree or an unapproved commit, a catalog link makes an unreviewed promise public. Gate the release on the approved commit and the verified manifest.
+:::
+
+::: {.callout-important appearance="simple" icon=false title="Decision & Trade-off"}
+Retention can prioritize storage or auditability.
+
+| Policy | Choose when | Consequences |
+| :--- | :--- | :--- |
+| Keep every release and source bundle | Readers and auditors need historical editions | Strong provenance; storage and catalog growth. |
+| Keep current plus one previous | The product changes quickly and old editions are rarely used | Lower storage; readers of older editions lose access. |
+| Replace assets in place | Never for an approved release | Convenient; destroys checksum meaning and audit history. |
+
+Keep approved releases immutable. Withdraw a defective release through the catalog and publish a corrected version; never overwrite the old bytes.
+:::
+
+## 7.4 Worked Example — A Release Readiness Review
+
+*In practice:* a team has a verified six-file directory and must decide whether it may become a release. The book in this example is fictional; the sample book in this repository has not been released.
+
+1. Confirm the build source is the owner-approved commit and the worktree was clean.
+2. Compare the manifest's book id, version and commit with the release proposal.
+3. Check the six files: HTML ZIP, PDF, DOCX, source ZIP, manifest and checksums.
+4. Verify every checksum and the exact manifest membership.
+5. Inspect PDF page count and text, DOCX package and text, HTML local links and source commit comment.
+6. Confirm the profile, toolkit, renderer and zlib versions are recorded.
+7. Review licensing, attribution and the owner's release decision.
+8. Tag the approved release, attach the exact verified assets and update the catalog only after the assets verify.
+9. Record the release evidence and the rollback or withdrawal path.
+
+If any step fails, the build is not a release candidate. The team fixes the source or the pipeline, rebuilds from a new commit and repeats the review. It does not patch the final directory.
+
+::: {.callout-note appearance="simple" icon=false title="Review Checklist"}
+- Is the build from the exact approved commit and a clean environment?
+- Are the toolkit, profile, Quarto, Pandoc, Typst, Python and zlib versions recorded?
+- Does the directory contain exactly the six required assets?
+- Do the manifest and checksum membership and hashes agree?
+- Were PDF, DOCX, HTML and source formats inspected?
+- Is the release tag immutable and matched to the book version?
+- Does the catalog point to the verified release rather than a branch?
+- Is a withdrawal or rollback path recorded?
+:::
+
+## 7.5 Further Reading
+
+- Quarto, *Creating a Book*: <https://quarto.org/docs/books/> — official book project, render and output behavior.
+- Quarto, *render CLI*: <https://quarto.org/docs/cli/render.html> — official render options including output directories and format selection.
+- SLSA, *Supply-chain levels for software artifacts*: <https://slsa.dev/> — provenance and artifact-integrity framework for build systems.
+- GitHub Docs, *About releases*: <https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases> — release tags and immutable asset distribution.

@@ -1,0 +1,39 @@
+# Appendix C — Glossary {.unnumbered}
+
+**Architecturally significant requirement.** A requirement that constrains structure, quality or evidence enough to change an architecture decision. (The sample book uses the general idea without requiring an architecture role.)
+
+**Brief.** The approved record of the reader, promise, scope, non-goals, evidence, owner and change rule.
+
+**Build once.** Producing the release artifacts one time from an approved commit and publishing those exact bytes, rather than rebuilding between review and publication.
+
+**Catalog.** The hub index of approved releases. It links to immutable assets and does not mirror manuscript content.
+
+**Checksum.** A hash of an artifact used to detect a change in its bytes. A checksum proves equality, not editorial approval.
+
+**Content profile.** A declared set of required section and chapter elements. The standard profile in this book is version 0.2.0.
+
+**Cross-reference.** An explicit pointer to a labelled section, figure, table or other element, such as `@sec-review`.
+
+**Exception.** An owner-approved, recorded deviation from a profile element; it is not an undocumented omission.
+
+**Gate.** An owner decision that authorizes the next phase, such as brief, outline, pilot, expansion or release.
+
+**Manifest.** The publication identity document that records the book, source commit, tool versions, build command and artifact hashes.
+
+**Non-goal.** An attractive adjacent subject that the handbook deliberately excludes.
+
+**Pilot.** One written section used to test the brief, profile and review process before the remaining chapters are expanded.
+
+**Profile.** A versioned editorial contract for the shape of chapters and sections.
+
+**Reading order.** The declared list of canonical manuscript files, grouped as front matter, chapters, back matter, appendices and references.
+
+**Review record.** The durable evidence of the exact reviewed commit, commands, findings and verdict.
+
+**Source bundle.** The archive of canonical sources and build inputs at the release commit.
+
+**Source ledger.** A record of claims, confidence, evidence and review triggers used during research.
+
+**Staging directory.** A private build directory where artifacts are produced and verified before the complete directory is atomically exposed.
+
+**Verified release.** A release directory whose identity, assets, hashes and format checks have passed the release gate.

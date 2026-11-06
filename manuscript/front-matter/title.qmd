@@ -1,0 +1,22 @@
+---
+title: "Handbook Authoring and Publishing"
+subtitle: "A practical guide to planning, writing, reviewing and sustaining a technical handbook"
+author: "Handbook Sample Contributors"
+date: "2026-11-06"
+---
+
+# Handbook Authoring and Publishing {.unnumbered}
+
+A practical guide to planning, writing, reviewing and sustaining a technical handbook.
+
+**Status:** Draft manuscript. Not a released edition.
+
+**Edition:** 0.1.0-draft
+
+**Profile:** standard 0.2.0
+
+**Language:** English
+
+**Content license:** CC BY-SA 4.0
+
+**Code license:** MIT

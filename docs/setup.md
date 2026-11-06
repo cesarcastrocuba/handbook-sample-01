@@ -75,7 +75,7 @@ A fast pass is not a publication or full-manuscript pass.
 
 ## 5. Current limits
 
-- Part I chapters exist. `make full` validates their structure and references; it does not judge editorial quality.
+- The complete draft exists. `make full` validates chapter structure and references; it does not judge editorial quality.
 - `make full` runs descriptor, reading-order, cross-reference and chapter-profile validation and passes. It does not build artifacts.
 - Toolkit `0.2.0` provides `validate-references` and `validate-manuscript`; artifact manifest/checksum validation remains separate.
 - The book references hub `standard` `0.2.0`, approved and integrated on hub main `8ee28a0`. The fast check does not validate profile `0.2.0`.

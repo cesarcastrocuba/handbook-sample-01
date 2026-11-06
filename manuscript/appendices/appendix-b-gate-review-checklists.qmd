@@ -1,0 +1,44 @@
+# Appendix B — Gate and Review Checklists {.unnumbered}
+
+## B.1 Brief gate
+
+- [ ] The primary reader and situation are named.
+- [ ] The promise is an observable outcome, not a topic list.
+- [ ] At least one attractive adjacent subject is an explicit non-goal.
+- [ ] The evidence method is defined before drafting.
+- [ ] One accountable owner and an independent review route are named.
+- [ ] The change or review trigger is recorded.
+- [ ] Licensing and attribution are clear enough to proceed.
+
+## B.2 Outline gate
+
+- [ ] Every chapter has a distinct reader outcome and exit evidence.
+- [ ] The structure is proportional to the promise.
+- [ ] The pilot section tests the riskiest or most representative decision.
+- [ ] Dependencies and exclusions are explicit.
+- [ ] The profile and exception route are identified.
+
+## B.3 Pilot and chapter review
+
+- [ ] The chapter opens with When to Use This Chapter and Key Takeaway.
+- [ ] Required section elements are present or an owner-approved exception is recorded.
+- [ ] Examples are labeled and show a real constraint or cost.
+- [ ] The Common Pitfall is specific and correctable.
+- [ ] The Decision & Trade-off names a default and an alternative condition.
+- [ ] The Worked Example ends with a Review Checklist.
+- [ ] Further Reading is the last numbered section.
+- [ ] Sources are real, checkable and versioned where necessary.
+- [ ] Cross-references resolve and external links remain intact.
+- [ ] The exact reviewed commit is recorded.
+
+## B.4 Release gate
+
+- [ ] The build uses the exact owner-approved commit and a clean environment.
+- [ ] Toolkit, profile, Quarto, Pandoc, Typst, Python and zlib versions are recorded.
+- [ ] The six release assets are present and inspected.
+- [ ] Manifest membership and every checksum verify.
+- [ ] PDF, DOCX, HTML and source formats pass structural inspection.
+- [ ] The release tag is immutable and matches the version.
+- [ ] The catalog points to the release, not a branch.
+- [ ] Licensing, attribution and the owner release decision are recorded.
+- [ ] A withdrawal or rollback route is documented.

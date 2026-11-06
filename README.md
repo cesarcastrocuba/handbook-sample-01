@@ -2,7 +2,7 @@
 
 A sample handbook that demonstrates how to plan, write, review and publish a maintainable technical handbook. It is the reference book for the handbook platform and is written in public so the workflow itself can be inspected.
 
-**Status: Gates 1–3 approved; Part I drafted.** Chapters 1–3 are written; no artifacts or release exist yet.
+**Status: Gates 1–3 approved; complete draft manuscript.** Chapters 1–8, front matter, references and appendices are drafted; no artifacts or release exist yet.
 
 ## Current gate
 
@@ -12,7 +12,7 @@ A sample handbook that demonstrates how to plan, write, review and publish a mai
 | 2 — outline | Approved, 2026-11-06 |
 | 3 — pilot section | Approved, 2026-11-06; Part I expansion authorized |
 
-Gate 3 is an approval of written work and authorizes expansion. Part I now contains Chapters 1–3. The exact sequence is in [`docs/editorial/gates.md`](docs/editorial/gates.md). Gate evidence is recorded in [`docs/editorial/approval-record.md`](docs/editorial/approval-record.md), [`PROJECT_STATUS.md`](PROJECT_STATUS.md) and [`docs/editorial/gates.json`](docs/editorial/gates.json).
+Gate 3 is an approval of written work and authorizes expansion. The draft now contains all eight chapters plus front matter and appendices. The exact sequence is in [`docs/editorial/gates.md`](docs/editorial/gates.md). Gate evidence is recorded in [`docs/editorial/approval-record.md`](docs/editorial/approval-record.md), [`PROJECT_STATUS.md`](PROJECT_STATUS.md) and [`docs/editorial/gates.json`](docs/editorial/gates.json).
 
 ## What this repository contains
 

@@ -1,0 +1,33 @@
+# References {.unnumbered}
+
+The following sources are cited by chapter or used as Further Reading. Links were current when the draft was prepared; verify a source before relying on it for a release decision.
+
+## Standards and primary references
+
+- ISO/IEC/IEEE 29148:2018, *Systems and software engineering — Life cycle processes — Requirements engineering*. <https://www.iso.org/standard/72089.html>
+- CommonMark, *CommonMark Spec*. <https://spec.commonmark.org/>
+- Creative Commons, *Attribution-ShareAlike 4.0 International*. <https://creativecommons.org/licenses/by-sa/4.0/>
+- SPDX, *License List*. <https://spdx.org/licenses/>
+
+## Publishing and platform references
+
+- Quarto, *Creating a Book*. <https://quarto.org/docs/books/>
+- Quarto, *Book Structure*. <https://quarto.org/docs/books/book-structure.html>
+- Quarto, *Cross-References*. <https://quarto.org/docs/authoring/cross-references.html>
+- Quarto, *render CLI*. <https://quarto.org/docs/cli/render.html>
+- GitHub Docs, *About releases*. <https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases>
+- SLSA, *Supply-chain levels for software artifacts*. <https://slsa.dev/>
+
+## Documentation and review practice
+
+- Diátaxis, *A systematic framework for technical documentation authoring*. <https://diataxis.fr/>
+- Google, *Developer Documentation Style Guide*. <https://developers.google.com/style>
+- Google, *Code Review Developer Guide*. <https://google.github.io/eng-practices/review/>
+- Write the Docs, *Documentation Guide*. <https://www.writethedocs.org/guide/>
+- GitHub Docs, *About pull requests*. <https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests>
+- GitHub Docs, *About protected branches*. <https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches>
+
+## Versioning and maintenance
+
+- Semantic Versioning, *SemVer 2.0.0*. <https://semver.org/>
+- Keep a Changelog, *Keep a Changelog 1.1.0*. <https://keepachangelog.com/en/1.1.0/>

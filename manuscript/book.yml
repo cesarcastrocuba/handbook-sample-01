@@ -1,5 +1,8 @@
-# Reading order through Part II. Every listed file is canonical and present.
-front: []
+# Complete reading order: front matter, Chapters 1-8, appendices and references.
+front:
+  - front-matter/title.qmd
+  - front-matter/preface.qmd
+  - front-matter/reading-paths.qmd
 chapters:
   - chapters/ch01-why-handbooks-fail.qmd
   - chapters/ch02-editorial-contract.qmd
@@ -7,6 +10,12 @@ chapters:
   - chapters/ch04-research-and-source-discipline.qmd
   - chapters/ch05-writing-a-section.qmd
   - chapters/ch06-review-as-evidence.qmd
+  - chapters/ch07-build-verify-release.qmd
+  - chapters/ch08-maintenance-and-contribution.qmd
 back: []
-appendices: []
-references: []
+appendices:
+  - appendices/appendix-a-brief-outline-templates.qmd
+  - appendices/appendix-b-gate-review-checklists.qmd
+  - appendices/appendix-c-glossary.qmd
+references:
+  - back-matter/references.qmd
