@@ -104,7 +104,7 @@ Prerequisites outside the repository: GitHub Pages must use the GitHub Actions s
 
 ## 6. Release-candidate inspection
 
-A local `0.1.0-rc.1` build from commit `bb87b71` produced a 57-page PDF and the six-file set outside the repository. Inspection found and fixed:
+A local `0.1.0-rc.1` build from commit `bb87b71`, repeated from the final branch HEAD, produced a 57-page PDF and the six-file set outside the repository. Inspection found and fixed:
 
 - a duplicate title page: the Quarto title page and the front-matter H1 repeated the title; the front matter now starts with an unnumbered document-control page;
 - a duplicated subtitle on the document-control page: the subtitle now comes only from the book configuration;
