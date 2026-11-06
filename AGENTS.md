@@ -44,7 +44,7 @@ The sequence and state transitions are defined in [`docs/editorial/gates.md`](do
 
 - English for handbook content and repository documentation.
 - Vendor-neutral, decision- and trade-off-oriented. Prefer explicit evidence over broad claims.
-- Follow the [content profile](docs/editorial/profile.md). Declare every exception explicitly.
+- Follow the [content profile](docs/editorial/profile.md). Record every exception in the owner-approved `sdd/changes/<id>/profile-exceptions.md` record; chapter front matter may reference it but does not replace it.
 - No fabricated sources, standards, measurements, build results or review verdicts. Label illustrative examples as illustrative.
 - No secrets, personal data, caches or third-party material without a rights review.
 - Content is CC BY-SA 4.0; code and build configuration are MIT. See [`NOTICE.md`](NOTICE.md).

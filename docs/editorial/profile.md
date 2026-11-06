@@ -3,19 +3,24 @@
 | Field | Value |
 | --- | --- |
 | Status | **Proposed** — owner approval pending with the outline (Gate 2) |
-| Version | 0.1 |
+| Document revision | 0.2 |
 | Date | 2026-11-06 |
+| Hub profile reference | `standard` `0.2.0` — **Proposed** on hub branch `feat/topic-neutral-profile`; contingent on hub branch approval |
 | Applies to | Every chapter and appendix in this book |
 
-This profile defines the reusable shape of a section. It is deliberately small: enough structure to make chapters consistent and reviewable without turning every page into a form.
+This profile defines the reusable shape of a section. It is deliberately small: enough structure to make chapters consistent and reviewable without turning every page into a form. It is not an approved hub profile and does not make `0.2.0` available.
 
 ## 1. Chapter-level elements
 
-Every chapter opens with:
+Every chapter has, in this order:
 
 1. a short lead that states the problem and why it matters;
 2. **When to Use This Chapter** — a callout with three to five concrete situations;
-3. **Key Takeaway** — one paragraph stating the durable idea.
+3. **Key Takeaway** — one paragraph stating the durable idea;
+4. numbered sections `N.1 … N.k`;
+5. **Worked Example** — a required section, last before the checklist; it begins with `*In practice:*` and may use numbered steps, a figure or a table;
+6. **Review Checklist** — a required, topic-neutral callout at the end of the Worked Example;
+7. **Further Reading** — a required last numbered section.
 
 ```markdown
 ::: {.callout-note appearance="simple" icon=false title="When to Use This Chapter"}
@@ -26,31 +31,38 @@ Every chapter opens with:
 ::: {.callout-tip appearance="simple" icon=false title="Key Takeaway"}
 One paragraph.
 :::
+
+::: {.callout-note appearance="simple" icon=false title="Review Checklist"}
+- Observable review item one.
+- Observable review item two.
+:::
 ```
+
+The Review Checklist is generic to the chapter's topic. It is not an “Architecture Review Checklist” unless the chapter is actually about architecture.
 
 ## 2. Section-level elements
 
 | Element | Requirement | Form |
 | --- | --- | --- |
-| **Definition** | Required when the section introduces a concept | Bold lead-in; one or two sentences that state what the thing is and what it is not |
-| **Purpose** | Required for a concept or practice | Why the reader needs it; the decision or action it enables |
-| **What it includes** | Required for a concept or practice | Concrete contents, fields or steps; name the minimum useful set |
-| **Why it is needed** | Required for a concept or practice | Consequence of omitting it, with a failure mode |
-| **Example** | Required unless an exception is declared | Worked, labeled example; fictional details marked as illustrative |
-| **Common Pitfall** | Required unless an exception is declared | One specific failure, its symptom and its correction |
-| **Decision & Trade-off** | Required for decision-oriented sections | The choice, what it buys, what it costs, and when the alternative is reasonable |
-| **Checklist** | Required when the reader must act | Short, observable items; no vague aspirations |
-| **Further Reading** | Required when sources exist | Real, checkable sources with a note on why each is relevant |
+| **Definition** | Required for a concept or practice unit | Bold lead-in; one or two sentences that state what the thing is and what it is not |
+| **Purpose** | Required for a concept or practice unit | Why the reader needs it; the decision or action it enables |
+| **What it includes** | Required for a concept or practice unit | Concrete contents, fields or steps; name the minimum useful set |
+| **Why it is needed** | Required for a concept or practice unit | Consequence of omitting it, with a failure mode |
+| **Example** | Required section closure | Worked, labeled example; fictional details marked as illustrative |
+| **Common Pitfall** | Required section closure | One specific failure, its symptom and its correction |
+| **Decision & Trade-off** | Required section closure | The choice, what it buys, what it costs, and when the alternative is reasonable |
 
-Not every section needs every element. A narrative history section may legitimately use only Definition, Example and Common Pitfall. The exception must be declared, not left implicit.
+A concept or practice unit uses the four labelled paragraphs in the order Definition, Purpose, What it includes and Why it is needed. Every topic section closes with Example, Common Pitfall and Decision & Trade-off, in that order. The Worked Example follows its own shape and ends with the Review Checklist. A section either has no numbered subsections or at least two; a single subsection is a defect.
+
+Omission of a required element needs the owner-approved exception record described in section 5. Visuals are optional; see sections 4.3 and 4.4.
 
 ## 3. Ordering
 
-Use this order unless the argument requires otherwise:
+Use this order unless an approved exception says otherwise:
 
-`Definition → Purpose → What it includes → Why it is needed → Example → Common Pitfall → Decision & Trade-off → Checklist → Further Reading`
+`Definition → Purpose → What it includes → Why it is needed → Example → Common Pitfall → Decision & Trade-off`
 
-The order moves from meaning to use, then to failure and choice, then to action and evidence.
+The order moves from meaning to use, then to failure and choice. The chapter then closes with its Worked Example, Review Checklist and Further Reading.
 
 ## 4. Writing rules
 
@@ -68,12 +80,16 @@ The order moves from meaning to use, then to failure and choice, then to action 
 
 ### 4.3 Tables
 
+Tables are optional and are never required for profile conformance.
+
 - Use a table when readers must compare rows across the same columns.
 - Keep cells short enough to wrap without hiding the comparison.
 - Allow adaptive widths in the published format; do not force a fixed width that clips content.
 - Put the caption below the table and make it describe the comparison, not repeat the header.
 
 ### 4.4 Diagrams
+
+Diagrams are optional and are never required for profile conformance.
 
 - Use a diagram only when relationships are harder to express in prose.
 - Keep the aspect ratio. Do not enlarge a small diagram to fill the text column.
@@ -102,28 +118,39 @@ The order moves from meaning to use, then to failure and choice, then to action 
 
 ## 5. Declaring exceptions
 
-A chapter that omits a required element or changes the order declares it in YAML front matter:
+An exception is valid only when the owner approves it and the rationale is recorded in `sdd/changes/<id>/profile-exceptions.md`. The record states:
+
+- the profile element and version;
+- why the default does not fit;
+- what replaces it;
+- the scope (book, chapter or section);
+- the owner approval reference;
+- the expiry or review trigger.
+
+A chapter front matter entry may reference that record, but it does not replace it:
 
 ```yaml
 ---
 title: "Chapter title"
 profile: standard
 profile-exceptions:
-  - element: Further Reading
-    reason: "The chapter teaches an internal workflow and cites no external sources."
+  record: sdd/changes/<id>/profile-exceptions.md
 ---
 ```
 
-The reviewer checks that every declared exception has a reason. An undeclared omission is a finding. Exceptions are per chapter, not a silent global change to this profile.
+An undeclared omission is a finding. An exception without an owner-approved record is also a finding. A book-wide alternative profile is a new profile version, not a list of exceptions.
 
 ## 6. Review checklist
 
 - [ ] The chapter opens with When to Use This Chapter and Key Takeaway.
-- [ ] Required elements are present or exceptions are declared with reasons.
-- [ ] The reader outcome is visible in the section, not only in the outline.
-- [ ] Examples are labeled and teach a decision.
-- [ ] Tables compare like with like; captions describe the comparison.
-- [ ] Diagrams keep their aspect ratio and remain readable when published.
+- [ ] The chapter has a Worked Example section beginning with `*In practice:*`.
+- [ ] The Worked Example ends with a generic Review Checklist callout.
+- [ ] Further Reading is the last numbered section.
+- [ ] Each concept unit uses Definition, Purpose, What it includes and Why it is needed.
+- [ ] Each topic section closes with Example, Common Pitfall and Decision & Trade-off in that order.
+- [ ] No single numbered subsection exists.
+- [ ] Tables and diagrams appear only when they improve understanding; if present, they are readable when published.
+- [ ] Any omission references an owner-approved `sdd/changes/<id>/profile-exceptions.md` record.
 - [ ] Cross-references name a specific locator.
 - [ ] Sources are real and checkable; assumptions are labeled.
 - [ ] No third-party material lacks a rights review.

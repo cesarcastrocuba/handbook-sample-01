@@ -6,6 +6,7 @@
 | Version | 0.1 |
 | Date | 2026-11-06 |
 | Depends on | [Editorial brief](brief.md) approval (Gate 1) |
+| Profile | `standard` `0.2.0` — **Proposed** on hub branch `feat/topic-neutral-profile`; contingent on hub branch approval |
 | Pilot | Chapter 2, section 2.2 — **not written** |
 | Related | [Content profile](profile.md) · [`AGENTS.md`](../../AGENTS.md) |
 
@@ -29,14 +30,16 @@ The order is deliberate. A profile applied to an undefined audience produces con
 
 | # | Chapter | Reader outcome | Profile emphasis |
 | --- | --- | --- | --- |
-| 1 | Why Handbooks Fail | Diagnose a failing handbook and decide whether to revise, narrow or retire it | Narrative lead, one worked failure, Decision & Trade-off |
+| 1 | Why Handbooks Fail | Diagnose a failing handbook and decide whether to revise, narrow or retire it | Worked Example, Decision & Trade-off |
 | 2 | The Editorial Contract | Write a brief that constrains audience, scope, non-goals and ownership | Full standard profile; pilot section |
-| 3 | Profiles and Exceptions | Apply the section profile and declare justified exceptions | Definition, What it includes, Example, Checklist |
-| 4 | Research and Source Discipline | Build a source ledger and separate fact, recommendation and assumption | Example, Common Pitfall, Checklist |
+| 3 | Profiles and Exceptions | Apply the section profile and declare justified exceptions | Definition, What it includes, Example, Review Checklist |
+| 4 | Research and Source Discipline | Build a source ledger and separate fact, recommendation and assumption | Worked Example, Common Pitfall, Review Checklist |
 | 5 | Writing a Section | Draft a section that satisfies the profile and teaches a decision | All section elements |
-| 6 | Review as Evidence | Run an independent review and record a verdict with re-checked evidence | Decision & Trade-off, Checklist |
-| 7 | Build, Verify, Release | Produce reproducible artifacts from an approved commit and release them unchanged | What it includes, Why it is needed, Checklist |
-| 8 | Maintenance and Contribution | Set contribution, versioning, errata and retirement rules | Decision & Trade-off, Checklist |
+| 6 | Review as Evidence | Run an independent review and record a verdict with re-checked evidence | Review Checklist |
+| 7 | Build, Verify, Release | Produce reproducible artifacts from an approved commit and release them unchanged | What it includes, Why it is needed, Review Checklist |
+| 8 | Maintenance and Contribution | Set contribution, versioning, errata and retirement rules | Decision & Trade-off, Review Checklist |
+
+All chapters also carry the required Worked Example, Review Checklist and Further Reading from the [content profile](profile.md); the section lists below are the topic sections.
 
 ## 3. Part I — Define the contract
 

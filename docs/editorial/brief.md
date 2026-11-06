@@ -67,7 +67,7 @@ This book is a practical, vendor-neutral guide to authoring and publishing a mai
 - **Proportional.** Prefer the shortest form that preserves meaning. Tables and diagrams earn their space by clarifying a relationship, not by decorating a page.
 - **Explicit.** Cross-reference a specific section when it helps; do not turn every repeated term into a link.
 
-Every chapter follows the [content profile](profile.md) or declares its exceptions in YAML front matter.
+Every chapter follows the [content profile](profile.md) and records exceptions in an owner-approved `sdd/changes/<id>/profile-exceptions.md` record. Chapter front matter may reference that record; it does not replace it.
 
 ## 6. Structure and length
 
@@ -86,7 +86,7 @@ Proposed targets: 2,000–3,500 words per chapter, 1,200–1,800 words for the p
 A section is ready for review only when:
 
 - its reader outcome and scope are identifiable;
-- every required profile element is present, or an exception is declared and justified;
+- every required profile element is present, or an owner-approved exception record is referenced;
 - examples are labeled illustrative or supported by a checkable source;
 - claims about tools, standards or measurements can be verified;
 - tables and diagrams are readable at their published size;
@@ -128,6 +128,7 @@ Gate 3 is an approval of written work, not a precondition for writing it. Gates 
 **Assumptions**
 
 - The hub toolkit is not yet available; its version and command names are unknown during bootstrap.
+- The content profile is aligned with proposed hub `standard` `0.2.0`; use is contingent on hub branch approval and does not make that profile approved here.
 - The sample book is a demonstration, not a replacement for the existing handbook.
 - English is the publication language.
 - The owner supplies or confirms the public attribution before release.
