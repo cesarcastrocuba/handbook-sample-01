@@ -1,0 +1,139 @@
+---
+title: "3. Profiles and Exceptions"
+profile: standard
+---
+
+# 3. Profiles and Exceptions {#sec-profiles}
+
+A profile turns an editorial promise into a repeatable shape without turning every chapter into the same chapter. It answers a practical review question: given a section that is already accurate, is it complete for this reader, and if not, what is deliberately missing? This chapter explains the standard elements, the exception route and the cross-reference rules that keep a multi-chapter handbook coherent.
+
+::: {.callout-note appearance="simple" icon=false title="When to Use This Chapter"}
+- A team is adopting a shared section shape across several authors.
+- A reviewer needs to distinguish an omission from a justified exception.
+- A chapter needs a worked example, checklist or Further Reading section.
+- Tables, figures or cross-references are being added inconsistently.
+:::
+
+::: {.callout-tip appearance="simple" icon=false title="Key Takeaway"}
+A profile is a contract about evidence and reader experience, not a word-count template. Every required element earns its place by changing what the reader can decide; every omission needs an owner-approved record.
+:::
+
+## 3.1 The Standard Section Profile and Why Each Element Exists
+
+**Definition.** A section profile is a declared set of required elements, their order and their purpose for a class of sections. The standard profile is the default contract for topic sections in this book; it is not a rule that every document in every repository must follow.
+
+**Purpose.** The profile makes review comparable across authors and chapters. It gives the author a checklist before drafting and the reviewer a shared vocabulary after drafting. It also separates structural completeness from prose quality: a section can follow the profile and still need editorial work, but it cannot be called complete while a required element is silently absent.
+
+**What it includes.** A concept or practice unit carries four labelled paragraphs: Definition, Purpose, What it includes and Why it is needed. A topic section closes with Example, Common Pitfall and Decision & Trade-off, in that order. A chapter carries When to Use This Chapter, Key Takeaway, a Worked Example section, a Review Checklist callout at the end of that example, and Further Reading as the final numbered section. Tables and diagrams are optional and appear only when they improve understanding.
+
+**Why it is needed.** Without a shared shape, the reader has to relearn the contract in every chapter. One section starts with history, another with a procedure, a third with a table and no explanation. Reviewers then argue about preference instead of evidence. The profile reduces that variability while leaving room for the argument: the Decision & Trade-off element forces the author to say what the choice costs, and the Common Pitfall element forces a failure mode into view. The full chapter contract in @sec-editorial-contract is the reason the profile can be applied to a section at all.
+
+**Example.** *Illustrative only: a section on retry policy.* Definition states what a retry policy is and what it is not. Purpose explains the decision it informs. What it includes names the retry limit, backoff, jitter, idempotency and stop conditions. Why it is needed describes the duplicate-charge and thundering-herd failures that follow when the policy is implicit. Example shows one client's policy. Common Pitfall names infinite retries without a stop condition. Decision & Trade-off compares fixed, exponential and adaptive backoff.
+
+
+::: {.callout-warning appearance="simple" icon=false title="Common Pitfall"}
+Filling every profile label with generic prose creates the appearance of completeness without the substance. The symptom is a section that cannot be used to make or reject a decision. Write the decision and its evidence first; use the labels to expose what is missing, not to pad what is present.
+:::
+
+::: {.callout-important appearance="simple" icon=false title="Decision & Trade-off"}
+Profile strictness is a trade-off between comparability and fit.
+
+| Choice | Choose when | Consequences |
+| :--- | :--- | :--- |
+| Apply the standard profile strictly | The book has several authors and a shared reader promise | Comparable review and predictable reader experience; more exception work for unusual sections. |
+| Apply a lighter profile | The artifact is exploratory or has one author | Faster drafting; weaker guarantees for readers and reviewers. |
+| Declare a book-specific profile | The reader experience is materially different across the whole book | Coherent alternative; requires owner approval, versioning and a migration path. |
+
+Use the standard profile by default. Change it deliberately, not by silently omitting whichever element is inconvenient.
+:::
+
+## 3.2 Declaring Exceptions Without Losing Consistency
+
+**Definition.** A profile exception is an owner-approved, recorded deviation from a required profile element, order or placement. It is not an undocumented omission and it is not a different book-wide profile.
+
+**Purpose.** Exceptions let a book handle a section that genuinely cannot use the default shape without weakening the contract for every other section. They also preserve review evidence: a reader can see what was omitted, why, who approved it and when it should be revisited.
+
+**What it includes.** The record names the profile element and version, the reason the default does not fit, the replacement or compensating evidence, the scope of the exception, the owner approval reference and an expiry or review trigger. A chapter front matter field may point to the record; it must not contain the only copy of the rationale. A book-wide alternative is a new profile version, not a list of exceptions.
+
+**Why it is needed.** Silent exceptions destroy comparability. If one chapter omits Common Pitfall and another omits Decision & Trade-off, a reader cannot tell whether the omissions are editorial choices or missing work. A recorded exception keeps the default visible and makes the deviation reviewable. It also gives the next owner a trigger for revisiting the choice instead of inheriting an unexplained custom.
+
+**Example.** *Illustrative only: a reference-only appendix.* An appendix catalogues command flags in a dense table. The author proposes omitting the Common Pitfall callout because the appendix is a lookup table, not a decision section. The owner approves a scoped exception for that appendix, records the reason and the replacement evidence (a validation table and an error-code column), and sets a review trigger at the next major CLI release. The chapter front matter points to the record; the rationale is not hidden in a comment.
+
+
+::: {.callout-warning appearance="simple" icon=false title="Common Pitfall"}
+A front matter exception without an owner-approved record is an undocumented omission with better formatting. It cannot be audited and it will not be revisited. Record the element, scope, rationale, approval and expiry in the exception record before referencing it.
+:::
+
+::: {.callout-important appearance="simple" icon=false title="Decision & Trade-off"}
+Exceptions can be narrow or broad; the narrower the scope, the easier the review.
+
+| Scope | Choose when | Consequences |
+| :--- | :--- | :--- |
+| One section | A single table, appendix or unusual argument needs a different shape | Precise review; the default remains intact elsewhere. |
+| One chapter | The whole chapter has a different reader contract | More consistency inside the chapter; a broader exception to maintain. |
+| Whole book | The reader experience is genuinely different everywhere | Requires a new profile version and a migration decision, not an exception list. |
+
+Prefer a section-scoped exception with a review trigger. Use a new profile version when the whole book needs a different contract.
+:::
+
+## 3.3 Diagrams, Tables and Explicit Cross-References
+
+**Definition.** A cross-reference is an explicit pointer from one labelled element to another: a section number, a figure or table number, or a Quarto cross-reference such as `@sec-crossrefs`. A diagram or table is a visual argument used when relationships or comparisons are clearer than prose; it is not a decoration quota.
+
+**Purpose.** Explicit references let a reader move from a claim to its supporting section without guessing. They also make review possible: a stale reference is visible, while "as mentioned above" hides a broken structure. Diagrams and tables earn their space by compressing a relationship the reader would otherwise have to reconstruct.
+
+**What it includes.** Give every referenced section, figure or table a stable explicit label. Use a caption that states the comparison, not the shape of the table. Keep the aspect ratio of a diagram and make its text readable at published size. Reference a specific locator, not a repeated term, and do not turn every occurrence of a term into a link. A table that exists only because the profile mentions tables is a defect, not conformance.
+
+**Why it is needed.** A multi-chapter handbook accumulates references faster than a single page. Without explicit labels, a revision that moves a section silently breaks every "above" and "below". Without readable tables, a comparison becomes a wall of wrapped cells. Without deliberate links, navigation becomes noise and the reader stops trusting the links that matter.
+
+**Example.** *Illustrative only: a decision table for retry backoff.* The section defines three options, gives each a row, and captions the table "Retry strategies and their failure costs". The prose references the table by its explicit label and points to @sec-profiles for the profile rules. The table is introduced by prose, followed by prose, and does not sit directly next to a figure. A reader can compare the options without reading the surrounding history.
+
+
+::: {.callout-warning appearance="simple" icon=false title="Common Pitfall"}
+Indiscriminate term links create the appearance of a knowledge graph and the experience of a maze. The symptom is a page where every repeated noun is a destination. Link specific locators that change the reader's task; leave ordinary prose alone.
+:::
+
+::: {.callout-important appearance="simple" icon=false title="Decision & Trade-off"}
+Explicit references improve navigation but add maintenance.
+
+| Choice | Choose when | Consequences |
+| :--- | :--- | :--- |
+| Explicit labelled references | Sections, tables and figures are likely to move or be reused | Reliable navigation and review; labels and captions must be maintained. |
+| Plain prose locators | A short document has a stable order and few references | Low maintenance; stale "above" references when the document grows. |
+| Automatic term linking | A generated glossary is the primary navigation model | Broad coverage; noisy prose and stale anchors when terms change. |
+
+Use explicit labels for elements a reader will actually follow. Keep automatic glossary linking off unless the source of truth and its maintenance are explicit.
+:::
+
+## 3.4 Worked Example — Auditing a Section Against the Profile
+
+*In practice:* an editor reviews a proposed section without rewriting it. The goal is to decide whether the section is structurally complete and whether any omission is a real exception.
+
+1. Read the section and write its reader outcome in one sentence.
+2. Mark the four unit labels: Definition, Purpose, What it includes, Why it is needed.
+3. Mark the closing elements: Example, Common Pitfall, Decision & Trade-off.
+4. Check that the chapter has a Worked Example, a Review Checklist at its end and Further Reading last.
+5. Test every table and diagram: does it compress a comparison or relationship, and is its caption meaningful?
+6. Check explicit references against the reading order. A missing label is a defect; an external link is not.
+7. If an element is missing, ask for either the element or a recorded, owner-approved exception.
+8. Return the section with findings, not a silent rewrite that hides the missing decision.
+
+In the illustrative audit, the Definition and Purpose are present, but What it includes is a list of links and Why it is needed only repeats the Definition. The Example is a second definition, and the Decision & Trade-off is absent. The editor does not add generic prose. The author is asked to state the decision, name the evidence and either add the trade-off or open an exception. The section is not approved merely because every heading exists.
+
+::: {.callout-note appearance="simple" icon=false title="Review Checklist"}
+- Is the reader outcome visible in the section?
+- Are Definition, Purpose, What it includes and Why it is needed distinct?
+- Are Example, Common Pitfall and Decision & Trade-off present and ordered?
+- Does the chapter end its Worked Example with a Review Checklist?
+- Is Further Reading the last numbered section?
+- Do tables and diagrams improve a comparison or relationship?
+- Are explicit references labelled and resolvable, while external links remain intact?
+- Is every omission covered by an owner-approved exception record?
+:::
+
+## 3.5 Further Reading
+
+- Quarto, *Cross-References*: <https://quarto.org/docs/authoring/cross-references.html> — official syntax for section, figure and table labels and references.
+- Quarto, *Book Structure*: <https://quarto.org/docs/books/book-structure.html> — official guidance for chapter order, parts and required book structure.
+- CommonMark, *CommonMark Spec*: <https://spec.commonmark.org/> — primary specification for the Markdown constructs used in these sources.
+- Diátaxis, *A systematic framework for technical documentation authoring*: <https://diataxis.fr/> — primary framework for matching documentation form to a reader's need.

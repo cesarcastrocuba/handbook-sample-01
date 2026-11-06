@@ -1,8 +1,9 @@
-# Reading order for the pilot window. Only section 2.2 is present.
-# The full chapter order is added after Gate 3; do not list unwritten files.
+# Reading order for Part I. Every listed file is canonical and present.
 front: []
 chapters:
+  - chapters/ch01-why-handbooks-fail.qmd
   - chapters/ch02-editorial-contract.qmd
+  - chapters/ch03-profiles-and-exceptions.qmd
 back: []
 appendices: []
 references: []

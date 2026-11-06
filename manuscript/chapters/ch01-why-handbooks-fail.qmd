@@ -1,0 +1,137 @@
+---
+title: "1. Why Handbooks Fail"
+profile: standard
+---
+
+# 1. Why Handbooks Fail {#sec-why-handbooks-fail}
+
+Handbooks are written to make knowledge durable, but many become another place where knowledge goes to hide. The usual causes are editorial rather than technical: no named reader, no boundary, no owner and no way to tell whether a claim is true. This chapter gives the reader a diagnostic vocabulary before later chapters prescribe a contract, a profile and a review process.
+
+::: {.callout-note appearance="simple" icon=false title="When to Use This Chapter"}
+- A team is about to start a handbook and needs to decide whether a handbook is the right artifact.
+- An existing handbook has grown without a clear reader or owner.
+- Reviewers disagree about whether a draft is "complete".
+- A handbook is being retired and the team needs to preserve the useful decisions.
+:::
+
+::: {.callout-tip appearance="simple" icon=false title="Key Takeaway"}
+A handbook succeeds when a named reader can use it to make a decision, and a named owner can tell when it is wrong or out of date. Tooling cannot supply either condition.
+:::
+
+## 1.1 What a Handbook Is For
+
+**Definition.** A handbook is a maintained, reader-facing body of knowledge that helps a defined audience make decisions or perform a recurring class of work. It is not a feed, a changelog, a project plan or a dumping ground for meeting notes.
+
+**Purpose.** Deciding what a handbook is for prevents a team from investing in a format that cannot satisfy its need. A single architectural decision may belong in an ADR; a repeatable operational procedure may belong in a runbook; a short onboarding note may belong in a README. A handbook earns its larger cost when readers need a connected body of knowledge that will be revised over time.
+
+**What it includes.** The minimum useful description names the reader and the situation in which the handbook will be used; the outcome the reader should reach; the recurring decisions or tasks in scope; the owner who can accept changes; and the evidence that makes a claim checkable. It should also say what the handbook is not, because the excluded subjects are what keep the scope stable.
+
+**Why it is needed.** Without a clear purpose, a handbook becomes a container for every adjacent question. A guide for integrating an API acquires a pricing section, then a support escalation section, then a history of the platform team. Each addition may be useful in isolation; together they erase the reader. The result is expensive to maintain and difficult to trust because no one can say what belongs.
+
+**Example.** *Illustrative only: the Atlas Payments API Handbook.* A platform team wants to help partner engineers make a first successful payment. The reader is a backend engineer at a partner company. The outcome is a verified sandbox payment with a handled webhook. The recurring work is authentication, idempotency, error recovery and webhook verification. The owner is the API platform lead. Pricing, refund policy and customer support are explicitly outside the handbook.
+
+
+::: {.callout-warning appearance="simple" icon=false title="Common Pitfall"}
+A "handbook" assembled from unrelated documents is not made coherent by a shared folder. The symptom is a contents page that serves no single reader. Correct it by naming one reader and one recurring decision, then moving unrelated artifacts to the format that fits them.
+:::
+
+::: {.callout-important appearance="simple" icon=false title="Decision & Trade-off"}
+The choice is not "handbook or nothing". It is which artifact carries which promise.
+
+| Option | Choose when | Consequences |
+| :--- | :--- | :--- |
+| README or short guide | One reader, one task, low change rate | Fast to publish; becomes misleading when the scope or audience expands. |
+| Decision record | The durable value is one choice and its rationale | Excellent traceability; poor place for a connected learning path. |
+| Runbook | The reader must perform a repeatable procedure under pressure | Strong operational fit; not a substitute for conceptual explanation. |
+| Handbook | Readers need a connected body of knowledge maintained over time | Highest editorial and maintenance cost; needs an owner and a contract. |
+
+Choose the smallest artifact that carries the promise. Promote it to a handbook only when the reader needs connections between decisions, examples and maintenance rules.
+:::
+
+## 1.2 Four Failure Modes
+
+**Definition.** A handbook failure mode is a recurring pattern in which the artifact stops serving its reader even though files, pages or words continue to accumulate. The four modes in this chapter are orphaned drafts, unbounded scope, missing ownership and unverifiable claims.
+
+**Purpose.** A shared vocabulary lets a team diagnose a failing handbook before rewriting it. The diagnosis determines whether the proportionate response is a small repair, a narrower promise or retirement. Naming the mode also prevents a tool migration from being mistaken for an editorial fix.
+
+**What it includes.** *Orphaned drafts* are incomplete documents that no one is responsible for finishing. *Unbounded scope* is a promise without non-goals, so every adjacent subject appears legitimate. *Missing ownership* means no person can accept, reject or retire content. *Unverifiable claims* are assertions about behavior, performance, standards or results that a reader cannot check. Each mode has a symptom, a cost and a correction.
+
+**Why it is needed.** These failures are quiet. A draft with no owner looks like work in progress; a growing scope looks like thoroughness; a confident claim looks like expertise. By the time the cost is visible, readers have already lost trust. A diagnostic pass makes the failure visible while a small correction is still possible.
+
+**Example.** *Illustrative only: the Meridian Operations Handbook.* A wiki space contains eleven unfinished pages, three incompatible deployment instructions and a performance table with no date or environment. No one knows who owns the space. The team identifies orphaned drafts, unbounded scope and unverifiable claims. It retires seven pages, assigns one owner and replaces the performance table with a dated measurement from a named environment.
+
+
+::: {.callout-warning appearance="simple" icon=false title="Common Pitfall"}
+The most expensive response to a failing handbook is a migration without a diagnosis. A new platform preserves the same missing owner and unbounded promise, then adds migration cost. Diagnose the failure mode first; migrate only the material that has a reader, an owner and checkable evidence.
+:::
+
+::: {.callout-important appearance="simple" icon=false title="Decision & Trade-off"}
+When a handbook fails, choose the smallest intervention that restores trust.
+
+| Response | Choose when | Consequences |
+| :--- | :--- | :--- |
+| Repair in place | The reader and scope are sound; ownership or evidence is missing | Cheapest path; requires an owner to accept the repair. |
+| Narrow the promise | The content is useful but the audience or boundary drifted | Restores coherence; requires moving excluded material elsewhere. |
+| Rewrite the section | The structure is wrong but the source material is sound | Higher editorial cost; avoids preserving a misleading outline. |
+| Retire the handbook | The reader no longer exists or another artifact owns the promise | Prevents maintenance waste; requires redirects and a record of what was lost. |
+
+Repair first when the failure is local. Narrow or retire when the promise itself is wrong. Do not rewrite merely because the current tool is unfamiliar.
+:::
+
+## 1.3 The Lifecycle
+
+**Definition.** A handbook lifecycle is the sequence of editorial states a handbook passes through: brief, outline, pilot, expansion, release, maintenance and retirement. Each state has an owner decision and evidence; the lifecycle is not a file-folder convention.
+
+**Purpose.** The lifecycle tells a contributor what kind of work is legitimate now. It prevents a draft from being published as if it were approved, and it prevents a released handbook from being edited as if it had no readers. It also makes retirement a normal outcome rather than a failure.
+
+**What it includes.** The brief records the reader, promise, scope and non-goals. The outline records the structure and the pilot candidate. The pilot tests one section before expansion. Expansion writes and reviews the remaining sections. Release builds once from an approved commit and publishes the same bytes. Maintenance handles corrections and new evidence. Retirement redirects readers and preserves the decision that the handbook is no longer maintained.
+
+**Why it is needed.** Without explicit states, a team confuses activity with progress. A folder full of drafts looks like a book; a published PDF looks approved; an old page looks current. The lifecycle makes the evidence for each transition visible, so a reader can tell whether the artifact is a proposal, a reviewed draft or a maintained release.
+
+**Example.** *Illustrative only: a database migration guide.* The team writes a one-page brief, approves an outline, and writes one migration section as a pilot. Review finds that the recovery path is missing. The pilot is revised before the remaining sections are written. Only after a second review does the guide become a release with a manifest. Six months later, the supported database version changes and the guide enters maintenance rather than silently drifting.
+
+
+::: {.callout-warning appearance="simple" icon=false title="Common Pitfall"}
+A handbook that is published without a maintenance trigger becomes a historical document while still presenting itself as current. Name the owner and the review trigger before the first release. Otherwise the most confident page becomes the most dangerous one.
+:::
+
+::: {.callout-important appearance="simple" icon=false title="Decision & Trade-off"}
+The lifecycle can be run pilot-first or as a larger batch. Both are legitimate when their costs are explicit.
+
+| Approach | Choose when | Consequences |
+| :--- | :--- | :--- |
+| Pilot one section first | The audience, profile or evidence method is still uncertain | Early feedback; slower apparent progress and possible rework of the outline. |
+| Write a full draft, then review | The structure and audience are stable and the review capacity exists | Faster visible volume; expensive rework if the contract is wrong. |
+| Publish continuously from drafts | Readers need material immediately and can tolerate change | Fast access; weak approval evidence and a high risk of stale pages. |
+
+Use a pilot when the editorial contract is unproven. Use a full draft when the contract is stable and the reviewer can cover it. Never let continuous publication erase the distinction between draft and approved release.
+:::
+
+## 1.4 Worked Example — Diagnosis Before Rewrite
+
+*In practice:* a team inherits a handbook with a broad title, twelve pages and no obvious owner. It resists the urge to rewrite everything and runs a short diagnosis.
+
+1. Read the opening page and write down the reader it actually serves.
+2. List the recurring decisions the current pages help with, and the pages that help with no decision.
+3. Identify the failure modes: unfinished pages, scope drift, unowned sections or claims that cannot be checked.
+4. Find one claim that would change a reader's action if it were wrong, then ask for its evidence.
+5. Choose the smallest response: repair, narrow, rewrite or retire.
+6. Record the decision and the new owner before editing.
+
+In the illustrative case, the team finds that six pages serve partner engineers, three are internal architecture history and three are unfinished drafts. It moves the history to a decision log, archives the drafts and asks the API lead to own the remaining guide. The rewrite is limited to one page whose deployment steps contradict the current sandbox.
+
+::: {.callout-note appearance="simple" icon=false title="Review Checklist"}
+- Can you name the handbook's actual reader and outcome?
+- Have you identified which failure mode is present, rather than only the symptom?
+- Is there an owner who can accept, reject and retire content?
+- Does every consequential claim have a checkable evidence method?
+- Did you choose the smallest response that restores trust?
+- Is retirement or redirection an acceptable outcome?
+:::
+
+## 1.5 Further Reading
+
+- Diátaxis, *A systematic framework for technical documentation authoring*: <https://diataxis.fr/> — distinguishes tutorials, how-to guides, reference and explanation by reader need.
+- Write the Docs, *Documentation Guide*: <https://www.writethedocs.org/guide/> — practitioner guidance on documentation scope, structure and maintenance.
+- Google, *Developer Documentation Style Guide*: <https://developers.google.com/style> — checkable guidance for audience, terminology and technical prose.
+- ISO/IEC/IEEE 29148:2018, *Systems and software engineering — Life cycle processes — Requirements engineering*: <https://www.iso.org/standard/72089.html> — primary standard for stakeholder needs, requirements quality and traceability.

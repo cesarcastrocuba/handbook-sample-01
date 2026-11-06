@@ -4,7 +4,7 @@ This file is the only source of current status. Decisions live in [`DECISIONS.md
 
 ## Phase
 
-Sample book bootstrap (platform phase 3). Gates 1, 2 and 3 are approved. Pilot section 2.2 is approved; chapter expansion is authorized in reviewed batches.
+Sample book expansion (platform phase 3). Gates 1, 2 and 3 are approved. Part I — Chapters 1–3 — is drafted; later parts remain separate reviewed batches.
 
 ## Gates
 
@@ -21,26 +21,26 @@ Gate state is machine-readable in [`docs/editorial/gates.json`](docs/editorial/g
 - Local Git repository initialized on `main`.
 - Agent-neutral roles and workflow defined in [`AGENTS.md`](AGENTS.md).
 - Editorial brief and outline approved at Gates 1 and 2 on 2026-11-06, including the broad technical/software audience, full eight-chapter goal and standard `0.2.0` direction.
-- Manuscript and publishing layouts established; only the pilot section contains prose. No artifact build is claimed.
+- Part I manuscript drafted: Chapter 1, the full Chapter 2 around the approved 2.2 pilot, and Chapter 3. No artifact build is claimed.
 - Lightweight SDD proposal and task record created.
 - Dependency-free repository check, gate-state policy and state-machine tests added and documented.
-- Pinned public-hub toolkit integration: `requirements.txt` uses a direct Git requirement at full SHA `0e8d897acae67d55eb09bf06a6e890d07d187779` with `#subdirectory=tools`; `book.yaml` and `manuscript/book.yml` are draft metadata, and the reading order now lists only the pilot.
-- Pilot section 2.2 written at `manuscript/chapters/ch02-editorial-contract.qmd`; chapter-level pilot scope is proposed, not owner-approved.
+- Toolkit repinned to public hub main `477d7042faa385eee677ad2db5198ebcf5dd1fee`; `make full` runs descriptor, reading order, references and all chapter validators.
+- Pilot 2.2 approved and retained inside Chapter 2; Chapters 1 and 3 complete Part I.
 - CI installs the pinned toolkit and runs the fast `validate-book` check on `main`, `feat/**`, pull requests and `workflow_dispatch`.
 - Content and code licensing recorded as a proposal.
 
 ## Not done, by design
 
-- Pilot not approved; no other chapter prose exists.
+- Part II and Part III are not written.
 - No Quarto configuration or build; Quarto is not installed in the bootstrap environment.
-- No artifact validation yet. `make full` is a current-scope incomplete artifact gate: the descriptor/reading-order check passes, but no artifact manifest or checksums exist. This is not a descriptor failure.
+- No artifact build or validation yet. `make full` passes descriptor, reading-order, reference and chapter validation; no artifact manifest or checksums exist.
 - No HTML, PDF, DOCX, site output or release.
 - GitHub repository exists and the integration branch is pushed; the reviewed integration and onboarding changes are integrated into `main`; no deployment, catalog entry or release has occurred.
 - No change to the hub or to the existing handbook.
 
 ## Next step
 
-The owner reviews pilot section 2.2 and the independent review record. Gate 3 remains pending until owner approval. Expansion is not authorized.
+Part I is ready for independent review. Part II follows on a separate branch after review.
 
 ## Verification
 
@@ -51,4 +51,4 @@ python3 -m pip install -r requirements.txt
 make check
 ```
 
-`make full` intentionally fails and states which full-manuscript and artifact checks are unavailable. It is a current-scope incomplete gate, not a descriptor failure. The integration source and limits are in [`docs/integration/pinned-toolkit.md`](docs/integration/pinned-toolkit.md).
+`make full` runs descriptor, reading-order, cross-reference and chapter-profile validation and passes. It does not build artifacts. The integration source and limits are in [`docs/integration/pinned-toolkit.md`](docs/integration/pinned-toolkit.md).

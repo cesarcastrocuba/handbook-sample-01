@@ -2,10 +2,10 @@
 
 | Field | Value |
 | --- | --- |
-| Status | Current — toolkit pin below; Gates 1 and 2 approved, Gate 3 pending |
+| Status | Current — Gates 1–3 approved; Part I drafted; toolkit pin below |
 | Toolkit source | `https://github.com/cesarcastrocuba/handbooks-hub.git` |
-| Full commit SHA | `0e8d897acae67d55eb09bf06a6e890d07d187779` (hub `main` toolkit pin) |
-| Toolkit version | `0.1.0` |
+| Full commit SHA | `477d7042faa385eee677ad2db5198ebcf5dd1fee` (hub `main` toolkit pin) |
+| Toolkit version | `0.2.0` |
 | Install mode | Direct Git requirement, non-editable, `#subdirectory=tools` |
 | Profile reference | `standard` `0.2.0` — approved and integrated on hub `main` at `8ee28a081399155a250ea8bc45d8492245ab2377` |
 
@@ -20,13 +20,12 @@ No toolkit scripts, schemas or profile files are copied into this repository. In
 
 ## 2. Profile dependency
 
-`book.yaml` references approved hub `standard` `0.2.0`. The pinned toolkit source (`0e8d897`) predates the profile integration and contains `standard` `0.1.0`. Profiles are hub repository resources, not files in the installed `handbook-toolkit` package; the package contains schemas only. Profile `0.2.0` is approved and integrated on hub `main` at `8ee28a0`.
+`book.yaml` references approved hub `standard` `0.2.0`. The pinned toolkit source (`477d704`) includes the approved profile and its packaged snapshot. Profiles remain hub repository resources; this book does not copy them. Profile `0.2.0` is approved and integrated on hub `main` at `8ee28a0`.
 
-The toolkit pin and profile source are separate: the installed package comes from `0e8d897`, while the editorial reference is the approved `0.2.0` profile at `8ee28a0`. This book remains `status: draft`.
+The installed toolkit comes from `477d704`; the editorial reference is the approved `0.2.0` profile at `8ee28a0`. This book remains `status: draft`.
 
-- No claim is made that the pinned toolkit validates profile `0.2.0`.
-- The pinned toolkit validates the descriptor schema only, not the profile's contents.
-- The fast check does not validate profile conformance.
+- The fast check validates only the descriptor and reading order; full checks validate chapters against an explicit packaged profile.
+- The fast check does not validate profile conformance by itself.
 
 If the approved profile changes, `book.yaml` must be updated before the next gate that depends on it.
 
@@ -35,7 +34,7 @@ If the approved profile changes, `book.yaml` must be updated before the next gat
 ```sh
 make test          # local gate-policy tests, standard library only
 make check         # tests, local repository checks and fast validate-book
-make full          # current-scope incomplete gate: fast checks pass, then it fails
+make full          # descriptor, reading order, references and all chapters
 ```
 
 `make check` requires the pinned toolkit to be installed:
@@ -44,14 +43,13 @@ make full          # current-scope incomplete gate: fast checks pass, then it fa
 python3 -m pip install -r requirements.txt
 ```
 
-The fast `handbook-toolkit validate-book book.yaml` check verifies the descriptor schema, the manuscript root, and that the reading-order file exists and is syntactically valid. It does not validate chapter content, profile conformance, links or artifacts.
+The fast `handbook-toolkit validate-book book.yaml` check verifies the descriptor schema, the manuscript root, and the reading order. `make full` adds reference validation and `validate-manuscript` for every chapter. Artifact validation is still separate.
 
 ## 4. Limits
 
-- Pilot section 2.2 is present and independently reviewed. `validate-book --full` passes for its descriptor and reading order; owner approval of Gate 3 remains pending.
-- `make full` is a current-scope incomplete content-and-artifact gate, not a descriptor failure. The fast descriptor check passes.
-- The manuscript content validator, Quarto build, artifact manifest and checksums are not implemented in toolkit `0.1.0`. Artifact validation is not run.
-- Profile `0.2.0` is approved and integrated at hub `main` `8ee28a0` but is not present in the pinned toolkit revision. Profiles are not installed with the toolkit package, and the fast check does not validate profile conformance.
+- Part I chapters are present. `make full` passes descriptor, reading order, references and chapter validation.
+- No Quarto build, artifact manifest or checksums are produced by this repository yet.
+- Profile `0.2.0` is approved and integrated at hub `main` `8ee28a0`; the pinned toolkit includes its packaged snapshot, while validation still uses an explicit profile path in `make full`.
 - CI proves installation and the fast check from a clean GitHub runner. It does not prove publication readiness.
 
 ## 5. CI

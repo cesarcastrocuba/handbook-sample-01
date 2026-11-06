@@ -16,13 +16,15 @@ test:
 validate-book:
 	$(TOOLKIT) validate-book book.yaml
 
-# Full verification remains incomplete as an editorial and artifact gate.
-# It runs the full descriptor/reading-order check, then fails on the remaining scope.
-# Never report this target as passing.
+# Full editorial checks: descriptor, reading order, cross-references and every
+# chapter against the packaged approved profile. No artifact build is run.
 full: check
 	$(TOOLKIT) validate-book --full book.yaml
-	@printf '%s\n' "FULL VERIFICATION INCOMPLETE (current scope)"
-	@printf '%s\n' "- Descriptor and reading-order full check passed."
-	@printf '%s\n' "- Manuscript content and profile conformance are not validated by toolkit 0.1.0."
-	@printf '%s\n' "- No artifact manifest or checksums exist, so artifact validation cannot run."
-	@exit 1
+	$(TOOLKIT) validate-references book.yaml
+	@set -e; \
+	profile=$$(mktemp --suffix=.yaml); \
+	trap 'rm -f "$$profile"' EXIT; \
+	$(PYTHON) -c 'import yaml; from handbook_toolkit.profile_resources import load_profile; print(yaml.safe_dump(load_profile("standard", "0.2.0"), sort_keys=False))' > "$$profile"; \
+	for file in manuscript/chapters/*.qmd; do \
+		$(TOOLKIT) validate-manuscript "$$file" --mode chapter --profile "$$profile"; \
+	done

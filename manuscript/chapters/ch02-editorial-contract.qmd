@@ -1,7 +1,51 @@
 ---
-title: "2.2 The Brief as a Decision Record"
+title: "2. The Editorial Contract"
 profile: standard
 ---
+
+# 2. The Editorial Contract {#sec-editorial-contract}
+
+A handbook without an editorial contract is governed by whoever is most persuasive in the review meeting. The contract makes the reader, the promise, the boundary and the evidence explicit before drafting begins, so later work can be accepted or rejected against a shared record rather than against taste.
+
+::: {.callout-note appearance="simple" icon=false title="When to Use This Chapter"}
+- A team has a handbook idea but no agreed reader or outcome.
+- A draft keeps expanding because every adjacent subject seems useful.
+- A reviewer needs a defensible basis for rejecting out-of-scope work.
+- An owner needs to delegate editorial decisions without rereading every draft.
+:::
+
+::: {.callout-tip appearance="simple" icon=false title="Key Takeaway"}
+A brief is useful only when it changes a decision: it names the reader, the promise, the exclusions, the evidence and the owner. If it cannot reject work, it is a description rather than a contract.
+:::
+
+## 2.1 Reader, Promise and Non-Goals
+
+**Definition.** The reader is the person or role the handbook is written for, together with the situation in which they will use it. The promise is the outcome the handbook commits to help that reader reach. The non-goals are the attractive adjacent subjects the handbook deliberately does not cover.
+
+**Purpose.** These three decisions prevent the two most common editorial failures: writing for an imaginary general audience and treating every related subject as mandatory. A named reader gives the author a test for relevance. A promise gives the reader a reason to choose this handbook over a search result. Non-goals protect the promise when the draft is under pressure to grow.
+
+**What it includes.** A useful reader statement names a role, a context and a level of prior knowledge. "Backend engineers integrating the payments API in a sandbox" is testable; "developers" is not. A promise names an observable outcome and, where possible, the evidence that the reader reached it. Non-goals name subjects that a reasonable reader might expect but that the handbook will not cover, together with a pointer to where those subjects belong.
+
+**Why it is needed.** Without a reader, the author writes for the review committee, the imagined beginner and the expert simultaneously. The result is either patronising or incomplete, and every reviewer can defend a different addition. Without a promise, the handbook is judged by volume. Without non-goals, a section on pricing is followed by refunds, then support escalation, then a history of the billing platform. Each addition is locally reasonable; together they make the book unmaintainable.
+
+**Example.** *Illustrative only: the Northwind CLI Handbook.* The reader is a platform engineer who has installed the CLI but has not yet automated a deployment. The promise is a working deployment to a non-production environment with a recorded rollback command. Non-goals are the CLI's internal implementation, cloud pricing and the organisation's change-approval policy. Those subjects link to the architecture notes, the finance guide and the change-management process instead.
+
+
+::: {.callout-warning appearance="simple" icon=false title="Common Pitfall"}
+A promise expressed as a list of topics cannot tell the reader what success looks like. The symptom is a review that debates completeness instead of outcomes. Rewrite the promise as an observable result, then list the minimum topics needed to reach it.
+:::
+
+::: {.callout-important appearance="simple" icon=false title="Decision & Trade-off"}
+A narrow promise is easier to finish and easier to trust; a broad promise attracts more readers and costs more to maintain.
+
+| Choice | Choose when | Consequences |
+| :--- | :--- | :--- |
+| Narrow, outcome-led promise | The reader has a specific recurring decision | Clear completion test; some adjacent readers must use another artifact. |
+| Broad introductory promise | The book is the only entry point and the owner can maintain it | Wider reach; higher risk of shallow sections and scope drift. |
+| Promise defined by the current backlog | The material already exists and the reader is known | Fast start; the backlog may encode accidents rather than reader needs. |
+
+Start narrow. Broaden only when evidence shows that the same reader needs the additional outcome and the owner accepts the maintenance cost.
+:::
 
 ## 2.2 The Brief as a Decision Record
 
@@ -67,8 +111,62 @@ The brief should be the shortest record that still lets a reviewer reject out-of
 For a maintained handbook, the one-page decision brief is the default. Escalate to a content specification only when the cost of a wrong boundary is higher than the cost of a slower approval.
 :::
 
-::: {.callout-note appearance="simple" icon=false title="Further Reading"}
-- ISO/IEC/IEEE 29148:2018, *Systems and software engineering — Life cycle processes — Requirements engineering*. <https://www.iso.org/standard/72089.html> — primary standard for stakeholder needs, requirements quality and traceability.
-- Diátaxis, *A systematic framework for technical documentation authoring*. <https://diataxis.fr/> — primary framework for matching documentation form to a reader's need.
-- Google, *Developer Documentation Style Guide*. <https://developers.google.com/style> — primary style guidance for audience, terminology and scannable technical prose.
+
+## 2.3 Scope Boundaries, Ownership and Change Control
+
+**Definition.** A scope boundary is the explicit line between subjects the handbook owns and subjects it merely references. Ownership is the named person who can accept, reject, retire or delegate changes. Change control is the rule that says when the boundary, the reader or the evidence must be revisited.
+
+**Purpose.** Boundaries and ownership turn the brief from a statement of intent into an operating contract. They answer the questions that otherwise return in every review: who decides, what happens when a reader asks for one more subject, and how a correction enters the book without reopening the whole scope.
+
+**What it includes.** Record the in-scope outcome, the exclusions, the owner, the reviewers and their decision rights, the location of the source of truth, the change trigger and the route for an approved exception. A change trigger can be a product release, a standards revision, a support trend or a calendar review. An exception route states who may approve a temporary deviation and where the approval is recorded.
+
+**Why it is needed.** Shared ownership becomes no ownership when a decision is contested. A committee can review quality but cannot substitute for a person who must say yes or no. Without a change rule, a handbook silently becomes stale after a product change, and readers cannot tell whether the omission is deliberate. The boundary and the change rule are as much a part of the contract as the prose.
+
+**Example.** *Illustrative only: a data-platform onboarding handbook.* The platform lead owns the reader promise and the scope boundary. A security reviewer owns the authentication section. A support engineer reviews recovery paths. The change trigger is a platform minor release; a breaking release starts a new edition. A temporary exception for a beta feature must be approved by the platform lead and recorded in the handbook's change log.
+
+
+::: {.callout-warning appearance="simple" icon=false title="Common Pitfall"}
+"The team owns it" is usually a way to avoid naming a decision-maker. When two interpretations conflict, the draft grows to contain both. Name one accountable owner, give reviewers a defined scope and record the decision route.
 :::
+
+::: {.callout-important appearance="simple" icon=false title="Decision & Trade-off"}
+Ownership can be concentrated or distributed. Both can work if the decision rights are explicit.
+
+| Model | Choose when | Consequences |
+| :--- | :--- | :--- |
+| Single accountable owner | One reader promise and a stable boundary | Fast decisions; a key-person dependency if the owner leaves. |
+| Owner plus specialist reviewers | Authentication, security or operations require domain review | Stronger evidence; review latency and possible conflicting advice. |
+| Editorial committee | The handbook is a shared institutional asset | Broad representation; slow decisions and a tendency to avoid removal. |
+
+Use one accountable owner with named specialist reviewers. A committee can advise, but it should not be the final owner of scope.
+:::
+
+## 2.4 Worked Example — Turning a Brief into a Boundary
+
+*In practice:* an editor receives a request to "document the reporting API". The request names no reader and no outcome. The editor runs a short contract workshop before writing.
+
+1. Ask who will use the result and what decision they need to make. The answer identifies analysts preparing a scheduled export, not application developers.
+2. Write the promise as an observable outcome: produce a scheduled CSV export and verify its row count.
+3. List the attractive adjacent subjects: dashboard design, data modelling and warehouse administration. Move them to non-goals with links to their owners.
+4. Name the API product owner as accountable and a support analyst as reviewer of failure paths.
+5. Set the change trigger: a new export endpoint or a change to the authentication model.
+6. Record one approved exception: a beta endpoint may be documented behind a beta banner until the endpoint is generally available.
+7. Re-read the brief and ask whether it can reject a paragraph. A section on dashboard colour choices is now clearly out of scope.
+
+The workshop produces a one-page brief, not a table of contents. The outline follows only after the owner accepts the boundary. The brief is then used in review: a proposed section must serve the analyst outcome or be rejected, regardless of how interesting it is. This is the operating difference between a decision record and a wish list. It also prepares the profile in Chapter 3: see @sec-profiles for the section elements that make the accepted boundary visible in the prose.
+
+::: {.callout-note appearance="simple" icon=false title="Review Checklist"}
+- Does the brief name a reader, a situation and an observable outcome?
+- Does it list at least one attractive subject as an explicit non-goal?
+- Is one person accountable for scope and one different person able to review?
+- Is the evidence method defined before drafting?
+- Is the change trigger recorded?
+- Can the brief reject a plausible out-of-scope section?
+:::
+
+## 2.5 Further Reading
+
+- ISO/IEC/IEEE 29148:2018, *Systems and software engineering — Life cycle processes — Requirements engineering*: <https://www.iso.org/standard/72089.html> — primary standard for stakeholder needs, requirements quality and traceability.
+- Diátaxis, *A systematic framework for technical documentation authoring*: <https://diataxis.fr/> — primary framework for matching documentation form to a reader's need.
+- Google, *Developer Documentation Style Guide*: <https://developers.google.com/style> — primary style guidance for audience, terminology and scannable technical prose.
+- Write the Docs, *Documentation Guide*: <https://www.writethedocs.org/guide/> — practitioner guidance on documentation ownership, structure and maintenance.

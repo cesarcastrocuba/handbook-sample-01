@@ -2,7 +2,7 @@
 
 A sample handbook that demonstrates how to plan, write, review and publish a maintainable technical handbook. It is the reference book for the handbook platform and is written in public so the workflow itself can be inspected.
 
-**Status: Gates 1 and 2 approved; Gate 3 pending.** Pilot section 2.2 is written and independently reviewed; awaiting owner approval. No other chapter prose exists; Gate 3 owner approval is pending.
+**Status: Gates 1–3 approved; Part I drafted.** Chapters 1–3 are written; no artifacts or release exist yet.
 
 ## Current gate
 
@@ -10,9 +10,9 @@ A sample handbook that demonstrates how to plan, write, review and publish a mai
 | --- | --- |
 | 1 — editorial brief | Approved, 2026-11-06 |
 | 2 — outline | Approved, 2026-11-06 |
-| 3 — pilot section | Pending, not approved; pilot 2.2 written, awaiting review |
+| 3 — pilot section | Approved, 2026-11-06; Part I expansion authorized |
 
-Gate 3 is an approval of written work, not a precondition for writing it. The pilot file now exists; Gate 3 approval authorizes expansion. The exact sequence is in [`docs/editorial/gates.md`](docs/editorial/gates.md). Gate evidence is recorded in [`docs/editorial/approval-record.md`](docs/editorial/approval-record.md), [`PROJECT_STATUS.md`](PROJECT_STATUS.md) and [`docs/editorial/gates.json`](docs/editorial/gates.json).
+Gate 3 is an approval of written work and authorizes expansion. Part I now contains Chapters 1–3. The exact sequence is in [`docs/editorial/gates.md`](docs/editorial/gates.md). Gate evidence is recorded in [`docs/editorial/approval-record.md`](docs/editorial/approval-record.md), [`PROJECT_STATUS.md`](PROJECT_STATUS.md) and [`docs/editorial/gates.json`](docs/editorial/gates.json).
 
 ## What this repository contains
 
@@ -28,7 +28,7 @@ Gate 3 is an approval of written work, not a precondition for writing it. The pi
 - [`sdd/changes/0002-pilot-gate-window/`](sdd/changes/0002-pilot-gate-window/proposal.md) — correction that separates pilot writing authority from Gate 3 approval.
 - [`sdd/changes/0003-pilot-2-2/`](sdd/changes/0003-pilot-2-2/scope.md) — proposed scoped interpretation for the single-section pilot.
 - `manuscript/` — canonical sources; currently contains only the pilot section 2.2.
-- `publishing/` — metadata and publication plan; build configuration is deferred until Gate 3 approves the pilot.
+- `publishing/` — metadata and publication plan; build configuration is deferred until the publication build setup lands.
 
 ## Quickstart for contributors
 
@@ -64,7 +64,7 @@ handbook-toolkit validate-book book.yaml
 
 `make check` covers gate-policy tests, repository consistency and the fast `validate-book` descriptor check. It does not validate chapter content or profile conformance.
 
-`make full` is currently a **current-scope incomplete** content-and-artifact gate: it runs the fast and full descriptor checks, then fails explicitly because manuscript-content validation and artifact manifest/checksum verification are incomplete. It is not a descriptor failure and must not be reported as a passing full build.
+`make full` runs the fast checks, full descriptor/reading-order validation, cross-reference validation and chapter-profile validation. It passes for Part I. No Quarto artifact build, manifest or checksums are produced yet.
 
 Quarto and the render toolchain are future build setup; they are not required or installed now. Full prerequisites, limits and troubleshooting are in [`docs/setup.md`](docs/setup.md).
 
