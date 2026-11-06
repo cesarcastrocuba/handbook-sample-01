@@ -21,7 +21,7 @@ Gate state is machine-readable in [`docs/editorial/gates.json`](docs/editorial/g
 - Local Git repository initialized on `main`.
 - Agent-neutral roles and workflow defined in [`AGENTS.md`](AGENTS.md).
 - Editorial brief and outline approved at Gates 1 and 2 on 2026-11-06, including the broad technical/software audience, full eight-chapter goal and standard `0.2.0` direction.
-- Manuscript and publishing layouts reserved without prose or build claims.
+- Manuscript and publishing layouts established; only the pilot section contains prose. No artifact build is claimed.
 - Lightweight SDD proposal and task record created.
 - Dependency-free repository check, gate-state policy and state-machine tests added and documented.
 - Pinned public-hub toolkit integration: `requirements.txt` uses a direct Git requirement at full SHA `0e8d897acae67d55eb09bf06a6e890d07d187779` with `#subdirectory=tools`; `book.yaml` and `manuscript/book.yml` are draft metadata, and the reading order now lists only the pilot.

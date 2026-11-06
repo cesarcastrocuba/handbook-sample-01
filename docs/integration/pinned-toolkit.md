@@ -48,7 +48,7 @@ The fast `handbook-toolkit validate-book book.yaml` check verifies the descripto
 
 ## 4. Limits
 
-- No pilot or chapter `.qmd` exists yet. `validate-book --full` is not run now, but may run once Gates 1 and 2 permit the pilot and that file exists.
+- Pilot section 2.2 is present and independently reviewed. `validate-book --full` passes for its descriptor and reading order; owner approval of Gate 3 remains pending.
 - `make full` is a current-scope incomplete content-and-artifact gate, not a descriptor failure. The fast descriptor check passes.
 - The manuscript content validator, Quarto build, artifact manifest and checksums are not implemented in toolkit `0.1.0`. Artifact validation is not run.
 - Profile `0.2.0` is approved and integrated at hub `main` `8ee28a0` but is not present in the pinned toolkit revision. Profiles are not installed with the toolkit package, and the fast check does not validate profile conformance.
