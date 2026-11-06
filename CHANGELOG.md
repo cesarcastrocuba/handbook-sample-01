@@ -11,3 +11,8 @@ All notable changes to this sample handbook are recorded here. The format follow
 - Proposed editorial brief, outline and content profile.
 - Lightweight SDD proposal for the bootstrap.
 - Dependency-free repository consistency check.
+
+### Fixed
+
+- Removed the Gate 3 deadlock: Gates 1 and 2 now authorize exactly the pilot while Gate 3 is pending; Gate 3 approves the reviewed pilot and authorizes expansion.
+- Gate state is machine-readable in `docs/editorial/gates.json`, explained in `docs/editorial/gates.md`, and enforced by state-machine tests.

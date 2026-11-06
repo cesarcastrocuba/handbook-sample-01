@@ -25,4 +25,4 @@ This directory holds publication metadata and, later, the pinned build configura
 - A release must identify the exact commit and the checksums of every artifact.
 - Publication requires owner approval and a confirmed licensing/attribution record.
 
-Build configuration is intentionally deferred until the pilot section is approved, so that the first configuration can be tested against real content rather than an empty book.
+Build configuration is intentionally deferred until Gate 3 approves the pilot, so that the first configuration can be tested against reviewed content rather than an empty book.

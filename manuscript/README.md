@@ -1,6 +1,6 @@
 # Manuscript
 
-This directory is reserved for the canonical Quarto sources. It contains **no prose** during bootstrap: Gates 1 and 2 are pending, and Gate 3 has not started.
+This directory is reserved for the canonical Quarto sources. It contains **no prose** during bootstrap: Gates 1 and 2 are pending, so the pilot window is not open.
 
 ## Planned layout
 
@@ -13,10 +13,11 @@ This directory is reserved for the canonical Quarto sources. It contains **no pr
 
 ## Rules
 
-- Chapter files are added only after the outline is approved and only for the section or chapter authorized by the current gate.
-- One chapter per file; no generated content and no copied third-party text.
+- No prose before Gates 1 and 2 are approved.
+- Once both are approved, **exactly one file** may be written while Gate 3 is pending: the pilot at `pilot.path` in [`docs/editorial/gates.json`](../docs/editorial/gates.json). That file contains only the pilot section, not the rest of the chapter.
+- No other chapter, appendix or front-matter prose may be added until Gate 3 is approved.
 - Every chapter declares its profile exceptions in YAML front matter.
 - The reading order will be declared in `publishing/` once the pilot is approved.
 - Do not add diagrams, tables or examples that have no rights review.
 
-The repository check fails while `manuscript/` contains `.qmd` files during the bootstrap gate. Update the check when Gate 3 is approved; do not bypass it.
+The repository check enforces this sequence. Do not bypass it; when the pinned toolkit provides content validation, keep the gate policy and replace only the content checks.

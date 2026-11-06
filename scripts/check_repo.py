@@ -5,16 +5,20 @@ Shared handbook-platform validation belongs to the pinned hub toolkit and is
 intentionally not vendored here. This check uses only the Python standard
 library so it can run on a clean clone.
 
-The final check enforces the current gate: no manuscript prose exists until the
-pilot is approved. When Gate 3 is approved, replace that check with the pinned
-toolkit's content validation; do not delete it silently.
+The gate check enforces the sequence, not a blanket "no prose" rule: Gates 1
+and 2 authorize exactly the pilot; Gate 3 approves the written, reviewed pilot
+and authorizes expansion. When the pinned toolkit provides content validation,
+keep the gate policy and replace only the content checks.
 """
 
 from __future__ import annotations
 
+import json
 import re
 import sys
 from pathlib import Path
+
+import gate_policy
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -33,12 +37,17 @@ REQUIRED_FILES = (
     "docs/editorial/brief.md",
     "docs/editorial/outline.md",
     "docs/editorial/profile.md",
+    "docs/editorial/gates.md",
+    "docs/editorial/gates.json",
     "manuscript/README.md",
     "publishing/README.md",
     "publishing/metadata.yaml",
     "sdd/changes/0001-sample-bootstrap/proposal.md",
     "sdd/changes/0001-sample-bootstrap/tasks.md",
+    "sdd/changes/0002-pilot-gate-window/proposal.md",
     "scripts/check_repo.py",
+    "scripts/gate_policy.py",
+    "scripts/tests/test_gate_policy.py",
 )
 
 FORBIDDEN_DIRECTORY_NAMES = {
@@ -140,23 +149,60 @@ def check_roles() -> None:
         raise CheckError("AGENTS.md must state that roles are not products")
 
 
+def load_gate_state() -> dict[str, object]:
+    path = ROOT / "docs/editorial/gates.json"
+    try:
+        state = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as error:
+        raise CheckError(f"cannot read {path.relative_to(ROOT)}: {error}") from error
+    if not isinstance(state, dict):
+        raise CheckError("docs/editorial/gates.json must contain a JSON object")
+    return state
+
+
+def check_gate_state() -> None:
+    errors = gate_policy.validate_gate_state(load_gate_state())
+    if errors:
+        raise CheckError("invalid gate state:\n  " + "\n  ".join(errors))
+
+
 def check_editorial_status() -> None:
-    for name in ("docs/editorial/brief.md", "docs/editorial/outline.md"):
+    state = load_gate_state()
+    for key, name in (
+        (gate_policy.GATE_1, "docs/editorial/brief.md"),
+        (gate_policy.GATE_2, "docs/editorial/outline.md"),
+    ):
+        status = state.get(key)
         text = (ROOT / name).read_text(encoding="utf-8")
-        if "**Proposed**" not in text:
-            raise CheckError(f"{name} must carry a Proposed status during bootstrap")
-        if "**Approved**" in text:
-            raise CheckError(f"{name} claims approval; the owner must record it first")
+        expected = "**Proposed**" if status == "proposed" else "**Approved**"
+        other = "**Approved**" if status == "proposed" else "**Proposed**"
+        if expected not in text:
+            raise CheckError(
+                f"{name} must carry {expected} to match {key}={status} in gates.json"
+            )
+        if other in text:
+            raise CheckError(
+                f"{name} carries {other} but {key}={status} in gates.json"
+            )
+        if status == "approved" and "| Owner | *Pending* |" in text:
+            raise CheckError(
+                f"{name} is approved in gates.json but its approval block is still pending"
+            )
 
 
-def check_bootstrap_gate() -> None:
-    prose = sorted(str(path.relative_to(ROOT)) for path in (ROOT / "manuscript").rglob("*.qmd"))
-    if prose:
-        raise CheckError(
-            "Gate 3 is not approved, but manuscript prose exists:\n  "
-            + "\n  ".join(prose)
-            + "\nWrite the pilot only after the owner approves Gates 1 and 2."
-        )
+def check_manuscript_gate() -> int:
+    state = load_gate_state()
+    prose = sorted(
+        path.relative_to(ROOT).as_posix()
+        for path in (ROOT / "manuscript").rglob("*.qmd")
+    )
+    try:
+        errors = gate_policy.validate_manuscript_prose(state, prose)
+    except ValueError as error:
+        raise CheckError(str(error)) from error
+    if errors:
+        raise CheckError("gate policy violation:\n  " + "\n  ".join(errors))
+    return len(prose)
 
 
 def main() -> int:
@@ -166,20 +212,25 @@ def main() -> int:
         ("generated artifacts", check_generated_artifacts),
         ("environment paths", check_environment_paths),
         ("agent-neutral roles", check_roles),
+        ("gate state", check_gate_state),
         ("editorial status", check_editorial_status),
-        ("bootstrap gate", check_bootstrap_gate),
+        ("manuscript gate", check_manuscript_gate),
     )
     try:
         for label, check in checks:
             result = check()
-            detail = f" ({result} links)" if label == "relative links" else ""
+            detail = ""
+            if label == "relative links":
+                detail = f" ({result} links)"
+            elif label == "manuscript gate":
+                detail = f" ({result} prose files)"
             print(f"OK  {label}{detail}")
     except CheckError as error:
         print(f"FAIL  {error}", file=sys.stderr)
         return 1
 
-    print("\nRepository is consistent with the bootstrap gate.")
-    print("No chapter prose, build or release is present.")
+    print("\nRepository is consistent with the gate sequence.")
+    print("Pilot window: Gates 1-2 authorize exactly pilot.path; Gate 3 authorizes expansion.")
     return 0
 
 

@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "gate_1_brief": "proposed",
+  "gate_2_outline": "proposed",
+  "gate_3_pilot": "blocked",
+  "pilot": {
+    "section": "2.2",
+    "title": "The Brief as a Decision Record",
+    "path": "manuscript/chapters/ch02-editorial-contract.qmd"
+  }
+}

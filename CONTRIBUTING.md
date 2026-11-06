@@ -4,7 +4,7 @@ This is a sample book repository. Contributions follow the same rules as the pla
 
 ## Before you start
 
-Read [`AGENTS.md`](AGENTS.md), [`PROJECT_STATUS.md`](PROJECT_STATUS.md) and the [editorial brief](docs/editorial/brief.md). If a gate is pending, do not write manuscript prose. The current gates are listed in `PROJECT_STATUS.md`.
+Read [`AGENTS.md`](AGENTS.md), [`PROJECT_STATUS.md`](PROJECT_STATUS.md), [`docs/editorial/gates.md`](docs/editorial/gates.md) and the [editorial brief](docs/editorial/brief.md). Do not write manuscript prose before Gates 1 and 2 are approved. Once they are approved, only the pilot at `pilot.path` in [`docs/editorial/gates.json`](docs/editorial/gates.json) may be written while Gate 3 is pending. Every other chapter stays blocked until Gate 3 approval. The current gates are listed in `PROJECT_STATUS.md`.
 
 ## Branches and commits
 
@@ -33,7 +33,7 @@ Run:
 make check
 ```
 
-Report the command and output. Do not claim a build, render or publication that was not executed. Quarto is not installed in the bootstrap environment, so publishing checks are explicitly deferred.
+`make check` runs the gate-policy unit tests and then the repository check. Report the command and output. Do not claim a build, render or publication that was not executed. Quarto is not installed in the bootstrap environment, so publishing checks are explicitly deferred.
 
 ## Editorial rules
 

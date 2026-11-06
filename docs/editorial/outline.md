@@ -9,7 +9,9 @@
 | Pilot | Chapter 2, section 2.2 — **not written** |
 | Related | [Content profile](profile.md) · [`AGENTS.md`](../../AGENTS.md) |
 
-Approving this outline confirms the chapter structure, the profile coverage and the pilot candidate. It does not approve any chapter text. No chapter prose may be written until Gate 2 is approved, and no pilot or other chapter may be written until Gate 3 is approved.
+Approving this outline confirms the chapter structure, the profile coverage, the pilot candidate and its exact path. It does not approve any chapter text. No chapter prose may be written until Gate 2 is approved. Once it is approved, **exactly the pilot may be written and reviewed while Gate 3 is pending**; Gate 3 approval then authorizes expansion. No other chapter prose is allowed before Gate 3.
+
+The machine-readable gate state is [`gates.json`](gates.json); the sequence is defined in [`gates.md`](gates.md).
 
 ## 1. Reading path
 
@@ -180,16 +182,21 @@ Appendix A may reproduce the templates used in the book. It must not reproduce t
 5. Sources are real and checkable; none are invented.
 6. A different agent or person reviews the exact commit and posts a verdict.
 
+**Writing authorization.** Gate 2 approval sets `gate_3_pilot` to `pending` and opens exactly this pilot path. The pilot is then written and reviewed while Gate 3 remains pending. Gate 3 is the owner's approval of that reviewed work; it is not a precondition for writing it.
+
 **Not included:** the rest of Chapter 2, any other chapter, Quarto configuration, a build or a release.
 
 ## 8. Sequence after approval
 
-1. **Gate 3:** write and approve the pilot section only.
-2. Revise this outline if the pilot exposes a structural problem; record the change.
-3. Write Chapters 1 and 3 to complete Part I.
-4. Write Part II, then Part III, reviewing each chapter independently.
-5. Write front matter, references and appendices after the chapter structure is stable.
-6. Build and release only after the owner approves the complete manuscript and licensing.
+1. **Gate 2 approval** sets `gate_3_pilot` to `pending` and authorizes exactly `pilot.path`.
+2. Write only the pilot section. No other chapter prose may exist.
+3. A different agent or person reviews the pilot at an exact commit.
+4. **Gate 3 approval** accepts the reviewed pilot and sets `gate_3_pilot` to `approved`.
+5. Revise this outline if the pilot exposes a structural problem; record the change.
+6. Write Chapters 1 and 3 to complete Part I.
+7. Write Part II, then Part III, reviewing each chapter independently.
+8. Write front matter, references and appendices after the chapter structure is stable.
+9. Build and release only after the owner approves the complete manuscript and licensing.
 
 ## 9. Approval criteria for this outline
 

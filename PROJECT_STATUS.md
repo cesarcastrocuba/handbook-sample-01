@@ -12,7 +12,9 @@ Sample book bootstrap (platform phase 3). The repository scaffold, editorial bri
 | --- | --- | --- |
 | 1 — editorial brief | **Proposed**, awaiting owner approval | [`docs/editorial/brief.md`](docs/editorial/brief.md) |
 | 2 — outline | **Proposed**, awaiting owner approval | [`docs/editorial/outline.md`](docs/editorial/outline.md) |
-| 3 — pilot section | **Blocked**, not started | Gate 1 and Gate 2 must be approved first |
+| 3 — pilot section | **Blocked**, not started | After Gates 1 and 2 are approved, exactly the pilot at `pilot.path` may be written and reviewed while Gate 3 is pending. Gate 3 approval then authorizes expansion. |
+
+Gate state is machine-readable in [`docs/editorial/gates.json`](docs/editorial/gates.json) and explained in [`docs/editorial/gates.md`](docs/editorial/gates.md). Gate 3 approves written work; it is not a precondition for writing the pilot.
 
 ## Completed in this bootstrap
 
@@ -21,7 +23,7 @@ Sample book bootstrap (platform phase 3). The repository scaffold, editorial bri
 - Editorial brief, proposed outline and content profile drafted.
 - Manuscript and publishing layouts reserved without prose or build claims.
 - Lightweight SDD proposal and task record created.
-- Dependency-free repository check added and documented.
+- Dependency-free repository check, gate-state policy and state-machine tests added and documented.
 - Content and code licensing recorded as a proposal.
 
 ## Not done, by design
@@ -34,7 +36,7 @@ Sample book bootstrap (platform phase 3). The repository scaffold, editorial bri
 
 ## Next step
 
-The owner reviews the [brief](docs/editorial/brief.md) and [outline](docs/editorial/outline.md). On approval, Gate 1 and Gate 2 are recorded here and a separate scoped task writes the pilot section. Nothing else should be written before that decision.
+The owner reviews the [brief](docs/editorial/brief.md) and [outline](docs/editorial/outline.md). On approval, both gates are recorded here and in `gates.json`; Gate 2 sets `gate_3_pilot` to `pending`. A separate scoped task then writes only the pilot section. Gate 3 is decided after independent review of that pilot, and only then may expansion begin.
 
 ## Verification
 
@@ -44,4 +46,4 @@ Run from a clean checkout:
 make check
 ```
 
-The check is book-local and uses only the Python standard library. Shared platform checks are deferred to the pinned hub toolkit.
+The check is book-local and uses only the Python standard library. It runs the gate-policy tests before inspecting the repository. Shared platform checks are deferred to the pinned hub toolkit.

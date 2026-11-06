@@ -18,25 +18,27 @@ No role is tied to a named product, model or vendor. An agent may implement in o
 
 ## Workflow
 
-1. Read `PROJECT_STATUS.md`, `DECISIONS.md`, the editorial brief and the approved outline before changing content.
+1. Read `PROJECT_STATUS.md`, `DECISIONS.md`, the editorial brief, the approved outline and [`docs/editorial/gates.md`](docs/editorial/gates.md) before changing content.
 2. Branch from `main` using `<type>/<topic>`, for example `docs/editorial-brief`.
 3. Keep the change scoped and reversible. One writer per file at a time.
 4. Run `make check` and any additional check named by the change. Report only commands actually run.
 5. Open a pull request describing the change, the gate it serves and the evidence.
 6. A different agent or person reviews the exact HEAD. Critical and Major findings block the merge; Minor and Optional findings are fixed or recorded as issues.
-7. The owner merges and, when a gate is reached, records the approval in `PROJECT_STATUS.md`.
+7. The owner merges and, when a gate is reached, records the approval in `PROJECT_STATUS.md` and [`gates.json`](docs/editorial/gates.json).
 8. Never self-review, never merge your own change, and never publish or release without owner approval.
 
 ## Editorial gates
 
-The order is mandatory:
+The order is mandatory, but Gate 3 is an approval of written work, not a precondition for writing it:
 
 1. **Gate 1 — brief.** The owner approves the audience, scope, non-goals, quality bar and licensing.
-2. **Gate 2 — outline.** The owner approves chapter structure, profile coverage and the pilot candidate.
-3. **Gate 3 — pilot.** The owner approves one written pilot section. No other chapter prose may be written before this gate.
-4. **Expansion.** Remaining chapters are written and reviewed chapter by chapter.
+2. **Gate 2 — outline.** The owner approves chapter structure, profile coverage, the pilot candidate and its exact path. Approval opens the pilot window.
+3. **Gate 3 — pilot.** While Gate 3 is pending, exactly the pilot section at `pilot.path` in [`gates.json`](docs/editorial/gates.json) may be written, committed and reviewed. The owner then approves the reviewed pilot.
+4. **Expansion.** Gate 3 approval authorizes the remaining chapters, written and reviewed chapter by chapter.
 
-While Gate 1 or Gate 2 is pending, `manuscript/` must contain no chapter prose. While Gate 3 is pending, no pilot or chapter `.qmd` file may be committed.
+While Gate 1 or Gate 2 is pending, `manuscript/` must contain no prose. Once both are approved, the pilot may be written **while Gate 3 is pending**; that is exactly how Gate 3 gets something to review. No other chapter prose is allowed until Gate 3 is approved.
+
+The sequence and state transitions are defined in [`docs/editorial/gates.md`](docs/editorial/gates.md). `make check` enforces them.
 
 ## Content rules
 
@@ -52,6 +54,6 @@ While Gate 1 or Gate 2 is pending, `manuscript/` must contain no chapter prose. 
 
 - `manuscript/` will hold canonical Quarto sources once the gates allow content.
 - `publishing/` will hold pinned build configuration and metadata. The shared toolkit is installed from the hub at a pinned version; do not vendor or copy it here.
-- `docs/editorial/` holds the brief, outline and content profile.
+- `docs/editorial/` holds the brief, outline, content profile and gate state (`gates.json`).
 - `sdd/changes/` records substantial proposals, decisions and evidence.
 - Generated artifacts are built from an approved commit and attached to a release; they are never committed.

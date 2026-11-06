@@ -14,6 +14,9 @@
 | T10 | Independent review of the bootstrap commit | Pending | Reviewer verdict on the exact HEAD |
 | T11 | Owner decision on Gate 1 (brief) | Blocked by review | Approval block in the brief |
 | T12 | Owner decision on Gate 2 (outline) | Blocked by Gate 1 | Approval block in the outline |
-| T13 | Write the pilot section | Blocked by Gate 2 | Chapter 2, section 2.2 |
+| T13 | Write the pilot section after Gate 2 sets `gate_3_pilot` to `pending` | Blocked by Gate 2 | Chapter 2, section 2.2 |
+| T14 | Independent review of the pilot at an exact commit | Blocked by T13 | Reviewer verdict |
+| T15 | Owner decision on Gate 3 | Blocked by T14 | `gate_3_pilot` becomes `approved` |
+| T16 | Chapter expansion | Blocked by Gate 3 | Chapter-by-chapter reviews |
 
-T13 must not start in this change.
+T13 must not start in this change. T16 must not start until Gate 3 is approved.
