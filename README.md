@@ -35,6 +35,8 @@ Readers of the handbook need no local tools. This quickstart is only for people 
 
 You need Git, Python 3.11 or newer, and pip/venv. A hub checkout is **not** needed: `requirements.txt` installs the pinned toolkit directly from the public hub as a normal package.
 
+Until root integration, check out the branch under review after cloning; after integration, `main` contains this setup.
+
 ```sh
 git clone https://github.com/cesarcastrocuba/handbook-sample-01.git
 cd handbook-sample-01
