@@ -16,12 +16,13 @@ test:
 validate-book:
 	$(TOOLKIT) validate-book book.yaml
 
-# Full verification is currently incomplete as a content-and-artifact gate.
-# It runs the fast descriptor check, then fails with the remaining scope gaps.
+# Full verification remains incomplete as an editorial and artifact gate.
+# It runs the full descriptor/reading-order check, then fails on the remaining scope.
 # Never report this target as passing.
 full: check
+	$(TOOLKIT) validate-book --full book.yaml
 	@printf '%s\n' "FULL VERIFICATION INCOMPLETE (current scope)"
-	@printf '%s\n' "- Fast descriptor check passed; this is not a descriptor failure."
-	@printf '%s\n' "- validate-book --full is not run: no pilot or chapter .qmd exists yet; it may run once the pilot exists."
+	@printf '%s\n' "- Descriptor and reading-order full check passed."
+	@printf '%s\n' "- Manuscript content and profile conformance are not validated by toolkit 0.1.0."
 	@printf '%s\n' "- No artifact manifest or checksums exist, so artifact validation cannot run."
 	@exit 1

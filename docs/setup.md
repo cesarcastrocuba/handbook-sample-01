@@ -75,7 +75,7 @@ A fast pass is not a publication or full-manuscript pass.
 
 ## 5. Current limits
 
-- No pilot or chapter `.qmd` exists. `validate-book --full` is not run.
+- Only pilot section 2.2 exists. `validate-book --full` checks its descriptor and reading order; it does not validate editorial quality.
 - `make full` is a **current-scope incomplete** content-and-artifact gate. It runs the fast checks, then fails explicitly. The failure is not a descriptor failure. Do not report it as a passing full build.
 - Toolkit `0.1.0` does not implement manuscript content, artifact manifest or checksum validation.
 - The book references hub `standard` `0.2.0`, approved and integrated on hub main `8ee28a0`. The fast check does not validate profile `0.2.0`.
