@@ -3,12 +3,11 @@
 # Toolkit source: public hub main, full SHA
 # 0e8d897acae67d55eb09bf06a6e890d07d187779, installed from requirements.txt.
 #
-# Profile source: standard 0.2.0 is proposed on hub branch
-# feat/topic-neutral-profile. The hub revision pinned below contains profile
-# 0.1.0. Profiles are hub repository resources, not files in the installed
-# toolkit package. The owner approved this book's 0.2.0 direction at Gate 2 on
-# 2026-11-06; adoption remains contingent on the hub branch being approved and
-# merged. This file does not make 0.2.0 available or merged.
+# Profile source: standard 0.2.0 is approved and integrated on hub main at
+# 8ee28a081399155a250ea8bc45d8492245ab2377. The toolkit pin is 0e8d897 (see
+# requirements.txt); profiles are hub repository resources, not files in the
+# installed toolkit package. This descriptor references 0.2.0 without claiming
+# that the pinned toolkit validates profile contents.
 schema_version: "1.0"
 id: handbook-authoring-and-publishing
 title: "Handbook Authoring and Publishing"

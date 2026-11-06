@@ -2,12 +2,12 @@
 
 | Field | Value |
 | --- | --- |
-| Status | Draft integration — no gate approved |
+| Status | Current — toolkit pin below; Gates 1 and 2 approved, Gate 3 pending |
 | Toolkit source | `https://github.com/cesarcastrocuba/handbooks-hub.git` |
-| Full commit SHA | `0e8d897acae67d55eb09bf06a6e890d07d187779` (hub `main`) |
+| Full commit SHA | `0e8d897acae67d55eb09bf06a6e890d07d187779` (hub `main` toolkit pin) |
 | Toolkit version | `0.1.0` |
 | Install mode | Direct Git requirement, non-editable, `#subdirectory=tools` |
-| Profile reference | `standard` `0.2.0`, proposed on hub branch `feat/topic-neutral-profile` |
+| Profile reference | `standard` `0.2.0` — approved and integrated on hub `main` at `8ee28a081399155a250ea8bc45d8492245ab2377` |
 
 ## 1. Metadata sources
 
@@ -20,15 +20,15 @@ No toolkit scripts, schemas or profile files are copied into this repository. In
 
 ## 2. Profile dependency
 
-`book.yaml` references `standard` `0.2.0` because that version makes figures, tables and the review checklist topic-neutral. The pinned hub revision contains `standard` `0.1.0`. Profiles are hub repository resources, not files in the installed `handbook-toolkit` package; the package contains schemas only. Version `0.2.0` exists on the hub branch `feat/topic-neutral-profile` and is still **Proposed**.
+`book.yaml` references approved hub `standard` `0.2.0`. The pinned toolkit source (`0e8d897`) predates the profile integration and contains `standard` `0.1.0`. Profiles are hub repository resources, not files in the installed `handbook-toolkit` package; the package contains schemas only. Profile `0.2.0` is approved and integrated on hub `main` at `8ee28a0`.
 
-The reference is forward-looking. The owner approved this book's direction at Gate 2 on 2026-11-06; the hub profile itself is still **Proposed**. Until the hub branch is approved and merged:
+The toolkit pin and profile source are separate: the installed package comes from `0e8d897`, while the editorial reference is the approved `0.2.0` profile at `8ee28a0`. This book remains `status: draft`.
 
-- this book remains `status: draft`;
-- no claim is made that the toolkit can validate profile `0.2.0`;
-- the pinned toolkit validates the descriptor schema only, not the profile's existence or contents.
+- No claim is made that the pinned toolkit validates profile `0.2.0`.
+- The pinned toolkit validates the descriptor schema only, not the profile's contents.
+- The fast check does not validate profile conformance.
 
-If the hub branch is rejected or changed, `book.yaml` must be updated before any gate that depends on the profile is approved.
+If the approved profile changes, `book.yaml` must be updated before the next gate that depends on it.
 
 ## 3. Checks
 
@@ -51,7 +51,7 @@ The fast `handbook-toolkit validate-book book.yaml` check verifies the descripto
 - No pilot or chapter `.qmd` exists yet. `validate-book --full` is not run now, but may run once Gates 1 and 2 permit the pilot and that file exists.
 - `make full` is a current-scope incomplete content-and-artifact gate, not a descriptor failure. The fast descriptor check passes.
 - The manuscript content validator, Quarto build, artifact manifest and checksums are not implemented in toolkit `0.1.0`. Artifact validation is not run.
-- Profile `0.2.0` is not present at the pinned hub revision. Its use is a proposed reference, not an approved contract; profiles are not installed with the toolkit package.
+- Profile `0.2.0` is approved and integrated at hub `main` `8ee28a0` but is not present in the pinned toolkit revision. Profiles are not installed with the toolkit package, and the fast check does not validate profile conformance.
 - CI proves installation and the fast check from a clean GitHub runner. It does not prove publication readiness.
 
 ## 5. CI

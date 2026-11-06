@@ -14,7 +14,7 @@
 
 - The [editorial brief](brief.md) as the editorial contract, including the broad audience of anyone writing a useful, trustworthy technology or software handbook, with architecture as one example rather than a requirement.
 - The [outline](outline.md): three parts, eight chapters, front matter, references and appendices.
-- The direction of proposed hub `standard` `0.2.0`, subject to the hub profile itself being approved and merged.
+- The direction of hub `standard` `0.2.0`, approved and integrated on hub `main` at `8ee28a081399155a250ea8bc45d8492245ab2377`.
 - The pilot candidate remains Chapter 2, section 2.2, but **Gate 3 is not approved**. Approval of Gates 1 and 2 opens the pilot window; it does not accept a pilot that has not been written or reviewed.
 
 ## Explicitly not approved
@@ -28,7 +28,7 @@
 
 The owner authorized integrating the reviewed foundation and integration branches in the same instruction. That authorization covers integration only. It does not approve a pilot, chapter expansion or a release, and root integration does not by itself authorize those steps.
 
-The hub profile direction is separately limited: the owner approved this book's standard `0.2.0` direction, while the hub branch itself remains proposed.
+The hub profile is approved and integrated at hub `main` `8ee28a0`; this book's `0.2.0` direction was approved at Gate 2.
 
 ## Limitations
 

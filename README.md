@@ -41,19 +41,23 @@ Until root integration, check out the branch under review after cloning; after i
 git clone https://github.com/cesarcastrocuba/handbook-sample-01.git
 cd handbook-sample-01
 
-python3 -m venv .venv
-source .venv/bin/activate
+cd ..
+python3 -m venv handbook-sample-01-venv
+source handbook-sample-01-venv/bin/activate
 
-python3 -m pip install --upgrade pip
-python3 -m pip install -r requirements.txt
+cd handbook-sample-01
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
 make check
 ```
+
+Keep the virtual environment outside the repository. The repository check rejects an in-repo `.venv` as a generated artifact.
 
 If `make` is unavailable, run the same fast checks directly:
 
 ```sh
-python3 -B -m unittest discover -s scripts/tests -p 'test_*.py'
-python3 -B scripts/check_repo.py
+python -B -m unittest discover -s scripts/tests -p 'test_*.py'
+python -B scripts/check_repo.py
 handbook-toolkit validate-book book.yaml
 ```
 

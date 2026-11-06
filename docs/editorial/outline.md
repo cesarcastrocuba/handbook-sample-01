@@ -7,7 +7,7 @@
 | Date | 2026-11-06 |
 | Approval evidence | [Owner approval record](approval-record.md) |
 | Depends on | [Editorial brief](brief.md) approval (Gate 1) |
-| Profile | `standard` `0.2.0` — direction approved at Gate 2, 2026-11-06; hub profile still proposed on `feat/topic-neutral-profile` |
+| Profile | `standard` `0.2.0` — approved and integrated on hub `main` at `8ee28a0` |
 | Pilot | Chapter 2, section 2.2 — **not written** |
 | Related | [Content profile](profile.md) · [`AGENTS.md`](../../AGENTS.md) |
 

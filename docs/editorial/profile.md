@@ -2,14 +2,14 @@
 
 | Field | Value |
 | --- | --- |
-| Status | **Approved direction** — standard `0.2.0`, 2026-11-06; hub profile still **Proposed** |
+| Status | **Approved direction** — standard `0.2.0`; hub profile approved and integrated at `8ee28a0` |
 | Document revision | 0.2 |
 | Date | 2026-11-06 |
 | Approval evidence | [Owner approval record](approval-record.md) |
-| Hub profile reference | `standard` `0.2.0` — **Proposed** on hub branch `feat/topic-neutral-profile`; adoption contingent on hub branch merge |
+| Hub profile reference | `standard` `0.2.0` — approved and integrated on hub `main` at `8ee28a081399155a250ea8bc45d8492245ab2377` |
 | Applies to | Every chapter and appendix in this book |
 
-This profile defines the reusable shape of a section. It is deliberately small: enough structure to make chapters consistent and reviewable without turning every page into a form. The owner approved this book's `0.2.0` direction at Gate 2; it is still not a merged hub profile and does not make `0.2.0` available.
+This profile defines the reusable shape of a section. It is deliberately small: enough structure to make chapters consistent and reviewable without turning every page into a form. The owner approved this book's `0.2.0` direction at Gate 2; hub `standard` `0.2.0` is approved and integrated at `8ee28a0`.
 
 ## 1. Chapter-level elements
 
