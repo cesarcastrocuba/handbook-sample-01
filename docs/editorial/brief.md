@@ -127,7 +127,7 @@ Gate 3 is an approval of written work, not a precondition for writing it. Gates 
 
 **Assumptions**
 
-- The hub toolkit is not yet available; its version and command names are unknown during bootstrap.
+- The pinned `handbook-toolkit` `0.1.0` is installed from the public hub commit recorded in `requirements.txt`; manuscript content and artifact validation remain unavailable in this bootstrap.
 - The content profile is aligned with proposed hub `standard` `0.2.0`; use is contingent on hub branch approval and does not make that profile approved here.
 - The sample book is a demonstration, not a replacement for the existing handbook.
 - English is the publication language.
