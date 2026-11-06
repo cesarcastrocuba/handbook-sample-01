@@ -23,10 +23,13 @@ This book is a practical, vendor-neutral guide to authoring and publishing a mai
 
 **Primary readers**
 
-- architects, technical leads and specialists writing a durable team or domain handbook;
+- anyone who wants to write a useful, trustworthy technical handbook, initially focused on technology and software;
+- practitioners sharing knowledge about software development, operations, architecture, security, data or other technical subjects;
 - documentation maintainers and editors responsible for structure and quality;
 - reviewers and owners who approve scope, content and releases;
 - teams introducing AI-assisted writing who need explicit roles, gates and evidence.
+
+Readers need knowledge of the subject they want to explain, but no architecture role, editorial background or prior experience with the publishing toolchain is required. Writing principles are broadly reusable; the initial examples and publishing workflow focus on technology and software.
 
 **After reading, the reader can**
 
@@ -71,7 +74,7 @@ Every chapter follows the [content profile](profile.md) and records exceptions i
 
 ## 6. Structure and length
 
-The proposed structure is three parts and eight chapters, plus front matter, references and appendices. The full chapter and section outline is in [`outline.md`](outline.md).
+The intended deliverable is the complete handbook: three parts and eight chapters, plus front matter, references and appendices. The pilot is one section used to evaluate the writing approach before expanding the remaining chapters; it does not replace the complete book. The full chapter and section outline is in [`outline.md`](outline.md).
 
 | Part | Chapters | Question |
 | --- | --- | --- |
