@@ -8,7 +8,7 @@
 | Approval evidence | [Owner approval record](approval-record.md) |
 | Depends on | [Editorial brief](brief.md) approval (Gate 1) |
 | Profile | `standard` `0.2.0` — direction approved at Gate 2, 2026-11-06; hub profile still proposed on `feat/topic-neutral-profile` |
-| Pilot | Chapter 2, section 2.2 — **not written** |
+| Pilot | Chapter 2, section 2.2 — **written, Gate 3 pending** |
 | Related | [Content profile](profile.md) · [`AGENTS.md`](../../AGENTS.md) |
 
 This outline was approved at Gate 2 on 2026-11-06. Approval confirms the chapter structure, the profile coverage, the pilot candidate and its exact file path. It does not approve any chapter text or Gate 3. While Gate 3 is pending, exactly the pilot file at `pilot.path` may be written and reviewed; no other `.qmd` may be added. Writing waits for the root review and integration recorded in the [approval record](approval-record.md). The check enforces the file boundary only; editorial review confirms the file contains only section 2.2. Gate 3 approval then authorizes expansion.
@@ -217,4 +217,4 @@ Appendix A may reproduce the templates used in the book. It must not reproduce t
 | Owner | Project owner |
 | Decision | Approved — Gate 2 |
 | Date | 2026-11-06 |
-| Notes | Eight-chapter structure, profile coverage and pilot candidate approved. Gate 3 remains pending; pilot not written. See the [approval record](approval-record.md). |
+| Notes | Eight-chapter structure, profile coverage and pilot candidate approved. Gate 3 remains pending; pilot 2.2 is written and awaiting review. See the [approval record](approval-record.md). |

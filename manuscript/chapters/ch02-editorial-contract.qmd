@@ -1,0 +1,74 @@
+---
+title: "2.2 The Brief as a Decision Record"
+profile: standard
+---
+
+## 2.2 The Brief as a Decision Record
+
+A brief is often mistaken for a summary of what the author intends to write. That version is easy to produce and almost useless: it gives a reviewer nothing to reject. A useful editorial brief is a decision record. It names the reader, the promise, the boundary, the evidence of quality and the person who may change them. Writing can then be judged against the record instead of against taste.
+
+**Definition.** An editorial brief is a short, approved record of the decisions that constrain a handbook: who it serves, what it promises, what it excludes, how quality will be evidenced, who owns those decisions and when they will be reviewed. It is not a table of contents, a marketing summary or a delivery schedule.
+
+**Purpose.** The brief lets an author decide what to research, a reviewer decide what is out of scope and an owner delegate judgment without rereading every draft. It converts a vague intention — “write a handbook about the API” — into a set of commitments that can be checked. The brief is also the place to record uncertainty, so an assumption is visible before it becomes a claim.
+
+**What it includes.** A useful brief records the reader and the situation in which that reader will use the book; the outcome the book promises; the subjects inside the boundary; the subjects deliberately outside it; the evidence that will make a claim acceptable; the owner of each decision; and the rule for changing the brief. It also records assumptions that could invalidate the work, such as a public sandbox, an unstable draft standard or a dependency on another team's release schedule.
+
+The boundary is the part authors resist most. A list of included topics feels generous; a list of non-goals feels restrictive. The restriction is the point. Without non-goals, every adjacent subject can be defended as useful, and the handbook grows until it has no reader. The brief should be short enough to read in one sitting and specific enough that two reviewers reach the same decision about a proposed section.
+
+**Why it is needed.** Handbooks fail quietly when the brief is missing. Authors write the subjects they know, reviewers ask for the subjects they expected, and the final document is a negotiation rather than a contract. Scope grows by accretion: a section on pricing is added because a reader might ask, then a section on refunds because pricing is incomplete, then a support escalation guide because refunds are incomplete. Each addition is locally reasonable. Together they destroy the promise.
+
+A decision record changes the review question. The reviewer no longer asks “is this interesting?” but “does this serve the declared reader and promise?” A paragraph that is accurate, well written and out of scope is still out of scope. That judgment is possible only when the brief states the boundary before the draft exists.
+
+The same discipline applies to ownership and change. A brief without an owner becomes a shared suggestion; when two teams disagree, the draft grows to include both interpretations. Recording the owner, the review route and the change trigger gives disagreement a place to end. It also makes the brief revisable: when the reader or product changes, the record is updated deliberately instead of being quietly contradicted by the next section.
+
+Evidence is a decision too. “High quality” is not a test; “every request reproduced against the public sandbox on the release commit” is. Choose the evidence method before drafting, because a method chosen afterwards tends to justify what was already written.
+
+**Brief quality check.** Before approving a brief, confirm that:
+
+- [ ] The primary reader is a role or situation, not “everyone”.
+- [ ] The promise names an outcome the reader can recognize, not a topic.
+- [ ] The non-goals exclude at least one attractive adjacent subject.
+- [ ] Every quality claim has an evidence method.
+- [ ] One person owns scope decisions and one person can review them independently.
+- [ ] The change rule says when the brief is revisited and what triggers a new edition.
+
+**Example.** *Illustrative only: the Atlas Payments API Handbook.* The brief below is fictional, but every row is a decision that could reject a draft.
+
+| Brief field | Decision recorded for the illustrative handbook |
+| :--- | :--- |
+| Reader | Backend engineers at partner companies integrating the Atlas Payments API; not finance staff or end customers. |
+| Promise | From a sandbox key to one idempotent payment and one verified webhook within a working day. |
+| In scope | Authentication, idempotency, webhook verification, error recovery and rate limits. |
+| Out of scope | Pricing, refund policy, hosted checkout UI and production support escalation. |
+| Evidence | Every request and response reproduced against the public sandbox; support tickets sampled; latency figures labeled illustrative. |
+| Ownership | API platform lead owns scope; security reviews authentication; a support engineer reviews recovery paths. |
+| Change rule | Re-reviewed at each API minor release; a breaking change starts a new edition. |
+| Assumptions | The sandbox remains public; partner authentication uses OAuth client credentials. |
+
+: Illustrative brief for a fictional API handbook; names, targets and evidence are not real.
+
+The table is intentionally short. Each row can reject work: a draft about pricing is out; a promise that cannot be demonstrated in a day is revised; an unverified latency claim is removed. That is the test of a decision record. A brief that cannot reject a paragraph is only a wish list with headings.
+
+Read the example as a set of refusals, not a description. It refuses a pricing chapter, a customer-facing tone, an unsupported latency claim and an unowned change. Those refusals are what make the eventual document coherent. A useful counterfactual is to delete the brief and ask which decisions would be renegotiated; if only the title changes, the brief is decoration. If the reader, boundary, evidence, owner or review trigger changes, those are the decisions the record must keep.
+
+::: {.callout-note appearance="simple" icon=false title="Common Pitfall"}
+A topic list masquerading as a brief: “Document authentication, errors, webhooks and rate limits.” It names subjects but not the reader, the promise, the boundary or the evidence. The consequence is predictable: reviewers ask for everything, the author adds sections to satisfy them, and no one can say when the work is complete. The correction is to rewrite each topic as a decision — who needs it, what outcome it enables, what evidence will make it acceptable — and to move the attractive adjacent subjects into non-goals. Name an owner for the boundary before drafting begins.
+:::
+
+::: {.callout-note appearance="simple" icon=false title="Decision & Trade-off"}
+The brief should be the shortest record that still lets a reviewer reject out-of-scope work. The trade-off is between speed and traceability.
+
+| Option | Choose when | Consequences |
+| :--- | :--- | :--- |
+| One-page decision brief | One owner, a stable reader and reversible scope | Fast approval and a clear boundary; regulated or multi-team work may need a separate evidence plan. |
+| Detailed content specification | Several teams, contractual or regulatory review, or many dependencies | Strong traceability and acceptance criteria; slower to approve and easy to freeze structure too early. |
+| Backlog only | Exploratory notes or a short-lived internal page | Low upfront cost; high scope drift and no defensible basis for review. |
+
+For a maintained handbook, the one-page decision brief is the default. Escalate to a content specification only when the cost of a wrong boundary is higher than the cost of a slower approval.
+:::
+
+::: {.callout-note appearance="simple" icon=false title="Further Reading"}
+- ISO/IEC/IEEE 29148:2018, *Systems and software engineering — Life cycle processes — Requirements engineering*. <https://www.iso.org/standard/72089.html> — primary standard for stakeholder needs, requirements quality and traceability.
+- Diátaxis, *A systematic framework for technical documentation authoring*. <https://diataxis.fr/> — primary framework for matching documentation form to a reader's need.
+- Google, *Developer Documentation Style Guide*. <https://developers.google.com/style> — primary style guidance for audience, terminology and scannable technical prose.
+:::

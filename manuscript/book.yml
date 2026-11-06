@@ -1,9 +1,8 @@
-# Reading order is intentionally empty.
-# Gates 1 and 2 permit the pilot to be written while Gate 3 is pending. Once
-# the pilot file exists, validate-book --full may run; it is not claimed before
-# that file exists.
+# Reading order for the pilot window. Only section 2.2 is present.
+# The full chapter order is added after Gate 3; do not list unwritten files.
 front: []
-chapters: []
+chapters:
+  - chapters/ch02-editorial-contract.qmd
 back: []
 appendices: []
 references: []
