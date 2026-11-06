@@ -33,3 +33,13 @@ The hub profile is approved and integrated at hub `main` `8ee28a0`; this book's 
 ## Limitations
 
 This record is a recorded owner assertion, not proof of identity or authorization. An independent reviewer must verify the approval evidence against the owner's statement before integration. The local check can enforce gate ordering and the pilot file boundary; it cannot authenticate the approval.
+
+## Gate 3 approval (pilot 2.2)
+
+On 2026-11-06 the owner delegated owner decisions for platform Phases 1-4 to the root coordinator
+(hub decision `HUB-DEC-016`). Acting under that delegation, the root reviewer approved Gate 3 for
+pilot section 2.2 at source commit `69e4bf8`, after reading the section and the independent
+assessment in [`pilot-review.md`](pilot-review.md). Chapter expansion is authorized in small,
+independently reviewed batches. The pilot contains no figure; figures are optional under the
+approved standard profile `0.2.0`, so this is not a profile exception. Release remains a separate
+decision under the same delegation.

@@ -4,7 +4,7 @@ This file is the only source of current status. Decisions live in [`DECISIONS.md
 
 ## Phase
 
-Sample book bootstrap (platform phase 3). Gates 1 and 2 are approved; Gate 3 is pending. Pilot section 2.2 is written and independently reviewed; awaiting owner approval. No other manuscript prose exists.
+Sample book bootstrap (platform phase 3). Gates 1, 2 and 3 are approved. Pilot section 2.2 is approved; chapter expansion is authorized in reviewed batches.
 
 ## Gates
 
@@ -12,7 +12,7 @@ Sample book bootstrap (platform phase 3). Gates 1 and 2 are approved; Gate 3 is 
 | --- | --- | --- |
 | 1 — editorial brief | **Approved**, 2026-11-06 | [`docs/editorial/brief.md`](docs/editorial/brief.md) |
 | 2 — outline | **Approved**, 2026-11-06 | [`docs/editorial/outline.md`](docs/editorial/outline.md) |
-| 3 — pilot section | **Pending**, not approved; pilot 2.2 written, awaiting review | [`manuscript/chapters/ch02-editorial-contract.qmd`](manuscript/chapters/ch02-editorial-contract.qmd) and its [scope proposal](sdd/changes/0003-pilot-2-2/scope.md) |
+| 3 — pilot section | **Approved**, 2026-11-06 (delegated owner, `HUB-DEC-016`) | [`manuscript/chapters/ch02-editorial-contract.qmd`](manuscript/chapters/ch02-editorial-contract.qmd) and its [scope proposal](sdd/changes/0003-pilot-2-2/scope.md) |
 
 Gate state is machine-readable in [`docs/editorial/gates.json`](docs/editorial/gates.json) and explained in [`docs/editorial/gates.md`](docs/editorial/gates.md). The owner statement and approved scope are in the [approval record](docs/editorial/approval-record.md). Gate 3 approves written work; it is not a precondition for writing the pilot. Gate values are a recorded assertion kept in step with owner decisions, not proof of authorization.
 
