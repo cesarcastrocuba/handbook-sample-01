@@ -1,0 +1,32 @@
+# Book-side Quarto configuration.
+#
+# This file is consumed by the Hub build in an isolated staged workspace.
+# It is not rendered directly from the repository root: the Hub generates
+# index.qmd and chapter wrappers from book.yaml and manuscript/book.yml.
+# Package, manifest and checksum logic intentionally live in the Hub toolkit.
+project:
+  type: book
+  output-dir: _output
+
+book:
+  title: "Handbook Authoring and Publishing"
+  author: "Handbook Sample Contributors"
+  date: "2026-11-06"
+lang: en
+number-sections: false
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-depth: 3
+  typst:
+    papersize: a4
+    toc: true
+    toc-depth: 3
+  docx:
+    toc: true
+    toc-depth: 3
+
+execute:
+  enabled: false

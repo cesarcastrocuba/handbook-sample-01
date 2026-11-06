@@ -26,5 +26,19 @@ jobs:
       - name: Install pinned toolkit
         run: python -m pip install -r requirements.txt
 
+      - name: Validate build config syntax
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import yaml
+
+          config = yaml.safe_load(Path("publishing/_quarto.yml").read_text())
+          assert config["project"]["type"] == "book"
+          assert set(config["format"]) >= {"html", "typst", "docx"}
+          assert config["number-sections"] is False
+          assert config["execute"]["enabled"] is False
+          print("build config syntax: OK")
+          PY
+
       - name: Run fast checks
         run: make check

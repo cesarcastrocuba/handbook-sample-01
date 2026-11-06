@@ -1,10 +1,10 @@
 # Draft book descriptor. This file does not approve a gate or a profile.
 #
 # Toolkit source: public hub main, full SHA
-# 477d7042faa385eee677ad2db5198ebcf5dd1fee, installed from requirements.txt.
+# 66d0581689e1e9c91913da25b5cb4a7723f3ec5c, installed from requirements.txt.
 #
 # Profile source: standard 0.2.0 is approved and integrated on hub main at
-# 8ee28a081399155a250ea8bc45d8492245ab2377. The toolkit pin is 477d704 (see
+# 8ee28a081399155a250ea8bc45d8492245ab2377. The toolkit pin is 66d0581 (see
 # requirements.txt); profiles are hub repository resources, not files in the
 # installed toolkit package. This descriptor references 0.2.0 without claiming
 # that the pinned toolkit validates profile contents.
@@ -17,7 +17,7 @@ profile:
   id: standard
   version: "0.2.0"
 
-toolkit: "0.2.0"
+toolkit: "0.3.0"
 
 license:
   content: CC-BY-SA-4.0

@@ -45,6 +45,8 @@ REQUIRED_FILES = (
     "docs/editorial/gates.json",
     "docs/editorial/approval-record.md",
     "docs/integration/pinned-toolkit.md",
+    "docs/build/pipeline-spec.md",
+    "publishing/_quarto.yml",
     "docs/setup.md",
     "manuscript/README.md",
     "manuscript/book.yml",
