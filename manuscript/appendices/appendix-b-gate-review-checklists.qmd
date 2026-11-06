@@ -1,44 +1,81 @@
-# Appendix B — Gate and Review Checklists {.unnumbered}
+---
+title: "Appendix B — Gate and Review Checklists"
+profile: standard
+---
 
-## B.1 Brief gate
+# Appendix B — Gate and Review Checklists
 
-- [ ] The primary reader and situation are named.
-- [ ] The promise is an observable outcome, not a topic list.
-- [ ] At least one attractive adjacent subject is an explicit non-goal.
-- [ ] The evidence method is defined before drafting.
-- [ ] One accountable owner and an independent review route are named.
-- [ ] The change or review trigger is recorded.
-- [ ] Licensing and attribution are clear enough to proceed.
+The checklists in this appendix turn the book's gates into observable questions. They are review aids, not a substitute for judgment: a checked box records that someone asked the question, not that the answer was good.
 
-## B.2 Outline gate
+::: {.callout-note appearance="simple" icon=false title="When to Use This Chapter"}
+- A brief, outline, pilot, chapter or release is approaching a gate.
+- A reviewer needs a consistent set of questions for a change.
+- A team is adapting the gate process to its own risk profile.
+- A previous review missed a required check and needs a corrective checklist.
+:::
 
-- [ ] Every chapter has a distinct reader outcome and exit evidence.
-- [ ] The structure is proportional to the promise.
-- [ ] The pilot section tests the riskiest or most representative decision.
-- [ ] Dependencies and exclusions are explicit.
-- [ ] The profile and exception route are identified.
+::: {.callout-tip appearance="simple" icon=false title="Key Takeaway"}
+A checklist is useful when every item can fail and the failure changes the decision. Keep the list short enough to run and specific enough to produce evidence.
+:::
 
-## B.3 Pilot and chapter review
+## B.1 The Gate and Review Checklist Library
 
-- [ ] The chapter opens with When to Use This Chapter and Key Takeaway.
-- [ ] Required section elements are present or an owner-approved exception is recorded.
-- [ ] Examples are labeled and show a real constraint or cost.
-- [ ] The Common Pitfall is specific and correctable.
-- [ ] The Decision & Trade-off names a default and an alternative condition.
-- [ ] The Worked Example ends with a Review Checklist.
-- [ ] Further Reading is the last numbered section.
-- [ ] Sources are real, checkable and versioned where necessary.
-- [ ] Cross-references resolve and external links remain intact.
-- [ ] The exact reviewed commit is recorded.
+**Definition.** A gate checklist is an ordered set of questions that a reviewer answers with evidence before an owner decides whether work may pass a gate. A review checklist applies the same idea to one change; it is not a scorecard of the author's effort.
 
-## B.4 Release gate
+**Purpose.** The checklist makes a gate repeatable across reviewers and authors. It also makes omissions visible: if a check cannot be answered, the work is not ready, even when the prose looks finished. The owner can then decide whether to fix the gap, approve an explicit exception or delay the gate.
 
-- [ ] The build uses the exact owner-approved commit and a clean environment.
-- [ ] Toolkit, profile, Quarto, Pandoc, Typst, Python and zlib versions are recorded.
-- [ ] The six release assets are present and inspected.
-- [ ] Manifest membership and every checksum verify.
-- [ ] PDF, DOCX, HTML and source formats pass structural inspection.
-- [ ] The release tag is immutable and matches the version.
-- [ ] The catalog points to the release, not a branch.
-- [ ] Licensing, attribution and the owner release decision are recorded.
-- [ ] A withdrawal or rollback route is documented.
+**What it includes.** The brief gate checks reader, promise, non-goals, evidence, owner and change trigger. The outline gate checks exit evidence, dependencies, pilot choice and profile coverage. The chapter review checks the chapter and section elements, examples, sources, cross-references and exact commit. The release gate checks the approved commit, six assets, manifest, checksums, format inspection, licensing and immutable release/catalog behavior.
+
+**Why it is needed.** Reviews drift when they depend on memory. One reviewer checks sources; another checks structure; a third focuses on wording. The author cannot tell which omissions were deliberate. A shared checklist gives the gate a floor and makes the review record comparable across changes.
+
+**Example.** *Illustrative only: a chapter review.* The reviewer opens the checklist, marks the chapter's reader outcome, the four unit labels, the closing elements, the Worked Example and Further Reading, the source ledger entries and the exact commit. Two items cannot be answered: one source is a secondary summary and the cross-reference target is missing. The verdict is changes requested, not approved with a note, because both items affect the reader's ability to check the chapter.
+
+
+::: {.callout-warning appearance="simple" icon=false title="Common Pitfall"}
+A checked box is not evidence. If the checklist cannot name the source, command or artifact that supports the answer, the review is recording agreement rather than verification.
+:::
+
+::: {.callout-important appearance="simple" icon=false title="Decision & Trade-off"}
+Checklists can be short and generic or long and risk-specific.
+
+| Checklist style | Choose when | Consequences |
+| :--- | :--- | :--- |
+| Short universal list | Routine chapters and small changes | Fast; may miss domain-specific evidence. |
+| Gate-specific list | Brief, outline, pilot, release or licensing decisions | Stronger evidence; more review time. |
+| Risk-triggered additions | Security, regulated data or high-impact publication | Targeted coverage; requires a clear trigger. |
+
+Start with the shortest list that catches the failure modes you have seen. Add an item only when its absence has caused or could cause a real defect.
+:::
+
+## Worked Example — Running a Chapter Checklist
+
+*In practice:* a reviewer runs the chapter checklist before reading for style.
+
+1. Record the exact reviewed commit and the applicable profile.
+2. Check When to Use This Chapter and Key Takeaway before the first section.
+3. Check each content section for Definition, Purpose, What it includes and Why it is needed.
+4. Check Example, Common Pitfall and Decision & Trade-off in order.
+5. Check Worked Example, Review Checklist and Further Reading placement.
+6. Check labels, references and local images against the reading order.
+7. Check source claims against the source ledger.
+8. Record unresolved items and classify them by consequence.
+9. Post the verdict and the exact commands actually run.
+
+In the illustrative review, the chapter passes structure but fails one source check and one reference check. The reviewer does not rewrite the chapter; they report the locations and the evidence needed. The author fixes both and the reviewer re-runs on the new commit.
+
+::: {.callout-note appearance="simple" icon=false title="Review Checklist"}
+- Is the reviewed commit recorded and still the exact HEAD?
+- Are the chapter-level elements present and ordered?
+- Are every content section's four unit elements and three closure elements present?
+- Does the Worked Example end with a Review Checklist?
+- Is Further Reading the last numbered section?
+- Do references and local assets resolve?
+- Are sources real, checkable and adequate for the claim?
+- Is every finding classified and every blocking finding owned?
+:::
+
+## Further Reading
+
+- Google, *Code Review Developer Guide*: <https://google.github.io/eng-practices/review/> — review scope and reviewer/author responsibilities.
+- GitHub Docs, *About protected branches*: <https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches> — required review and merge controls.
+- ISO/IEC/IEEE 29148:2018: <https://www.iso.org/standard/72089.html> — requirements quality and traceability.

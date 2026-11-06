@@ -1,8 +1,30 @@
-# Appendix A — Brief and Outline Templates {.unnumbered}
+---
+title: "Appendix A — Brief and Outline Templates"
+profile: standard
+---
 
-These templates are starting points, not forms to fill without thought. Replace the illustrative text with decisions that a reviewer could use to reject out-of-scope work.
+# Appendix A — Brief and Outline Templates
 
-## A.1 Brief template
+The templates in this appendix are starting points for the contract described in Chapter 2. They are intentionally short: a template that invites every possible field becomes a form to fill rather than a decision to make.
+
+::: {.callout-note appearance="simple" icon=false title="When to Use This Chapter"}
+- A new handbook needs a brief and outline before drafting.
+- An existing brief has fields but no decisions that can reject work.
+- A reviewer needs a consistent form for comparing proposals.
+- A team wants to adapt the templates without copying another book's content.
+:::
+
+::: {.callout-tip appearance="simple" icon=false title="Key Takeaway"}
+A template is useful only when every field can change a decision. Keep the reader, promise, non-goals, evidence and owner; remove fields that no reviewer will use.
+:::
+
+## A.1 Brief and Outline Template Library
+
+**Definition.** A template library is a small set of reusable forms for recording the editorial decisions that precede drafting. It is not a mandatory questionnaire, and it does not replace the owner's judgment about which decisions matter.
+
+**Purpose.** The templates make proposals comparable. A reviewer can see whether a brief names a reader and a promise, whether an outline has exit evidence and whether a pilot has a testable scope. They also reduce the blank-page problem without importing another book's answers.
+
+**What it includes.** The brief template records reader, promise, in-scope decisions, non-goals, evidence method, owner, change rule and assumptions. The outline template records the reading path, parts and chapters, exit evidence, pilot and exclusions. An approval block records the owner decision and its evidence. All fields are questions to answer in the book's own terms, not text to copy.
 
 ```markdown
 # Editorial brief — [working title]
@@ -35,8 +57,6 @@ These templates are starting points, not forms to fill without thought. Replace 
 [What is accepted without evidence and what would invalidate it.]
 ```
 
-## A.2 Outline template
-
 ```markdown
 # Outline — [working title]
 
@@ -48,16 +68,6 @@ These templates are starting points, not forms to fill without thought. Replace 
 - [Section]
 - Exit evidence: [what the reader can decide]
 
-## Part II — [question]
-### Chapter 2 — [title]
-- [Section]
-- Exit evidence: [what the reader can decide]
-
-## Part III — [question]
-### Chapter 3 — [title]
-- [Section]
-- Exit evidence: [what the reader can decide]
-
 ## Pilot
 [One section, why it is representative and how it will be reviewed.]
 
@@ -65,11 +75,52 @@ These templates are starting points, not forms to fill without thought. Replace 
 [What this outline deliberately does not cover.]
 ```
 
-## A.3 Approval block
+**Why it is needed.** Without a shared form, every proposal is reviewed against a different model. One author writes a marketing summary, another writes a table of contents and a third writes a project plan. The owner cannot compare them, and the reviewer cannot tell whether the missing field is an omission or a deliberate choice. The template gives the conversation a common minimum without pretending that all books are identical.
 
-| Field | Value |
-| --- | --- |
-| Owner | [name] |
-| Decision | [approved / changes requested] |
-| Date | [YYYY-MM-DD] |
-| Evidence | [review record or decision reference] |
+**Example.** *Illustrative only: a team adapting the brief.* The team keeps reader, promise, non-goals, evidence and owner. It removes a proposed "stakeholder list" because the owner already knows the stakeholders, and removes a "success metric" field that no one could define before the pilot. The brief becomes shorter and more useful. The template is a starting point, not a compliance checklist.
+
+
+::: {.callout-warning appearance="simple" icon=false title="Common Pitfall"}
+A fully populated template can still be an empty contract. If every field is generic and no reviewer could use the brief to reject a paragraph, the form is hiding the missing decisions.
+:::
+
+::: {.callout-important appearance="simple" icon=false title="Decision & Trade-off"}
+Templates can be minimal or comprehensive.
+
+| Template depth | Choose when | Consequences |
+| :--- | :--- | :--- |
+| Minimal decision brief | A small team and a stable reader | Fast and focused; may omit evidence needed for a regulated context. |
+| Full brief and outline | Multiple authors or a formal gate | Comparable evidence; more fields and more maintenance. |
+| No template | A one-off note that will not be maintained | Low overhead; no shared review language. |
+
+Use the smallest template that makes the important decisions visible. Add fields only when a reviewer will actually use them.
+:::
+
+## Worked Example — Adapting the Templates
+
+*In practice:* a team receives the templates and adapts them to a handbook for a mobile SDK.
+
+1. Keep the reader field and replace "developers" with "mobile engineers integrating the SDK in a staging app".
+2. Rewrite the promise as an observable outcome: complete a sandbox login and one authenticated request.
+3. Move pricing, app-store review and production support to non-goals with owners.
+4. Keep the evidence method: test against the published sandbox and record the SDK version.
+5. Remove the stakeholder field, which no reviewer used.
+6. Add one assumption: the staging environment remains available during the writing window.
+7. Approve the brief and outline before drafting the pilot section.
+
+The adapted template is shorter than the original. It can reject a proposed section on app-store screenshots because that subject is an explicit non-goal. It can also reject a promise that cannot be demonstrated in the staging app.
+
+::: {.callout-note appearance="simple" icon=false title="Review Checklist"}
+- Does the brief name one reader and one observable promise?
+- Are the non-goals explicit enough to reject a plausible section?
+- Is the evidence method checkable by a reviewer?
+- Does the outline give every chapter an exit decision?
+- Is the pilot small enough to review and representative enough to test?
+- Is the approval evidence recorded at an exact commit?
+:::
+
+## Further Reading
+
+- ISO/IEC/IEEE 29148:2018, *Systems and software engineering — Life cycle processes — Requirements engineering*: <https://www.iso.org/standard/72089.html> — requirements quality and traceability.
+- Diátaxis, *A systematic framework for technical documentation authoring*: <https://diataxis.fr/> — matching documentation form to reader need.
+- Write the Docs, *Documentation Guide*: <https://www.writethedocs.org/guide/> — practical documentation planning and maintenance.

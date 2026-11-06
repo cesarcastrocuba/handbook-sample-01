@@ -1,39 +1,95 @@
-# Appendix C — Glossary {.unnumbered}
+---
+title: "Appendix C — Glossary"
+profile: standard
+---
 
-**Architecturally significant requirement.** A requirement that constrains structure, quality or evidence enough to change an architecture decision. (The sample book uses the general idea without requiring an architecture role.)
+# Appendix C — Glossary
 
-**Brief.** The approved record of the reader, promise, scope, non-goals, evidence, owner and change rule.
+The glossary fixes the vocabulary used across the book. It is deliberately selective: a term appears only when readers or reviewers need a shared meaning to make a decision, not because the term exists somewhere in the manuscript.
 
-**Build once.** Producing the release artifacts one time from an approved commit and publishing those exact bytes, rather than rebuilding between review and publication.
+::: {.callout-note appearance="simple" icon=false title="When to Use This Chapter"}
+- Two sections use the same term with different meanings.
+- A reviewer needs the book's definition rather than a general dictionary definition.
+- A new contributor needs the minimum vocabulary for a review.
+- A maintenance edit risks changing a term without changing its dependent sections.
+:::
 
-**Catalog.** The hub index of approved releases. It links to immutable assets and does not mirror manuscript content.
+::: {.callout-tip appearance="simple" icon=false title="Key Takeaway"}
+Define a term where it first matters, then keep the glossary consistent with the chapter usage. A glossary that drifts from the prose is worse than no glossary because it creates a second, conflicting source of truth.
+:::
 
-**Checksum.** A hash of an artifact used to detect a change in its bytes. A checksum proves equality, not editorial approval.
+## C.1 Glossary Terms
 
-**Content profile.** A declared set of required section and chapter elements. The standard profile in this book is version 0.2.0.
+**Definition.** A glossary is a curated list of terms whose meaning is fixed for this book, together with a short definition and, where useful, the section that develops it. It is not an automatic index and it is not a dictionary of every technical word.
 
-**Cross-reference.** An explicit pointer to a labelled section, figure, table or other element, such as `@sec-review`.
+**Purpose.** The glossary reduces ambiguity during review. A reader can check what "pilot", "profile" or "release" means here instead of importing a meaning from a different team. A reviewer can point to the shared definition when a section uses a term loosely.
 
-**Exception.** An owner-approved, recorded deviation from a profile element; it is not an undocumented omission.
+**What it includes.** Each entry names the term and gives a one- or two-sentence definition in the book's context. Add a cross-reference only when the reader needs the full argument. The entries below cover the editorial and publication vocabulary used in this book.
 
-**Gate.** An owner decision that authorizes the next phase, such as brief, outline, pilot, expansion or release.
+- **Brief.** The approved record of the reader, promise, scope, non-goals, evidence, owner and change rule.
+- **Build once.** Producing the release artifacts one time from an approved commit and publishing those exact bytes.
+- **Catalog.** The hub index of approved releases; it links to immutable assets and does not mirror manuscript content.
+- **Checksum.** A hash of an artifact used to detect a change in its bytes; equality is not editorial approval.
+- **Content profile.** A declared set of required chapter and section elements, version 0.2.0 in this book.
+- **Cross-reference.** An explicit pointer to a labelled section, figure, table or other element.
+- **Exception.** An owner-approved, recorded deviation from a profile element.
+- **Gate.** An owner decision that authorizes the next phase, such as brief, outline, pilot, expansion or release.
+- **Manifest.** The publication identity document recording the book, commit, tool versions, command and artifact hashes.
+- **Non-goal.** An attractive adjacent subject that the handbook deliberately excludes.
+- **Pilot.** One written section used to test the brief, profile and review process before expansion.
+- **Reading order.** The declared list of canonical manuscript files grouped by front matter, chapters, back matter, appendices and references.
+- **Review record.** Durable evidence of the reviewed commit, commands, findings and verdict.
+- **Source bundle.** The archive of canonical sources and build inputs at the release commit.
+- **Source ledger.** A record of claims, confidence, evidence and review triggers used during research.
+- **Staging directory.** A private build directory where artifacts are produced and verified before atomic exposure.
+- **Verified release.** A release directory whose identity, assets, hashes and format checks have passed the release gate.
 
-**Manifest.** The publication identity document that records the book, source commit, tool versions, build command and artifact hashes.
+**Why it is needed.** Terms migrate. "Review" can mean a quick read, a formal verdict or a quality assurance phase. "Release" can mean a tag, a PDF upload or a catalog update. Without a fixed vocabulary, a review can appear to agree while discussing different things. The glossary makes the disagreement visible.
 
-**Non-goal.** An attractive adjacent subject that the handbook deliberately excludes.
+**Example.** *Illustrative only: a review comment.* A reviewer writes "the release is not ready". The author reads this as "the PDF needs another edit"; the reviewer means "the catalog still points to a branch". The glossary's definitions of release, manifest and catalog expose the mismatch, and the review can proceed with a concrete finding.
 
-**Pilot.** One written section used to test the brief, profile and review process before the remaining chapters are expanded.
 
-**Profile.** A versioned editorial contract for the shape of chapters and sections.
+::: {.callout-warning appearance="simple" icon=false title="Common Pitfall"}
+A glossary that is written once and never checked becomes a second source of truth. When a chapter redefines a term, update the glossary in the same change or remove the term.
+:::
 
-**Reading order.** The declared list of canonical manuscript files, grouped as front matter, chapters, back matter, appendices and references.
+::: {.callout-important appearance="simple" icon=false title="Decision & Trade-off"}
+A glossary can be selective or exhaustive.
 
-**Review record.** The durable evidence of the exact reviewed commit, commands, findings and verdict.
+| Scope | Choose when | Consequences |
+| :--- | :--- | :--- |
+| Selective decision vocabulary | The book uses a small shared set of terms | Easy to maintain and review; some readers may need an external dictionary. |
+| Exhaustive terminology list | The book is a reference and terms repeat across many sections | Broad coverage; high drift risk and a large maintenance surface. |
+| Automatic glossary links | A generated index is the primary navigation model | Broad reach; noisy prose and stale anchors unless the source is curated. |
 
-**Source bundle.** The archive of canonical sources and build inputs at the release commit.
+Keep the glossary selective. Add a term only when its definition changes a decision or has already caused a review disagreement.
+:::
 
-**Source ledger.** A record of claims, confidence, evidence and review triggers used during research.
+## Worked Example — Resolving a Term Conflict
 
-**Staging directory.** A private build directory where artifacts are produced and verified before the complete directory is atomically exposed.
+*In practice:* two chapters use "release" differently. The editor resolves the conflict before the next review.
 
-**Verified release.** A release directory whose identity, assets, hashes and format checks have passed the release gate.
+1. Find the first use of the term and read its surrounding decision.
+2. Compare the chapter definition with the glossary entry.
+3. Decide which meaning serves the reader promise.
+4. Update the chapter or the glossary, not both in different directions.
+5. Check references to the term in other chapters.
+6. Record the change in the review and changelog.
+7. Add a cross-reference only if the reader needs the fuller argument.
+
+In the illustrative case, one chapter uses "release" for a verified artifact set and another uses it for a catalog update. The editor defines release as the verified artifact set and treats the catalog update as a separate publication step. The glossary and both chapters now agree.
+
+::: {.callout-note appearance="simple" icon=false title="Review Checklist"}
+- Is every glossary term used in the book with the same meaning?
+- Does each entry define the term in this book's context?
+- Are cross-references explicit and resolvable?
+- Is the glossary free of automatic, indiscriminate links?
+- Did a wording change update both the chapter and the glossary?
+- Is the term list small enough to review and maintain?
+:::
+
+## Further Reading
+
+- Diátaxis, *A systematic framework for technical documentation authoring*: <https://diataxis.fr/> — distinguishes reference material from explanation and how-to guidance.
+- ISO/IEC/IEEE 29148:2018: <https://www.iso.org/standard/72089.html> — terminology and requirements quality.
+- CommonMark, *CommonMark Spec*: <https://spec.commonmark.org/> — the Markdown syntax used by the glossary and manuscript.

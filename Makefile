@@ -25,6 +25,6 @@ full: check
 	profile=$$(mktemp --suffix=.yaml); \
 	trap 'rm -f "$$profile"' EXIT; \
 	$(PYTHON) -c 'import yaml; from handbook_toolkit.profile_resources import load_profile; print(yaml.safe_dump(load_profile("standard", "0.2.0"), sort_keys=False))' > "$$profile"; \
-	for file in manuscript/chapters/*.qmd; do \
+	for file in manuscript/chapters/*.qmd manuscript/appendices/*.qmd; do \
 		$(TOOLKIT) validate-manuscript "$$file" --mode chapter --profile "$$profile"; \
 	done
