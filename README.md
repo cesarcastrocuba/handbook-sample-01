@@ -2,7 +2,7 @@
 
 A sample handbook that demonstrates how to plan, write, review and publish a maintainable technical handbook. It is the reference book for the handbook platform and is written in public so the workflow itself can be inspected.
 
-**Status: Gates 1 and 2 approved; Gate 3 pending.** No chapter prose exists, and the pilot is not written. Root review and integration of the approval record are next.
+**Status: Gates 1 and 2 approved; Gate 3 pending.** No chapter prose exists, and the pilot is not written. Root integration of the reviewed branches is pending.
 
 ## Current gate
 
@@ -21,6 +21,7 @@ Gate 3 is an approval of written work, not a precondition for writing it. After 
 - [`docs/editorial/profile.md`](docs/editorial/profile.md) — the standard section profile and its allowed exceptions.
 - [`docs/editorial/gates.md`](docs/editorial/gates.md) — the gate sequence, state transitions and what each gate authorizes.
 - [`docs/editorial/gates.json`](docs/editorial/gates.json) — machine-readable gate state and the authorized pilot path.
+- [`docs/setup.md`](docs/setup.md) — contributor setup, pinned install, fast checks and current limits.
 - [`AGENTS.md`](AGENTS.md) — agent-neutral roles, workflow and editorial gates.
 - [`DECISIONS.md`](DECISIONS.md) — decisions with explicit status.
 - [`sdd/changes/0001-sample-bootstrap/`](sdd/changes/0001-sample-bootstrap/proposal.md) — bootstrap proposal and task record.
@@ -28,20 +29,37 @@ Gate 3 is an approval of written work, not a precondition for writing it. After 
 - `manuscript/` — reserved layout for canonical sources; intentionally empty of prose.
 - `publishing/` — metadata and publication plan; build configuration is deferred until Gate 3 approves the pilot.
 
-## Verify
+## Quickstart for contributors
 
-Install the pinned toolkit from the public hub, then run the fast checks:
+Readers of the handbook need no local tools. This quickstart is only for people who want to write, review or verify the repository.
+
+You need Git, Python 3.11 or newer, and pip/venv. A hub checkout is **not** needed: `requirements.txt` installs the pinned toolkit directly from the public hub as a normal package.
 
 ```sh
+git clone https://github.com/cesarcastrocuba/handbook-sample-01.git
+cd handbook-sample-01
+
+python3 -m venv .venv
+source .venv/bin/activate
+
+python3 -m pip install --upgrade pip
 python3 -m pip install -r requirements.txt
 make check
 ```
 
-`make check` runs the local gate-policy tests, the repository checks and the toolkit's fast `validate-book` check. It requires network access only for the one-time install; the installed package is pinned to a full hub commit SHA and is not an editable parent checkout.
+If `make` is unavailable, run the same fast checks directly:
 
-`make full` is a **current-scope incomplete** full/artifact gate, not a descriptor failure. It runs the fast checks and then fails explicitly: no pilot or chapter `.qmd` exists yet, so `validate-book --full` is not run; no artifact manifest or checksums exist. Once the pilot exists, `validate-book --full` may run. Do not report `make full` as a passing full build.
+```sh
+python3 -B -m unittest discover -s scripts/tests -p 'test_*.py'
+python3 -B scripts/check_repo.py
+handbook-toolkit validate-book book.yaml
+```
 
-The integration source, metadata ownership and limits are documented in [`docs/integration/pinned-toolkit.md`](docs/integration/pinned-toolkit.md). Shared platform checks belong to the pinned hub toolkit and are not vendored here.
+`make check` covers gate-policy tests, repository consistency and the fast `validate-book` descriptor check. It does not validate chapter content or profile conformance.
+
+`make full` is currently a **current-scope incomplete** content-and-artifact gate: it runs the fast checks, then fails explicitly because no pilot exists and no artifact manifest/checksums exist. It is not a descriptor failure and must not be reported as a passing full build.
+
+Quarto and the render toolchain are future build setup; they are not required or installed now. Full prerequisites, limits and troubleshooting are in [`docs/setup.md`](docs/setup.md).
 
 ## Workflow
 

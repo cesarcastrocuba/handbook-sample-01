@@ -4,7 +4,7 @@ This file is the only source of current status. Decisions live in [`DECISIONS.md
 
 ## Phase
 
-Sample book bootstrap (platform phase 3). Gates 1 and 2 are approved; Gate 3 is pending. The root review and integration of the approval record are next. No manuscript prose exists.
+Sample book bootstrap (platform phase 3). Gates 1 and 2 are approved; Gate 3 is pending. Root integration of the reviewed branches is pending. No manuscript prose exists.
 
 ## Gates
 
