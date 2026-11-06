@@ -3,7 +3,7 @@ title: "Appendix C — Glossary"
 profile: standard
 ---
 
-# Appendix C — Glossary
+# Appendix C — Glossary {.unnumbered}
 
 The glossary fixes the vocabulary used across the book. It is deliberately selective: a term appears only when readers or reviewers need a shared meaning to make a decision, not because the term exists somewhere in the manuscript.
 

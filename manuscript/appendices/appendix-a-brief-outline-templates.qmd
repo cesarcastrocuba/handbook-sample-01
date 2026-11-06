@@ -3,7 +3,7 @@ title: "Appendix A — Brief and Outline Templates"
 profile: standard
 ---
 
-# Appendix A — Brief and Outline Templates
+# Appendix A — Brief and Outline Templates {.unnumbered}
 
 The templates in this appendix are starting points for the contract described in Chapter 2. They are intentionally short: a template that invites every possible field becomes a form to fill rather than a decision to make.
 

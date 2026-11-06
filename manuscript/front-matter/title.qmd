@@ -5,9 +5,7 @@ author: "Handbook Sample Contributors"
 date: "2026-11-06"
 ---
 
-# Handbook Authoring and Publishing {.unnumbered}
-
-A practical guide to planning, writing, reviewing and sustaining a technical handbook.
+# Document Control {.unnumbered}
 
 **Status:** Draft manuscript. Not a released edition.
 

@@ -3,7 +3,7 @@ title: "Appendix B — Gate and Review Checklists"
 profile: standard
 ---
 
-# Appendix B — Gate and Review Checklists
+# Appendix B — Gate and Review Checklists {.unnumbered}
 
 The checklists in this appendix turn the book's gates into observable questions. They are review aids, not a substitute for judgment: a checked box records that someone asked the question, not that the answer was good.
 

@@ -89,7 +89,7 @@ Evidence is a decision too. “High quality” is not a test; “every request r
 | Change rule | Re-reviewed at each API minor release; a breaking change starts a new edition. |
 | Assumptions | The sandbox remains public; partner authentication uses OAuth client credentials. |
 
-: Illustrative brief for a fictional API handbook; names, targets and evidence are not real.
+Table: Illustrative brief for a fictional API handbook; names, targets and evidence are not real. {#tbl-illustrative-brief}
 
 The table is intentionally short. Each row can reject work: a draft about pricing is out; a promise that cannot be demonstrated in a day is revised; an unverified latency claim is removed. That is the test of a decision record. A brief that cannot reject a paragraph is only a wish list with headings.
 
