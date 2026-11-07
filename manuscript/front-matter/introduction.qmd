@@ -1,0 +1,101 @@
+# Introduction {.unnumbered}
+
+## Purpose
+
+This handbook is a practitioner reference for planning, writing, reviewing, publishing and maintaining a technical handbook. It explains what each editorial concept means, why it matters, which choices and trade-offs exist, and which evidence shows that a claim, review or release is sound. It is written to be consulted during the work — while shaping a brief, drafting a section, reviewing a change, preparing a release or deciding whether a handbook should be maintained or retired — rather than read once from cover to cover.
+
+The book is deliberately more about editorial decisions than about a particular publishing product. A tool can render Markdown, but it cannot decide who the reader is, what the handbook excludes, which evidence makes a claim acceptable or who may approve a release. Those decisions are the subject of Part I. Part II turns them into research, writing and review practice. Part III closes the lifecycle with reproducible release and maintenance.
+
+## Objectives
+
+The handbook aims to help a handbook author, reviewer or owner:
+
+- Turn a reader need into a clear promise, boundary, evidence method and accountable owner.
+- Apply a repeatable section profile and record justified exceptions instead of relying on personal preference.
+- Research claims, separate fact from assumption and review rights before reusing another source.
+- Draft sections that teach a decision through definition, example, failure mode and trade-off.
+- Obtain independent review evidence tied to an exact commit and a reproducible check.
+- Build, verify and publish a release from an approved source, then maintain, correct or retire it deliberately.
+
+## Scope
+
+**In scope.** The editorial and publication decisions that make a technical handbook trustworthy: the reader and promise, the editorial contract, the content profile and exceptions, source discipline and rights, section writing, independent review, reproducible build and release, and maintenance or retirement. Technology-specific guidance appears only as a labelled example.
+
+**Out of scope.** Product-specific configuration, programming-language tutorials, legal or regulatory interpretation, and organization-specific approval policy. Those subjects belong to the artifact or team that owns them; the handbook treats them as inputs or examples rather than as its own guidance.
+
+## Audience and Prerequisites
+
+The primary readers are the people who produce and approve a technical handbook: authors and editors, technical reviewers, and the owners and maintainers accountable for its scope and release. They work in software, operations, architecture, security, data and other technical fields, and they need a shared way to decide what belongs in a handbook and what evidence makes it trustworthy.
+
+Secondary readers include engineering managers, documentation leads, platform engineers and subject-matter experts who contribute sections, review claims or support publication. They do not need to write every chapter to use the book; the checklists and templates are designed to be used directly.
+
+No local toolchain is needed to read the handbook. Contributors who want to verify the repository need Git, Python and the pinned toolkit described in the repository setup guide; Quarto is needed only for an artifact build. The book explains the decisions before the commands, so a reader can use it without installing anything.
+
+## Structure of the Handbook
+
+- **Part I — The editorial foundation (Chapters 1–3):** Why Handbooks Fail; The Editorial Contract; Profiles and Exceptions.
+- **Part II — Research, writing and review (Chapters 4–6):** Research and Source Discipline; Writing a Section; Review as Evidence.
+- **Part III — Release and maintenance (Chapters 7–8):** Build, Verify, Release; Maintenance and Contribution.
+- **Appendices A–C:** Brief and Outline Templates; Gate and Review Checklists; Glossary.
+- **References:** the sources cited in the chapters and recommended for further reading.
+
+Each chapter uses the same section shape: a reader outcome, the definitions and boundaries needed to make a decision, an illustrative example, a failure mode, a trade-off and a checklist where action is required. Each concept is explained in one primary location and referenced elsewhere, so a reader can follow a route without reading every page in order.
+
+## How to Use This Handbook
+
+The chapters can be read in order, but different readers need different entry points. The routes below are ordered by the book's reading sequence, not by urgency. A reader working front to back meets each route near the chapter where its reasoning is explained.
+
+| If you need to… | Start with |
+| :--- | :--- |
+| Decide whether a handbook is the right artifact | Chapter 1 |
+| Define the reader, promise, boundary and owner | Chapter 2 |
+| Apply the section profile or record an exception | Chapter 3 |
+| Check a claim against its source and rights position | Chapter 4 |
+| Draft or rewrite a section | Chapter 5 |
+| Obtain or record an independent review | Chapter 6 |
+| Build and verify a release | Chapter 7 |
+| Plan maintenance, errata or retirement | Chapter 8 |
+| Reuse a brief or outline template | Appendix A |
+| Run a gate or review checklist | Appendix B |
+| Look up a shared term | Appendix C |
+
+: Task-Based Reading Routes
+
+### Author path
+
+1. Chapter 1 — diagnose whether a handbook is the right artifact.
+2. Chapter 2 — define the reader, promise, boundary and owner.
+3. Chapter 3 — apply the section profile and declare exceptions.
+4. Chapters 4–5 — research the evidence and write the section.
+5. Chapter 6 — obtain an independent review.
+6. Chapter 7 — build and verify a release.
+7. Chapter 8 — maintain or retire the handbook.
+
+### Reviewer path
+
+1. Chapter 2 — check that the brief can reject out-of-scope work.
+2. Chapter 3 — check required elements and exception records.
+3. Chapter 4 — check the source ledger and claim labels.
+4. Chapter 5 — check the example, pitfall and trade-off.
+5. Chapter 6 — classify findings and record the verdict.
+6. Chapter 7 — confirm the artifact identity and release evidence.
+
+### Owner and maintainer path
+
+1. Chapter 1 — choose the proportionate artifact.
+2. Chapter 2 — approve or reject the editorial contract.
+3. Chapter 6 — confirm separation of duties and closure.
+4. Chapter 7 — hold the release gate.
+5. Chapter 8 — decide the contribution, versioning and retirement rules.
+
+A section can be read on its own, but the brief and the profile travel with it. Do not accept a section that satisfies the shape while contradicting the reader promise.
+
+## Conventions
+
+**Normative language.** *Must* marks a condition without which the stated claim or guarantee does not hold. *Should* marks a recommended default that may be overridden with a recorded reason. *May* marks an option.
+
+**Illustrative examples.** Examples with fictional organizations, products, names, targets or measurements are labelled illustrative. They show a decision and its cost; they are not evidence for a real product's behavior.
+
+**Product names.** Vendor products are named only as labelled examples. The handbook does not recommend a product, and a product's absence is not a judgment about it.
+
+**Terminology.** Terms with a fixed meaning in this book are defined where they first matter and collected in Appendix C. Cross-references name the section or chapter they point to; they are navigation, not emphasis.

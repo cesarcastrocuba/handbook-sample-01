@@ -12,6 +12,12 @@ All notable changes to this sample handbook are recorded here. The format follow
 - Lightweight SDD proposal for the bootstrap.
 - Dependency-free repository consistency check.
 
+### Changed
+
+- Replaced the separate Preface and Reading Paths with a single Introduction chapter covering purpose, objectives, scope, audience, structure, task-based routes and conventions.
+- Reworked Document Control to keep only human-maintained ownership, version history, maintenance and licensing; generated edition fields are supplied by the toolkit at build time.
+- Numbered appendix subsections consecutively after the first section (`A.2`–`A.3`, `B.2`–`B.3`, `C.2`–`C.3`) to match chapter numbering, without touching headings inside template code blocks.
+
 ### Fixed
 
 - Removed the Gate 3 deadlock: Gates 1 and 2 now authorize the pilot file while Gate 3 is pending; Gate 3 approves the reviewed pilot and authorizes expansion.

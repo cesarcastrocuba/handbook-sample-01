@@ -1,8 +1,7 @@
-# Complete reading order: front matter, Chapters 1-8, appendices and references.
+# Reading order: front matter, Chapters 1-8, appendices and references.
 front:
   - front-matter/title.qmd
-  - front-matter/preface.qmd
-  - front-matter/reading-paths.qmd
+  - front-matter/introduction.qmd
 chapters:
   - chapters/ch01-why-handbooks-fail.qmd
   - chapters/ch02-editorial-contract.qmd

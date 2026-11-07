@@ -4,14 +4,27 @@ title: "Handbook Authoring and Publishing"
 
 # Document Control {.unnumbered}
 
-**Status:** Draft manuscript. Not a released edition.
+#### Ownership and Review
 
-**Edition:** 0.1.0-draft
+| Field | Value |
+| :--- | :--- |
+| Approver and maintainer | Handbook Sample Contributors |
+| Scope | Introduction, Chapters 1–8, Appendices A–C and References |
+| Review cycle | At least annually and whenever the standard profile publishes a new major version |
 
-**Profile:** standard 0.2.0
+#### Version History
 
-**Language:** English
+| Version | Date | Summary of changes |
+| :--- | :--- | :--- |
+| 0.1.0 | November 2026 | First published edition |
+| 0.1.1 | November 2026 | Learn-style rendering and table of contents fixes |
+| 0.1.2 | November 2026 | Bundled fonts and near-black headings |
+| 0.2.0 | November 2026 | Introduction chapter, generated document control, print layout aligned with the reference handbook |
 
-**Content license:** CC BY-SA 4.0
+#### Maintenance and Contributions
 
-**Code license:** MIT
+This handbook follows the contribution and review process in [`CONTRIBUTING.md`](../../CONTRIBUTING.md). Substantive changes require an independent review record before approval; the reviewer must not be the author. Chapter 8 describes how contributions, errata, new editions and retirement are handled.
+
+#### License and Usage Notice
+
+Content is licensed under Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0); scripts and build configuration are licensed under MIT. Examples are illustrative, and product names appear only as labelled examples.
