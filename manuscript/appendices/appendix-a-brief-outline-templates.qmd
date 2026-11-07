@@ -96,7 +96,7 @@ Templates can be minimal or comprehensive.
 Use the smallest template that makes the important decisions visible. Add fields only when a reviewer will actually use them.
 :::
 
-## Worked Example — Adapting the Templates
+## A.2 Worked Example — Adapting the Templates
 
 *In practice:* a team receives the templates and adapts them to a handbook for a mobile SDK.
 
@@ -119,7 +119,7 @@ The adapted template is shorter than the original. It can reject a proposed sect
 - Is the approval evidence recorded at an exact commit?
 :::
 
-## Further Reading
+## A.3 Further Reading
 
 - ISO/IEC/IEEE 29148:2018, *Systems and software engineering — Life cycle processes — Requirements engineering*: <https://www.iso.org/standard/72089.html> — requirements quality and traceability.
 - Diátaxis, *A systematic framework for technical documentation authoring*: <https://diataxis.fr/> — matching documentation form to reader need.

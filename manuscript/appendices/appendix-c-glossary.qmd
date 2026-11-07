@@ -30,7 +30,7 @@ Define a term where it first matters, then keep the glossary consistent with the
 - **Build once.** Producing the release artifacts one time from an approved commit and publishing those exact bytes.
 - **Catalog.** The hub index of approved releases; it links to immutable assets and does not mirror manuscript content.
 - **Checksum.** A hash of an artifact used to detect a change in its bytes; equality is not editorial approval.
-- **Content profile.** A declared set of required chapter and section elements, version 0.2.0 in this book.
+- **Content profile.** A declared set of required chapter and section elements, version 1.0.0 in this book.
 - **Cross-reference.** An explicit pointer to a labelled section, figure, table or other element.
 - **Exception.** An owner-approved, recorded deviation from a profile element.
 - **Gate.** An owner decision that authorizes the next phase, such as brief, outline, pilot, expansion or release.
@@ -65,7 +65,7 @@ A glossary can be selective or exhaustive.
 Keep the glossary selective. Add a term only when its definition changes a decision or has already caused a review disagreement.
 :::
 
-## Worked Example — Resolving a Term Conflict
+## C.2 Worked Example — Resolving a Term Conflict
 
 *In practice:* two chapters use "release" differently. The editor resolves the conflict before the next review.
 
@@ -88,7 +88,7 @@ In the illustrative case, one chapter uses "release" for a verified artifact set
 - Is the term list small enough to review and maintain?
 :::
 
-## Further Reading
+## C.3 Further Reading
 
 - Diátaxis, *A systematic framework for technical documentation authoring*: <https://diataxis.fr/> — distinguishes reference material from explanation and how-to guidance.
 - ISO/IEC/IEEE 29148:2018: <https://www.iso.org/standard/72089.html> — terminology and requirements quality.

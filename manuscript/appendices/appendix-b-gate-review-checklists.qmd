@@ -47,7 +47,7 @@ Checklists can be short and generic or long and risk-specific.
 Start with the shortest list that catches the failure modes you have seen. Add an item only when its absence has caused or could cause a real defect.
 :::
 
-## Worked Example — Running a Chapter Checklist
+## B.2 Worked Example — Running a Chapter Checklist
 
 *In practice:* a reviewer runs the chapter checklist before reading for style.
 
@@ -74,7 +74,7 @@ In the illustrative review, the chapter passes structure but fails one source ch
 - Is every finding classified and every blocking finding owned?
 :::
 
-## Further Reading
+## B.3 Further Reading
 
 - Google, *Code Review Developer Guide*: <https://google.github.io/eng-practices/review/> — review scope and reviewer/author responsibilities.
 - GitHub Docs, *About protected branches*: <https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches> — required review and merge controls.
