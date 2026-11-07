@@ -1,4 +1,4 @@
 # Pinned shared toolkit. Direct VCS install from the public hub repository.
 # No parent checkout, no editable install, no copied toolkit code or schemas.
-# Full SHA is hub main 62e37ab resolved to 40 characters.
-handbook-toolkit @ git+https://github.com/cesarcastrocuba/handbooks-hub.git@62e37ab6ac381a914ca7839c759405c87655dcef#subdirectory=tools
+# Full SHA is hub main 5f96202 resolved to 40 characters.
+handbook-toolkit @ git+https://github.com/cesarcastrocuba/handbooks-hub.git@5f9620237b61c0a01803f6705604c1c738ccee10#subdirectory=tools

@@ -23,7 +23,7 @@ title: "Handbook Authoring and Publishing"
 
 #### Maintenance and Contributions
 
-This handbook follows the contribution and review process in [`CONTRIBUTING.md`](../../CONTRIBUTING.md). Substantive changes require an independent review record before approval; the reviewer must not be the author. Chapter 8 describes how contributions, errata, new editions and retirement are handled.
+This handbook follows the contribution and review process in `CONTRIBUTING.md` in the repository. Substantive changes require an independent review record before approval; the reviewer must not be the author. Chapter 8 describes how contributions, errata, new editions and retirement are handled.
 
 #### License and Usage Notice
 
