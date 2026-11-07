@@ -24,7 +24,7 @@ format:
   typst:
     papersize: a4
     toc: true
-    toc-depth: 3
+    toc-depth: 2
   docx:
     toc: true
     toc-depth: 3
