@@ -1,6 +1,6 @@
 # Licensing and notices
 
-Status: applied to published releases; owner confirmation is tracked in `DEC-012`.
+Status: confirmed by the owner in `DEC-012`.
 
 | Material | License | File |
 | --- | --- | --- |
@@ -16,4 +16,4 @@ Copyright © 2026 Handbook Sample Contributors. The owner may replace this attri
 
 **Generated artifacts.** HTML, PDF, DOCX and source bundles are built from an approved commit and published as release artifacts. They are not committed to this repository.
 
-**Fonts and libraries in published editions.** Since `v0.1.2`, the PDF edition embeds subsets of Selawik and Cascadia Code, © Microsoft Corporation, supplied by the pinned toolkit under the SIL Open Font License 1.1. PDF editions also embed subsets of fonts from the build environment: Liberation Sans in `v0.1.1` to `v0.2.0`, and Libertinus Serif and DejaVu Sans Mono in `v0.1.0` and `v0.1.1`. The HTML edition includes the libraries that Quarto generates, such as Bootstrap Icons, under their own licenses. None of these are covered by the licenses above. The review and its open questions are recorded by the hub in `HUB-DEC-020`.
+**Fonts and libraries in published editions.** Since `v0.1.2`, the PDF edition embeds subsets of Selawik and Cascadia Code, © Microsoft Corporation, supplied by the pinned toolkit under the SIL Open Font License 1.1. PDF editions also embed subsets of fonts from the build environment: Liberation Sans in `v0.1.1` to `v0.2.0`, and Libertinus Serif and DejaVu Sans Mono in `v0.1.0` and `v0.1.1`. The HTML edition includes the libraries that Quarto generates, such as Bootstrap Icons, under their own licenses. None of these are covered by the licenses above. The hub reviewed these fonts and, from toolkit `0.5.0`, replaced Cascadia Code with JetBrains Mono and bundles Liberation Sans (`HUB-DEC-020`). Published editions stay as released.
