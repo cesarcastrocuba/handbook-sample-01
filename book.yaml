@@ -1,7 +1,7 @@
 # Book descriptor. This file does not approve a gate or a profile.
 #
 # Toolkit source: public hub main, full SHA
-# 5f9620237b61c0a01803f6705604c1c738ccee10, installed from requirements.txt.
+# 4e006be3bb497a1f468235895ae7c79d6d176aaa, installed from requirements.txt.
 #
 # Profile source: standard 1.0.0 is approved and packaged on hub main at the
 # same commit. It preserves the approved 0.2.0 rules and adds the enforcement
@@ -16,7 +16,7 @@ profile:
   id: standard
   version: "1.0.0"
 
-toolkit: "0.4.0"
+toolkit: "0.5.0"
 
 license:
   content: CC-BY-SA-4.0

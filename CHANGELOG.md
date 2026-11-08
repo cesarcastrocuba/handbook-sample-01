@@ -4,9 +4,18 @@ All notable changes to this sample handbook are recorded here. The format follow
 
 ## [Unreleased]
 
+## [0.2.1] - 2026-11-08
+
+Built with hub toolkit `0.5.0` at commit `4e006be`.
+
 ### Changed
 
+- JetBrains Mono replaces Cascadia Code, Liberation Sans is supplied by the toolkit and the DOCX template is regenerated.
 - Brought the status, decision log, notice and descriptor in line with the published releases.
+
+### Removed
+
+- Withdrew the release pages and assets of `v0.1.0` to `v0.2.0`. Their tags remain.
 
 ## [0.2.0] - 2026-11-07
 

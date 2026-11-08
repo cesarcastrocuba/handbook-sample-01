@@ -17,9 +17,10 @@ title: "Handbook Authoring and Publishing"
 | Version | Date | Summary of changes |
 | :--- | :--- | :--- |
 | 0.1.0 | November 2026 | First published edition |
-| 0.1.1 | November 2026 | Learn-style rendering and table of contents fixes |
+| 0.1.1 | November 2026 | Rendering and table of contents fixes |
 | 0.1.2 | November 2026 | Bundled fonts and near-black headings |
 | 0.2.0 | November 2026 | Introduction chapter, generated document control, print layout aligned with the reference handbook |
+| 0.2.1 | November 2026 | Replaced the code font and DOCX template; earlier editions withdrawn |
 
 #### Maintenance and Contributions
 
