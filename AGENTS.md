@@ -52,10 +52,10 @@ The sequence and state transitions are defined in [`docs/editorial/gates.md`](do
 
 ## Source of truth
 
-- `manuscript/` will hold canonical Quarto sources once the gates allow content.
+- `manuscript/` holds the canonical Quarto sources.
 - `book.yaml` is the book descriptor; `manuscript/book.yml` is the reading order. Both are intentionally empty of prose.
 - `requirements.txt` pins the public hub toolkit by full commit SHA with `#subdirectory=tools`. It is installed non-editable, never from a parent checkout, and no toolkit code, schemas or profile is copied here.
-- `publishing/` will hold pinned build configuration and metadata. Generated artifacts are built from an approved commit and attached to a release; they are never committed.
+- `publishing/` holds pinned build configuration and metadata. Generated artifacts are built from an approved commit and attached to a release; they are never committed.
 - `docs/editorial/` holds the brief, outline, content profile and gate state (`gates.json`).
 - `docs/integration/pinned-toolkit.md` records the toolkit source, profile dependency and current validation limits.
 - `sdd/changes/` records substantial proposals, decisions and evidence.
