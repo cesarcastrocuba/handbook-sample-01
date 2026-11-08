@@ -2,7 +2,7 @@
 
 A sample handbook that demonstrates how to plan, write, review and publish a maintainable technical handbook. It is the reference book for the handbook platform and is written in public so the workflow itself can be inspected.
 
-**Status: Gates 1–3 approved; complete draft; local release candidate verified.** Chapters 1–8, front matter, references and appendices are drafted, and a six-file `0.1.0-rc.1` directory was built outside the repository. No release, tag or Pages deployment exists.
+**Status: published; latest release `v0.2.0`.** Read it at <https://cesarcastrocuba.github.io/handbook-sample-01/> or download it from [Releases](https://github.com/cesarcastrocuba/handbook-sample-01/releases).
 
 ## Current gate
 
@@ -29,7 +29,7 @@ Gate 3 is an approval of written work and authorizes expansion. The draft now co
 - [`sdd/changes/0001-sample-bootstrap/`](sdd/changes/0001-sample-bootstrap/proposal.md) — bootstrap proposal and task record.
 - [`sdd/changes/0002-pilot-gate-window/`](sdd/changes/0002-pilot-gate-window/proposal.md) — correction that separates pilot writing authority from Gate 3 approval.
 - [`sdd/changes/0003-pilot-2-2/`](sdd/changes/0003-pilot-2-2/scope.md) — proposed scoped interpretation for the single-section pilot.
-- `manuscript/` — canonical sources for the complete draft, including the approved pilot section 2.2 inside Chapter 2.
+- `manuscript/` — canonical sources for the complete manuscript, including the approved pilot section 2.2 inside Chapter 2.
 - `publishing/` — book-side Quarto configuration and provisional publication metadata.
 
 ## Quickstart for contributors
