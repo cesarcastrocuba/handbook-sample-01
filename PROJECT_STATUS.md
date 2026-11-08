@@ -26,7 +26,7 @@ Gate state is machine-readable in [`docs/editorial/gates.json`](docs/editorial/g
 
 ## Open
 
-- Owner confirmation of `DEC-012` and `DEC-013`.
+- Owner confirmation of `DEC-012`, `DEC-013` and `DEC-014`.
 - Owner decision on the third-party fonts in published editions, tracked by the hub in `HUB-DEC-020`.
 - Visual review of the published PDF, including section-number visibility.
 - No independent review is on record for the front-matter and appendix changes released in `v0.2.0`.

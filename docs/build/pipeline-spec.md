@@ -6,7 +6,7 @@
 | Scope | Platform phase 4; publication remains owner-gated |
 | Book config | [`publishing/_quarto.yml`](../../publishing/_quarto.yml) |
 | Release workflow | [`.github/workflows/release.yml`](../../.github/workflows/release.yml) |
-| Toolkit | `0.4.0`, pinned from public hub `7820172c8810ececc550d5a3604ea4045687fefd` |
+| Toolkit | `0.4.0`, pinned from public hub `5f9620237b61c0a01803f6705604c1c738ccee10` |
 | Profile | `standard` `1.0.0` |
 | Quarto | `1.11.9` |
 | Pandoc | `3.10` (bundled) |
@@ -41,7 +41,7 @@ No manifest, checksum, zip or packaging script is added to this repository.
 The toolkit is installed from `requirements.txt` as a non-editable package:
 
 ```text
-handbook-toolkit @ git+https://github.com/cesarcastrocuba/handbooks-hub.git@7820172c8810ececc550d5a3604ea4045687fefd#subdirectory=tools
+handbook-toolkit @ git+https://github.com/cesarcastrocuba/handbooks-hub.git@5f9620237b61c0a01803f6705604c1c738ccee10#subdirectory=tools
 ```
 
 `book.yaml` declares toolkit `0.4.0` and profile `standard` `1.0.0`. Toolkit `0.4.0` packages both the `0.2.0` and `1.0.0` snapshots; `1.0.0` preserves every approved `0.2.0` rule and adds the validation classification. The toolkit resolves the packaged profile and stages its render resources: the table-layout filter, the task-checkbox filter and the breakable-callout Typst include.
@@ -86,7 +86,7 @@ SHA256SUMS.txt
 
 ## 5. Release workflow
 
-[`.github/workflows/release.yml`](../../.github/workflows/release.yml) is manual (`workflow_dispatch`) and takes two inputs: `version` and `tag`. It has not been executed; no tag, release or Pages deployment exists.
+[`.github/workflows/release.yml`](../../.github/workflows/release.yml) is manual (`workflow_dispatch`) and takes two inputs: `version` and `tag`. It produced releases `v0.1.0` to `v0.2.0`.
 
 The build job:
 

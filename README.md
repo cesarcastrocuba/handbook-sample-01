@@ -29,7 +29,7 @@ Gate 3 is an approval of written work and authorizes expansion. The draft now co
 - [`sdd/changes/0001-sample-bootstrap/`](sdd/changes/0001-sample-bootstrap/proposal.md) — bootstrap proposal and task record.
 - [`sdd/changes/0002-pilot-gate-window/`](sdd/changes/0002-pilot-gate-window/proposal.md) — correction that separates pilot writing authority from Gate 3 approval.
 - [`sdd/changes/0003-pilot-2-2/`](sdd/changes/0003-pilot-2-2/scope.md) — proposed scoped interpretation for the single-section pilot.
-- `manuscript/` — canonical sources for the complete draft, including the approved pilot section 2.2 inside Chapter 2.
+- `manuscript/` — canonical sources for the complete manuscript, including the approved pilot section 2.2 inside Chapter 2.
 - `publishing/` — book-side Quarto configuration and provisional publication metadata.
 
 ## Quickstart for contributors

@@ -8,7 +8,7 @@ This directory holds the book-side Quarto configuration and publication metadata
 - [`metadata.yaml`](metadata.yaml) records provisional publication metadata.
 - The full build and release contract, pinned toolchain, six asset names and release-candidate findings are in [`docs/build/pipeline-spec.md`](../docs/build/pipeline-spec.md).
 - [`.github/workflows/release.yml`](../.github/workflows/release.yml) is the manual release workflow: one `build-book`, verification, a GitHub Release with exactly six files and Pages deployment from the same HTML ZIP. It has not been executed.
-- A local `0.1.0-rc.1` build exists outside the repository. No release, tag, Pages deployment, catalog entry, manifest or checksum file is committed.
+- No generated artifact, manifest or checksum file is committed. Published editions live on GitHub Releases and Pages; `v0.2.0` is the latest.
 
 ## Render boundary
 
