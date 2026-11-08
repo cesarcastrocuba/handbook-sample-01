@@ -2,7 +2,7 @@
 
 A sample handbook that demonstrates how to plan, write, review and publish a maintainable technical handbook. It is the reference book for the handbook platform and is written in public so the workflow itself can be inspected.
 
-**Status: Gates 1–3 approved; complete draft; local release candidate verified.** Chapters 1–8, front matter, references and appendices are drafted, and a six-file `0.1.0-rc.1` directory was built outside the repository. No release, tag or Pages deployment exists.
+**Status: published; latest release `v0.2.0`.** Read it at <https://cesarcastrocuba.github.io/handbook-sample-01/> or download it from [Releases](https://github.com/cesarcastrocuba/handbook-sample-01/releases).
 
 ## Current gate
 

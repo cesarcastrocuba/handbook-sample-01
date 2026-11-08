@@ -4,6 +4,40 @@ All notable changes to this sample handbook are recorded here. The format follow
 
 ## [Unreleased]
 
+### Changed
+
+- Brought the status, decision log, notice and descriptor in line with the published releases.
+
+## [0.2.0] - 2026-11-07
+
+Built from `afa3d21` with hub toolkit commit `5f96202`.
+
+### Changed
+
+- Replaced the Preface and Reading Paths with an Introduction chapter and reworked Document Control.
+- Numbered appendix subsections consecutively after the first section.
+- Print layout updated through the toolkit pin; removed a link that left the book.
+
+## [0.1.2] - 2026-11-07
+
+Built from `ea8d6a5` with hub toolkit commit `62e37ab`.
+
+### Changed
+
+- Bundled Selawik and Cascadia Code fonts and black headings, through the toolkit pin.
+
+## [0.1.1] - 2026-11-07
+
+Built from `f0a508e` with hub toolkit commit `988773c`.
+
+### Fixed
+
+- Heading and table-of-contents rendering, through the toolkit pin and the Typst table-of-contents depth.
+
+## [0.1.0] - 2026-11-06
+
+First published edition, built from `2009966` with hub toolkit commit `7820172`. The entries below record the work before it.
+
 ### Added
 
 - Bootstrap scaffold for the sample handbook *Handbook Authoring and Publishing*.

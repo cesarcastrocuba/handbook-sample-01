@@ -23,7 +23,7 @@ A pull request states:
 4. any check not run and why;
 5. the rollback boundary.
 
-A different agent or person reviews the exact HEAD. The implementer never reviews or merges their own change. The owner merges.
+A different agent or person reviews the exact HEAD. The implementer never reviews or merges their own change. The owner merges. `main` is protected (`DEC-015`): direct pushes are rejected, including for administrators.
 
 ## Content checks
 

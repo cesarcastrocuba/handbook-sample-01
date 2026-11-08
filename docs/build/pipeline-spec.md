@@ -105,6 +105,8 @@ Prerequisites outside the repository: GitHub Pages must use the GitHub Actions s
 
 ## 6. Release-candidate inspection
 
+This section records the `0.1.0-rc.1` inspection and is kept as history. The latest release is `v0.2.0`, with a 50-page PDF; its toolkit commit changed the print layout, and visual review of that PDF remains open.
+
 A local `0.1.0-rc.1` chapter-mode build with toolkit `0.4.0` and profile `1.0.0` produced a 57-page PDF and the six-file set outside the repository. The earlier layout fixes remain in place:
 
 - the front matter starts with an unnumbered document-control page, with no duplicate title or subtitle;
