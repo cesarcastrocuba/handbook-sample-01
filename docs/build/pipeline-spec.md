@@ -6,7 +6,7 @@
 | Scope | Platform phase 4; publication remains owner-gated |
 | Book config | [`publishing/_quarto.yml`](../../publishing/_quarto.yml) |
 | Release workflow | [`.github/workflows/release.yml`](../../.github/workflows/release.yml) |
-| Toolkit | `0.4.0`, pinned from public hub `5f9620237b61c0a01803f6705604c1c738ccee10` |
+| Toolkit | `0.5.0`, pinned from public hub `4e006be3bb497a1f468235895ae7c79d6d176aaa` |
 | Profile | `standard` `1.0.0` |
 | Quarto | `1.11.9` |
 | Pandoc | `3.10` (bundled) |
@@ -41,10 +41,10 @@ No manifest, checksum, zip or packaging script is added to this repository.
 The toolkit is installed from `requirements.txt` as a non-editable package:
 
 ```text
-handbook-toolkit @ git+https://github.com/cesarcastrocuba/handbooks-hub.git@5f9620237b61c0a01803f6705604c1c738ccee10#subdirectory=tools
+handbook-toolkit @ git+https://github.com/cesarcastrocuba/handbooks-hub.git@4e006be3bb497a1f468235895ae7c79d6d176aaa#subdirectory=tools
 ```
 
-`book.yaml` declares toolkit `0.4.0` and profile `standard` `1.0.0`. Toolkit `0.4.0` packages both the `0.2.0` and `1.0.0` snapshots; `1.0.0` preserves every approved `0.2.0` rule and adds the validation classification. The toolkit resolves the packaged profile and stages its render resources: the table-layout filter, the task-checkbox filter and the breakable-callout Typst include.
+`book.yaml` declares toolkit `0.5.0` and profile `standard` `1.0.0`. Toolkit `0.5.0` packages both the `0.2.0` and `1.0.0` snapshots; `1.0.0` preserves every approved `0.2.0` rule and adds the validation classification. The toolkit resolves the packaged profile and stages its render resources: the table-layout filter, the task-checkbox filter and the breakable-callout Typst include.
 
 Quarto supplies its bundled Pandoc and Typst. The repository validators do not require Quarto; only `build-book` does.
 
@@ -86,7 +86,7 @@ SHA256SUMS.txt
 
 ## 5. Release workflow
 
-[`.github/workflows/release.yml`](../../.github/workflows/release.yml) is manual (`workflow_dispatch`) and takes two inputs: `version` and `tag`. It produced releases `v0.1.0` to `v0.2.0`.
+[`.github/workflows/release.yml`](../../.github/workflows/release.yml) is manual (`workflow_dispatch`) and takes two inputs: `version` and `tag`. It produces every published release.
 
 The build job:
 
@@ -105,7 +105,7 @@ Prerequisites outside the repository: GitHub Pages must use the GitHub Actions s
 
 ## 6. Release-candidate inspection
 
-This section records the `0.1.0-rc.1` inspection and is kept as history. The latest release is `v0.2.0`, with a 50-page PDF; its toolkit commit changed the print layout, and visual review of that PDF remains open.
+This section records the `0.1.0-rc.1` inspection and is kept as history. The latest release is `v0.2.1`. Full visual review of its PDF remains open.
 
 A local `0.1.0-rc.1` chapter-mode build with toolkit `0.4.0` and profile `1.0.0` produced a 57-page PDF and the six-file set outside the repository. The earlier layout fixes remain in place:
 

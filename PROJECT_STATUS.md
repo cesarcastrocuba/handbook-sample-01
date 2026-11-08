@@ -4,7 +4,7 @@ This file is the only source of current status. Decisions live in [`DECISIONS.md
 
 ## Phase
 
-Published and in maintenance. Gates 1, 2 and 3 are approved. The latest release is `v0.2.0`: Introduction, Chapters 1–8, Appendices A–C and References.
+Published and in maintenance. Gates 1, 2 and 3 are approved. The latest release is `v0.2.1`: Introduction, Chapters 1–8, Appendices A–C and References.
 
 ## Gates
 
@@ -18,21 +18,20 @@ Gate state is machine-readable in [`docs/editorial/gates.json`](docs/editorial/g
 
 ## Current state
 
-- Releases: `v0.1.0` (2026-11-06), `v0.1.1`, `v0.1.2` and `v0.2.0` (2026-11-07). `v0.2.0` was built from `afa3d21`; its PDF has 50 pages.
-- Reading site: <https://cesarcastrocuba.github.io/handbook-sample-01/>. The hub catalog lists `v0.2.0`.
-- Toolkit pinned at hub `5f9620237b61c0a01803f6705604c1c738ccee10`, which reports `0.4.0`, with profile `1.0.0` and Quarto `1.11.9`.
+- Release `v0.2.1` is built from this state. Once it is verified, it replaces `v0.1.0` to `v0.2.0`, whose release pages and assets are withdrawn; their tags stay (`DEC-016`).
+- Reading site: <https://cesarcastrocuba.github.io/handbook-sample-01/>. The hub catalog lists the latest release.
+- Toolkit `0.5.0` pinned at hub `4e006be3bb497a1f468235895ae7c79d6d176aaa`, with profile `1.0.0` and Quarto `1.11.9`.
 - `make full` passes for the descriptor, reading order, references and all chapters and appendices.
 - `main` is protected: changes arrive through a pull request with passing CI (`DEC-015`).
 
 ## Open
 
-- Published editions up to `v0.2.0` keep the fonts they were built with. A new release built with toolkit `0.5.0` needs owner authorization.
 - Visual review of the published PDF, including section-number visibility.
 - No independent review is on record for the front-matter and appendix changes released in `v0.2.0`.
 
 ## Next step
 
-After hub change `0010-post-phase4-remediation` is merged, move the toolkit pin to `0.5.0` in its own pull request. A new release needs owner authorization.
+Any further release needs owner authorization.
 
 ## Verification
 

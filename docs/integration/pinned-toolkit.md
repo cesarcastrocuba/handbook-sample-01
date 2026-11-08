@@ -4,8 +4,8 @@
 | --- | --- |
 | Status | Current — published; toolkit pin below |
 | Toolkit source | `https://github.com/cesarcastrocuba/handbooks-hub.git` |
-| Full commit SHA | `5f9620237b61c0a01803f6705604c1c738ccee10` (hub `main` toolkit pin) |
-| Toolkit version | `0.4.0` |
+| Full commit SHA | `4e006be3bb497a1f468235895ae7c79d6d176aaa` (hub `main` toolkit pin) |
+| Toolkit version | `0.5.0` |
 | Install mode | Direct Git requirement, non-editable, `#subdirectory=tools` |
 | Profile reference | `standard` `1.0.0` — current packaged release; preserves the approved `0.2.0` rules |
 
@@ -20,7 +20,7 @@ No toolkit scripts, schemas or profile files are copied into this repository. In
 
 ## 2. Profile dependency
 
-`book.yaml` references hub `standard` `1.0.0`, the current approved and packaged profile. Toolkit `0.4.0` ships both the `0.2.0` and `1.0.0` snapshots. Profile `1.0.0` keeps every approved `0.2.0` rule unchanged and adds the explicit validation classification. Profiles remain installed toolkit resources; this book does not copy them.
+`book.yaml` references hub `standard` `1.0.0`, the current approved and packaged profile. Toolkit `0.5.0` ships both the `0.2.0` and `1.0.0` snapshots. Profile `1.0.0` keeps every approved `0.2.0` rule unchanged and adds the explicit validation classification. Profiles remain installed toolkit resources; this book does not copy them.
 
 The installed toolkit comes from the commit above and provides `build-book` with staged render resources, manifest and checksum verification. This book is `status: active`.
 
@@ -48,7 +48,7 @@ The fast `handbook-toolkit validate-book book.yaml` check verifies the descripto
 ## 4. Limits
 
 - All eight chapters and three appendices are present. `make full` passes descriptor, reading order, references and chapter validation.
-- No artifact is committed. Releases and the Pages site are produced by the manual release workflow; `v0.2.0` is the latest.
+- No artifact is committed. Releases and the Pages site are produced by the manual release workflow; `v0.2.1` is the latest.
 - Profile `1.0.0` is the current packaged release and preserves the approved `0.2.0` rules; `make full` resolves the profile version from `book.yaml`.
 - CI proves installation and the fast check from a clean GitHub runner. It does not prove publication readiness.
 
