@@ -6,12 +6,13 @@ All notable changes to this sample handbook are recorded here. The format follow
 
 ## [0.2.2] - 2026-11-09
 
-Prepared, not published. Built with hub toolkit `0.5.0` at commit `4e006be`.
+Published 2026-11-09 by run `42621799383` from commit `c148518`. Built with hub toolkit `0.5.0` at commit `4e006be`.
 
 ### Changed
 
 - Named Franz César Castro Cuba as author and copyright holder, replacing the placeholder attribution.
 - Added a Third-Party Notices page to the HTML edition, listing the Quarto `site_libs` libraries with their versions, copyright lines and licenses, and reproducing the full MIT and Apache-2.0 texts.
+- `v0.2.1` is superseded; its release page and assets are to be deleted, keeping its tag (`HUB-DEC-023`).
 
 ### Fixed
 
