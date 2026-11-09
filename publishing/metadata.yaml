@@ -1,11 +1,11 @@
 # Publication metadata for the sample handbook.
-# Values are provisional until the owner approves Gate 1 and Gate 2.
+# Values reflect the prepared v0.2.2 edition.
 title: "Handbook Authoring and Publishing"
 subtitle: "A practical guide to planning, writing, reviewing and sustaining a technical handbook"
-version: "0.1.0-draft"
-status: "Bootstrap — editorial brief and outline proposed"
+version: "0.2.2"
+status: "Prepared — not published"
 language: "en"
-author: "Handbook Sample Contributors (pending owner confirmation)"
+author: "Franz César Castro Cuba"
 license:
   content: "CC BY-SA 4.0"
   code: "MIT"
@@ -16,4 +16,4 @@ publication:
     - "docx"
     - "source-bundle"
   generated_artifacts_committed: false
-  build_status: "configuration prototype; no artifacts published"
+  build_status: "prepared; not published"
