@@ -8,7 +8,7 @@ title: "Handbook Authoring and Publishing"
 
 | Field | Value |
 | :--- | :--- |
-| Approver and maintainer | Handbook Sample Contributors |
+| Approver and maintainer | Franz César Castro Cuba |
 | Scope | Introduction, Chapters 1–8, Appendices A–C and References |
 | Review cycle | At least annually and whenever the standard profile publishes a new major version |
 
@@ -21,6 +21,7 @@ title: "Handbook Authoring and Publishing"
 | 0.1.2 | November 2026 | Bundled fonts and near-black headings |
 | 0.2.0 | November 2026 | Introduction chapter, generated document control, print layout aligned with the reference handbook |
 | 0.2.1 | November 2026 | Replaced the code font and DOCX template; earlier editions withdrawn |
+| 0.2.2 | November 2026 | Named the author and copyright holder, added third-party notices to the HTML edition and made the build portable across mktemp implementations |
 
 #### Maintenance and Contributions
 

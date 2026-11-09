@@ -11,7 +11,8 @@ chapters:
   - chapters/ch06-review-as-evidence.qmd
   - chapters/ch07-build-verify-release.qmd
   - chapters/ch08-maintenance-and-contribution.qmd
-back: []
+back:
+  - back-matter/third-party-notices.qmd
 appendices:
   - appendices/appendix-a-brief-outline-templates.qmd
   - appendices/appendix-b-gate-review-checklists.qmd
