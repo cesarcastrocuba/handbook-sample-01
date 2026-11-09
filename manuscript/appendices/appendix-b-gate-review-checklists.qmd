@@ -26,9 +26,33 @@ A checklist is useful when every item can fail and the failure changes the decis
 
 **What it includes.** The brief gate checks reader, promise, non-goals, evidence, owner and change trigger. The outline gate checks exit evidence, dependencies, pilot choice and profile coverage. The chapter review checks the chapter and section elements, examples, sources, cross-references and exact commit. The release gate checks the approved commit, six assets, manifest, checksums, format inspection, licensing and immutable release/catalog behavior.
 
+For each item, record the reviewed commit, checker, result and supporting evidence. A checked item without evidence is unresolved. The owner records the gate decision after review.
+
+**Brief gate**
+- [ ] Are the reader, observable promise, scope and non-goals explicit?
+- [ ] Are the evidence method, accountable owner and change/review trigger recorded?
+
+**Outline gate**
+- [ ] Does each chapter have a distinct outcome and exit evidence, with dependencies identified?
+- [ ] Are profile coverage, the pilot section and its exact file path recorded?
+
+**Pilot gate**
+- [ ] Are the brief and outline approved, and is the submitted text limited to the approved pilot scope?
+- [ ] Has an independent reviewer checked the exact commit, examples, sources, profile conformance and recorded exceptions, with blocking findings resolved?
+
+**Chapter review**
+Use the Review Checklist in B.2 and attach its evidence to the reviewed commit.
+
+**Release gate**
+- [ ] Are the complete manuscript, licensing, attribution and exact source commit approved?
+- [ ] Are the toolkit/profile pins and recorded build environment consistent with the proposal?
+- [ ] Do all six files exist: HTML ZIP, PDF, DOCX, source ZIP, manifest and checksums?
+- [ ] Do identity, checksum membership, hashes, format checks and human layout inspection pass?
+- [ ] Is the owner's publication authorization recorded, with the immutable tag and catalog/withdrawal plan identified?
+
 **Why it is needed.** Reviews drift when they depend on memory. One reviewer checks sources; another checks structure; a third focuses on wording. The author cannot tell which omissions were deliberate. A shared checklist gives the gate a floor and makes the review record comparable across changes.
 
-**Example.** *Illustrative only: a chapter review.* The reviewer opens the checklist, marks the chapter's reader outcome, the four unit labels, the closing elements, the Worked Example and Further Reading, the source ledger entries and the exact commit. Two items cannot be answered: one source is a secondary summary and the cross-reference target is missing. The verdict is changes requested, not approved with a note, because both items affect the reader's ability to check the chapter.
+**Example.** *Illustrative only: a chapter review.* The reviewer opens the checklist, marks the chapter's reader outcome, the four unit labels, the closing elements, the Worked Example and Further Reading, the source ledger entries and the exact commit. Two items cannot be answered: a normative claim cites a secondary summary that does not establish the stated requirement, and a cross-reference target is missing. The verdict is changes requested because the claim lacks adequate support and the reference cannot be followed.
 
 
 ::: {.callout-warning appearance="simple" icon=false title="Common Pitfall"}

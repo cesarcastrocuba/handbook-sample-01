@@ -86,7 +86,7 @@ Claim only the level the evidence supports. Record the toolchain versions and th
 
 **Why it is needed.** Publication without a gate turns a build convenience into an unowned promise. A catalog that links to a branch can show content that was never released; an in-place asset replacement destroys the meaning of a checksum. Retention rules make a correction auditable instead of a silent overwrite.
 
-**Example.** *Illustrative only: a catalog entry decision.* A verified release is proposed for the catalog. The reviewer compares the manifest commit with the owner-approved commit, checks that the release tag matches the version, and confirms that the six assets and checksums are attached to that tag. Only then does the catalog change link to the release. This book has not reached that state: there is no release, catalog entry or Pages deployment yet.
+**Example.** *Illustrative only: a catalog entry decision.* A verified release is proposed for the catalog. The reviewer compares the manifest commit with the owner-approved commit, checks that the release tag matches the version, and confirms that the six assets and checksums are attached to that tag. Only then does the catalog change link to the release.
 
 
 ::: {.callout-warning appearance="simple" icon=false title="Common Pitfall"}
@@ -107,7 +107,7 @@ Keep approved releases immutable. Withdraw a defective release through the catal
 
 ## 7.4 Worked Example — A Release Readiness Review
 
-*In practice:* a team has a verified six-file directory and must decide whether it may become a release. The book in this example is fictional; the sample book in this repository has not been released.
+*In practice:* a team has a verified six-file directory and must decide whether it may become a release. This is a fictional readiness review, not evidence that any particular edition has passed its release gate.
 
 1. Confirm the build source is the owner-approved commit and the worktree was clean.
 2. Compare the manifest's book id, version and commit with the release proposal.
