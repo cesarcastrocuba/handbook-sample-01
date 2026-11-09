@@ -44,6 +44,10 @@ Create the virtual environment outside the repository, then install the requirem
 ```sh
 git clone https://github.com/cesarcastrocuba/handbook-sample-01.git
 cd handbook-sample-01
+# Replace <review-head-sha> with the full SHA supplied in the review assignment.
+git fetch origin <review-head-sha>
+git checkout --detach <review-head-sha>
+git rev-parse HEAD
 python3 -m venv ../review-venv
 ../review-venv/bin/python -m pip install --upgrade pip
 ../review-venv/bin/python -m pip install -r requirements.txt
