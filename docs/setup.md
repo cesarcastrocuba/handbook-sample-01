@@ -79,7 +79,7 @@ A fast pass is not a publication or full-manuscript pass.
 - `make full` runs descriptor, reading-order, cross-reference and chapter-profile validation and passes. It does not build artifacts.
 - Toolkit `0.5.0` provides `validate-references`, `validate-manuscript` and `build-book`; artifact verification is part of `build-book`.
 - The book references hub `standard` `1.0.0`, the current packaged profile that preserves the approved `0.2.0` rules. `make full` resolves the profile from `book.yaml`; the fast check does not validate profile conformance.
-- No artifact is committed. Releases and the Pages site come from the manual release workflow; `v0.2.2` is the latest published release. `v0.2.1` is superseded; its release page and assets are to be deleted, keeping its tag (`HUB-DEC-023`).
+- No artifact is committed. Releases and the Pages site come from the manual release workflow; `v0.2.2` is the latest published release. `v0.2.1` is superseded; its release page and assets were deleted on 2026-11-09 and its tag stays (`HUB-DEC-023`).
 
 ## 6. Artifact build
 
