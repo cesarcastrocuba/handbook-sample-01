@@ -22,8 +22,12 @@ full: check
 	$(TOOLKIT) validate-book --full book.yaml
 	$(TOOLKIT) validate-references book.yaml
 	@set -e; \
-	profile=$$(mktemp --suffix=.yaml); \
-	trap 'rm -f "$$profile"' EXIT; \
+	dir=$$(mktemp -d "$${TMPDIR:-/tmp}/profile.XXXXXX"); \
+	trap 'rm -rf "$$dir"' EXIT; \
+	trap 'exit 129' HUP; \
+	trap 'exit 130' INT; \
+	trap 'exit 143' TERM; \
+	profile="$$dir/profile.yaml"; \
 	$(PYTHON) -c 'import yaml; from handbook_toolkit.profile_resources import load_profile; book = yaml.safe_load(open("book.yaml")); print(yaml.safe_dump(load_profile(book["profile"]["id"], book["profile"]["version"]), sort_keys=False))' > "$$profile"; \
 	for file in manuscript/chapters/*.qmd manuscript/appendices/*.qmd; do \
 		$(TOOLKIT) validate-manuscript "$$file" --mode chapter --profile "$$profile"; \
