@@ -19,7 +19,7 @@ Gate state is machine-readable in [`docs/editorial/gates.json`](docs/editorial/g
 ## Current state
 
 - `v0.2.2` is published. It records the confirmed author and copyright holder, adds third-party notices to the HTML edition and includes the portable `mktemp` fix from PR #3.
-- `v0.2.1` is superseded. Its release page and assets are to be deleted, keeping its tag, under hub decision `HUB-DEC-023`; this branch does not perform the deletion.
+- `v0.2.1` is superseded. Its release page and assets were deleted on 2026-11-09 and its tag stays, under hub decision `HUB-DEC-023`.
 - Earlier editions `v0.1.0` to `v0.2.0` had their release pages and assets withdrawn; their tags stay (`DEC-016`).
 - Reading site: <https://cesarcastrocuba.github.io/handbook-sample-01/>. The hub catalog lists the latest published release.
 - Toolkit `0.5.0` pinned at hub `4e006be3bb497a1f468235895ae7c79d6d176aaa`, with profile `1.0.0` and Quarto `1.11.9`.
@@ -28,13 +28,12 @@ Gate state is machine-readable in [`docs/editorial/gates.json`](docs/editorial/g
 
 ## Open
 
-- Deletion of the `v0.2.1` release page and assets, keeping its tag, remains to be done under `HUB-DEC-023`.
 - Visual review of the published PDF, including section-number visibility.
 - No independent review is on record for the front-matter and appendix changes released in `v0.2.0`.
 
 ## Next step
 
-Any further release needs owner authorization. The `v0.2.1` cleanup remains an owner action under `HUB-DEC-023`; this branch does not perform it.
+Any further release needs owner authorization.
 
 ## Verification
 

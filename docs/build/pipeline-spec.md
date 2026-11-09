@@ -105,7 +105,7 @@ Prerequisites outside the repository: GitHub Pages must use the GitHub Actions s
 
 ## 6. Release-candidate inspection
 
-This section records the `0.1.0-rc.1` inspection and is kept as history. The latest published release is `v0.2.2`; `v0.2.1` is superseded, and its release page and assets are to be deleted while keeping its tag (`HUB-DEC-023`). Full visual review of the published PDF remains open.
+This section records the `0.1.0-rc.1` inspection and is kept as history. The latest published release is `v0.2.2`; `v0.2.1` is superseded, and its release page and assets were deleted on 2026-11-09 while its tag stays (`HUB-DEC-023`). Full visual review of the published PDF remains open.
 
 A local `0.1.0-rc.1` chapter-mode build with toolkit `0.4.0` and profile `1.0.0` produced a 57-page PDF and the six-file set outside the repository. The earlier layout fixes remain in place:
 
