@@ -48,7 +48,7 @@ The fast `handbook-toolkit validate-book book.yaml` check verifies the descripto
 ## 4. Limits
 
 - All eight chapters and three appendices are present. `make full` passes descriptor, reading order, references and chapter validation.
-- No artifact is committed. Releases and the Pages site are produced by the manual release workflow; `v0.2.1` is the latest.
+- No artifact is committed. Releases and the Pages site are produced by the manual release workflow; `v0.2.1` is the latest published release and `v0.2.2` is prepared and not published.
 - Profile `1.0.0` is the current packaged release and preserves the approved `0.2.0` rules; `make full` resolves the profile version from `book.yaml`.
 - CI proves installation and the fast check from a clean GitHub runner. It does not prove publication readiness.
 

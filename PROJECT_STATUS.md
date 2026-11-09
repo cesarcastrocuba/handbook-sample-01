@@ -4,7 +4,7 @@ This file is the only source of current status. Decisions live in [`DECISIONS.md
 
 ## Phase
 
-Published and in maintenance. Gates 1, 2 and 3 are approved. The latest release is `v0.2.1`: Introduction, Chapters 1–8, Appendices A–C and References.
+Published and in maintenance. Gates 1, 2 and 3 are approved. `v0.2.1` is the latest published release: Introduction, Chapters 1–8, Appendices A–C and References. `v0.2.2` is prepared and not published.
 
 ## Gates
 
@@ -18,8 +18,9 @@ Gate state is machine-readable in [`docs/editorial/gates.json`](docs/editorial/g
 
 ## Current state
 
-- Release `v0.2.1` is built from this state. Once it is verified, it replaces `v0.1.0` to `v0.2.0`, whose release pages and assets are withdrawn; their tags stay (`DEC-016`).
-- Reading site: <https://cesarcastrocuba.github.io/handbook-sample-01/>. The hub catalog lists the latest release.
+- `v0.2.2` is prepared and not published. It records the confirmed author and copyright holder, adds third-party notices to the HTML edition and includes the portable `mktemp` fix from PR #3.
+- `v0.2.1` remains the latest published release. It replaced `v0.1.0` to `v0.2.0`, whose release pages and assets are withdrawn; their tags stay (`DEC-016`).
+- Reading site: <https://cesarcastrocuba.github.io/handbook-sample-01/>. The hub catalog lists the latest published release.
 - Toolkit `0.5.0` pinned at hub `4e006be3bb497a1f468235895ae7c79d6d176aaa`, with profile `1.0.0` and Quarto `1.11.9`.
 - `make full` passes for the descriptor, reading order, references and all chapters and appendices.
 - `main` is protected: changes arrive through a pull request with passing CI (`DEC-015`).
@@ -31,7 +32,7 @@ Gate state is machine-readable in [`docs/editorial/gates.json`](docs/editorial/g
 
 ## Next step
 
-Any further release needs owner authorization.
+Owner review and release authorization for `v0.2.2`. This branch prepares the edition; it does not publish it.
 
 ## Verification
 

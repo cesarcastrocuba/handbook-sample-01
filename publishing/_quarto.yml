@@ -11,7 +11,7 @@ project:
 book:
   title: "Handbook Authoring and Publishing"
   subtitle: "A practical guide to planning, writing, reviewing and sustaining a technical handbook"
-  author: "Handbook Sample Contributors"
+  author: "Franz César Castro Cuba"
   date: "2026-11-06"
 lang: en
 number-sections: false

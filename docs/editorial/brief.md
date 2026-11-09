@@ -113,7 +113,7 @@ A chapter is ready for owner approval only when a different agent or person has 
 - Scripts and build configuration: MIT.
 - Third-party material requires a documented rights review before inclusion.
 
-The attribution line and final licensing confirmation are owner decisions. See [`NOTICE.md`](../../NOTICE.md) and `DEC-004`.
+The owner confirmed the licensing in `DEC-012` and the attribution in `DEC-017` on 2026-11-09. See [`NOTICE.md`](../../NOTICE.md).
 
 ## 10. Success criteria and gates
 
@@ -135,11 +135,11 @@ Gate 3 is an approval of written work, not a precondition for writing it. Gates 
 - The content profile is aligned with hub `standard` `1.0.0`, which preserves the approved `0.2.0` rules and is packaged on hub `main` at `7820172`.
 - The sample book is a demonstration, not a replacement for the existing handbook.
 - English is the publication language.
-- The owner supplies or confirms the public attribution before release.
+- The owner confirmed the public attribution on 2026-11-09 (`DEC-017`).
 
 **Remaining owner item before release**
 
-1. Is the proposed attribution "Handbook Sample Contributors" acceptable, or should a named person or organization hold copyright?
+No attribution question remains: the owner confirmed Franz César Castro Cuba as author and copyright holder on 2026-11-09 (`DEC-017`).
 
 Chapter-length bounds remain planning bounds and are confirmed after the pilot.
 
@@ -150,4 +150,4 @@ Chapter-length bounds remain planning bounds and are confirmed after the pilot.
 | Owner | Project owner |
 | Decision | Approved — Gate 1 |
 | Date | 2026-11-06 |
-| Notes | Broad technical/software audience, full eight-chapter goal and standard `0.2.0` direction recorded in the [approval record](approval-record.md). Gate 3 remains pending; public attribution remains pending before release. |
+| Notes | Broad technical/software audience, full eight-chapter goal and standard `0.2.0` direction recorded in the [approval record](approval-record.md). Gate 3 remains pending; attribution was confirmed later on 2026-11-09 (`DEC-017`). |

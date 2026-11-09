@@ -4,6 +4,19 @@ All notable changes to this sample handbook are recorded here. The format follow
 
 ## [Unreleased]
 
+## [0.2.2] - 2026-11-09
+
+Prepared, not published. Built with hub toolkit `0.5.0` at commit `4e006be`.
+
+### Changed
+
+- Named Franz César Castro Cuba as author and copyright holder, replacing the placeholder attribution.
+- Added a Third-Party Notices page to the HTML edition, listing the Quarto `site_libs` libraries with their versions, copyright lines and licenses, and reproducing the full MIT and Apache-2.0 texts.
+
+### Fixed
+
+- Made the `full` target's temporary profile file portable across GNU and BSD/macOS `mktemp`, removed the rename race and cleaned up the temporary directory on exit and termination (PR #3).
+
 ## [0.2.1] - 2026-11-08
 
 Built with hub toolkit `0.5.0` at commit `4e006be`.

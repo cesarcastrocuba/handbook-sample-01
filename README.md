@@ -2,7 +2,7 @@
 
 A sample handbook that demonstrates how to plan, write, review and publish a maintainable technical handbook. It is the reference book for the handbook platform and is written in public so the workflow itself can be inspected.
 
-**Status: published; latest release `v0.2.1`.** Read it at <https://cesarcastrocuba.github.io/handbook-sample-01/> or download it from [Releases](https://github.com/cesarcastrocuba/handbook-sample-01/releases).
+**Status: published; latest release `v0.2.1`; `v0.2.2` is prepared and not published.** Read it at <https://cesarcastrocuba.github.io/handbook-sample-01/> or download it from [Releases](https://github.com/cesarcastrocuba/handbook-sample-01/releases).
 
 ## Current gate
 

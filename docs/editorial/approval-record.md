@@ -22,7 +22,7 @@
 - Gate 3 and the pilot content.
 - Chapter expansion beyond the pilot.
 - Any release or publication.
-- Public attribution. It remains pending before release.
+- Public attribution was not approved at Gate 1; the owner confirmed it later on 2026-11-09 (`DEC-017`).
 
 ## Integration authorization
 
