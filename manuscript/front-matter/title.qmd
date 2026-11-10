@@ -22,7 +22,7 @@ title: "Handbook Authoring and Publishing"
 | 0.2.0 | November 2026 | Introduction chapter, generated document control, print layout aligned with the reference handbook |
 | 0.2.1 | November 2026 | Replaced the code font and DOCX template; earlier editions withdrawn |
 | 0.2.2 | November 2026 | Named the author and copyright holder, added third-party notices to the HTML edition and made the build portable across mktemp implementations |
-| 0.2.3 | November 2026 | Added gate checklist library to Appendix B, approval records to Appendix A templates, glossary definitions for release and verified artifact set, product-name clarification and Chapter 7 release-status wording fixes |
+| 0.2.4 | November 2026 | Added gate checklist library to Appendix B, approval records to Appendix A templates, glossary definitions for release and verified artifact set, product-name clarification and Chapter 7 release-status wording fixes |
 
 #### Maintenance and Contributions
 

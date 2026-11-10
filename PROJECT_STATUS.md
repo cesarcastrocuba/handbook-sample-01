@@ -4,7 +4,7 @@ This file is the only source of current status. Decisions live in [`DECISIONS.md
 
 ## Phase
 
-Published and in maintenance. Gates 1, 2 and 3 are approved. `v0.2.2` is the latest published release: Introduction, Chapters 1–8, Appendices A–C and References. It was published on 2026-11-09 by run `42621799383` from commit `c148518`. `v0.2.3` is prepared and not published.
+Published and in maintenance. Gates 1, 2 and 3 are approved. `v0.2.2` is the latest published release: Introduction, Chapters 1–8, Appendices A–C and References. It was published on 2026-11-09 by run `42621799383` from commit `c148518`. `v0.2.4` is prepared and not published.
 
 ## Gates
 
@@ -18,8 +18,9 @@ Gate state is machine-readable in [`docs/editorial/gates.json`](docs/editorial/g
 
 ## Current state
 
-- `v0.2.2` is published. It records the confirmed author and copyright holder, adds third-party notices to the HTML edition and includes the portable `mktemp` fix from PR #3.
-- `v0.2.3` is prepared and not published. It addresses the independent review findings on the `v0.2.0` front matter and appendices.
+- `v0.2.2` is the latest published release. It records the confirmed author and copyright holder, adds third-party notices to the HTML edition and includes the portable `mktemp` fix from PR #3.
+- `v0.2.4` is prepared and not published. It addresses the independent review findings on the `v0.2.0` front matter and appendices.
+- `v0.2.3` was withdrawn on 2026-11-10; its release page and assets were deleted and its tag stays at `7b835a5` (`DEC-019`).
 - `v0.2.1` is superseded. Its release page and assets were deleted on 2026-11-09 and its tag stays, under hub decision `HUB-DEC-023`.
 - Earlier editions `v0.1.0` to `v0.2.0` had their release pages and assets withdrawn; their tags stay (`DEC-016`).
 - Reading site: <https://cesarcastrocuba.github.io/handbook-sample-01/>. The hub catalog lists the latest published release.
@@ -29,7 +30,7 @@ Gate state is machine-readable in [`docs/editorial/gates.json`](docs/editorial/g
 
 ## Open
 
-- None. The independent content review of the `v0.2.0` front-matter and appendix changes and the visual review of the published `v0.2.2` PDF are completed and recorded in [`docs/editorial/reviews/v0.2.3-reviews.md`](docs/editorial/reviews/v0.2.3-reviews.md).
+- None. The independent content review of the `v0.2.0` front-matter and appendix changes and the visual review of the published `v0.2.2` PDF are completed and recorded in [`docs/editorial/reviews/v0.2.4-reviews.md`](docs/editorial/reviews/v0.2.4-reviews.md).
 
 ## Next step
 
