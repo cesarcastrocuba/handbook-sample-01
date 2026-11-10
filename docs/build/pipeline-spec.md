@@ -105,7 +105,7 @@ Prerequisites outside the repository: GitHub Pages must use the GitHub Actions s
 
 ## 6. Release-candidate inspection
 
-This section records the `0.1.0-rc.1` inspection and is kept as history. Current release state is in [`PROJECT_STATUS.md`](../../PROJECT_STATUS.md). Full visual review of the published PDF remains open.
+This section records the `0.1.0-rc.1` inspection and is kept as history. Current release state is in [`PROJECT_STATUS.md`](../../PROJECT_STATUS.md).
 
 A local `0.1.0-rc.1` chapter-mode build with toolkit `0.4.0` and profile `1.0.0` produced a 57-page PDF and the six-file set outside the repository. The earlier layout fixes remain in place:
 
