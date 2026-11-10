@@ -19,7 +19,7 @@ Gate state is machine-readable in [`docs/editorial/gates.json`](docs/editorial/g
 ## Current state
 
 - `v0.2.4` is the latest published release. It addresses the independent review findings on the `v0.2.0` front matter and appendices.
-- `v0.2.2` remains published as the previous edition. It records the confirmed author and copyright holder, adds third-party notices to the HTML edition and includes the portable `mktemp` fix from PR #3.
+- `v0.2.2` is withdrawn. Its withdrawal is authorized by `DEC-020`, its tag is kept, and its release page and six assets are deleted by the coordinator after this change merges. It recorded the confirmed author and copyright holder, added third-party notices to the HTML edition and included the portable `mktemp` fix from PR #3.
 - `v0.2.3` was withdrawn on 2026-11-10; its release page and assets were deleted and its tag stays at `7b835a5` (`DEC-019`).
 - `v0.2.1` is superseded. Its release page and assets were deleted on 2026-11-09 and its tag stays, under hub decision `HUB-DEC-023`.
 - Earlier editions `v0.1.0` to `v0.2.0` had their release pages and assets withdrawn; their tags stay (`DEC-016`).
