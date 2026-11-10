@@ -55,6 +55,13 @@ A template is useful only when every field can change a decision. Keep the reade
 
 ## Assumptions
 [What is accepted without evidence and what would invalidate it.]
+
+## Approval record
+- Decision: [Approved / Changes requested / Deferred]
+- Scope and reviewed commit: [brief or outline; exact commit]
+- Owner and decision date: [name; YYYY-MM-DD]
+- Independent review: [reviewer and verdict reference]
+- Approval evidence: [link or recorded owner statement]
 ```
 
 ```markdown
@@ -73,6 +80,13 @@ A template is useful only when every field can change a decision. Keep the reade
 
 ## Exclusions
 [What this outline deliberately does not cover.]
+
+## Approval record
+- Decision: [Approved / Changes requested / Deferred]
+- Scope and reviewed commit: [brief or outline; exact commit]
+- Owner and decision date: [name; YYYY-MM-DD]
+- Independent review: [reviewer and verdict reference]
+- Approval evidence: [link or recorded owner statement]
 ```
 
 **Why it is needed.** Without a shared form, every proposal is reviewed against a different model. One author writes a marketing summary, another writes a table of contents and a third writes a project plan. The owner cannot compare them, and the reviewer cannot tell whether the missing field is an omission or a deliberate choice. The template gives the conversation a common minimum without pretending that all books are identical.

@@ -96,6 +96,6 @@ A section can be read on its own, but the brief and the profile travel with it. 
 
 **Illustrative examples.** Examples with fictional organizations, products, names, targets or measurements are labelled illustrative. They show a decision and its cost; they are not evidence for a real product's behavior.
 
-**Product names.** Vendor products are named only as labelled examples. The handbook does not recommend a product, and a product's absence is not a judgment about it.
+**Product names.** Product names identify a checkable source, a component of this repository's publishing toolchain or a labelled example. Naming a product does not constitute a recommendation, and a product's absence is not a judgment about it.
 
 **Terminology.** Terms with a fixed meaning in this book are defined where they first matter and collected in Appendix C. Cross-references name the section or chapter they point to; they are navigation, not emphasis.

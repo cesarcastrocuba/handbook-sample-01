@@ -38,11 +38,12 @@ Define a term where it first matters, then keep the glossary consistent with the
 - **Non-goal.** An attractive adjacent subject that the handbook deliberately excludes.
 - **Pilot.** One written section used to test the brief, profile and review process before expansion.
 - **Reading order.** The declared list of canonical manuscript files grouped by front matter, chapters, back matter, appendices and references.
+- **Release.** An owner-authorized publication of a verified artifact set from a specified source commit. A catalog update makes that release discoverable; it is not the release itself.
 - **Review record.** Durable evidence of the reviewed commit, commands, findings and verdict.
 - **Source bundle.** The archive of canonical sources and build inputs at the release commit.
 - **Source ledger.** A record of claims, confidence, evidence and review triggers used during research.
 - **Staging directory.** A private build directory where artifacts are produced and verified before atomic exposure.
-- **Verified release.** A release directory whose identity, assets, hashes and format checks have passed the release gate.
+- **Verified artifact set.** The six-file build output whose identity, membership, hashes and formats have passed verification. Passing these checks does not authorize publication.
 
 **Why it is needed.** Terms migrate. "Review" can mean a quick read, a formal verdict or a quality assurance phase. "Release" can mean a tag, a PDF upload or a catalog update. Without a fixed vocabulary, a review can appear to agree while discussing different things. The glossary makes the disagreement visible.
 
@@ -77,7 +78,7 @@ Keep the glossary selective. Add a term only when its definition changes a decis
 6. Record the change in the review and changelog.
 7. Add a cross-reference only if the reader needs the fuller argument.
 
-In the illustrative case, one chapter uses "release" for a verified artifact set and another uses it for a catalog update. The editor defines release as the verified artifact set and treats the catalog update as a separate publication step. The glossary and both chapters now agree.
+In the illustrative case, one chapter uses "release" for a published artifact set and another uses it for a catalog update. The editor defines release as the owner-authorized publication of the verified artifact set and treats the catalog update as a separate discovery step. The glossary and both chapters now agree.
 
 ::: {.callout-note appearance="simple" icon=false title="Review Checklist"}
 - Is every glossary term used in the book with the same meaning?

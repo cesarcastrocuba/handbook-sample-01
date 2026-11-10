@@ -4,6 +4,30 @@ All notable changes to this sample handbook are recorded here. The format follow
 
 ## [Unreleased]
 
+## [0.2.3]
+
+Prepared, not published. Pinned to hub toolkit `0.5.0` at commit `4e006be`.
+
+### Added
+
+- Added reusable gate checklists for Brief, Outline, Pilot, and Release gates to Appendix B (B.1).
+- Added an Approval record block to both the brief and outline templates in Appendix A (A.1).
+- Added glossary definitions for "Release" and "Verified artifact set" to Appendix C (C.1).
+
+### Changed
+
+- Updated Appendix C.2 worked example to use the refined definitions of release and verified artifact set.
+- Clarified product-name convention in Introduction to distinguish checkable toolchain prerequisites and citations from illustrative examples.
+
+### Fixed
+
+- Clarified Appendix B.1 example to base changes-requested verdict on insufficient claim support rather than secondary-source tier alone.
+- Removed premature claims in Chapter 7 that the book has not been released or deployed, resolving conflict with Document Control version history.
+
+### Verified
+
+- Recorded independent reviews in [`docs/editorial/reviews/v0.2.3-reviews.md`](docs/editorial/reviews/v0.2.3-reviews.md): the content review of v0.2.0 front matter and appendices (verdict CHANGES_REQUESTED, resolved in PR #8) and the visual review of the published v0.2.2 PDF (all 55 pages compared with HTML edition; verdict APPROVE with no defects and section numbers visible).
+
 ## [0.2.2] - 2026-11-09
 
 Published 2026-11-09 by run `42621799383` from commit `c148518`. Built with hub toolkit `0.5.0` at commit `4e006be`.
