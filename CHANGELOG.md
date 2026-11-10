@@ -34,6 +34,8 @@ Withdrawn 2026-11-10. Built by mistake from `7b835a5` before the corrections mer
 
 ## [0.2.2] - 2026-11-09
 
+Withdrawn 2026-11-10 (`DEC-020`). The release page and assets are deleted and the tag stays.
+
 Published 2026-11-09 by run `42621799383` from commit `c148518`. Built with hub toolkit `0.5.0` at commit `4e006be`.
 
 ### Changed
