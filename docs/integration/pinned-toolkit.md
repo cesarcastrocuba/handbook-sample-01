@@ -2,7 +2,7 @@
 
 | Field | Value |
 | --- | --- |
-| Status | Current — published; toolkit pin below |
+| Status | Current — toolkit pin below |
 | Toolkit source | `https://github.com/cesarcastrocuba/handbooks-hub.git` |
 | Full commit SHA | `4e006be3bb497a1f468235895ae7c79d6d176aaa` (hub `main` toolkit pin) |
 | Toolkit version | `0.5.0` |
@@ -48,7 +48,7 @@ The fast `handbook-toolkit validate-book book.yaml` check verifies the descripto
 ## 4. Limits
 
 - All eight chapters and three appendices are present. `make full` passes descriptor, reading order, references and chapter validation.
-- No artifact is committed. Releases and the Pages site are produced by the manual release workflow; `v0.2.2` is the latest published release. `v0.2.1` is superseded; its release page and assets were deleted on 2026-11-09 and its tag stays (`HUB-DEC-023`).
+- No artifact is committed. Releases and the Pages site are produced by the manual release workflow. Current release state is in [`PROJECT_STATUS.md`](../../PROJECT_STATUS.md).
 - Profile `1.0.0` is the current packaged release and preserves the approved `0.2.0` rules; `make full` resolves the profile version from `book.yaml`.
 - CI proves installation and the fast check from a clean GitHub runner. It does not prove publication readiness.
 
