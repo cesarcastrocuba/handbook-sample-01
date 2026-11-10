@@ -29,7 +29,7 @@ Gate state is machine-readable in [`docs/editorial/gates.json`](docs/editorial/g
 
 ## Open
 
-- None. The visual review of the published `v0.2.2` PDF (all 55 pages) and the independent review of the `v0.2.0` front-matter and appendix changes are completed and recorded in [`CHANGELOG.md`](CHANGELOG.md) under `[0.2.3]`.
+- None. The independent content review of the `v0.2.0` front-matter and appendix changes and the visual review of the published `v0.2.2` PDF are completed and recorded in [`docs/editorial/reviews/v0.2.3-reviews.md`](docs/editorial/reviews/v0.2.3-reviews.md).
 
 ## Next step
 

@@ -6,7 +6,7 @@ All notable changes to this sample handbook are recorded here. The format follow
 
 ## [0.2.3]
 
-Prepared, not published. Built with hub toolkit `0.5.0` at commit `4e006be`.
+Prepared, not published. Pinned to hub toolkit `0.5.0` at commit `4e006be`.
 
 ### Added
 
@@ -26,7 +26,7 @@ Prepared, not published. Built with hub toolkit `0.5.0` at commit `4e006be`.
 
 ### Verified
 
-- Recorded that an independent visual review of the published v0.2.2 PDF (all 55 pages, compared with the HTML edition) found no defects and confirmed section numbers are visible.
+- Recorded independent reviews in [`docs/editorial/reviews/v0.2.3-reviews.md`](docs/editorial/reviews/v0.2.3-reviews.md): the content review of v0.2.0 front matter and appendices (verdict CHANGES_REQUESTED, resolved in PR #8) and the visual review of the published v0.2.2 PDF (all 55 pages compared with HTML edition; verdict APPROVE with no defects and section numbers visible).
 
 ## [0.2.2] - 2026-11-09
 
