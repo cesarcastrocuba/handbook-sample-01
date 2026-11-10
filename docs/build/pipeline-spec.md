@@ -2,7 +2,7 @@
 
 | Field | Value |
 | --- | --- |
-| Status | Technical preparation — local release candidate verified; no publication |
+| Status | Current — build and release contract |
 | Scope | Platform phase 4; publication remains owner-gated |
 | Book config | [`publishing/_quarto.yml`](../../publishing/_quarto.yml) |
 | Release workflow | [`.github/workflows/release.yml`](../../.github/workflows/release.yml) |
@@ -13,7 +13,7 @@
 | Typst | `0.15.1` (bundled) |
 | Python | `3.12` |
 
-This document defines the book-side contract and the Hub-side build and release flow. It does not claim a published release. Shared staging, packaging, manifest and checksum code belongs to the Hub toolkit, not this repository.
+This document defines the book-side contract and the Hub-side build and release flow. Current release state is in [`PROJECT_STATUS.md`](../../PROJECT_STATUS.md). Shared staging, packaging, manifest and checksum code belongs to the Hub toolkit, not this repository.
 
 ## 1. Ownership boundary
 
@@ -105,7 +105,7 @@ Prerequisites outside the repository: GitHub Pages must use the GitHub Actions s
 
 ## 6. Release-candidate inspection
 
-This section records the `0.1.0-rc.1` inspection and is kept as history. The latest published release is `v0.2.2`; `v0.2.1` is superseded, and its release page and assets were deleted on 2026-11-09 while its tag stays (`HUB-DEC-023`). Full visual review of the published PDF remains open.
+This section records the `0.1.0-rc.1` inspection and is kept as history. Current release state is in [`PROJECT_STATUS.md`](../../PROJECT_STATUS.md). Full visual review of the published PDF remains open.
 
 A local `0.1.0-rc.1` chapter-mode build with toolkit `0.4.0` and profile `1.0.0` produced a 57-page PDF and the six-file set outside the repository. The earlier layout fixes remain in place:
 

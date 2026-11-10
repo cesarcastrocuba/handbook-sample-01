@@ -35,6 +35,38 @@ make check
 
 `make check` runs the gate-policy unit tests and then the repository check. Report the command and output. Do not claim a build, render or publication that was not executed. Quarto is not installed in the bootstrap environment, so publishing checks are explicitly deferred.
 
+## Reviewer environment
+
+A reviewer starts from a clean clone at the exact commit under review. The pinned toolkit is installed from `requirements.txt`; a hub checkout is not needed.
+
+Create the virtual environment outside the repository, then install the requirements:
+
+```sh
+git clone https://github.com/cesarcastrocuba/handbook-sample-01.git
+cd handbook-sample-01
+# Replace <review-head-sha> with the full SHA supplied in the review assignment.
+git fetch origin <review-head-sha>
+git checkout --detach <review-head-sha>
+git rev-parse HEAD
+python3 -m venv ../review-venv
+../review-venv/bin/python -m pip install --upgrade pip
+../review-venv/bin/python -m pip install -r requirements.txt
+```
+
+Run the full check with the Makefile variables pointing at that environment:
+
+```sh
+make full PYTHON=../review-venv/bin/python TOOLKIT=../review-venv/bin/handbook-toolkit
+```
+
+Alternatively, put the environment on `PATH`; the Makefile then resolves both `python3` and `handbook-toolkit` from it:
+
+```sh
+PATH="../review-venv/bin:$PATH" make full
+```
+
+`make full` runs the fast checks and then the full descriptor, reading-order, reference and chapter/appendix validation. Record the exact commit, command and result in the review.
+
 ## Editorial rules
 
 - English, vendor-neutral, evidence-oriented.
