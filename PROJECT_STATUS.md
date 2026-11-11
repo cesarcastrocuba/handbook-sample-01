@@ -4,7 +4,7 @@ This file is the only source of current status. Decisions live in [`DECISIONS.md
 
 ## Phase
 
-Published and in maintenance. Gates 1, 2 and 3 are approved. `v0.2.4` is the latest published release: Introduction, Chapters 1–8, Appendices A–C and References. It was published on 2026-11-10 by run `42810374270` from commit `cd99d7a`. `v0.2.5` is prepared and not published.
+Published and in maintenance. Gates 1, 2 and 3 are approved. `v0.2.5` is the latest published release: Introduction, Chapters 1–8, Appendices A–C and References. It was published on 2026-11-11 by run `42989074637` from commit `c8c8703`.
 
 ## Gates
 
@@ -18,9 +18,9 @@ Gate state is machine-readable in [`docs/editorial/gates.json`](docs/editorial/g
 
 ## Current state
 
-- `v0.2.4` is the latest published release. It addresses the independent review findings on the `v0.2.0` front matter and appendices.
-- `v0.2.5` is prepared and not published. It upgrades to toolkit `0.6.0`, which adds the Markdown edition `book.md` as a seventh release asset; manuscript content is unchanged apart from the revision history.
-- `v0.2.2` is withdrawn. Its withdrawal is authorized by `DEC-020`, its tag is kept, and its release page and six assets are deleted by the coordinator after this change merges. It recorded the confirmed author and copyright holder, added third-party notices to the HTML edition and included the portable `mktemp` fix from PR #3.
+- `v0.2.5` is the latest published release. It upgrades to toolkit `0.6.0`, which adds the Markdown edition `book.md` as a seventh release asset; manuscript content is unchanged apart from the revision history.
+- `v0.2.4` remains published as the previous edition. It addresses the independent review findings on the `v0.2.0` front matter and appendices.
+- `v0.2.2` was withdrawn on 2026-11-10; its release page and six assets were deleted and its tag stays at `c148518` (`DEC-020`). It had recorded the confirmed author and copyright holder, added third-party notices to the HTML edition and included the portable `mktemp` fix from PR #3.
 - `v0.2.3` was withdrawn on 2026-11-10; its release page and assets were deleted and its tag stays at `7b835a5` (`DEC-019`).
 - `v0.2.1` is superseded. Its release page and assets were deleted on 2026-11-09 and its tag stays, under hub decision `HUB-DEC-023`.
 - Earlier editions `v0.1.0` to `v0.2.0` had their release pages and assets withdrawn; their tags stay (`DEC-016`).
@@ -31,11 +31,12 @@ Gate state is machine-readable in [`docs/editorial/gates.json`](docs/editorial/g
 
 ## Open
 
-- None. The independent content review of the `v0.2.0` front-matter and appendix changes and the visual review of the published `v0.2.2` PDF are completed and recorded in [`docs/editorial/reviews/v0.2.4-reviews.md`](docs/editorial/reviews/v0.2.4-reviews.md).
+- Chapter 7 and Appendices B and C still describe a six-asset release and a six-file verified artifact set. They need an editorial change with owner authorization; the manuscript was not edited for `v0.2.5`.
+- The independent content review of the `v0.2.0` front-matter and appendix changes and the visual review of the published `v0.2.2` PDF are completed and recorded in [`docs/editorial/reviews/v0.2.4-reviews.md`](docs/editorial/reviews/v0.2.4-reviews.md).
 
 ## Next step
 
-`v0.2.5` is dispatched by the coordinator after this change merges, under the delegation in hub decision `HUB-DEC-027`. Any further release needs owner authorization.
+Any further release needs owner authorization.
 
 ## Verification
 
