@@ -24,7 +24,7 @@ A checklist is useful when every item can fail and the failure changes the decis
 
 **Purpose.** The checklist makes a gate repeatable across reviewers and authors. It also makes omissions visible: if a check cannot be answered, the work is not ready, even when the prose looks finished. The owner can then decide whether to fix the gap, approve an explicit exception or delay the gate.
 
-**What it includes.** The brief gate checks reader, promise, non-goals, evidence, owner and change trigger. The outline gate checks exit evidence, dependencies, pilot choice and profile coverage. The pilot gate checks approved preconditions, section scope, source discipline and conformance evidence. The chapter review checks the chapter and section elements, examples, sources, cross-references and exact commit. The release gate checks the approved commit, six assets, manifest, checksums, format inspection, licensing and immutable release/catalog behavior.
+**What it includes.** The brief gate checks reader, promise, non-goals, evidence, owner and change trigger. The outline gate checks exit evidence, dependencies, pilot choice and profile coverage. The pilot gate checks approved preconditions, section scope, source discipline and conformance evidence. The chapter review checks the chapter and section elements, examples, sources, cross-references and exact commit. The release gate checks the approved commit, seven assets, manifest, checksums, format inspection, licensing and immutable release/catalog behavior.
 
 For each item, record the reviewed commit, checker, result and supporting evidence. A checked item without evidence is unresolved. The owner records the gate decision after review.
 
@@ -46,7 +46,7 @@ Use the Review Checklist in B.2 and attach its evidence to the reviewed commit.
 **Release gate**
 - [ ] Are the complete manuscript, licensing, attribution and exact source commit approved?
 - [ ] Are the toolkit/profile pins and recorded build environment consistent with the proposal?
-- [ ] Do all six files exist: HTML ZIP, PDF, DOCX, source ZIP, manifest and checksums?
+- [ ] Do all seven files exist: HTML ZIP, PDF, DOCX, Markdown edition, source ZIP, manifest and checksums?
 - [ ] Do identity, checksum membership, hashes, format checks and human layout inspection pass?
 - [ ] Is the owner's publication authorization recorded, with the immutable tag and catalog/withdrawal plan identified?
 

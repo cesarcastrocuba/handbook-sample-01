@@ -4,6 +4,14 @@ All notable changes to this sample handbook are recorded here. The format follow
 
 ## [Unreleased]
 
+## [0.2.6]
+
+Prepared, not published. Pinned to hub toolkit `0.6.0` at commit `c200fd2`.
+
+### Fixed
+
+- Corrected the description of a release to seven files, including the Markdown edition, in Chapter 7, Appendix B and Appendix C.
+
 ## [0.2.5] - 2026-11-11
 
 Published 2026-11-11 by run `42989074637` from commit `c8c8703`. Built with hub toolkit `0.6.0` at commit `c200fd2`.

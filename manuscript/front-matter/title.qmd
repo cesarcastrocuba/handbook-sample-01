@@ -24,6 +24,7 @@ title: "Handbook Authoring and Publishing"
 | 0.2.2 | November 2026 | Named the author and copyright holder, added third-party notices to the HTML edition and made the build portable across mktemp implementations |
 | 0.2.4 | November 2026 | Added gate checklist library to Appendix B, approval records to Appendix A templates, glossary definitions for release and verified artifact set, product-name clarification and Chapter 7 release-status wording fixes |
 | 0.2.5 | November 2026 | Built with toolkit 0.6.0; adds the Markdown edition (book.md) to the release |
+| 0.2.6 | November 2026 | Corrected the description of a release to seven files, including the Markdown edition |
 
 #### Maintenance and Contributions
 

@@ -53,7 +53,7 @@ Pin everything that can change the artifact. Use a preview exception only when i
 
 **Purpose.** Building once makes the reviewed artifact and the published artifact the same object. Verification catches corruption, missing files and format failures before readers see them. A manifest and checksum file let a later auditor ask whether the downloadable bytes are still the bytes that were approved.
 
-**What it includes.** The build creates a private staging directory, extracts tracked files from the exact commit, validates the descriptor, metadata and reading order, runs the manuscript and reference gates, stages the render resources and renders HTML, Typst PDF and DOCX with execution disabled. It packages the HTML site and source, inspects every payload, writes `publication-manifest.json`, writes `SHA256SUMS.txt`, runs the integrity verifier and only then atomically exposes the final directory. The resulting set contains exactly the HTML ZIP, PDF, DOCX, source ZIP, manifest and checksums.
+**What it includes.** The build creates a private staging directory, extracts tracked files from the exact commit, validates the descriptor, metadata and reading order, runs the manuscript and reference gates, stages the render resources and renders HTML, Typst PDF, DOCX and a single-file Markdown edition with execution disabled. It packages the HTML site and source, inspects every payload, writes `publication-manifest.json`, writes `SHA256SUMS.txt`, runs the integrity verifier and only then atomically exposes the final directory. The resulting set contains exactly seven files: five payloads — the HTML ZIP, PDF, DOCX, Markdown edition `book.md` and source ZIP — plus the publication manifest and the checksums.
 
 **Why it is needed.** A build that writes directly to the final output can expose a partial site after a failure. A build that re-renders between verification and upload can publish unreviewed bytes. Separate identity files without exact membership and hashes are only decoration. The sequence — stage, verify, manifest, checksum, atomically expose — makes each failure stop before publication. A useful release check also records what was not run, so a later reviewer does not mistake an omitted visual inspection or platform test for a pass. That record is part of the evidence, not a caveat added after publication.
 
@@ -61,7 +61,7 @@ Pin everything that can change the artifact. Use a preview exception only when i
 
 
 ::: {.callout-warning appearance="simple" icon=false title="Common Pitfall"}
-"Quarto exited zero" is not a release check. A render can produce a structurally invalid PDF, a DOCX without the Word document part or an HTML archive with missing assets. Inspect the payloads and verify the manifest, checksums and exact six-file membership.
+"Quarto exited zero" is not a release check. A render can produce a structurally invalid PDF, a DOCX without the Word document part or an HTML archive with missing assets. Inspect the payloads and verify the manifest, checksums and exact seven-file membership.
 :::
 
 ::: {.callout-important appearance="simple" icon=false title="Decision & Trade-off"}
@@ -82,11 +82,11 @@ Claim only the level the evidence supports. Record the toolchain versions and th
 
 **Purpose.** A verified directory is not yet a publication. The owner must confirm that the content, licensing and release evidence are acceptable. The catalog must point to immutable assets, not to a branch or a working tree. Retention protects readers who downloaded an earlier edition and auditors who need to reconstruct what was published.
 
-**What it includes.** The release gate checks the approved commit, manifest identity, six assets, checksums, format inspection, licensing and editorial approval. The release tag is immutable and matches the book version. The catalog entry references the release, the manifest and the checksum file, and never a mutable branch. A correction creates a new version; withdrawal updates the catalog and records the reason. The source bundle remains available with the release so the published book can be rebuilt or audited.
+**What it includes.** The release gate checks the approved commit, manifest identity, seven assets, checksums, format inspection, licensing and editorial approval. The release tag is immutable and matches the book version. The catalog entry references the release, the manifest and the checksum file, and never a mutable branch. A correction creates a new version; withdrawal updates the catalog and records the reason. The source bundle remains available with the release so the published book can be rebuilt or audited.
 
 **Why it is needed.** Publication without a gate turns a build convenience into an unowned promise. A catalog that links to a branch can show content that was never released; an in-place asset replacement destroys the meaning of a checksum. Retention rules make a correction auditable instead of a silent overwrite.
 
-**Example.** *Illustrative only: a catalog entry decision.* A verified release is proposed for the catalog. The reviewer compares the manifest commit with the owner-approved commit, checks that the release tag matches the version, and confirms that the six assets and checksums are attached to that tag. Only then does the catalog change link to the release.
+**Example.** *Illustrative only: a catalog entry decision.* A verified release is proposed for the catalog. The reviewer compares the manifest commit with the owner-approved commit, checks that the release tag matches the version, and confirms that the seven assets and checksums are attached to that tag. Only then does the catalog change link to the release.
 
 
 ::: {.callout-warning appearance="simple" icon=false title="Common Pitfall"}
@@ -107,13 +107,13 @@ Keep approved releases immutable. Withdraw a defective release through the catal
 
 ## 7.4 Worked Example — A Release Readiness Review
 
-*In practice:* a team has a verified six-file directory and must decide whether it may become a release. This is a fictional readiness review, not evidence that any particular edition has passed its release gate.
+*In practice:* a team has a verified seven-file directory and must decide whether it may become a release. This is a fictional readiness review, not evidence that any particular edition has passed its release gate.
 
 1. Confirm the build source is the owner-approved commit and the worktree was clean.
 2. Compare the manifest's book id, version and commit with the release proposal.
-3. Check the six files: HTML ZIP, PDF, DOCX, source ZIP, manifest and checksums.
+3. Check the seven files: HTML ZIP, PDF, DOCX, Markdown edition, source ZIP, manifest and checksums.
 4. Verify every checksum and the exact manifest membership.
-5. Inspect PDF page count and text, DOCX package and text, HTML local links and source commit comment.
+5. Inspect PDF page count and text, DOCX package and text, HTML local links, Markdown edition identity and source commit comment.
 6. Confirm the profile, toolkit, renderer and zlib versions are recorded.
 7. Review licensing, attribution and the owner's release decision.
 8. Tag the approved release, attach the exact verified assets and update the catalog only after the assets verify.
@@ -124,9 +124,9 @@ If any step fails, the build is not a release candidate. The team fixes the sour
 ::: {.callout-note appearance="simple" icon=false title="Review Checklist"}
 - Is the build from the exact approved commit and a clean environment?
 - Are the toolkit, profile, Quarto, Pandoc, Typst, Python and zlib versions recorded?
-- Does the directory contain exactly the six required assets?
+- Does the directory contain exactly the seven required assets?
 - Do the manifest and checksum membership and hashes agree?
-- Were PDF, DOCX, HTML and source formats inspected?
+- Were PDF, DOCX, HTML, Markdown and source formats inspected?
 - Is the release tag immutable and matched to the book version?
 - Does the catalog point to the verified release rather than a branch?
 - Is a withdrawal or rollback path recorded?
