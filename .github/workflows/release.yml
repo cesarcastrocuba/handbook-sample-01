@@ -89,7 +89,7 @@ jobs:
             --version "$VERSION" \
             --quarto "$(command -v quarto)"
 
-      - name: Verify the six-file release directory
+      - name: Verify the seven-file release directory
         env:
           VERSION: ${{ inputs.version }}
         run: |
@@ -105,6 +105,7 @@ jobs:
           root = Path.cwd()
           expected = {
               "book-html.zip",
+              "book.md",
               "book.pdf",
               "book.docx",
               "book-source.zip",
@@ -115,11 +116,23 @@ jobs:
           if actual != expected:
               raise SystemExit(f"release files differ: expected {sorted(expected)}, found {sorted(actual)}")
 
+          sums = {
+              line.split("  ", 1)[1]
+              for line in (root / "SHA256SUMS.txt").read_text(encoding="utf-8").splitlines()
+              if "  " in line
+          }
+          if sums != expected - {"SHA256SUMS.txt"}:
+              raise SystemExit(f"checksums do not cover every release file: {sorted(sums)}")
+
           manifest = json.loads((root / "publication-manifest.json").read_text(encoding="utf-8"))
           if manifest["book"]["commit"] != os.environ["SOURCE_COMMIT"]:
               raise SystemExit("manifest commit does not match the checked-out commit")
           if manifest["book"]["version"] != os.environ["VERSION"]:
               raise SystemExit("manifest version does not match the requested version")
+
+          payloads = {entry["path"] for entry in manifest["artifacts"]}
+          if payloads != expected - {"SHA256SUMS.txt", "publication-manifest.json"}:
+              raise SystemExit(f"manifest payloads differ: {sorted(payloads)}")
 
           with zipfile.ZipFile(root / "book-html.zip") as archive:
               names = set(archive.namelist())
@@ -135,11 +148,17 @@ jobs:
           with zipfile.ZipFile(root / "book.docx") as archive:
               if "word/document.xml" not in archive.namelist():
                   raise SystemExit("DOCX has no Word document part")
-          print("six-file release verification: OK")
+
+          markdown = (root / "book.md").read_text(encoding="utf-8")
+          if not markdown.strip():
+              raise SystemExit("Markdown edition is empty")
+          if not markdown.startswith("# "):
+              raise SystemExit("Markdown edition does not start with a top-level heading")
+          print("seven-file release verification: OK")
           PY
           pdfinfo book.pdf | grep -E '^Pages:[[:space:]]+[1-9][0-9]*$'
 
-      - name: Create the GitHub Release with exactly six files
+      - name: Create the GitHub Release with exactly seven files
         env:
           GH_TOKEN: ${{ github.token }}
           VERSION: ${{ inputs.version }}
@@ -152,7 +171,7 @@ jobs:
 
           - Source commit: $SOURCE_COMMIT
           - Toolkit build: recorded in publication-manifest.json
-          - Assets: HTML ZIP, PDF, DOCX, source ZIP, publication manifest, SHA256SUMS.txt
+          - Assets: HTML ZIP, PDF, DOCX, Markdown edition, source ZIP, publication manifest, SHA256SUMS.txt
           - The same verified HTML ZIP bytes are deployed to GitHub Pages.
 
           This release was built once from the listed commit and verified before publication.
@@ -167,6 +186,7 @@ jobs:
             --notes-file "$notes" \
             "${prerelease[@]}" \
             "$RUNNER_TEMP/release/book-html.zip" \
+            "$RUNNER_TEMP/release/book.md" \
             "$RUNNER_TEMP/release/book.pdf" \
             "$RUNNER_TEMP/release/book.docx" \
             "$RUNNER_TEMP/release/book-source.zip" \

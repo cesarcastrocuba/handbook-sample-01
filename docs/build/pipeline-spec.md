@@ -6,7 +6,7 @@
 | Scope | Platform phase 4; publication remains owner-gated |
 | Book config | [`publishing/_quarto.yml`](../../publishing/_quarto.yml) |
 | Release workflow | [`.github/workflows/release.yml`](../../.github/workflows/release.yml) |
-| Toolkit | `0.5.0`, pinned from public hub `4e006be3bb497a1f468235895ae7c79d6d176aaa` |
+| Toolkit | `0.6.0`, pinned from public hub `c200fd26924d1ba32ce203091d26ea69961ded1a` |
 | Profile | `standard` `1.0.0` |
 | Quarto | `1.11.9` |
 | Pandoc | `3.10` (bundled) |
@@ -41,10 +41,10 @@ No manifest, checksum, zip or packaging script is added to this repository.
 The toolkit is installed from `requirements.txt` as a non-editable package:
 
 ```text
-handbook-toolkit @ git+https://github.com/cesarcastrocuba/handbooks-hub.git@4e006be3bb497a1f468235895ae7c79d6d176aaa#subdirectory=tools
+handbook-toolkit @ git+https://github.com/cesarcastrocuba/handbooks-hub.git@c200fd26924d1ba32ce203091d26ea69961ded1a#subdirectory=tools
 ```
 
-`book.yaml` declares toolkit `0.5.0` and profile `standard` `1.0.0`. Toolkit `0.5.0` packages both the `0.2.0` and `1.0.0` snapshots; `1.0.0` preserves every approved `0.2.0` rule and adds the validation classification. The toolkit resolves the packaged profile and stages its render resources: the table-layout filter, the task-checkbox filter and the breakable-callout Typst include.
+`book.yaml` declares toolkit `0.6.0` and profile `standard` `1.0.0`. Toolkit `0.6.0` packages both the `0.2.0` and `1.0.0` snapshots and adds the Markdown payload as a fifth artifact; `1.0.0` preserves every approved `0.2.0` rule and adds the validation classification. The toolkit resolves the packaged profile and stages its render resources: the table-layout filter, the task-checkbox filter and the breakable-callout Typst include. `publication.formats` still lists only `html`, `pdf` and `docx`: the Markdown edition is implicit, like the source bundle.
 
 Quarto supplies its bundled Pandoc and Typst. The repository validators do not require Quarto; only `build-book` does.
 
@@ -64,10 +64,11 @@ handbook-toolkit build-book \
 
 The build refuses a dirty tree, a commit that is not the requested `HEAD`, an existing output directory and an output inside the repository. It performs one render and then inspects the produced bytes.
 
-The verified directory contains exactly six files:
+The verified directory contains exactly seven files:
 
 ```text
 book-html.zip
+book.md
 book.pdf
 book.docx
 book-source.zip
@@ -75,7 +76,7 @@ publication-manifest.json
 SHA256SUMS.txt
 ```
 
-`publication-manifest.json` records the book id, version, commit, toolchain versions, source epoch, normalized build command and every payload hash. `SHA256SUMS.txt` covers the four payloads plus the manifest.
+`publication-manifest.json` records the book id, version, commit, toolchain versions, source epoch, normalized build command and every payload hash. It writes manifest schema `1.1`, which lists five artifacts (`html`, `pdf`, `docx`, `markdown`, `source`). `SHA256SUMS.txt` covers the five payloads plus the manifest.
 
 ## 4. Numbering and captions
 
@@ -95,8 +96,8 @@ The build job:
 3. installs Quarto `1.11.9` and verifies the version;
 4. installs the pinned toolkit, then runs `make full`;
 5. runs `build-book` once against the recorded commit;
-6. verifies the exact six-file membership, checksums, manifest identity, HTML and source archives, DOCX document part and PDF page count;
-7. creates a GitHub Release at the recorded commit with exactly those six files;
+6. verifies the exact seven-file membership, checksums, manifest identity and payload list, HTML and source archives, DOCX document part, Markdown edition and PDF page count;
+7. creates a GitHub Release at the recorded commit with exactly those seven files;
 8. extracts `book-html.zip` and uploads the result as the Pages artifact.
 
 The deploy job uses `actions/deploy-pages` with the `github-pages` environment. The deployed HTML is extracted from the same ZIP bytes attached to the release; no second render occurs.

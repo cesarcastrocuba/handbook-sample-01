@@ -6,8 +6,8 @@ This directory holds the book-side Quarto configuration and publication metadata
 
 - [`_quarto.yml`](_quarto.yml) is the book-side config consumed by the Hub build in an isolated staged workspace. It is not rendered directly from the repository root.
 - [`metadata.yaml`](metadata.yaml) records provisional publication metadata.
-- The full build and release contract, pinned toolchain, six asset names and release-candidate findings are in [`docs/build/pipeline-spec.md`](../docs/build/pipeline-spec.md).
-- [`.github/workflows/release.yml`](../.github/workflows/release.yml) is the manual release workflow: one `build-book`, verification, a GitHub Release with exactly six files and Pages deployment from the same HTML ZIP. It produces every published release.
+- The full build and release contract, pinned toolchain, seven asset names and release-candidate findings are in [`docs/build/pipeline-spec.md`](../docs/build/pipeline-spec.md).
+- [`.github/workflows/release.yml`](../.github/workflows/release.yml) is the manual release workflow: one `build-book`, verification, a GitHub Release with exactly seven files and Pages deployment from the same HTML ZIP. It produces every published release.
 - No generated artifact, manifest or checksum file is committed. Published editions live on GitHub Releases and Pages. Current release state is in [`PROJECT_STATUS.md`](../PROJECT_STATUS.md).
 
 ## Render boundary

@@ -77,7 +77,7 @@ A fast pass is not a publication or full-manuscript pass.
 
 - The complete manuscript exists. `make full` validates chapter and appendix structure and references; it does not judge editorial quality.
 - `make full` runs descriptor, reading-order, cross-reference and chapter-profile validation and passes. It does not build artifacts.
-- Toolkit `0.5.0` provides `validate-references`, `validate-manuscript` and `build-book`; artifact verification is part of `build-book`.
+- Toolkit `0.6.0` provides `validate-references`, `validate-manuscript` and `build-book`; artifact verification is part of `build-book`.
 - The book references hub `standard` `1.0.0`, the current packaged profile that preserves the approved `0.2.0` rules. `make full` resolves the profile from `book.yaml`; the fast check does not validate profile conformance.
 - No artifact is committed. Releases and the Pages site come from the manual release workflow. Current release state is in [`PROJECT_STATUS.md`](../PROJECT_STATUS.md).
 
@@ -94,7 +94,7 @@ handbook-toolkit build-book \
   --quarto "$(command -v quarto)"
 ```
 
-The toolkit writes and verifies exactly six files: `book-html.zip`, `book.pdf`, `book.docx`, `book-source.zip`, `publication-manifest.json` and `SHA256SUMS.txt`. The build does not publish. Release creation and Pages deployment are manual workflow steps in [`.github/workflows/release.yml`](../.github/workflows/release.yml); see [`docs/build/pipeline-spec.md`](build/pipeline-spec.md).
+The toolkit writes and verifies exactly seven files: `book-html.zip`, `book.md`, `book.pdf`, `book.docx`, `book-source.zip`, `publication-manifest.json` and `SHA256SUMS.txt`. `book.md` is the single-file Markdown edition, in reading order, with each figure replaced by its caption. The build does not publish. Release creation and Pages deployment are manual workflow steps in [`.github/workflows/release.yml`](../.github/workflows/release.yml); see [`docs/build/pipeline-spec.md`](build/pipeline-spec.md).
 
 ## 7. Troubleshooting
 
