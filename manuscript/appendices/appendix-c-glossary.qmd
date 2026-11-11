@@ -43,7 +43,7 @@ Define a term where it first matters, then keep the glossary consistent with the
 - **Source bundle.** The archive of canonical sources and build inputs at the release commit.
 - **Source ledger.** A record of claims, confidence, evidence and review triggers used during research.
 - **Staging directory.** A private build directory where artifacts are produced and verified before atomic exposure.
-- **Verified artifact set.** The six-file build output whose identity, membership, hashes and formats have passed verification. Passing these checks does not authorize publication.
+- **Verified artifact set.** The seven-file build output — the HTML ZIP, PDF, DOCX, single-file Markdown edition, source ZIP, publication manifest and checksums — whose identity, membership, hashes and formats have passed verification. Passing these checks does not authorize publication.
 
 **Why it is needed.** Terms migrate. "Review" can mean a quick read, a formal verdict or a quality assurance phase. "Release" can mean a tag, a PDF upload or a catalog update. Without a fixed vocabulary, a review can appear to agree while discussing different things. The glossary makes the disagreement visible.
 
