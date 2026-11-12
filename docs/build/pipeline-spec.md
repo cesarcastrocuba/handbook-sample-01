@@ -44,7 +44,7 @@ The toolkit is installed from `requirements.txt` as a non-editable package:
 handbook-toolkit @ git+https://github.com/cesarcastrocuba/handbooks-hub.git@e34ec0272b696e7f1249ee5112124726777b75cd#subdirectory=tools
 ```
 
-`book.yaml` declares toolkit `0.7.0` and profile `standard` `1.0.0`. Toolkit `0.7.0` packages both the `0.2.0` and `1.0.0` snapshots and adds the Markdown payload as a fifth artifact; `1.0.0` preserves every approved `0.2.0` rule and adds the validation classification. The toolkit resolves the packaged profile and stages its render resources: the table-layout filter, the task-checkbox filter and the breakable-callout Typst include. `publication.formats` still lists only `html`, `pdf` and `docx`: the Markdown edition is implicit, like the source bundle.
+`book.yaml` declares toolkit `0.7.0` and profile `standard` `1.0.0`. Toolkit `0.7.0` packages both the `0.2.0` and `1.0.0` snapshots and includes the Markdown payload introduced in `0.6.0` as a fifth artifact; `1.0.0` preserves every approved `0.2.0` rule and adds the validation classification. The toolkit resolves the packaged profile and stages its render resources: the table-layout filter, the task-checkbox filter and the breakable-callout Typst include. `publication.formats` still lists only `html`, `pdf` and `docx`: the Markdown edition is implicit, like the source bundle.
 
 Quarto supplies its bundled Pandoc and Typst. The repository validators do not require Quarto; only `build-book` does.
 
