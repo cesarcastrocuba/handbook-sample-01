@@ -13,12 +13,26 @@ book:
   subtitle: "A practical guide to planning, writing, reviewing and sustaining a technical handbook"
   author: "Franz César Castro Cuba"
   date: "2026-11-06"
+  search: true
+  repo-url: "https://github.com/cesarcastrocuba/handbook-sample-01"
+  repo-actions: [issue]
+  navbar:
+    right:
+      - text: "Handbook Hub"
+        href: "https://github.com/cesarcastrocuba/handbooks-hub"
+      - text: "Source"
+        href: "https://github.com/cesarcastrocuba/handbook-sample-01/tree/main/manuscript"
+      - text: "Downloads"
+        href: "https://github.com/cesarcastrocuba/handbook-sample-01/releases"
 lang: en
 number-sections: false
 
 format:
   html:
-    theme: cosmo
+    theme:
+      light: cosmo
+      dark: darkly
+    respect-user-color-scheme: true
     toc: true
     toc-depth: 3
   typst:
