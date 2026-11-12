@@ -4,6 +4,20 @@ All notable changes to this sample handbook are recorded here. The format follow
 
 ## [Unreleased]
 
+## [0.2.7] - 2026-11-12
+
+Published 2026-11-12. Built with hub toolkit `0.7.0` at commit `e34ec02` (tag `toolkit-v0.7.0`).
+
+### Changed
+
+- Reading site and downloads upgraded to the unified design: Liberation Sans as the brand typeface,
+  self-hosted WOFF2 with OFL notices, a generated light/dark theme, full-book search, a report-an-issue
+  action, and source and downloads links in the navigation.
+- PDF and DOCX editions use the same token palette; the DOCX names Arial as the metric-compatible
+  family and JetBrains Mono for code.
+- No manuscript content change: the edition carries the same Introduction, Chapters 1-8, Appendices
+  A-C and References as `v0.2.6`.
+
 ## [0.2.6] - 2026-11-11
 
 Published 2026-11-11 by run `43063144576` from commit `1d73db9`. Built with hub toolkit `0.6.0` at commit `c200fd2`.
