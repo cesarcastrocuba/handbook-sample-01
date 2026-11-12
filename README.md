@@ -68,7 +68,7 @@ handbook-toolkit validate-book book.yaml
 
 `make full` runs the fast checks, full descriptor/reading-order validation, cross-reference validation and chapter-profile validation for all eight chapters and the three appendices. It does not build artifacts.
 
-Artifact builds use the pinned `handbook-toolkit` `0.6.0` and Quarto `1.11.9`. A build writes the seven-file release directory outside the repository (HTML ZIP, Markdown edition, PDF, DOCX, source ZIP, manifest and checksums); artifacts are never committed. The command, release workflow, verification steps and known renderer limits are in [`docs/build/pipeline-spec.md`](docs/build/pipeline-spec.md). Full prerequisites and troubleshooting are in [`docs/setup.md`](docs/setup.md).
+Artifact builds use the pinned `handbook-toolkit` `0.7.0` and Quarto `1.11.9`. A build writes the seven-file release directory outside the repository (HTML ZIP, Markdown edition, PDF, DOCX, source ZIP, manifest and checksums); artifacts are never committed. The command, release workflow, verification steps and known renderer limits are in [`docs/build/pipeline-spec.md`](docs/build/pipeline-spec.md). Full prerequisites and troubleshooting are in [`docs/setup.md`](docs/setup.md).
 
 ## Workflow
 
