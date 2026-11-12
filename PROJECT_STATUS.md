@@ -4,7 +4,7 @@ This file is the only source of current status. Decisions live in [`DECISIONS.md
 
 ## Phase
 
-Published and in maintenance. Gates 1, 2 and 3 are approved. `v0.2.6` is the latest published release: Introduction, Chapters 1–8, Appendices A–C and References. It was published on 2026-11-11 by run `43063144576` from commit `1d73db9`.
+Published and in maintenance. Gates 1, 2 and 3 are approved. `v0.2.7` is the latest published release: Introduction, Chapters 1–8, Appendices A–C and References. It was published on 2026-11-12 by run `43290998984` from commit `49f2209`.
 
 ## Gates
 
@@ -18,7 +18,7 @@ Gate state is machine-readable in [`docs/editorial/gates.json`](docs/editorial/g
 
 ## Current state
 
-- `v0.2.6` is the latest published release. It corrects the description of a release to seven files, including the Markdown edition, in Chapter 7, Appendix B and Appendix C (`DEC-022`).
+- `v0.2.7` is the latest published release. It upgrades to toolkit `0.7.0` and the unified design surfaces with no manuscript content change (`DEC-023`). `v0.2.6` remains published as the previous edition; it corrected the description of a release to seven files, including the Markdown edition.
 - `v0.2.5` remains published as the previous edition. It upgrades to toolkit `0.6.0`, which adds the Markdown edition `book.md` as a seventh release asset; manuscript content is unchanged apart from the revision history.
 - `v0.2.4` remains published as the previous edition. It addresses the independent review findings on the `v0.2.0` front matter and appendices.
 - `v0.2.2` was withdrawn on 2026-11-10; its release page and six assets were deleted and its tag stays at `c148518` (`DEC-020`). It had recorded the confirmed author and copyright holder, added third-party notices to the HTML edition and included the portable `mktemp` fix from PR #3.
@@ -26,13 +26,13 @@ Gate state is machine-readable in [`docs/editorial/gates.json`](docs/editorial/g
 - `v0.2.1` is superseded. Its release page and assets were deleted on 2026-11-09 and its tag stays, under hub decision `HUB-DEC-023`.
 - Earlier editions `v0.1.0` to `v0.2.0` had their release pages and assets withdrawn; their tags stay (`DEC-016`).
 - Reading site: <https://cesarcastrocuba.github.io/handbook-sample-01/>. The hub catalog is updated to a new release through a separate hub pull request.
-- Toolkit `0.6.0` pinned at hub `c200fd26924d1ba32ce203091d26ea69961ded1a`, with profile `1.0.0` and Quarto `1.11.9`.
+- Toolkit `0.7.0` pinned at hub `e34ec0272b696e7f1249ee5112124726777b75cd`, with profile `1.0.0` and Quarto `1.11.9`.
 - `make full` passes for the descriptor, reading order, references and all chapters and appendices.
 - `main` is protected: changes arrive through a pull request with passing CI (`DEC-015`), and a branch must be up to date with `main` before merge (hub `HUB-DEC-026`).
 
 ## Open
 
-- None. The six-file description is corrected and published in `v0.2.6`; the independent review is recorded in [`docs/editorial/reviews/v0.2.6-reviews.md`](docs/editorial/reviews/v0.2.6-reviews.md). The independent content review of the `v0.2.0` front-matter and appendix changes and the visual review of the published `v0.2.2` PDF are recorded in [`docs/editorial/reviews/v0.2.4-reviews.md`](docs/editorial/reviews/v0.2.4-reviews.md).
+- None. The six-file description is corrected and published in `v0.2.6`; the unified design is published in `v0.2.7`; the independent review is recorded in [`docs/editorial/reviews/v0.2.6-reviews.md`](docs/editorial/reviews/v0.2.6-reviews.md). The independent content review of the `v0.2.0` front-matter and appendix changes and the visual review of the published `v0.2.2` PDF are recorded in [`docs/editorial/reviews/v0.2.4-reviews.md`](docs/editorial/reviews/v0.2.4-reviews.md).
 
 ## Next step
 

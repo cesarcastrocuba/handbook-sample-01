@@ -6,7 +6,7 @@ All notable changes to this sample handbook are recorded here. The format follow
 
 ## [0.2.7] - 2026-11-12
 
-Published 2026-11-12. Built with hub toolkit `0.7.0` at commit `e34ec02` (tag `toolkit-v0.7.0`).
+Published 2026-11-12 by run `43290998984` from commit `49f2209`. Built with hub toolkit `0.7.0` at commit `e34ec02` (tag `toolkit-v0.7.0`).
 
 ### Changed
 
