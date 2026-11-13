@@ -120,7 +120,7 @@ Use a pilot when the editorial contract is unproven. Use a full draft when the c
 
 In the illustrative case, the team finds that six pages serve partner engineers, three are internal architecture history and three are unfinished drafts. It moves the history to a decision log, archives the drafts and asks the API lead to own the remaining guide. The rewrite is limited to one page whose deployment steps contradict the current sandbox.
 
-::: {.callout-note appearance="simple" icon=false title="Review Checklist"}
+::: {.callout-note .review appearance="simple" icon=false title="Review Checklist"}
 - Can you name the handbook's actual reader and outcome?
 - Have you identified which failure mode is present, rather than only the symptom?
 - Is there an owner who can accept, reject and retire content?

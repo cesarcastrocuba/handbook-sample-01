@@ -87,7 +87,7 @@ Start with the shortest list that catches the failure modes you have seen. Add a
 
 In the illustrative review, the chapter passes structure but fails one source check and one reference check. The reviewer does not rewrite the chapter; they report the locations and the evidence needed. The author fixes both and the reviewer re-runs on the new commit.
 
-::: {.callout-note appearance="simple" icon=false title="Review Checklist"}
+::: {.callout-note .review appearance="simple" icon=false title="Review Checklist"}
 - Is the reviewed commit recorded and still the exact HEAD?
 - Are the chapter-level elements present and ordered?
 - Are every content section's four unit elements and three closure elements present?

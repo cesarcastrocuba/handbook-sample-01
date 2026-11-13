@@ -120,7 +120,7 @@ Prefer a redirect or a clear archive notice. Remove only when continuing availab
 
 In the illustrative case, the source product has a new major version but the core decisions remain valid. The owner publishes a compatible edition, marks two vendor-specific sections as deprecated and links to their replacements. The next review trigger is the following major release, not an arbitrary calendar date.
 
-::: {.callout-note appearance="simple" icon=false title="Review Checklist"}
+::: {.callout-note .review appearance="simple" icon=false title="Review Checklist"}
 - Is there a named maintenance owner and a review trigger?
 - Does the contribution guide state the supported change types and evidence?
 - Does the version identify corrective, additive and breaking changes?

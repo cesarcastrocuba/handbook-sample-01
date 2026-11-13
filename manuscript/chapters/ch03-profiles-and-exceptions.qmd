@@ -120,7 +120,7 @@ Use explicit labels for elements a reader will actually follow. Keep automatic g
 
 In the illustrative audit, the Definition and Purpose are present, but What it includes is a list of links and Why it is needed only repeats the Definition. The Example is a second definition, and the Decision & Trade-off is absent. The editor does not add generic prose. The author is asked to state the decision, name the evidence and either add the trade-off or open an exception. The section is not approved merely because every heading exists.
 
-::: {.callout-note appearance="simple" icon=false title="Review Checklist"}
+::: {.callout-note .review appearance="simple" icon=false title="Review Checklist"}
 - Is the reader outcome visible in the section?
 - Are Definition, Purpose, What it includes and Why it is needed distinct?
 - Are Example, Common Pitfall and Decision & Trade-off present and ordered?

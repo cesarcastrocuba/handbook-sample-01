@@ -124,7 +124,7 @@ Use the smallest template that makes the important decisions visible. Add fields
 
 The adapted template is shorter than the original. It can reject a proposed section on app-store screenshots because that subject is an explicit non-goal. It can also reject a promise that cannot be demonstrated in the staging app.
 
-::: {.callout-note appearance="simple" icon=false title="Review Checklist"}
+::: {.callout-note .review appearance="simple" icon=false title="Review Checklist"}
 - Does the brief name one reader and one observable promise?
 - Are the non-goals explicit enough to reject a plausible section?
 - Is the evidence method checkable by a reviewer?

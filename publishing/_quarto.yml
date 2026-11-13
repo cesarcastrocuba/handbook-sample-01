@@ -20,8 +20,6 @@ book:
     right:
       - text: "Handbook Hub"
         href: "https://cesarcastrocuba.github.io/handbooks-hub/"
-      - text: "Tables"
-        href: "tables.html"
       - text: "Source"
         href: "https://github.com/cesarcastrocuba/handbook-sample-01/tree/main/manuscript"
       - text: "Downloads"

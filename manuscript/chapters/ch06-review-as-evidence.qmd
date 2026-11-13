@@ -121,7 +121,7 @@ Match the record to the risk, but always name the exact commit and the commands 
 
 The reviewer finds that the checks pass but the section's central claim is supported only by a link that has moved. The verdict is changes requested, not approved with a note, because the claim is load-bearing. After the author adds a stable citation and a retrieval date, the reviewer re-runs the checks and approves the new commit.
 
-::: {.callout-note appearance="simple" icon=false title="Review Checklist"}
+::: {.callout-note .review appearance="simple" icon=false title="Review Checklist"}
 - Is the reviewed full commit SHA recorded?
 - Did a different agent or person perform the review?
 - Were the applicable checks actually re-run, with results?

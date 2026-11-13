@@ -4,6 +4,15 @@ All notable changes to this sample handbook are recorded here. The format follow
 
 ## [Unreleased]
 
+## [0.4.1] - 2026-11-13
+
+### Changed
+
+- Section 2.2 closing callouts now use the warning and important roles, matching the rest of the book.
+- Every Review Checklist callout carries the neutral review role, rendered grey in HTML, PDF and DOCX.
+- The List of Tables link moved from the top navigation to the book sidebar below Document Control.
+- Built with hub toolkit `0.9.1` at commit `298d703`, which aligns the hub and book width and rebuilds the Word callouts, table alignment and licence blocks.
+
 ## [0.4.0] - 2026-11-13
 
 Published 2026-11-13 by run `43428501092` from commit `12f8d46`. Built with hub toolkit `0.9.0` at commit `e6c18d0`.
