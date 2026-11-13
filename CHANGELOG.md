@@ -4,6 +4,17 @@ All notable changes to this sample handbook are recorded here. The format follow
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-11-13
+
+Published 2026-11-13. Built with hub toolkit `0.9.0` at commit `e6c18d0`.
+
+### Changed
+
+- The hub and book web chrome now share the compact scale, 1040 px navigation, Pages library link and a dedicated List of Tables page.
+- Callouts use one palette across HTML, PDF and DOCX; PDF callouts never split and Word boxes keep together.
+- PDF and Word use the cream canvas and alternating table rows; Word captions are centered and the outer table border is gone. Word has a static List of Tables.
+- No manuscript content change.
+
 ## [0.3.0] - 2026-11-13
 
 Published 2026-11-13 by run `43342066827` from commit `3322411`. Built with hub toolkit `0.8.0` at commit `9921dbe`.
