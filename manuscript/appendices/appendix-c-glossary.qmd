@@ -80,7 +80,7 @@ Keep the glossary selective. Add a term only when its definition changes a decis
 
 In the illustrative case, one chapter uses "release" for a published artifact set and another uses it for a catalog update. The editor defines release as the owner-authorized publication of the verified artifact set and treats the catalog update as a separate discovery step. The glossary and both chapters now agree.
 
-::: {.callout-note appearance="simple" icon=false title="Review Checklist"}
+::: {.callout-note .review appearance="simple" icon=false title="Review Checklist"}
 - Is every glossary term used in the book with the same meaning?
 - Does each entry define the term in this book's context?
 - Are cross-references explicit and resolvable?

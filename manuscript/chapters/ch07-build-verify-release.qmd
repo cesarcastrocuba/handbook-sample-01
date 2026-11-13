@@ -121,7 +121,7 @@ Keep approved releases immutable. Withdraw a defective release through the catal
 
 If any step fails, the build is not a release candidate. The team fixes the source or the pipeline, rebuilds from a new commit and repeats the review. It does not patch the final directory.
 
-::: {.callout-note appearance="simple" icon=false title="Review Checklist"}
+::: {.callout-note .review appearance="simple" icon=false title="Review Checklist"}
 - Is the build from the exact approved commit and a clean environment?
 - Are the toolkit, profile, Quarto, Pandoc, Typst, Python and zlib versions recorded?
 - Does the directory contain exactly the seven required assets?

@@ -124,7 +124,7 @@ Prefer a link or a summary. Reproduce only the part the reader needs, and keep t
 
 In the illustrative ledger, the signature algorithm is supported by the provider's official documentation, the replay-window recommendation is an author recommendation based on the provider's documented nonce behavior, and the team's observed delivery latency is marked as internal and unverified. No table is copied. The section is reviewed against the ledger, not against the author's confidence.
 
-::: {.callout-note appearance="simple" icon=false title="Review Checklist"}
+::: {.callout-note .review appearance="simple" icon=false title="Review Checklist"}
 - Is every consequential claim classified as fact, recommendation or assumption?
 - Does each citation support the exact sentence and name a version or date?
 - Is at least one claim marked unverified, or is the evidence genuinely complete?

@@ -121,7 +121,7 @@ Give a default when the evidence supports one. Make the conditions explicit rath
 
 The result is shorter than the original and more useful. It does not claim that caching is always faster; it names the condition under which the cache is the wrong choice. The reviewer can now reject a draft that omits the invalidation owner or the stale-data test.
 
-::: {.callout-note appearance="simple" icon=false title="Review Checklist"}
+::: {.callout-note .review appearance="simple" icon=false title="Review Checklist"}
 - Can the section's reader outcome be stated in one sentence?
 - Are the four opening labels distinct and non-repetitive?
 - Does the example expose a real cost or constraint?

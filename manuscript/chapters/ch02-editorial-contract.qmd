@@ -95,11 +95,11 @@ The table is intentionally short. Each row can reject work: a draft about pricin
 
 Read the example as a set of refusals, not a description. It refuses a pricing chapter, a customer-facing tone, an unsupported latency claim and an unowned change. Those refusals are what make the eventual document coherent. A useful counterfactual is to delete the brief and ask which decisions would be renegotiated; if only the title changes, the brief is decoration. If the reader, boundary, evidence, owner or review trigger changes, those are the decisions the record must keep.
 
-::: {.callout-note appearance="simple" icon=false title="Common Pitfall"}
+::: {.callout-warning appearance="simple" icon=false title="Common Pitfall"}
 A topic list masquerading as a brief: “Document authentication, errors, webhooks and rate limits.” It names subjects but not the reader, the promise, the boundary or the evidence. The consequence is predictable: reviewers ask for everything, the author adds sections to satisfy them, and no one can say when the work is complete. The correction is to rewrite each topic as a decision — who needs it, what outcome it enables, what evidence will make it acceptable — and to move the attractive adjacent subjects into non-goals. Name an owner for the boundary before drafting begins.
 :::
 
-::: {.callout-note appearance="simple" icon=false title="Decision & Trade-off"}
+::: {.callout-important appearance="simple" icon=false title="Decision & Trade-off"}
 The brief should be the shortest record that still lets a reviewer reject out-of-scope work. The trade-off is between speed and traceability.
 
 | Option | Choose when | Consequences |
@@ -155,7 +155,7 @@ Use one accountable owner with named specialist reviewers. A committee can advis
 
 The workshop produces a one-page brief, not a table of contents. The outline follows only after the owner accepts the boundary. The brief is then used in review: a proposed section must serve the analyst outcome or be rejected, regardless of how interesting it is. This is the operating difference between a decision record and a wish list. It also prepares the profile in Chapter 3: see @sec-profiles for the section elements that make the accepted boundary visible in the prose.
 
-::: {.callout-note appearance="simple" icon=false title="Review Checklist"}
+::: {.callout-note .review appearance="simple" icon=false title="Review Checklist"}
 - Does the brief name a reader, a situation and an observable outcome?
 - Does it list at least one attractive subject as an explicit non-goal?
 - Is one person accountable for scope and one different person able to review?
