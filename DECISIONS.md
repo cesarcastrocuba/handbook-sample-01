@@ -36,4 +36,6 @@ Only the owner approves editorial scope, gates, licensing and releases.
 | DEC-024 | Approved — 2026-11-13 | Upgrade to toolkit `0.8.0` pinned at hub `9921dbe5150e28394d4cef0cebdf864d35f02e55` and publish the refined design edition as `v0.3.0`, with no manuscript content change. | Owner instruction to finish the design refinement after independent review; the edition adds the editorial type system, book chrome, table caption/list system and DOCX structure. |
 | DEC-025 | Approved — 2026-11-13 | Upgrade to toolkit `0.9.0` pinned at hub `e6c18d019db1f8d24101eee994774a040c48b73b` and publish the polished design edition as `v0.4.0`, with no manuscript content change. | Owner direction to finish the design polish after independent review; the edition adds compact chrome, the dedicated tables page, shared callouts and the cream Word page. |
 
+| DEC-026 | Approved — 2026-11-13 | Upgrade to toolkit `0.9.1` pinned at hub `298d7039e09f7ffbd102b8d1cd09ee01521c34f1` and publish `v0.4.1` with the neutral review callouts and corrected section 2.2 roles. | Owner feedback on the rendered Web, PDF and Word editions after the independent review of `0.9.0`; the toolkit aligns the hub and book widths, moves Tables into the sidebar and rebuilds the Word callout boxes. |
+
 Record new proposals in a pull request. Do not mark a proposal accepted without owner confirmation.
