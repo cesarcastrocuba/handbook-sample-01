@@ -44,7 +44,7 @@ The toolkit is installed from `requirements.txt` as a non-editable package:
 handbook-toolkit @ git+https://github.com/cesarcastrocuba/handbooks-hub.git@e6c18d019db1f8d24101eee994774a040c48b73b#subdirectory=tools
 ```
 
-`book.yaml` declares toolkit `0.9.0` and profile `standard` `1.0.0`. Toolkit `0.9.0` packages both the `0.2.0` and `1.0.0` snapshots and includes the Markdown payload introduced in `0.6.0` as a fifth artifact; `1.0.0` preserves every approved `0.2.0` rule and adds the validation classification. The toolkit resolves the packaged profile and stages its render resources: the table-layout filter, the task-checkbox filter and the breakable-callout Typst include. `publication.formats` still lists only `html`, `pdf` and `docx`: the Markdown edition is implicit, like the source bundle.
+`book.yaml` declares toolkit `0.9.0` and profile `standard` `1.0.0`. Toolkit `0.9.0` packages both the `0.2.0` and `1.0.0` snapshots and includes the Markdown payload introduced in `0.6.0` as a fifth artifact; `1.0.0` preserves every approved `0.2.0` rule and adds the validation classification. The toolkit resolves the packaged profile and stages its render resources: the table-layout filter, the task-checkbox filter and the callout Typst include. `publication.formats` still lists only `html`, `pdf` and `docx`: the Markdown edition is implicit, like the source bundle.
 
 Quarto supplies its bundled Pandoc and Typst. The repository validators do not require Quarto; only `build-book` does.
 
@@ -114,7 +114,7 @@ A local `0.1.0-rc.1` chapter-mode build with toolkit `0.4.0` and profile `1.0.0`
 - the Chapter 2 brief renders as `Table 2.1`;
 - appendices render unnumbered with `A.1`/`B.1`/`C.1` headings.
 
-Toolkit `0.4.0` removes the overflowing orange-book chapter-title block by setting the Typst brand primary to white. The same change makes primary-colored text and borders white: section numbers are present in the PDF text layer but invisible on the page, and the note-callout border disappears. HTML and DOCX keep visible section numbers. This is a renderer-side defect to fix in the toolkit before publication; it is not a manuscript or profile failure. The breakable-callout page split also remains. Table rows and callouts are otherwise readable, and relative HTML links resolve.
+Toolkit `0.4.0` removes the overflowing orange-book chapter-title block by setting the Typst brand primary to white. The same change makes primary-colored text and borders white: section numbers are present in the PDF text layer but invisible on the page, and the note-callout border disappears. HTML and DOCX keep visible section numbers. This is a renderer-side defect to fix in the toolkit before publication; it is not a manuscript or profile failure. The callout page split also remains. Table rows and callouts are otherwise readable, and relative HTML links resolve.
 
 ## 7. Reproducibility
 
