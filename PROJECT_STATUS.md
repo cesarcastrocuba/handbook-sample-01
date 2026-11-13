@@ -4,7 +4,7 @@ This file is the only source of current status. Decisions live in [`DECISIONS.md
 
 ## Phase
 
-Published and in maintenance. Gates 1, 2 and 3 are approved. `v0.4.0` is the latest published release: Introduction, Chapters 1–8, Appendices A–C and References. It was published on 2026-11-13 by run `43428501092` from commit `12f8d46`.
+Published and in maintenance. Gates 1, 2 and 3 are approved. `v0.4.1` is the latest published release: Introduction, Chapters 1–8, Appendices A–C and References. It was published on 2026-11-13 by run `43472781256` from commit `e1ca349`.
 
 ## Gates
 
@@ -18,7 +18,7 @@ Gate state is machine-readable in [`docs/editorial/gates.json`](docs/editorial/g
 
 ## Current state
 
-- `v0.4.0` is the latest published release. It upgrades to toolkit `0.9.1`, compact web chrome, shared callouts, cream PDF/Word pages, table stripes and static Lists of Tables, with no manuscript content change (`DEC-025`). `v0.3.0` remains published as the previous edition.
+- `v0.4.1` is the latest published release. It upgrades to toolkit `0.9.1`, corrects the section 2.2 callout roles, gives Review Checklist the neutral render and moves Tables into the sidebar (`DEC-026`). `v0.4.0` remains published with toolkit `0.9.0` and the previous callout roles (`DEC-025`).
 - `v0.2.5` remains published as the previous edition. It upgrades to toolkit `0.6.0`, which adds the Markdown edition `book.md` as a seventh release asset; manuscript content is unchanged apart from the revision history.
 - `v0.2.4` remains published as the previous edition. It addresses the independent review findings on the `v0.2.0` front matter and appendices.
 - `v0.2.2` was withdrawn on 2026-11-10; its release page and six assets were deleted and its tag stays at `c148518` (`DEC-020`). It had recorded the confirmed author and copyright holder, added third-party notices to the HTML edition and included the portable `mktemp` fix from PR #3.
