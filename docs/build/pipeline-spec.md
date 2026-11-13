@@ -6,7 +6,7 @@
 | Scope | Platform phase 4; publication remains owner-gated |
 | Book config | [`publishing/_quarto.yml`](../../publishing/_quarto.yml) |
 | Release workflow | [`.github/workflows/release.yml`](../../.github/workflows/release.yml) |
-| Toolkit | `0.7.0`, pinned from public hub `e34ec0272b696e7f1249ee5112124726777b75cd` |
+| Toolkit | `0.8.0`, pinned from public hub `9921dbe5150e28394d4cef0cebdf864d35f02e55` |
 | Profile | `standard` `1.0.0` |
 | Quarto | `1.11.9` |
 | Pandoc | `3.10` (bundled) |
@@ -41,10 +41,10 @@ No manifest, checksum, zip or packaging script is added to this repository.
 The toolkit is installed from `requirements.txt` as a non-editable package:
 
 ```text
-handbook-toolkit @ git+https://github.com/cesarcastrocuba/handbooks-hub.git@e34ec0272b696e7f1249ee5112124726777b75cd#subdirectory=tools
+handbook-toolkit @ git+https://github.com/cesarcastrocuba/handbooks-hub.git@9921dbe5150e28394d4cef0cebdf864d35f02e55#subdirectory=tools
 ```
 
-`book.yaml` declares toolkit `0.7.0` and profile `standard` `1.0.0`. Toolkit `0.7.0` packages both the `0.2.0` and `1.0.0` snapshots and includes the Markdown payload introduced in `0.6.0` as a fifth artifact; `1.0.0` preserves every approved `0.2.0` rule and adds the validation classification. The toolkit resolves the packaged profile and stages its render resources: the table-layout filter, the task-checkbox filter and the breakable-callout Typst include. `publication.formats` still lists only `html`, `pdf` and `docx`: the Markdown edition is implicit, like the source bundle.
+`book.yaml` declares toolkit `0.8.0` and profile `standard` `1.0.0`. Toolkit `0.8.0` packages both the `0.2.0` and `1.0.0` snapshots and includes the Markdown payload introduced in `0.6.0` as a fifth artifact; `1.0.0` preserves every approved `0.2.0` rule and adds the validation classification. The toolkit resolves the packaged profile and stages its render resources: the table-layout filter, the task-checkbox filter and the breakable-callout Typst include. `publication.formats` still lists only `html`, `pdf` and `docx`: the Markdown edition is implicit, like the source bundle.
 
 Quarto supplies its bundled Pandoc and Typst. The repository validators do not require Quarto; only `build-book` does.
 
