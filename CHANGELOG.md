@@ -4,6 +4,20 @@ All notable changes to this sample handbook are recorded here. The format follow
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-11-13
+
+Published 2026-11-13. Built with hub toolkit `0.8.0` at commit `9921dbe`.
+
+### Changed
+
+- Editorial type system upgraded to Source Sans 3 for text and Source Serif 4 for headings across
+  HTML, PDF and DOCX.
+- Reading site gains the generated book chrome and a List of Tables; PDF captions and table
+  numbering are chapter-based and the List of Tables is present.
+- DOCX gains Contents, page breaks, teal table headers, callout styles and a List of Tables field.
+- No manuscript content change.
+
+
 ## [0.2.7] - 2026-11-12
 
 Published 2026-11-12 by run `43290998984` from commit `49f2209`. Built with hub toolkit `0.7.0` at commit `e34ec02` (tag `toolkit-v0.7.0`).
