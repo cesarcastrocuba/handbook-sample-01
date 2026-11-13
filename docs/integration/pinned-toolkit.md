@@ -4,8 +4,8 @@
 | --- | --- |
 | Status | Current — toolkit pin below |
 | Toolkit source | `https://github.com/cesarcastrocuba/handbooks-hub.git` |
-| Full commit SHA | `e34ec0272b696e7f1249ee5112124726777b75cd` (hub `main` toolkit pin) |
-| Toolkit version | `0.7.0` |
+| Full commit SHA | `9921dbe5150e28394d4cef0cebdf864d35f02e55` (hub `main` toolkit pin) |
+| Toolkit version | `0.8.0` |
 | Install mode | Direct Git requirement, non-editable, `#subdirectory=tools` |
 | Profile reference | `standard` `1.0.0` — current packaged release; preserves the approved `0.2.0` rules |
 
@@ -20,7 +20,7 @@ No toolkit scripts, schemas or profile files are copied into this repository. In
 
 ## 2. Profile dependency
 
-`book.yaml` references hub `standard` `1.0.0`, the current approved and packaged profile. Toolkit `0.7.0` ships both the `0.2.0` and `1.0.0` snapshots. Profile `1.0.0` keeps every approved `0.2.0` rule unchanged and adds the explicit validation classification. Profiles remain installed toolkit resources; this book does not copy them.
+`book.yaml` references hub `standard` `1.0.0`, the current approved and packaged profile. Toolkit `0.8.0` ships both the `0.2.0` and `1.0.0` snapshots. Profile `1.0.0` keeps every approved `0.2.0` rule unchanged and adds the explicit validation classification. Profiles remain installed toolkit resources; this book does not copy them.
 
 The installed toolkit comes from the commit above and provides `build-book` with staged render resources, the Markdown edition, manifest and checksum verification. It writes publication manifest schema `1.1`, which lists five artifacts (`html`, `pdf`, `docx`, `markdown`, `source`); schema `1.0` with four artifacts stays valid for earlier releases. This book is `status: active`.
 
