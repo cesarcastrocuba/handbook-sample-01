@@ -1,9 +1,9 @@
 # Publication metadata for the sample handbook.
-# Values reflect the prepared v0.5.0 edition.
+# Values reflect the published v0.5.0 edition.
 title: "Handbook Authoring and Publishing"
 subtitle: "A practical guide to planning, writing, reviewing and sustaining a technical handbook"
 version: "0.5.0"
-status: "Prepared — not published"
+status: "Published — 2026-11-14"
 language: "en"
 author: "Franz César Castro Cuba"
 license:
@@ -16,4 +16,4 @@ publication:
     - "docx"
     - "source-bundle"
   generated_artifacts_committed: false
-  build_status: "prepared"
+  build_status: "published"
