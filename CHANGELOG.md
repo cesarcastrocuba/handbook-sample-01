@@ -4,6 +4,17 @@ All notable changes to this sample handbook are recorded here. The format follow
 
 ## [Unreleased]
 
+## [0.4.2] - 2026-11-14
+
+### Changed
+
+- Word callout titles are bold and coloured, because each callout style is now defined once.
+- Contents and the List of Tables are real Word fields that update, and they show their entries in viewers that do not update fields.
+- Table banding comes from the table style, and the document declares fallback fonts.
+- The List of Tables page on the reading site shows one rule under its title instead of two.
+- Built with hub toolkit `0.9.2` at commit `2e29438`, which fixes the Word style definitions, replaces the static List of Tables with native contents and caption fields, and removes the duplicate title rule.
+- No manuscript content change.
+
 ## [0.4.1] - 2026-11-13
 
 ### Changed

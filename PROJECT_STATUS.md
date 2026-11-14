@@ -4,7 +4,7 @@ This file is the only source of current status. Decisions live in [`DECISIONS.md
 
 ## Phase
 
-Published and in maintenance. Gates 1, 2 and 3 are approved. `v0.4.1` is the latest published release: Introduction, Chapters 1–8, Appendices A–C and References. It was published on 2026-11-13 by run `43472781256` from commit `e1ca349`.
+Published and in maintenance. Gates 1, 2 and 3 are approved. `v0.4.1` is the latest published release: Introduction, Chapters 1–8, Appendices A–C and References. It was published on 2026-11-13 by run `43472781256` from commit `e1ca349`. `v0.4.2` is prepared and not published.
 
 ## Gates
 
@@ -19,6 +19,7 @@ Gate state is machine-readable in [`docs/editorial/gates.json`](docs/editorial/g
 ## Current state
 
 - `v0.4.1` is the latest published release. It upgrades to toolkit `0.9.1`, corrects the section 2.2 callout roles, gives Review Checklist the neutral render and moves Tables into the sidebar (`DEC-026`). `v0.4.0` remains published with toolkit `0.9.0` and the previous callout roles (`DEC-025`).
+- `v0.4.2` is prepared and not published. It upgrades to toolkit `0.9.2`, which defines each Word callout style once, makes Contents and the List of Tables native Word fields with visible cached entries, takes table banding from the table style, declares fallback fonts and removes the duplicate rule from the reading site's List of Tables page; no manuscript content change (`DEC-027`).
 - `v0.2.5` remains published as the previous edition. It upgrades to toolkit `0.6.0`, which adds the Markdown edition `book.md` as a seventh release asset; manuscript content is unchanged apart from the revision history.
 - `v0.2.4` remains published as the previous edition. It addresses the independent review findings on the `v0.2.0` front matter and appendices.
 - `v0.2.2` was withdrawn on 2026-11-10; its release page and six assets were deleted and its tag stays at `c148518` (`DEC-020`). It had recorded the confirmed author and copyright holder, added third-party notices to the HTML edition and included the portable `mktemp` fix from PR #3.
@@ -26,7 +27,7 @@ Gate state is machine-readable in [`docs/editorial/gates.json`](docs/editorial/g
 - `v0.2.1` is superseded. Its release page and assets were deleted on 2026-11-09 and its tag stays, under hub decision `HUB-DEC-023`.
 - Earlier editions `v0.1.0` to `v0.2.0` had their release pages and assets withdrawn; their tags stay (`DEC-016`).
 - Reading site: <https://cesarcastrocuba.github.io/handbook-sample-01/>. The hub catalog is updated to a new release through a separate hub pull request.
-- Toolkit `0.9.1` pinned at hub `298d7039e09f7ffbd102b8d1cd09ee01521c34f1`, with profile `1.0.0` and Quarto `1.11.9`.
+- Toolkit `0.9.2` pinned at hub `2e294388ea4e4039744b14e4164301f6c085f587`, with profile `1.0.0` and Quarto `1.11.9`.
 - `make full` passes for the descriptor, reading order, references and all chapters and appendices.
 - `main` is protected: changes arrive through a pull request with passing CI (`DEC-015`), and a branch must be up to date with `main` before merge (hub `HUB-DEC-026`).
 
