@@ -4,7 +4,7 @@ This file is the only source of current status. Decisions live in [`DECISIONS.md
 
 ## Phase
 
-Published and in maintenance. Gates 1, 2 and 3 are approved. `v0.4.1` is the latest published release: Introduction, Chapters 1–8, Appendices A–C and References. It was published on 2026-11-13 by run `43472781256` from commit `e1ca349`. `v0.4.2` is prepared and not published.
+Published and in maintenance. Gates 1, 2 and 3 are approved. `v0.4.2` is the latest published release: Introduction, Chapters 1–8, Appendices A–C and References. It was published on 2026-11-14 by run `43579133589` from commit `a59185e`.
 
 ## Gates
 
@@ -18,8 +18,8 @@ Gate state is machine-readable in [`docs/editorial/gates.json`](docs/editorial/g
 
 ## Current state
 
-- `v0.4.1` is the latest published release. It upgrades to toolkit `0.9.1`, corrects the section 2.2 callout roles, gives Review Checklist the neutral render and moves Tables into the sidebar (`DEC-026`). `v0.4.0` remains published with toolkit `0.9.0` and the previous callout roles (`DEC-025`).
-- `v0.4.2` is prepared and not published. It upgrades to toolkit `0.9.2`, which defines each Word callout style once, makes Contents and the List of Tables native Word fields with visible cached entries, takes table banding from the table style, declares fallback fonts and removes the duplicate rule from the reading site's List of Tables page; no manuscript content change (`DEC-027`).
+- `v0.4.2` is the latest published release. It upgrades to toolkit `0.9.2`, which defines each Word callout style once, makes Contents and the List of Tables native Word fields with visible cached entries, takes table banding from the table style, declares fallback fonts and removes the duplicate rule from the reading site's List of Tables page; no manuscript content change (`DEC-027`).
+- `v0.4.1` remains published as the previous edition. It upgrades to toolkit `0.9.1`, corrects the section 2.2 callout roles, gives Review Checklist the neutral render and moves Tables into the sidebar (`DEC-026`). `v0.4.0` and every older published edition remain available (hub `HUB-DEC-031`).
 - `v0.2.5` remains published as the previous edition. It upgrades to toolkit `0.6.0`, which adds the Markdown edition `book.md` as a seventh release asset; manuscript content is unchanged apart from the revision history.
 - `v0.2.4` remains published as the previous edition. It addresses the independent review findings on the `v0.2.0` front matter and appendices.
 - `v0.2.2` was withdrawn on 2026-11-10; its release page and six assets were deleted and its tag stays at `c148518` (`DEC-020`). It had recorded the confirmed author and copyright holder, added third-party notices to the HTML edition and included the portable `mktemp` fix from PR #3.
