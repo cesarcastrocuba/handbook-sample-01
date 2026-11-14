@@ -4,7 +4,7 @@ This file is the only source of current status. Decisions live in [`DECISIONS.md
 
 ## Phase
 
-Published and in maintenance. Gates 1, 2 and 3 are approved. `v0.4.2` is the latest published release: Introduction, Chapters 1–8, Appendices A–C and References. It was published on 2026-11-14 by run `43579133589` from commit `a59185e`.
+Published and in maintenance. Gates 1, 2 and 3 are approved. `v0.4.2` is the latest published release: Introduction, Chapters 1–8, Appendices A–C and References. It was published on 2026-11-14 by run `43579133589` from commit `a59185e`. `v0.5.0` is prepared and not published.
 
 ## Gates
 
@@ -18,6 +18,7 @@ Gate state is machine-readable in [`docs/editorial/gates.json`](docs/editorial/g
 
 ## Current state
 
+- `v0.5.0` is prepared and not published. It upgrades to toolkit `0.10.0` with the reading-experience redesign and adds Figure 1.1, an original lifecycle diagram in section 1.3 (`DEC-028`, `DEC-029`).
 - `v0.4.2` is the latest published release. It upgrades to toolkit `0.9.2`, which defines each Word callout style once, makes Contents and the List of Tables native Word fields with visible cached entries, takes table banding from the table style, declares fallback fonts and removes the duplicate rule from the reading site's List of Tables page; no manuscript content change (`DEC-027`).
 - `v0.4.1` remains published as the previous edition. It upgrades to toolkit `0.9.1`, corrects the section 2.2 callout roles, gives Review Checklist the neutral render and moves Tables into the sidebar (`DEC-026`). `v0.4.0` and every older published edition remain available (hub `HUB-DEC-031`).
 - `v0.2.5` remains published as the previous edition. It upgrades to toolkit `0.6.0`, which adds the Markdown edition `book.md` as a seventh release asset; manuscript content is unchanged apart from the revision history.
@@ -27,7 +28,7 @@ Gate state is machine-readable in [`docs/editorial/gates.json`](docs/editorial/g
 - `v0.2.1` is superseded. Its release page and assets were deleted on 2026-11-09 and its tag stays, under hub decision `HUB-DEC-023`.
 - Earlier editions `v0.1.0` to `v0.2.0` had their release pages and assets withdrawn; their tags stay (`DEC-016`).
 - Reading site: <https://cesarcastrocuba.github.io/handbook-sample-01/>. The hub catalog is updated to a new release through a separate hub pull request.
-- Toolkit `0.9.2` pinned at hub `2e294388ea4e4039744b14e4164301f6c085f587`, with profile `1.0.0` and Quarto `1.11.9`.
+- Toolkit `0.10.0` pinned at hub `dcfd8c86a616c931ae68450c60dbd220cfd49a08`, with profile `1.0.0` and Quarto `1.11.9`.
 - `make full` passes for the descriptor, reading order, references and all chapters and appendices.
 - `main` is protected: changes arrive through a pull request with passing CI (`DEC-015`), and a branch must be up to date with `main` before merge (hub `HUB-DEC-026`).
 

@@ -84,7 +84,9 @@ Repair first when the failure is local. Narrow or retire when the promise itself
 
 **Purpose.** The lifecycle tells a contributor what kind of work is legitimate now. It prevents a draft from being published as if it were approved, and it prevents a released handbook from being edited as if it had no readers. It also makes retirement a normal outcome rather than a failure.
 
-**What it includes.** The brief records the reader, promise, scope and non-goals. The outline records the structure and the pilot candidate. The pilot tests one section before expansion. Expansion writes and reviews the remaining sections. Release builds once from an approved commit and publishes the same bytes. Maintenance handles corrections and new evidence. Retirement redirects readers and preserves the decision that the handbook is no longer maintained.
+**What it includes.** The brief records the reader, promise, scope and non-goals. The outline records the structure and the pilot candidate. The pilot tests one section before expansion. Expansion writes and reviews the remaining sections. Release builds once from an approved commit and publishes the same bytes. Maintenance handles corrections and new evidence. Retirement redirects readers and preserves the decision that the handbook is no longer maintained. Figure @fig-lifecycle shows those states in order, from brief to retirement.
+
+![The seven lifecycle states in order, from brief to retirement.](../images/lifecycle.svg){#fig-lifecycle fig-alt="Boxes joined by arrows run from brief through outline, pilot, expansion and release to maintenance and retirement." width="100%"}
 
 **Why it is needed.** Without explicit states, a team confuses activity with progress. A folder full of drafts looks like a book; a published PDF looks approved; an old page looks current. The lifecycle makes the evidence for each transition visible, so a reader can tell whether the artifact is a proposal, a reviewed draft or a maintained release.
 

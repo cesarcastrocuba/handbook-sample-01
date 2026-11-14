@@ -31,7 +31,7 @@ format:
   html:
     theme:
       light: cosmo
-      dark: darkly
+      dark: cosmo
     respect-user-color-scheme: true
     toc: true
     toc-depth: 3

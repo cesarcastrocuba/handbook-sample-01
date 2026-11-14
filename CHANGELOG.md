@@ -4,6 +4,18 @@ All notable changes to this sample handbook are recorded here. The format follow
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-11-14
+
+### Added
+
+- Figure 1.1, an original lifecycle diagram in section 1.3, so the figure path is exercised in every edition: a figures page on the reading site, a List of Figures in PDF and Word, and the caption in the Markdown edition.
+
+### Changed
+
+- Reading site: a cover page with the edition and a "Start reading" link; the sidebar groups the book into parts; every page carries an edition footer; list pages (tables, figures) are ordinary pages with search and navigation; favicon and social metadata; subtle motion that is disabled when the reader prefers reduced motion. The book theme is generated from the design tokens.
+- Word and PDF: a List of Figures when the book has figures.
+- Built with hub toolkit `0.10.0` at commit `dcfd8c8`; the dark web theme moves to `cosmo`, as the toolkit upgrade note requires.
+
 ## [0.4.2] - 2026-11-14
 
 ### Changed
