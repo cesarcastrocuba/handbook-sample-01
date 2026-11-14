@@ -4,7 +4,7 @@
 | --- | --- |
 | Status | Current — toolkit pin below |
 | Toolkit source | `https://github.com/cesarcastrocuba/handbooks-hub.git` |
-| Full commit SHA | `5e3c6b9c9e38bc17324fba1642fc8646f6f7f444` (hub `main` toolkit pin) |
+| Full commit SHA | `efc4c40c9c22fb5e5d2f50bf4cde189f304d0146` (hub `main` toolkit pin) |
 | Toolkit version | `0.10.2` |
 | Install mode | Direct Git requirement, non-editable, `#subdirectory=tools` |
 | Profile reference | `standard` `1.0.0` — current packaged release; preserves the approved `0.2.0` rules |
