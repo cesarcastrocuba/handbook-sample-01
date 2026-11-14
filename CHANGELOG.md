@@ -14,7 +14,7 @@ All notable changes to this sample handbook are recorded here. The format follow
 
 - Reading site: a cover page with the edition and a "Start reading" link; the sidebar groups the book into parts; every page carries an edition footer; list pages (tables, figures) are ordinary pages with search and navigation; favicon and social metadata; subtle motion that is disabled when the reader prefers reduced motion. The book theme is generated from the design tokens.
 - Word and PDF: a List of Figures when the book has figures.
-- Built with hub toolkit `0.10.0` at commit `dcfd8c8`; the dark web theme moves to `cosmo`, as the toolkit upgrade note requires.
+- Built with hub toolkit `0.10.1` at commit `d4480f9`; the dark web theme moves to `cosmo`, as the toolkit upgrade note requires.
 
 ## [0.4.2] - 2026-11-14
 
