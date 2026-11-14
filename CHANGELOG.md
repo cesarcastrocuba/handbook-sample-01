@@ -4,6 +4,14 @@ All notable changes to this sample handbook are recorded here. The format follow
 
 ## [Unreleased]
 
+## [0.5.1] - 2026-11-14
+
+### Changed
+
+- Word edition: Contents, the List of Tables and the List of Figures show their entries with page numbers as soon as the file is opened, with no prompt; they are still Word fields, so F9 updates them. Captioned tables show alternate-row banding in Word again.
+- Built with hub toolkit `0.10.2` at commit `5e3c6b9`; the release workflow installs LibreOffice and builds with `--require-page-numbers`.
+- No manuscript content change.
+
 ## [0.5.0] - 2026-11-14
 
 ### Added
