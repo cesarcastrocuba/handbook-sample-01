@@ -4,6 +4,16 @@ All notable changes to this sample handbook are recorded here. The format follow
 
 ## [Unreleased]
 
+## [0.5.2] - 2026-11-15
+
+### Changed
+
+- Prepare toolkit `0.11.0`, pinned at hub `d4bef53af4c70f86fecdb13d1924c79353dde32f`, under Owner decision `DEC-031` / hub `HUB-DEC-042`.
+- Tables use uniform surface-filled body rows without alternate stripes and light cream `#DDD3C0` rules in HTML, PDF and DOCX.
+- The reading site uses smaller typography and rounder controls, with no page transition; guarded reading progress, reveals and hover/focus feedback remain.
+- The release workflow verifies deployed reading-site assets after Pages deployment. Pull-request CI builds a preview with `book.docx` for the Owner's Word check before tagging.
+- No manuscript content change. This version is prepared, not published; current state remains in `PROJECT_STATUS.md`.
+
 ## [0.5.1] - 2026-11-14
 
 ### Changed

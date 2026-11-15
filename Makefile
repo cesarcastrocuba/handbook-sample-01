@@ -8,7 +8,7 @@ check: test
 	$(PYTHON) -B scripts/check_repo.py
 	$(TOOLKIT) validate-book book.yaml
 
-# Local gate-policy tests only; no toolkit or network required.
+# Book-local gate and workflow tests. PyYAML is installed by requirements.txt.
 test:
 	$(PYTHON) -B -m unittest discover -s scripts/tests -p 'test_*.py'
 

@@ -40,5 +40,34 @@ jobs:
           print("build config syntax: OK")
           PY
 
-      - name: Run fast checks
-        run: make check
+      - name: Run full checks
+        run: make full
+
+      - name: Install Quarto
+        uses: quarto-dev/quarto-actions/setup@8a96df13519ee81fd526f2dfca5962811136661b # v2.2.0
+        with:
+          version: "1.11.9"
+
+      - name: Install edition inspection tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends poppler-utils libreoffice-writer
+
+      - name: Build the edition preview for review
+        run: |
+          VERSION="$(python -c 'import yaml; print(yaml.safe_load(open("publishing/metadata.yaml"))["version"])')"
+          handbook-toolkit build-book \
+            --repo "$GITHUB_WORKSPACE" \
+            --commit "$GITHUB_SHA" \
+            --output "$RUNNER_TEMP/edition-preview" \
+            --version "$VERSION-preview" \
+            --preview \
+            --require-page-numbers
+
+      - name: Upload the edition preview
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: edition-preview
+          path: ${{ runner.temp }}/edition-preview
+          if-no-files-found: error
+          retention-days: 14

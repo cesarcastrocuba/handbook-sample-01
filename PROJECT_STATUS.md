@@ -4,7 +4,7 @@ This file is the only source of current status. Decisions live in [`DECISIONS.md
 
 ## Phase
 
-Published and in maintenance. Gates 1, 2 and 3 are approved. `v0.5.1` is the latest published release: Introduction, Chapters 1–8, Appendices A–C and References. It was published on 2026-11-15 by run `43686973539` from commit `77e7216`, with seven assets, and the hub catalog lists it.
+Published and in maintenance. Gates 1, 2 and 3 are approved. `v0.5.1` is the latest published release: Introduction, Chapters 1–8, Appendices A–C and References. It was published on 2026-11-15 by run `43686973539` from commit `77e7216`, with seven assets, and the hub catalog lists it. `v0.5.2` is prepared and not published.
 
 ## Gates
 
@@ -18,6 +18,8 @@ Gate state is machine-readable in [`docs/editorial/gates.json`](docs/editorial/g
 
 ## Current state
 
+- `v0.5.2` is prepared and not published. It pins toolkit `0.11.0` at `d4bef53af4c70f86fecdb13d1924c79353dde32f`, with uniform surface table rows and cream rules in every edition, no page transition, compact reading-site scale and rounder controls. The release checks the deployed site's assets. No manuscript content change (`DEC-031`). The Owner must inspect the CI-built `book.docx` in desktop Word before the tag.
+
 - `v0.5.1` is the latest published release. It upgrades to toolkit `0.10.3`: in desktop Word, Contents, the List of Tables and the List of Figures open with their entries and page numbers and can be updated with F9, and captioned tables show alternate-row banding; `v0.4.2` and `v0.5.0` showed those indexes empty until the reader pressed F9. The reading site serves its stylesheets and fonts from a path that current Pages actions publish. No manuscript content change (`DEC-030`).
 - `v0.5.0` remains published as the previous edition. It upgrades to toolkit `0.10.1` with the reading-experience redesign, and it is the first published edition with a figure, Figure 1.1 in section 1.3, and a List of Figures (`DEC-028`, `DEC-029`).
 - `v0.4.2` remains published. It upgrades to toolkit `0.9.2`, which defines each Word callout style once, makes Contents and the List of Tables native Word fields with visible cached entries, takes table banding from the table style, declares fallback fonts and removes the duplicate rule from the reading site's List of Tables page; no manuscript content change (`DEC-027`). `v0.4.1` and every older published edition remain available (hub `HUB-DEC-031`).
@@ -28,17 +30,18 @@ Gate state is machine-readable in [`docs/editorial/gates.json`](docs/editorial/g
 - `v0.2.1` is superseded. Its release page and assets were deleted on 2026-11-09 and its tag stays, under hub decision `HUB-DEC-023`.
 - Earlier editions `v0.1.0` to `v0.2.0` had their release pages and assets withdrawn; their tags stay (`DEC-016`).
 - Reading site: <https://cesarcastrocuba.github.io/handbook-sample-01/>. The hub catalog is updated to a new release through a separate hub pull request.
-- Toolkit `0.10.3` pinned at hub `58384afadce80015e5ee84955dd14eb2f90d5020`, with profile `1.0.0` and Quarto `1.11.9`.
+- Toolkit `0.11.0` pinned at hub `d4bef53af4c70f86fecdb13d1924c79353dde32f`, with profile `1.0.0` and Quarto `1.11.9`.
 - `make full` passes for the descriptor, reading order, references and all chapters and appendices.
 - `main` is protected: changes arrive through a pull request with passing CI (`DEC-015`), and a branch must be up to date with `main` before merge (hub `HUB-DEC-026`).
 
 ## Open
 
-- None. The six-file description is corrected and published in `v0.2.6`; the unified design is published in `v0.2.7`; the independent review is recorded in [`docs/editorial/reviews/v0.2.6-reviews.md`](docs/editorial/reviews/v0.2.6-reviews.md). The independent content review of the `v0.2.0` front-matter and appendix changes and the visual review of the published `v0.2.2` PDF are recorded in [`docs/editorial/reviews/v0.2.4-reviews.md`](docs/editorial/reviews/v0.2.4-reviews.md).
+- Owner desktop Word acceptance of the CI-built `v0.5.2` DOCX is pending before tagging.
+- The six-file description is corrected and published in `v0.2.6`; the unified design is published in `v0.2.7`; the independent review is recorded in [`docs/editorial/reviews/v0.2.6-reviews.md`](docs/editorial/reviews/v0.2.6-reviews.md). The independent content review of the `v0.2.0` front-matter and appendix changes and the visual review of the published `v0.2.2` PDF are recorded in [`docs/editorial/reviews/v0.2.4-reviews.md`](docs/editorial/reviews/v0.2.4-reviews.md).
 
 ## Next step
 
-Any further release needs owner authorization.
+Complete independent review and CI, then obtain the Owner’s desktop Word acceptance of the CI-built `book.docx` before tagging `v0.5.2`. The release workflow has not been dispatched.
 
 ## Verification
 
