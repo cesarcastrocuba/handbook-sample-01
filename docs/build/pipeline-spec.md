@@ -6,7 +6,7 @@
 | Scope | Platform phase 4; publication remains owner-gated |
 | Book config | [`publishing/_quarto.yml`](../../publishing/_quarto.yml) |
 | Release workflow | [`.github/workflows/release.yml`](../../.github/workflows/release.yml) |
-| Toolkit | `0.10.1`, pinned from public hub `d4480f9e2bc897cbd69a8455abf00bb3b2a1e30b` |
+| Toolkit | `0.10.3`, pinned from public hub `58384afadce80015e5ee84955dd14eb2f90d5020` |
 | Profile | `standard` `1.0.0` |
 | Quarto | `1.11.9` |
 | Pandoc | `3.10` (bundled) |
@@ -41,10 +41,10 @@ No manifest, checksum, zip or packaging script is added to this repository.
 The toolkit is installed from `requirements.txt` as a non-editable package:
 
 ```text
-handbook-toolkit @ git+https://github.com/cesarcastrocuba/handbooks-hub.git@d4480f9e2bc897cbd69a8455abf00bb3b2a1e30b#subdirectory=tools
+handbook-toolkit @ git+https://github.com/cesarcastrocuba/handbooks-hub.git@58384afadce80015e5ee84955dd14eb2f90d5020#subdirectory=tools
 ```
 
-`book.yaml` declares toolkit `0.10.1` and profile `standard` `1.0.0`. Toolkit `0.10.1` packages both the `0.2.0` and `1.0.0` snapshots and includes the Markdown payload introduced in `0.6.0` as a fifth artifact; `1.0.0` preserves every approved `0.2.0` rule and adds the validation classification. The toolkit resolves the packaged profile and stages its render resources: the table-layout filter, the task-checkbox filter and the callout Typst include. `publication.formats` still lists only `html`, `pdf` and `docx`: the Markdown edition is implicit, like the source bundle.
+`book.yaml` declares toolkit `0.10.3` and profile `standard` `1.0.0`. Toolkit `0.10.3` packages both the `0.2.0` and `1.0.0` snapshots and includes the Markdown payload introduced in `0.6.0` as a fifth artifact; `1.0.0` preserves every approved `0.2.0` rule and adds the validation classification. The toolkit resolves the packaged profile and stages its render resources: the table-layout filter, the task-checkbox filter and the callout Typst include. `publication.formats` still lists only `html`, `pdf` and `docx`: the Markdown edition is implicit, like the source bundle.
 
 Quarto supplies its bundled Pandoc and Typst. The repository validators do not require Quarto; only `build-book` does.
 
@@ -59,7 +59,8 @@ handbook-toolkit build-book \
   --output /outside/repo/release-<version> \
   --version <version> \
   --mode chapter \
-  --quarto "$(command -v quarto)"
+  --quarto "$(command -v quarto)" \
+  --require-page-numbers
 ```
 
 The build refuses a dirty tree, a commit that is not the requested `HEAD`, an existing output directory and an output inside the repository. It performs one render and then inspects the produced bytes.
@@ -93,9 +94,9 @@ The build job:
 
 1. checks out `github.sha` with full history and verifies the tree is clean;
 2. refuses an existing tag and records the exact source commit;
-3. installs Quarto `1.11.9` and verifies the version;
+3. installs Quarto `1.11.9` and verifies the version, plus `poppler-utils` and LibreOffice Writer for the page-number probe;
 4. installs the pinned toolkit, then runs `make full`;
-5. runs `build-book` once against the recorded commit;
+5. runs `build-book` once against the recorded commit with `--require-page-numbers`;
 6. verifies the exact seven-file membership, checksums, manifest identity and payload list, HTML and source archives, DOCX document part, Markdown edition and PDF page count;
 7. creates a GitHub Release at the recorded commit with exactly those seven files;
 8. extracts `book-html.zip` and uploads the result as the Pages artifact.

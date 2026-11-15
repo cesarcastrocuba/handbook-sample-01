@@ -59,7 +59,7 @@ jobs:
       - name: Install system inspection dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y poppler-utils
+          sudo apt-get install -y --no-install-recommends poppler-utils libreoffice-writer
 
       - name: Install the pinned toolkit
         run: |
@@ -87,7 +87,8 @@ jobs:
             --commit "$SOURCE_COMMIT" \
             --output "$RUNNER_TEMP/release" \
             --version "$VERSION" \
-            --quarto "$(command -v quarto)"
+            --quarto "$(command -v quarto)" \
+            --require-page-numbers
 
       - name: Verify the seven-file release directory
         env:
