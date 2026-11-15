@@ -4,7 +4,7 @@ This file is the only source of current status. Decisions live in [`DECISIONS.md
 
 ## Phase
 
-Published and in maintenance. Gates 1, 2 and 3 are approved. `v0.5.1` is the latest published release: Introduction, Chapters 1–8, Appendices A–C and References. It was published on 2026-11-15 by run `43686973539` from commit `77e7216`, with seven assets, and the hub catalog lists it. `v0.5.2` is prepared and not published.
+Published and in maintenance. Gates 1, 2 and 3 are approved. `v0.5.2` is the latest published release: Introduction, Chapters 1–8, Appendices A–C and References. It was published on 2026-11-15 by run `43741672481` from commit `bc31c8f`, with seven assets, and the hub catalog lists it.
 
 ## Gates
 
@@ -18,10 +18,10 @@ Gate state is machine-readable in [`docs/editorial/gates.json`](docs/editorial/g
 
 ## Current state
 
-- `v0.5.2` is prepared and not published. It pins toolkit `0.11.0` at `d4bef53af4c70f86fecdb13d1924c79353dde32f`, with uniform surface table rows and cream rules in every edition, no page transition, compact reading-site scale and rounder controls. The release checks the deployed site's assets. No manuscript content change (`DEC-031`). The Owner must inspect the CI-built `book.docx` in desktop Word before the tag.
+- `v0.5.2` is the latest published release. It pins toolkit `0.11.0` at `d4bef53af4c70f86fecdb13d1924c79353dde32f`, with uniform surface table rows and cream rules in every edition, no page transition, compact reading-site scale and rounder controls. The release checked the deployed site's assets. No manuscript content change (`DEC-031`). The Owner inspected the CI-built `book.docx` in desktop Word and approved the tag on 2026-11-15.
 
-- `v0.5.1` is the latest published release. It upgrades to toolkit `0.10.3`: in desktop Word, Contents, the List of Tables and the List of Figures open with their entries and page numbers and can be updated with F9, and captioned tables show alternate-row banding; `v0.4.2` and `v0.5.0` showed those indexes empty until the reader pressed F9. The reading site serves its stylesheets and fonts from a path that current Pages actions publish. No manuscript content change (`DEC-030`).
-- `v0.5.0` remains published as the previous edition. It upgrades to toolkit `0.10.1` with the reading-experience redesign, and it is the first published edition with a figure, Figure 1.1 in section 1.3, and a List of Figures (`DEC-028`, `DEC-029`).
+- `v0.5.1` remains published as the previous edition. It upgrades to toolkit `0.10.3`: in desktop Word, Contents, the List of Tables and the List of Figures open with their entries and page numbers and can be updated with F9, and captioned tables show alternate-row banding; `v0.4.2` and `v0.5.0` showed those indexes empty until the reader pressed F9. The reading site serves its stylesheets and fonts from a path that current Pages actions publish. No manuscript content change (`DEC-030`).
+- `v0.5.0` remains published. It upgrades to toolkit `0.10.1` with the reading-experience redesign, and it is the first published edition with a figure, Figure 1.1 in section 1.3, and a List of Figures (`DEC-028`, `DEC-029`).
 - `v0.4.2` remains published. It upgrades to toolkit `0.9.2`, which defines each Word callout style once, makes Contents and the List of Tables native Word fields with visible cached entries, takes table banding from the table style, declares fallback fonts and removes the duplicate rule from the reading site's List of Tables page; no manuscript content change (`DEC-027`). `v0.4.1` and every older published edition remain available (hub `HUB-DEC-031`).
 - `v0.2.5` remains published as the previous edition. It upgrades to toolkit `0.6.0`, which adds the Markdown edition `book.md` as a seventh release asset; manuscript content is unchanged apart from the revision history.
 - `v0.2.4` remains published as the previous edition. It addresses the independent review findings on the `v0.2.0` front matter and appendices.
