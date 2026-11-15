@@ -9,7 +9,8 @@ All notable changes to this sample handbook are recorded here. The format follow
 ### Changed
 
 - Word edition: Contents, the List of Tables and the List of Figures show their entries with page numbers as soon as the file is opened, with no prompt; they are still Word fields, so F9 updates them. Captioned tables show alternate-row banding in Word again.
-- Built with hub toolkit `0.10.2` at commit `efc4c40`; the release workflow installs LibreOffice and builds with `--require-page-numbers`.
+- Reading site: stylesheets and fonts are served from `handbook-render/` instead of a hidden directory, so current Pages actions publish them correctly.
+- Built with hub toolkit `0.10.3` at commit `58384af`; the release workflow installs LibreOffice and builds with `--require-page-numbers`.
 - In desktop Word, updating the field (F9) still works, and "Update entire table" also works for the List of Tables and the List of Figures.
 - No manuscript content change.
 
