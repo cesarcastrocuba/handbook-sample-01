@@ -6,8 +6,7 @@ Prepare the next edition with toolkit 0.16.1, standard profile 1.1.0 and edition
 ## Applied upgrade steps (0.11.0 to 0.16.1)
 
 - `book.yaml`: toolkit `0.16.1`, profile `1.1.0`; `requirements.txt` pins the hub toolkit 0.16.1
-  release candidate `aebcaae076b09a4e43f46ab863c51f9870922a16`. The coordinator swaps in the final
-  merge SHA when hub release PR 149 merges.
+  tag `toolkit-v0.16.1` at `0c89c38c9375d39cc9f2747469f545ee5dd7b561`.
 - Adopted the template release workflow: one `version` input, qpdf 11 PDF compaction, the
   build-time repository star count (`HANDBOOK_STAR_COUNTS`), the optional book-owned
   `release-assets` path, pre-release handling and the deployed-site check.

@@ -8,7 +8,7 @@ All notable changes to this sample handbook are recorded here. The format follow
 
 ### Changed
 
-- Prepare toolkit `0.16.1` at hub release candidate `aebcaae076b09a4e43f46ab863c51f9870922a16`, standard profile `1.1.0` and edition `0.6.0` under `DEC-032` (Proposed). This version is prepared, not published; current state remains in `PROJECT_STATUS.md`.
+- Prepare toolkit `0.16.1` at hub tag `toolkit-v0.16.1` (`0c89c38c9375d39cc9f2747469f545ee5dd7b561`), standard profile `1.1.0` and edition `0.6.0` under `DEC-032` (Proposed). This version is prepared, not published; current state remains in `PROJECT_STATUS.md`.
 - Every edition uses Inter for text and headings; the PDF body is 9.5 pt and the Word edition embeds Inter and JetBrains Mono. Source Sans 3 and Source Serif 4 are no longer used.
 - Figures print at 85% of their stated size and a figure that nearly fits the gap in front of it is scaled further, never below 75% of its natural size, in the PDF and Word editions (change `0081`). Callout boxes stay whole, and in Word no paragraph before a box or inside it keeps with next.
 - The reading site's navbar shows the repository's GitHub star count, read at build time by the release workflow; without a count the link is shown alone.
