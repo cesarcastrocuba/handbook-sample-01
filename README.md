@@ -23,6 +23,7 @@ Gate 3 is an approval of written work and authorizes expansion. The draft now co
 - [`docs/editorial/gates.json`](docs/editorial/gates.json) — machine-readable gate state and the authorized pilot path.
 - [`docs/setup.md`](docs/setup.md) — contributor setup, pinned install, fast checks and current limits.
 - [`docs/build/pipeline-spec.md`](docs/build/pipeline-spec.md) — build and release contract, toolchain pins and release-candidate findings.
+- [`.github/workflows/ci.yml`](.github/workflows/ci.yml) — fast and full checks plus a review-only edition preview; no release or deployment.
 - [`.github/workflows/release.yml`](.github/workflows/release.yml) — manual seven-asset release and Pages workflow; not executed.
 - [`AGENTS.md`](AGENTS.md) — agent-neutral roles, workflow and editorial gates.
 - [`DECISIONS.md`](DECISIONS.md) — decisions with explicit status.
@@ -68,7 +69,7 @@ handbook-toolkit validate-book book.yaml
 
 `make full` runs the fast checks, full descriptor/reading-order validation, cross-reference validation and chapter-profile validation for all eight chapters and the three appendices. It does not build artifacts.
 
-Artifact builds use the pinned `handbook-toolkit` `0.11.0` and Quarto `1.11.9`. A build writes the seven-file release directory outside the repository (HTML ZIP, Markdown edition, PDF, DOCX, source ZIP, manifest and checksums); artifacts are never committed. The command, release workflow, verification steps and known renderer limits are in [`docs/build/pipeline-spec.md`](docs/build/pipeline-spec.md). Full prerequisites and troubleshooting are in [`docs/setup.md`](docs/setup.md).
+Artifact builds use the pinned `handbook-toolkit` `0.16.1`, standard profile `1.1.0`, Quarto `1.11.9` and qpdf 11 or later. A build writes the seven-file release directory outside the repository (HTML ZIP, Markdown edition, PDF, DOCX, source ZIP, manifest and checksums); artifacts are never committed. The command, release workflow, verification steps and known renderer limits are in [`docs/build/pipeline-spec.md`](docs/build/pipeline-spec.md). Full prerequisites and troubleshooting are in [`docs/setup.md`](docs/setup.md).
 
 ## Workflow
 

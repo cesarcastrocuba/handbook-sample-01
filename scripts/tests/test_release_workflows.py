@@ -22,8 +22,20 @@ class ReleaseWorkflowTests(unittest.TestCase):
         self.assertEqual(check['env']['PAGE_URL'], '${{ needs.deploy.outputs.page_url }}')
         self.assertEqual(check['run'], 'python3 -m handbook_toolkit.site_check "$PAGE_URL"')
 
+    def test_release_reads_the_star_count_before_the_build(self):
+        jobs = yaml.safe_load((ROOT / '.github/workflows/release.yml').read_text())['jobs']
+        steps = jobs['build']['steps']
+        star = next(step for step in steps if step.get('name') == 'Read the repository star count')
+        self.assertIn('stargazers_count', star['run'])
+        self.assertIn('HANDBOOK_STAR_COUNTS', star['run'])
+        names = [step.get('name', '') for step in steps]
+        self.assertLess(
+            names.index('Read the repository star count'),
+            names.index('Build the release once'),
+        )
+
     def test_ci_builds_and_uploads_a_non_release_preview(self):
-        workflow = yaml.safe_load((ROOT / '.github/workflows/check.yml').read_text())
+        workflow = yaml.safe_load((ROOT / '.github/workflows/ci.yml').read_text())
         self.assertEqual(workflow['permissions'], {'contents': 'read'})
         steps = workflow['jobs']['check']['steps']
         self.assertTrue(any(step.get('run') == 'make full' for step in steps))

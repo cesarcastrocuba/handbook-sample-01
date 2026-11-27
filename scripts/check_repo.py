@@ -37,7 +37,7 @@ REQUIRED_FILES = (
     "requirements.txt",
     "book.yaml",
     ".gitignore",
-    ".github/workflows/check.yml",
+    ".github/workflows/ci.yml",
     "docs/editorial/brief.md",
     "docs/editorial/outline.md",
     "docs/editorial/profile.md",

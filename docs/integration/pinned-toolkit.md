@@ -4,10 +4,10 @@
 | --- | --- |
 | Status | Current — toolkit pin below |
 | Toolkit source | `https://github.com/cesarcastrocuba/handbooks-hub.git` |
-| Full commit SHA | `d4bef53af4c70f86fecdb13d1924c79353dde32f` (hub `main` toolkit pin) |
-| Toolkit version | `0.11.0` |
+| Full commit SHA | `0c89c38c9375d39cc9f2747469f545ee5dd7b561` (hub tag `toolkit-v0.16.1`) |
+| Toolkit version | `0.16.1` |
 | Install mode | Direct Git requirement, non-editable, `#subdirectory=tools` |
-| Profile reference | `standard` `1.0.0` — current packaged release; preserves the approved `0.2.0` rules |
+| Profile reference | `standard` `1.1.0` — current packaged release; preserves the approved `0.2.0` rules |
 
 ## 1. Metadata sources
 
@@ -20,7 +20,7 @@ No toolkit scripts, schemas or profile files are copied into this repository. In
 
 ## 2. Profile dependency
 
-`book.yaml` references hub `standard` `1.0.0`, the current approved and packaged profile. Toolkit `0.11.0` ships both the `0.2.0` and `1.0.0` snapshots. Profile `1.0.0` keeps every approved `0.2.0` rule unchanged and adds the explicit validation classification. Profiles remain installed toolkit resources; this book does not copy them.
+`book.yaml` references hub `standard` `1.1.0`, the current approved and packaged profile. Toolkit `0.16.1` ships the `1.0.0` and `1.1.0` snapshots. Profile `1.1.0` keeps every approved `0.2.0` rule, relaxes the appendix and qualified-callout rules, and adds the explicit validation classification. Profiles remain installed toolkit resources; this book does not copy them.
 
 The installed toolkit comes from the commit above and provides `build-book` with staged render resources, the Markdown edition, manifest and checksum verification. It writes publication manifest schema `1.1`, which lists five artifacts (`html`, `pdf`, `docx`, `markdown`, `source`); schema `1.0` with four artifacts stays valid for earlier releases. This book is `status: active`.
 
@@ -49,7 +49,7 @@ The fast `handbook-toolkit validate-book book.yaml` check verifies the descripto
 
 - All eight chapters and three appendices are present. `make full` passes descriptor, reading order, references and chapter validation.
 - No artifact is committed. Releases and the Pages site are produced by the manual release workflow. Current release state is in [`PROJECT_STATUS.md`](../../PROJECT_STATUS.md).
-- Profile `1.0.0` is the current packaged release and preserves the approved `0.2.0` rules; `make full` resolves the profile version from `book.yaml`.
+- Profile `1.1.0` is the current packaged release, preserves the approved `0.2.0` rules and relaxes the appendix and qualified-callout rules; `make full` resolves the profile version from `book.yaml`.
 - CI proves installation and the fast check from a clean GitHub runner. It does not prove publication readiness.
 
 ## 5. CI

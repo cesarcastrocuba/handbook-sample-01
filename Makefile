@@ -1,7 +1,10 @@
-.PHONY: check test validate-book full
+.PHONY: check test validate-book full build
 
 PYTHON ?= python3
 TOOLKIT ?= handbook-toolkit
+COMMIT ?= $(shell git rev-parse HEAD)
+OUTPUT ?= ../dist
+BUILD_FLAGS ?=
 
 # Fast checks. Requires the pinned toolkit from requirements.txt.
 check: test
@@ -32,3 +35,10 @@ full: check
 	for file in manuscript/chapters/*.qmd manuscript/appendices/*.qmd; do \
 		$(TOOLKIT) validate-manuscript "$$file" --mode chapter --profile "$$profile"; \
 	done
+
+# Build the seven-file release directory once. Requires Quarto 1.11.9, pdfinfo,
+# qpdf 11 or later and LibreOffice Writer; the output must be outside the
+# repository. This book keeps `full` as the editorial-only gate above, so an
+# artifact build is always explicit.
+build: check
+	$(TOOLKIT) build-book --repo . --commit $(COMMIT) --output $(OUTPUT) --mode chapter $(BUILD_FLAGS)

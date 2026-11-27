@@ -131,8 +131,8 @@ Gate 3 is an approval of written work, not a precondition for writing it. Gates 
 
 **Assumptions**
 
-- The pinned `handbook-toolkit` `0.11.0` is installed from the public hub commit recorded in `requirements.txt`; manuscript, reference and artifact validation are available.
-- The content profile is aligned with hub `standard` `1.0.0`, which preserves the approved `0.2.0` rules and is packaged on hub `main` at `7820172`.
+- The pinned `handbook-toolkit` `0.16.1` is installed from the public hub tag `toolkit-v0.16.1` recorded in `requirements.txt`; manuscript, reference and artifact validation are available.
+- The content profile is aligned with hub `standard` `1.1.0`, which preserves the approved `0.2.0` rules and is packaged on hub `main` at `0c89c38`.
 - The sample book is a demonstration, not a replacement for the existing handbook.
 - English is the publication language.
 - The owner confirmed the public attribution on 2026-11-09 (`DEC-017`).

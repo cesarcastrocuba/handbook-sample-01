@@ -8,6 +8,7 @@ title: "Handbook Authoring and Publishing"
 
 | Field | Value |
 | :--- | :--- |
+| Version | 0.6.0 |
 | Approver and maintainer | Franz César Castro Cuba |
 | Scope | Introduction, Chapters 1–8, Appendices A–C and References |
 | Review cycle | At least annually and whenever the standard profile publishes a new major version |

@@ -4,6 +4,18 @@ All notable changes to this sample handbook are recorded here. The format follow
 
 ## [Unreleased]
 
+## [0.6.0] - 2026-11-27
+
+### Changed
+
+- Prepare toolkit `0.16.1` at hub tag `toolkit-v0.16.1` (`0c89c38c9375d39cc9f2747469f545ee5dd7b561`), standard profile `1.1.0` and edition `0.6.0` under `DEC-032` (Proposed). This version is prepared, not published; current state remains in `PROJECT_STATUS.md`.
+- Every edition uses Inter for text and headings; the PDF body is 9.5 pt and the Word edition embeds Inter and JetBrains Mono. Source Sans 3 and Source Serif 4 are no longer used.
+- Figures print at 85% of their stated size and a figure that nearly fits the gap in front of it is scaled further, never below 75% of its natural size, in the PDF and Word editions (change `0081`). Callout boxes stay whole, and in Word no paragraph before a box or inside it keeps with next.
+- The reading site's navbar shows the repository's GitHub star count, read at build time by the release workflow; without a count the link is shown alone.
+- qpdf 11 or later compacts the release PDF losslessly. The workflows adopt the template's `ci.yml` and `release.yml`, including the deployed-site check and the optional book-owned extra release assets.
+- Front matter tables now number from `0` (the Introduction's reading-routes table is `Table 0.1`), appendices use their letter and unnumbered back matter uses `BM.N` (change `0051`). The List of Tables reflects the new labels; no manuscript prose changes.
+- The book-owned Document Control table gains the required `Version` row for `0.6.0` (change `0064`); the 0.14.0 build rule validates it.
+
 ## [0.5.2] - 2026-11-15
 
 ### Changed

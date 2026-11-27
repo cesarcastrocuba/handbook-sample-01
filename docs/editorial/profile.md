@@ -2,14 +2,14 @@
 
 | Field | Value |
 | --- | --- |
-| Status | **Approved direction** — standard `0.2.0` rules; current packaged profile is `1.0.0` |
+| Status | **Approved direction** — standard `0.2.0` rules; current packaged profile is `1.1.0` |
 | Document revision | 0.3 |
 | Date | 2026-11-06 |
 | Approval evidence | [Owner approval record](approval-record.md) |
-| Hub profile reference | `standard` `1.0.0` — current approved and packaged release on hub `main` at `7820172c8810ececc550d5a3604ea4045687fefd` |
+| Hub profile reference | `standard` `1.1.0` — current approved and packaged release on hub `main` at `0c89c38c9375d39cc9f2747469f545ee5dd7b561` |
 | Applies to | Every chapter and appendix in this book |
 
-This profile defines the reusable shape of a section. It is deliberately small: enough structure to make chapters consistent and reviewable without turning every page into a form. The owner approved this book's `0.2.0` direction at Gate 2. Standard `1.0.0` keeps every one of those rules unchanged and adds the explicit automated/assisted/manual validation classification; the descriptor now pins `1.0.0`.
+This profile defines the reusable shape of a section. It is deliberately small: enough structure to make chapters consistent and reviewable without turning every page into a form. The owner approved this book's `0.2.0` direction at Gate 2. Standard `1.1.0` keeps every one of those rules, relaxes the appendix and qualified-callout rules, and adds the explicit automated/assisted/manual validation classification; the descriptor now pins `1.1.0`.
 
 ## 1. Chapter-level elements
 
