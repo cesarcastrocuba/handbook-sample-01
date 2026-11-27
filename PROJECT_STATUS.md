@@ -18,7 +18,7 @@ Gate state is machine-readable in [`docs/editorial/gates.json`](docs/editorial/g
 
 ## Current state
 
-- `0.6.0` is prepared, not published. It pins toolkit `0.16.1` at hub tag `toolkit-v0.16.1` (`0c89c38c9375d39cc9f2747469f545ee5dd7b561`) and standard profile `1.1.0`, and moves every edition to Inter, the 85% print figure scale with whole callout boxes, and the build-time GitHub star link. The book-owned Document Control table gains the required `Version` row; publication metadata states `Prepared — not published`. The edition needs the Owner's desktop Word check and tag approval (`DEC-032`, Proposed). No release workflow has been dispatched.
+- `0.6.0` is prepared, not published. It pins toolkit `0.16.2` at hub release merge `25fb801` (tag `toolkit-v0.16.2` pending the Owner's approval), commit `25fb8010970f95e1d00afbff87f5657d1ce102ba`, and standard profile `1.1.0`, and moves every edition to Inter, the 85% print figure scale with whole callout boxes, and the build-time GitHub star link. The book-owned Document Control table gains the required `Version` row; publication metadata states `Prepared — not published`. The edition needs the Owner's desktop Word check and tag approval (`DEC-032`, Proposed). No release workflow has been dispatched. Toolkit `0.16.2` also stops Word from splitting a word inside a table cell.
 - `v0.5.2` is the latest published release. It pins toolkit `0.11.0` at `d4bef53af4c70f86fecdb13d1924c79353dde32f`, with uniform surface table rows and cream rules in every edition, no page transition, compact reading-site scale and rounder controls. The release checked the deployed site's assets. No manuscript content change (`DEC-031`). The Owner inspected the CI-built `book.docx` in desktop Word and approved the tag on 2026-11-15.
 
 - `v0.5.1` remains published as the previous edition. It upgrades to toolkit `0.10.3`: in desktop Word, Contents, the List of Tables and the List of Figures open with their entries and page numbers and can be updated with F9, and captioned tables show alternate-row banding; `v0.4.2` and `v0.5.0` showed those indexes empty until the reader pressed F9. The reading site serves its stylesheets and fonts from a path that current Pages actions publish. No manuscript content change (`DEC-030`).
@@ -31,7 +31,7 @@ Gate state is machine-readable in [`docs/editorial/gates.json`](docs/editorial/g
 - `v0.2.1` is superseded. Its release page and assets were deleted on 2026-11-09 and its tag stays, under hub decision `HUB-DEC-023`.
 - Earlier editions `v0.1.0` to `v0.2.0` had their release pages and assets withdrawn; their tags stay (`DEC-016`).
 - Reading site: <https://cesarcastrocuba.github.io/handbook-sample-01/>. The hub catalog is updated to a new release through a separate hub pull request.
-- Toolkit `0.16.1` pinned at hub tag `toolkit-v0.16.1` (`0c89c38c9375d39cc9f2747469f545ee5dd7b561`), with profile `1.1.0`, Quarto `1.11.9`, qpdf 11 or later and Inter in the PDF and Word editions.
+- Toolkit `0.16.2` pinned at hub release merge `25fb801` (tag `toolkit-v0.16.2` pending the Owner's approval), commit `25fb8010970f95e1d00afbff87f5657d1ce102ba`, with profile `1.1.0`, Quarto `1.11.9`, qpdf 11 or later and Inter in the PDF and Word editions.
 - `make full` passes for the descriptor, reading order, references and all chapters and appendices.
 - `main` is protected: changes arrive through a pull request with passing CI (`DEC-015`), and a branch must be up to date with `main` before merge (hub `HUB-DEC-026`).
 

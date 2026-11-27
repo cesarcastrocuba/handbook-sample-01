@@ -6,7 +6,7 @@
 | Scope | Platform phase 4; publication remains owner-gated |
 | Book config | [`publishing/_quarto.yml`](../../publishing/_quarto.yml) |
 | Release workflow | [`.github/workflows/release.yml`](../../.github/workflows/release.yml) |
-| Toolkit | `0.16.1`, pinned from public hub tag `toolkit-v0.16.1` at `0c89c38c9375d39cc9f2747469f545ee5dd7b561` |
+| Toolkit | `0.16.2`, pinned from public hub release merge `25fb801` (tag `toolkit-v0.16.2` pending the Owner's approval) at `25fb8010970f95e1d00afbff87f5657d1ce102ba` |
 | Profile | `standard` `1.1.0` |
 | Quarto | `1.11.9` |
 | Pandoc | `3.10` (bundled) |
@@ -41,10 +41,10 @@ No manifest, checksum, zip or packaging script is added to this repository.
 The toolkit is installed from `requirements.txt` as a non-editable package:
 
 ```text
-handbook-toolkit @ git+https://github.com/cesarcastrocuba/handbooks-hub.git@0c89c38c9375d39cc9f2747469f545ee5dd7b561#subdirectory=tools
+handbook-toolkit @ git+https://github.com/cesarcastrocuba/handbooks-hub.git@25fb8010970f95e1d00afbff87f5657d1ce102ba#subdirectory=tools
 ```
 
-`book.yaml` declares toolkit `0.16.1` and profile `standard` `1.1.0`. Toolkit `0.16.1` packages the `1.0.0` and `1.1.0` snapshots and includes the Markdown payload introduced in `0.6.0`, the qpdf PDF compaction introduced in `0.14.0`, the print figure and callout placement of `0.15.0`, and the Inter typeface of `0.16.0`; `1.1.0` preserves every approved `0.2.0` rule, relaxes the appendix and qualified-callout rules, and adds the validation classification. The toolkit resolves the packaged profile and stages its render resources: the table-layout filter, the task-checkbox filter and the callout Typst include. `publication.formats` still lists only `html`, `pdf` and `docx`: the Markdown edition is implicit, like the source bundle.
+`book.yaml` declares toolkit `0.16.2` and profile `standard` `1.1.0`. Toolkit `0.16.2` packages the `1.0.0` and `1.1.0` snapshots and includes the Markdown payload introduced in `0.6.0`, the qpdf PDF compaction introduced in `0.14.0`, the print figure and callout placement of `0.15.0`, and the Inter typeface of `0.16.0`; `1.1.0` preserves every approved `0.2.0` rule, relaxes the appendix and qualified-callout rules, and adds the validation classification. The toolkit resolves the packaged profile and stages its render resources: the table-layout filter, the task-checkbox filter and the callout Typst include. `publication.formats` still lists only `html`, `pdf` and `docx`: the Markdown edition is implicit, like the source bundle.
 
 Quarto supplies its bundled Pandoc and Typst. The repository validators do not require Quarto; only `build-book` does.
 
