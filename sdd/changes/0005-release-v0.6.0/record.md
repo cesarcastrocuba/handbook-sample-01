@@ -1,12 +1,13 @@
 # Prepare sample v0.6.0
 
-Prepare the next edition with toolkit 0.16.1, standard profile 1.1.0 and edition 0.6.0 under
+Prepare the next edition with toolkit 0.16.2, standard profile 1.1.0 and edition 0.6.0 under
 `DEC-032` (Proposed). Preparation only: no tag, release or deployment.
 
-## Applied upgrade steps (0.11.0 to 0.16.1)
+## Applied upgrade steps (0.11.0 to 0.16.2)
 
-- `book.yaml`: toolkit `0.16.1`, profile `1.1.0`; `requirements.txt` pins the hub toolkit 0.16.1
-  tag `toolkit-v0.16.1` at `0c89c38c9375d39cc9f2747469f545ee5dd7b561`.
+- `book.yaml`: toolkit `0.16.2`, profile `1.1.0`; `requirements.txt` pins the hub toolkit 0.16.2
+  release merge `25fb801` (tag `toolkit-v0.16.2` pending the Owner's approval), commit
+  `25fb8010970f95e1d00afbff87f5657d1ce102ba`.
 - Adopted the template release workflow: one `version` input, qpdf 11 PDF compaction, the
   build-time repository star count (`HANDBOOK_STAR_COUNTS`), the optional book-owned
   `release-assets` path, pre-release handling and the deployed-site check.
@@ -24,6 +25,8 @@ Prepare the next edition with toolkit 0.16.1, standard profile 1.1.0 and edition
 - 0.16.0 typeface: every edition uses Inter and the PDF body is 9.5 pt; the Word edition embeds
   Inter and JetBrains Mono. `NOTICE.md` is updated from the Selawik/Liberation Sans/Source
   families.
+- 0.16.2 Word table word floors: no word is split inside a table cell. Table columns floor on
+  Inter word widths measured at the Word table size.
 - Current-state documents updated: `README.md`, `PROJECT_STATUS.md`, `docs/setup.md`,
   `docs/integration/pinned-toolkit.md`, `docs/build/pipeline-spec.md`, the editorial brief,
   outline, profile, approval record and `publishing/README.md`.
