@@ -1,12 +1,12 @@
 # Book descriptor. This file does not approve a gate or a profile.
 #
-# Toolkit source: public hub main, full SHA
-# c200fd26924d1ba32ce203091d26ea69961ded1a, installed from requirements.txt.
+# Toolkit source: public hub release candidate 0.16.1, full SHA
+# aebcaae076b09a4e43f46ab863c51f9870922a16, installed from requirements.txt.
 #
-# Profile source: standard 1.0.0 is approved and packaged on hub main at the
-# same commit. It preserves the approved 0.2.0 rules and adds the enforcement
-# classification. Profiles ship as installed toolkit resources; this descriptor
-# does not copy them.
+# Profile source: standard 1.1.0 is approved and packaged on hub main at the
+# same commit. It preserves the approved 0.2.0 rules, relaxes the appendix and
+# qualified-callout rules, and adds the enforcement classification. Profiles
+# ship as installed toolkit resources; this descriptor does not copy them.
 schema_version: "1.0"
 id: handbook-authoring-and-publishing
 title: "Handbook Authoring and Publishing"
@@ -14,9 +14,9 @@ status: active
 
 profile:
   id: standard
-  version: "1.0.0"
+  version: "1.1.0"
 
-toolkit: "0.11.0"
+toolkit: "0.16.1"
 
 license:
   content: CC-BY-SA-4.0

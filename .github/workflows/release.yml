@@ -1,218 +1,319 @@
 name: release
 
+# Manual only. Builds one verified payload set from the exact commit, publishes every file in
+# that directory as release assets, and deploys the HTML edition to GitHub Pages from the same
+# bytes. It never publishes on push or pull_request.
+
 on:
   workflow_dispatch:
     inputs:
       version:
-        description: "Book version, for example 0.1.0 or 0.1.0-rc.1"
-        required: true
-        type: string
-      tag:
-        description: "Release tag, for example v0.1.0"
+        description: Book version, exact X.Y.Z or X.Y.Z-rc.N without a leading v
         required: true
         type: string
 
 permissions:
-  contents: write
-  pages: write
-  id-token: write
+  contents: read
 
 concurrency:
-  group: release-${{ github.ref }}
+  group: release
   cancel-in-progress: false
 
 jobs:
   build:
-    name: Build, verify and release
-    runs-on: ubuntu-latest
+    name: Build, verify and publish
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write # create the release and its tag
+      pages: read # configure and upload the Pages artifact
+    env:
+      VERSION: ${{ inputs.version }}
+      TAG: v${{ inputs.version }}
+      DEFAULT_REF: refs/heads/${{ github.event.repository.default_branch }}
     steps:
       - name: Check out the exact commit
-        uses: actions/checkout@v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
           persist-credentials: false
 
-      - name: Record and check the source identity
+      - name: Validate the request
         env:
-          TAG: ${{ inputs.tag }}
+          GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
+
+          if ! printf '%s' "$VERSION" | grep -Eq '^[0-9]+\.[0-9]+\.[0-9]+(-rc\.[1-9][0-9]*)?$'; then
+            echo "::error::version must be X.Y.Z or X.Y.Z-rc.N, got: $VERSION"
+            exit 1
+          fi
+          if [ "$GITHUB_REF" != "$DEFAULT_REF" ]; then
+            echo "::error::a release must be dispatched from $DEFAULT_REF, not $GITHUB_REF"
+            exit 1
+          fi
+          if gh api "repos/$GITHUB_REPOSITORY/git/ref/tags/$TAG" > /dev/null 2>&1; then
+            echo "::error::tag $TAG already exists"
+            exit 1
+          fi
+          if gh release view "$TAG" --repo "$GITHUB_REPOSITORY" > /dev/null 2>&1; then
+            echo "::error::release $TAG already exists"
+            exit 1
+          fi
           SOURCE_COMMIT="$(git rev-parse HEAD)"
           test "$SOURCE_COMMIT" = "$GITHUB_SHA"
           test -z "$(git status --porcelain)"
-          if git rev-parse -q --verify "refs/tags/$TAG" >/dev/null; then
-            echo "tag already exists: $TAG" >&2
-            exit 1
-          fi
           echo "SOURCE_COMMIT=$SOURCE_COMMIT" >> "$GITHUB_ENV"
 
-      - name: Install pinned Quarto
-        uses: quarto-dev/quarto-actions/setup@v2
+      - name: Set up Python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.12"
+
+      - name: Install Quarto
+        uses: quarto-dev/quarto-actions/setup@8a96df13519ee81fd526f2dfca5962811136661b # v2.2.0
         with:
           version: "1.11.9"
 
-      - name: Verify the Quarto version
-        run: |
-          set -euo pipefail
-          test "$(quarto --version)" = "1.11.9"
-
-      - name: Install system inspection dependencies
+      - name: Install system inspection and PDF compaction dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y --no-install-recommends poppler-utils libreoffice-writer
+          sudo apt-get install -y --no-install-recommends poppler-utils qpdf libreoffice-writer
+          test "$(qpdf --version | head -1 | cut -d' ' -f3 | cut -d. -f1)" -ge 11
+
+      - name: Verify the Quarto version
+        run: test "$(quarto --version)" = "1.11.9"
 
       - name: Install the pinned toolkit
         run: |
-          set -euo pipefail
           python3 -m venv "$RUNNER_TEMP/toolkit-venv"
-          "$RUNNER_TEMP/toolkit-venv/bin/pip" install --upgrade pip
-          "$RUNNER_TEMP/toolkit-venv/bin/pip" install -r requirements.txt
+          "$RUNNER_TEMP/toolkit-venv/bin/python" -m pip install --upgrade pip
+          "$RUNNER_TEMP/toolkit-venv/bin/python" -m pip install -r requirements.txt
           "$RUNNER_TEMP/toolkit-venv/bin/handbook-toolkit" version
 
-      - name: Run repository gates
+      - name: Refuse an uninitialized template book
         run: |
-          set -euo pipefail
+          book_id="$("$RUNNER_TEMP/toolkit-venv/bin/python" -c 'import yaml; print(yaml.safe_load(open("book.yaml"))["id"])')"
+          if [ "$book_id" = "template-book" ]; then
+            echo "::error::book.yaml id is still template-book; run the Initialize book workflow first"
+            exit 1
+          fi
+
+      - name: Run the fast checks
+        run: |
           export PATH="$RUNNER_TEMP/toolkit-venv/bin:$PATH"
-          make full
-          git diff --check
+          make check
+
+      # The reading site's navbar shows the repository's GitHub stars (hub issue 141). The count is
+      # read here, so the build step never holds a token; any failure leaves the link without one.
+      - name: Read the repository star count
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          count="$(gh api "repos/$GITHUB_REPOSITORY" --jq .stargazers_count 2>/dev/null || true)"
+          case "$count" in ''|*[!0-9]*) echo "No star count; the link is shown without one." ;;
+            *) printf 'HANDBOOK_STAR_COUNTS={"%s": %s}\n' "$GITHUB_REPOSITORY" "$count" >> "$GITHUB_ENV" ;;
+          esac
 
       - name: Build the release once
         env:
-          VERSION: ${{ inputs.version }}
+          RELEASE_DIR: ${{ runner.temp }}/release
         run: |
-          set -euo pipefail
           test -z "$(git status --porcelain)"
           "$RUNNER_TEMP/toolkit-venv/bin/handbook-toolkit" build-book \
             --repo "$GITHUB_WORKSPACE" \
             --commit "$SOURCE_COMMIT" \
-            --output "$RUNNER_TEMP/release" \
+            --output "$RELEASE_DIR" \
             --version "$VERSION" \
             --quarto "$(command -v quarto)" \
             --require-page-numbers
 
-      - name: Verify the seven-file release directory
+      - name: Verify every byte in the release directory
         env:
-          VERSION: ${{ inputs.version }}
+          RELEASE_DIR: ${{ runner.temp }}/release
         run: |
-          set -euo pipefail
-          cd "$RUNNER_TEMP/release"
+          cd "$RELEASE_DIR"
           sha256sum --check SHA256SUMS.txt
-          python3 - <<'PY'
+          test -f publication-manifest.json
+          test -f book-html.zip
+          "$RUNNER_TEMP/toolkit-venv/bin/python" - <<'PY'
           import json
           import os
           import zipfile
           from pathlib import Path
 
           root = Path.cwd()
-          expected = {
-              "book-html.zip",
-              "book.md",
-              "book.pdf",
-              "book.docx",
-              "book-source.zip",
-              "publication-manifest.json",
-              "SHA256SUMS.txt",
-          }
-          actual = {path.name for path in root.iterdir()}
-          if actual != expected:
-              raise SystemExit(f"release files differ: expected {sorted(expected)}, found {sorted(actual)}")
-
-          sums = {
-              line.split("  ", 1)[1]
-              for line in (root / "SHA256SUMS.txt").read_text(encoding="utf-8").splitlines()
-              if "  " in line
-          }
-          if sums != expected - {"SHA256SUMS.txt"}:
-              raise SystemExit(f"checksums do not cover every release file: {sorted(sums)}")
-
           manifest = json.loads((root / "publication-manifest.json").read_text(encoding="utf-8"))
           if manifest["book"]["commit"] != os.environ["SOURCE_COMMIT"]:
               raise SystemExit("manifest commit does not match the checked-out commit")
           if manifest["book"]["version"] != os.environ["VERSION"]:
               raise SystemExit("manifest version does not match the requested version")
-
-          payloads = {entry["path"] for entry in manifest["artifacts"]}
-          if payloads != expected - {"SHA256SUMS.txt", "publication-manifest.json"}:
-              raise SystemExit(f"manifest payloads differ: {sorted(payloads)}")
-
+          compaction = manifest["build"].get("optimization", {}).get("pdf", {})
+          if compaction.get("status") not in {"optimized", "kept: no gain"}:
+              raise SystemExit(f"release PDF was not compacted with qpdf: {compaction.get('status')}")
+          if compaction.get("saved", 0) != compaction.get("before", 0) - compaction.get("after", 1):
+              raise SystemExit("manifest PDF compaction sizes are inconsistent")
           with zipfile.ZipFile(root / "book-html.zip") as archive:
-              names = set(archive.namelist())
-              if "index.html" not in names:
+              if "index.html" not in archive.namelist():
                   raise SystemExit("HTML ZIP has no index.html")
-              if any(name.startswith("/") or ".." in Path(name).parts for name in names):
-                  raise SystemExit("HTML ZIP contains an unsafe member")
-
-          with zipfile.ZipFile(root / "book-source.zip") as archive:
-              if archive.comment.decode("ascii", errors="replace") != os.environ["SOURCE_COMMIT"]:
-                  raise SystemExit("source ZIP does not record the checked-out commit")
-
-          with zipfile.ZipFile(root / "book.docx") as archive:
-              if "word/document.xml" not in archive.namelist():
-                  raise SystemExit("DOCX has no Word document part")
-
-          markdown = (root / "book.md").read_text(encoding="utf-8")
-          if not markdown.strip():
-              raise SystemExit("Markdown edition is empty")
-          if not markdown.startswith("# "):
-              raise SystemExit("Markdown edition does not start with a top-level heading")
-          print("seven-file release verification: OK")
+          print(f"verified {len(list(root.iterdir()))} release files")
           PY
-          pdfinfo book.pdf | grep -E '^Pages:[[:space:]]+[1-9][0-9]*$'
 
-      - name: Create the GitHub Release with exactly seven files
+      - name: Extract the verified HTML edition
         env:
-          GH_TOKEN: ${{ github.token }}
-          VERSION: ${{ inputs.version }}
-          TAG: ${{ inputs.tag }}
+          RELEASE_DIR: ${{ runner.temp }}/release
+          PAGES_DIR: ${{ runner.temp }}/pages
         run: |
-          set -euo pipefail
-          notes="$RUNNER_TEMP/release-notes.md"
-          cat > "$notes" <<EOF
-          Handbook Authoring and Publishing $VERSION.
-
-          - Source commit: $SOURCE_COMMIT
-          - Toolkit build: recorded in publication-manifest.json
-          - Assets: HTML ZIP, PDF, DOCX, Markdown edition, source ZIP, publication manifest, SHA256SUMS.txt
-          - The same verified HTML ZIP bytes are deployed to GitHub Pages.
-
-          This release was built once from the listed commit and verified before publication.
-          EOF
-          prerelease=()
-          if [[ "$VERSION" == *-* ]]; then
-            prerelease+=(--prerelease)
-          fi
-          gh release create "$TAG" \
-            --target "$SOURCE_COMMIT" \
-            --title "Handbook Authoring and Publishing $VERSION" \
-            --notes-file "$notes" \
-            "${prerelease[@]}" \
-            "$RUNNER_TEMP/release/book-html.zip" \
-            "$RUNNER_TEMP/release/book.md" \
-            "$RUNNER_TEMP/release/book.pdf" \
-            "$RUNNER_TEMP/release/book.docx" \
-            "$RUNNER_TEMP/release/book-source.zip" \
-            "$RUNNER_TEMP/release/publication-manifest.json" \
-            "$RUNNER_TEMP/release/SHA256SUMS.txt"
-
-      - name: Extract the verified HTML bytes for Pages
-        run: |
-          set -euo pipefail
-          mkdir -p "$RUNNER_TEMP/pages"
-          unzip -q "$RUNNER_TEMP/release/book-html.zip" -d "$RUNNER_TEMP/pages"
-          test -f "$RUNNER_TEMP/pages/index.html"
+          mkdir -p "$PAGES_DIR"
+          unzip -q "$RELEASE_DIR/book-html.zip" -d "$PAGES_DIR"
+          test -f "$PAGES_DIR/index.html"
 
       - name: Configure Pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
 
       - name: Upload the Pages artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         with:
           path: ${{ runner.temp }}/pages
 
+      - name: Build book-owned extra release assets (opt-in)
+        env:
+          EXTRA_ASSETS_DIR: ${{ runner.temp }}/extra-assets
+          RELEASE_DIR: ${{ runner.temp }}/release
+        run: |
+          set -euo pipefail
+
+          if (make -qp 2>/dev/null || true) | grep -q '^release-assets:'; then
+            echo "Building book-owned extra release assets..."
+            export PATH="$RUNNER_TEMP/toolkit-venv/bin:$PATH"
+            SOURCE_DATE_EPOCH="$(git log -1 --format=%ct "$SOURCE_COMMIT")"
+            export SOURCE_DATE_EPOCH
+            rm -rf "$EXTRA_ASSETS_DIR"
+            mkdir -p "$EXTRA_ASSETS_DIR"
+            make release-assets RELEASE_ASSETS_DIR="$EXTRA_ASSETS_DIR" PYTHON="$RUNNER_TEMP/toolkit-venv/bin/python"
+            if [ -n "$(git status --porcelain)" ]; then
+              echo "::error::make release-assets modified the working tree; working tree must remain clean"
+              git status --porcelain
+              exit 1
+            fi
+            "$RUNNER_TEMP/toolkit-venv/bin/python" -c "import sys, textwrap; exec(textwrap.dedent(sys.stdin.read()))" <<'PY'
+          from datetime import datetime, timezone
+          import os
+          from pathlib import Path
+          import re
+          import sys
+          import zipfile
+
+          extra_dir = Path(os.environ["EXTRA_ASSETS_DIR"])
+          release_dir = Path(os.environ["RELEASE_DIR"])
+
+          MAX_FILES = 100
+          MAX_FILE_BYTES = 10 * 1024 * 1024
+          MAX_TOTAL_BYTES = 50 * 1024 * 1024
+          VALID_NAME = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]*$")
+
+          FORBIDDEN_NAMES = {
+              "book-html.zip",
+              "book-source.zip",
+              "book.docx",
+              "book.md",
+              "book.pdf",
+              "book-extras.zip",
+              "publication-manifest.json",
+              "SHA256SUMS.txt",
+              "EXTRAS-SHA256SUMS.txt",
+          }
+
+          if not extra_dir.is_dir():
+              raise SystemExit("RELEASE_ASSETS_DIR directory does not exist")
+
+          items = list(extra_dir.iterdir())
+          if not items:
+              raise SystemExit("release-assets target produced no files in RELEASE_ASSETS_DIR")
+
+          if len(items) > MAX_FILES:
+              raise SystemExit(f"too many extra release assets: {len(items)} > {MAX_FILES}")
+
+          total_bytes = 0
+          for item in items:
+              if item.is_symlink() or not item.is_file():
+                  raise SystemExit(f"extra release asset must be a regular file: {item.name}")
+              if not VALID_NAME.match(item.name):
+                  raise SystemExit(f"invalid extra release asset name: {item.name!r}")
+              if item.name in FORBIDDEN_NAMES:
+                  raise SystemExit(f"extra release asset name collides with publication files: {item.name}")
+              size = item.stat().st_size
+              if size > MAX_FILE_BYTES:
+                  raise SystemExit(f"extra asset {item.name} exceeds max file size: {size} > {MAX_FILE_BYTES}")
+              total_bytes += size
+
+          if total_bytes > MAX_TOTAL_BYTES:
+              raise SystemExit(f"total extra release assets exceed cap: {total_bytes} > {MAX_TOTAL_BYTES}")
+
+          epoch_str = os.environ.get("SOURCE_DATE_EPOCH")
+          if epoch_str:
+              try:
+                  epoch = max(int(epoch_str), 315532800)
+                  dt = datetime.fromtimestamp(epoch, timezone.utc)
+                  stamp = (min(dt.year, 2107), dt.month, dt.day, dt.hour, dt.minute, dt.second)
+              except ValueError:
+                  stamp = (1980, 1, 1, 0, 0, 0)
+          else:
+              stamp = (1980, 1, 1, 0, 0, 0)
+
+          extras_zip = release_dir / "book-extras.zip"
+          with zipfile.ZipFile(extras_zip, "w", zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
+              for item in sorted(items, key=lambda p: p.name):
+                  info = zipfile.ZipInfo(item.name, stamp)
+                  info.compress_type = zipfile.ZIP_DEFLATED
+                  info.create_system = 3
+                  info.external_attr = 0o100644 << 16
+                  archive.writestr(info, item.read_bytes(), compresslevel=9)
+
+          print(f"packaged {len(items)} extra release assets into {extras_zip.name} ({extras_zip.stat().st_size} bytes)")
+          PY
+            (cd "$RELEASE_DIR" && sha256sum book-extras.zip > EXTRAS-SHA256SUMS.txt)
+          else
+            echo "No release-assets target found in Makefile; skipping extra assets."
+          fi
+
+      - name: Publish every verified file to the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_DIR: ${{ runner.temp }}/release
+        run: |
+          notes="$RUNNER_TEMP/release-notes.md"
+          cat > "$notes" <<EOF
+          Release $TAG.
+
+          - Source commit: $SOURCE_COMMIT
+          - Toolkit build: recorded in publication-manifest.json
+          - Assets: every file in the verified build directory
+          - The HTML edition is deployed to GitHub Pages from the same bytes.
+
+          This release was built once from the listed commit and verified before publication.
+          EOF
+          if [ -f "$RELEASE_DIR/book-extras.zip" ]; then
+            printf '\n- Extras: book-extras.zip contains book-owned release deliverables (checksum in EXTRAS-SHA256SUMS.txt).\n' >> "$notes"
+          fi
+          extra_args=()
+          if printf '%s' "$VERSION" | grep -q -- '-rc\.'; then
+            extra_args=(--prerelease --latest=false)
+          fi
+          gh release create "$TAG" \
+            --repo "$GITHUB_REPOSITORY" \
+            --target "$SOURCE_COMMIT" \
+            --title "$TAG" \
+            --notes-file "$notes" \
+            "${extra_args[@]}" \
+            "$RELEASE_DIR"/*
+
   deploy:
-    name: Deploy the verified HTML
+    name: Deploy the HTML edition
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -221,7 +322,7 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
 
   verify:
     name: Verify the deployed reading site
